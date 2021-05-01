@@ -5,8 +5,8 @@ module.exports = {
     entry: './frontend/index.jsx',
     output: {
         //path requires absolute path 
-        path: path.resolve(__dirname),
-        filename: 'app/assets/javascripts'
+        path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
+        filename: 'bundle.js' //not sure if i need to specify this file yet
     },
     devtool: 'source-map',
     resolve: {
