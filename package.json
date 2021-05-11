@@ -11,6 +11,7 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
     "webpack": "^5.36.1",
     "webpack-cli": "^4.6.0"
   },
@@ -28,7 +29,6 @@
   "engines": {
     "node": "10.13.0",
     "npm": "6.4.1"
-    
   },
   "repository": {
     "type": "git",
