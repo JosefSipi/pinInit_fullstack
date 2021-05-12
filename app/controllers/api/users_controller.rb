@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
     end
 
     def create
-        # byebug
+
         @user = User.new(user_params)
         username = @user.email.split("@")
         @user.username = username[0]
@@ -27,8 +27,6 @@ class Api::UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
-    # def edit
-    # end
 
     def update
         @user = User.find(params[:id])
