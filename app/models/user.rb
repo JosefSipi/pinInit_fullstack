@@ -1,9 +1,9 @@
 class User < ApplicationRecord
 
-
-    validates :email, :f_name, :l_name, :username, :age, :password_digest, presence: true
-        validates :password, length: {minimum: 6, allow_nil: true}
-        validates :email, :username, :session_token, uniqueness: true
+# removed the presence: true validation for testing of the following: (:f_name, :l_name, :username,)
+    validates :email, :age, :password_digest, :session_token, presence: true
+    validates :password, length: {minimum: 6, allow_nil: true}
+    validates :email, :username, :session_token, uniqueness: true
 
     attr_reader :password
 
@@ -59,8 +59,7 @@ class User < ApplicationRecord
 
     def reset_session_token
         self.session_token = SecureRandom.urlsafe_base64
-        self.save!
+        self.save
         self.session_token
     end
-
 end
