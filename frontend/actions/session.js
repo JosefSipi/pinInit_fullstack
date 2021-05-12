@@ -20,7 +20,7 @@ export const createNewUser = formUser => dispatch => postUser(formUser)
     .then(user => dispatch(receiveCurrentUser(user)));
 
 export const login = formUser => dispatch => postSession(formUser)
-    .them(user => dispatch(receiveCurrentUser(user)));
+    .then(user => dispatch(receiveCurrentUser(user)));
 
 export const logout = () => dispatch => deleteSession()
     .then(() => dispatch(logoutCurrentUser()));

@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
     attr_reader :password
 
-    after_initialize :ensuer_session_token
+    after_initialize :ensure_session_token
 
     has_many :boards,
         primary_key: :id,
@@ -33,6 +33,14 @@ class User < ApplicationRecord
     #     as: :followable
     # polymorphic association
   
+    def self.find_by_cridentialsEmail(email, password)
+        user = User.find_by(email: email)
+        if user && user.is_password?(password)
+            user
+        else
+            nil
+        end
+    end
 
 
     def self.find_by_cridentials(username, password)
@@ -53,11 +61,11 @@ class User < ApplicationRecord
         self.password_digest = BCrypt::Password.create(password)
     end
 
-    def ensuer_session_token
+    def ensure_session_token
         self.session_token ||= SecureRandom.urlsafe_base64
     end
 
-    def reset_session_token
+    def reset_session_token!
         self.session_token = SecureRandom.urlsafe_base64
         self.save
         self.session_token
