@@ -10,6 +10,7 @@ class SignUp extends React.Component {
             age: ""
         };
         this.handelSubmit = this.handelSubmit.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
     }
 
     onChange(field){
@@ -18,16 +19,33 @@ class SignUp extends React.Component {
         };
     }
 
-    // handel submit function
-
     handelSubmit(e) {
         e.preventDefault();
+        
         this.props.createNewUser(this.state)
-            .then(() => this.props.history.push('/feed')); // here we will want to redirect the user to their home feed and display a welcome model
+            .then(() => {
+                this.props.history.push('/feed'),
+                this.props.closeModal();
+            }); // here we will want to redirect the user to their home feed and display a welcome model
     }
+
+    renderErrors() {
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <div key={i}>{error} </div>
+                )
+                    )}
+            </ul>
+        )
+    }
+
+
+
     render(){
         return (
             <div className="session-form" onSubmit={this.handelSubmit}>
+                {/* <div onClick={this.props.closeModal()}>X</div> */}
                 <h2>Sign Up!</h2>
                 <form>
                     <label>Email:
@@ -37,13 +55,6 @@ class SignUp extends React.Component {
                             onChange={this.onChange("email")}
                         />
                     </label>
-                    <label>Password:
-                        <input
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.onChange("password")}
-                        />
-                    </label>
                     <label>age:
                         <input
                             type="number"
@@ -51,7 +62,18 @@ class SignUp extends React.Component {
                             onChange={this.onChange("age")}
                         />
                     </label>
+                    <label>Password:
+                        <input
+                            type="password"
+                            value={this.state.password}
+                            onChange={this.onChange("password")}
+                        />
+                    </label>
+
+                    {this.renderErrors()}
+
                     <button >Continue</button>
+                    <button onClick={() => this.props.openModal('login')}>Sign in</button>
                 </form>
 
             </div>

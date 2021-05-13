@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NavBar from './nav_bar';
-
+import { openModal, closeModal } from '../../actions/modal';
 import { logout } from '../../actions/session';
 
 
@@ -10,7 +10,9 @@ const mSTP = state => ({
 });
 
 const mDTP = dispatch => ({
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    openModal: (modal) => dispatch(openModal(modal)),
+    closeModal: () => dispatch(closeModal())
 });
 
 

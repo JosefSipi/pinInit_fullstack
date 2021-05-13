@@ -6,17 +6,19 @@ import Home from '../components/home/home';
 import { AuthRoute, ProtectedRoute } from '../utils/route_utils';
 import LogInContainer from '../components/session/login_container';
 import Feed from './feed/feed';
-
+import Modal from './modal/modal';
 // import UserShowContainer from "./"
 
 export default () => (
     <div>
-
-            <Route path="/" component={NavBarContainer}/>
-            <AuthRoute exact path="/home" component={Home}/>
-            <ProtectedRoute path="/feed" component={Feed}/>
-            <AuthRoute exact path="/login" component={LogInContainer}/>
-            <AuthRoute path="/signup" component={SignUpContainer}/>
+        {/* <AuthRoute path="/signup" component={SignUpContainer}/>
+        <AuthRoute exact path="/login" component={LogInContainer}/> */}
+        
+        <Modal />
+        
+        <Route path="/" component={NavBarContainer}/>
+        <AuthRoute exact path="/home" component={Home}/>
+        <ProtectedRoute path="/feed" component={Feed}/>
 
     </div>
 );

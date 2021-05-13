@@ -13,3 +13,49 @@
  *= require_tree .
  *= require_self
  */
+
+ div.modal-background {
+   position: fixed;
+   top: 100%;
+   bottom: 100%;
+   right: 100%;
+   left: 100%;
+   background: rgba(0, 0, 0, 0.7);
+   z-index: 17;
+   border-style: solid;
+   border-color: red;
+ }
+ 
+ .modal-child {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   border-style: solid;
+   border-color: black;
+   border-radius: 10px;
+  }
+  
+
+  .login-button {
+    border: 0px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 0px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+    margin-top: 10px;
+
+    text-align: center;
+  }
+
+  .login-form{
+    display: block;
+    text-align: center;
+    height: 268px;
+    width: 190px;
+  }

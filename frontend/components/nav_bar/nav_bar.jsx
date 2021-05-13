@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { openModal } from '../../actions/modal';
 
 
 class NavBar extends React.Component {
@@ -7,6 +8,7 @@ class NavBar extends React.Component {
     constructor(props) {
         super(props);
 }
+
 
 render(){
         if (this.props.currentUser) {this.bar = (
@@ -23,11 +25,11 @@ render(){
             </div>
         ) } else {this.bar = (
                 <div>
-                    <Link className="LoginBt" to="/login">Log in</Link>
-                    <p>
-        
-                    </p>
-                    <Link className="SignBtn" to="/signup">Sign up</Link>
+                    <button onClick={() => this.props.openModal('login')}>Log in</button>
+                    {/* <Link className="LoginBt" to="/login">Log in</Link> */}
+                
+                    <button onClick={() => this.props.openModal('signup')}>Sign up</button>
+                    {/* <Link className="SignBtn" to="/signup">Sign up</Link> */}
                 </div>
             )
         
