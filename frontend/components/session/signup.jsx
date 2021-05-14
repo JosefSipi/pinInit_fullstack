@@ -44,39 +44,55 @@ class SignUp extends React.Component {
 
     render(){
         return (
-            <div className="session-form" onSubmit={this.handelSubmit}>
-                {/* <div onClick={this.props.closeModal()}>X</div> */}
-                <h2>Sign Up!</h2>
-                <form>
-                    <label>Email:
+
+            <div className="session-form">
+                <div className="theX" onClick={this.props.closeModal}>X</div>
+
+                    <img className="logo-modal" src={require('../images/logo.png')} alt="pinterest logo" />
+
+                    <h2>Welcome to Pininit</h2>
+                    <h3>Find new ideas to try</h3>
+
+                <div className="second-part-form">
+
+                <form className="page-form" onSubmit={this.handelSubmit}>
+                    
+                        <label className="input-box"> 
                         <input 
                             type="text"
+                            placeholder="Email"
                             value={this.state.email}
                             onChange={this.onChange("email")}
                         />
                     </label>
-                    <label>age:
-                        <input
-                            type="number"
-                            value={this.state.age}
-                            onChange={this.onChange("age")}
-                        />
-                    </label>
-                    <label>Password:
+
+                    <label className="input-box">
                         <input
                             type="password"
+                            placeholder="Create a password"
                             value={this.state.password}
                             onChange={this.onChange("password")}
                         />
                     </label>
 
-                    {this.renderErrors()}
+                    <label className="input-box">
+                        <input
+                            type="number"
+                            placeholder="Age"
+                            value={this.state.age}
+                            onChange={this.onChange("age")}
+                        />
+                    </label>
 
-                    <button >Continue</button>
-                    <button onClick={() => this.props.openModal('login')}>Sign in</button>
+                    <div className="errors">{this.renderErrors()}</div>
+
+                    <input className="login-button" type="submit" value="Continue" />
+
                 </form>
-
+                    <a className="sign-up-small-btn" href="#0" onClick={() => this.props.openModal('login')}>Already a member? Log in</a>
+             </div>
             </div>
+
         )
     }
 }

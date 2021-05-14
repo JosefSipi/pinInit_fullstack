@@ -11,6 +11,7 @@ class LogIn extends React.Component {
         this.handelSubmit = this.handelSubmit.bind(this);
         this.handelDemo = this.handelDemo.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
+
     }
 
     onChange(field) {
@@ -53,31 +54,55 @@ class LogIn extends React.Component {
 
     render() {
         return (
+
             <div className="session-form" >
-                {/* <div onClick={this.props.closeModal()}>X</div> */}
+
+                
+            <div className="logo-and-X">
+
+                <div id="spaceholder"> </div>
+
+                <div className="image-div">
+                     <img className="logo-modal" src={require('../images/logo.png')} alt="pinterest logo" />
+                </div>
+
+                <div className="theX" onClick={this.props.closeModal}>X</div>
+
+            </div>
+
                 <h2>Welcome to PinInit</h2>
-                <form className="login-form" onSubmit={this.handelSubmit}>
-                    <label>Email:
+            <div className="second-part-form"></div>
+                <form className="page-form" onSubmit={this.handelSubmit}>
+
+                        <label className="input-box">
                         <input
                             type="text"
+                            placeholder="Email"
                             value={this.state.email}
                             onChange={this.onChange("email")}
                             />
-                    </label>
-                        {this.renderErrors()}
-                    <label>Password:
+                        </label>
+
+
+                    <label className="input-box">
                         <input
                             type="password"
+                            placeholder="password"
                             value={this.state.password}
                             onChange={this.onChange("password")}
                         />
                     </label>
+
+                    <div className="errors">{this.renderErrors()}</div> 
+
                     <input className="login-button" type="submit" value="Log in" />
-                    <button onClick={this.handelDemo}>DemoUser</button>
-                    <button onClick={() => this.props.openModal('signup')}>Sign up</button>
+
+                    <input className="login-button" type="submit" onClick={this.handelDemo} value="DemoUser" />
                 </form>
 
+                <a className="sign-up-small-btn" href="#0" onClick={() => this.props.openModal('signup')}>Not on Pininit yet? Sign up</a>
             </div>
+
         )
     }
 }

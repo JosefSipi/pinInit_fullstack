@@ -17,7 +17,7 @@ export default () => (
         <Modal />
         
         <Route path="/" component={NavBarContainer}/>
-        <AuthRoute exact path="/home" component={Home}/>
+        <AuthRoute path="/home" component={Home}/>
         <ProtectedRoute path="/feed" component={Feed}/>
 
     </div>

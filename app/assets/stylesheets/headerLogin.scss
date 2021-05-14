@@ -1,0 +1,97 @@
+
+
+  .login-form{
+    display: block;
+    text-align: center;
+    height: 268px;
+    width: 190px;
+  }
+  
+  
+  #logo{
+    height: 32px;
+    width: auto;
+    padding-left: 17px;
+  }
+  .pinlabel {
+
+    font-weight: bold;
+    padding-left: 6px;
+    color: #cb2127;
+  }
+  
+  .login-btn {
+    height: 37px;
+    padding-inline: 12px;
+    padding-block: 8px;
+    width: fit-content;
+    border-radius: 18px;
+    // font-size: 13px;
+    // font-weight: 600;
+    color: rgb(255, 255, 255);
+    background-color: #cb2127;
+    border: 0px;
+    &:hover {
+      background-color: #bd001c;
+    }
+  }
+  
+  .signup-btn {
+    height: 37px;
+    padding-inline: 12px;
+    padding-block: 8px;
+    border-radius: 18px;
+    // font-size: 13px;
+    // font-weight: 600;
+    color: black;
+    border: 0px;
+    background-color: rgb(232, 230, 230);
+    &:hover {
+      background-color: rgb(213, 213, 213);
+    }
+  }
+  
+  
+  .other-url {
+    // font-weight: 300;
+    color: black;
+    text-decoration: none;
+    padding-inline: 12px;
+    padding-block: 8px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  
+  .header-left {
+    display: flex;
+    text-align: center;
+    justify-content: flex-start;
+    align-items: center;
+    width: 150px;
+  }
+
+
+  .header-right {
+    font-size: 13px;
+    font-weight: 800;
+    display: flex;
+    justify-content: space-evenly;
+    width: 370px;
+    
+  }
+  
+  .header {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    
+  }
+
+  header.nav-bar {
+    font-family: 'Questrial', sans-serif;
+  }
+  

@@ -1,0 +1,108 @@
+  .modal-background {
+   position: absolute;
+    display: flex;
+    justify-content: center;
+
+//     color: chartreuse;
+//     border-width: 2px;
+//     border-color: chocolate;
+//     border-style: solid;
+//     z-index: 10;
+//     // position: fixed;
+//     right: 50%;
+    // background: rgba(26, 26, 26, 0.146);
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.454);
+    margin: 0;
+    // border-style: solid;
+    // border-color: red;
+    .modal-child {
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 34%;
+        width: 400px;
+        height: 500px;
+        border-radius: 8px;
+    
+    }
+
+//       overflow-y: hidden;
+//       height: 200px;
+//       border-style: solid;
+//       border-radius: 10px;
+//       border-color: black;
+//       border-width: 10px;
+//       z-index: 11;
+//       // transform: translate(-50%, -50%);
+//       // border-style: solid;
+//       // border-color: black;
+//       // border-radius: 10px;
+
+}
+
+
+.session-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    height: inherit;
+    width: inherit;
+    padding: 20px, 10px, 24px;
+}
+
+.input-box {
+    display: flex;
+    align-items: stretch;
+}
+
+
+.sign-up-small-btn {
+    padding-bottom: 20px;
+    color: black;
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.logo-modal {
+    height: 32px;
+    width: auto;
+    display: flex;
+    align-items: stretch;
+}
+
+.logo-and-X{
+    display: flex;
+    color: gray;
+    justify-content: space-between;
+    padding-top: 20px;
+    height: 32px;
+    width: auto;
+}
+
+// .image-div {
+    //     height: 32px;
+    //     width: auto;
+    // }
+    
+    .page-form {
+        display: flex;
+        justify-content: space-evenly;
+        height: 120px;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    // .page-form{
+    //     display: flex;
+    //     align-items: center;
+    //     flex-direction: column;
+    //     justify-content: inherit;
+    // }
