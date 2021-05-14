@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { openModal } from '../../actions/modal';
+// import { openModal } from '../../actions/modal';
+
 
 
 class NavBar extends React.Component {
@@ -13,6 +14,7 @@ class NavBar extends React.Component {
 render(){
         if (this.props.currentUser) {this.bar = (
             <div>
+                <img id="logo" src={require('../images/logo.png')} alt="pinterest logo" />
                 <div>Account opt. dropdown
                 <button onClick={this.props.logout}>Log out</button>
                 </div>
@@ -24,7 +26,11 @@ render(){
                 <Link className="P-avatar" to="/feed"> P </Link>
             </div>
         ) } else {this.bar = (
-                <div>
+                <div className="header">
+                    <div id="logo" >
+                    <img id="logo" src={require('../images/logo.png')} alt="pinterest logo" />Pininit
+
+                    </div>
                     <button onClick={() => this.props.openModal('login')}>Log in</button>
                     {/* <Link className="LoginBt" to="/login">Log in</Link> */}
                 

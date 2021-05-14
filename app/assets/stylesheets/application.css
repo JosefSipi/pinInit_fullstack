@@ -59,3 +59,13 @@
     height: 268px;
     width: 190px;
   }
+
+
+  #logo{
+    height: 20px;
+    width: auto;
+    font-family: 'Questrial', sans-serif;
+    font-weight: bold;
+  }
+
+  

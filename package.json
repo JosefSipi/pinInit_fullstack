@@ -12,6 +12,7 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
+    "url-loader": "^4.1.1",
     "webpack": "^5.36.1",
     "webpack-cli": "^4.6.0"
   },
@@ -41,5 +42,8 @@
   "bugs": {
     "url": "https://github.com/JosefSipi/pinInit_fullstack/issues"
   },
-  "homepage": "https://github.com/JosefSipi/pinInit_fullstack#readme"
+  "homepage": "https://github.com/JosefSipi/pinInit_fullstack#readme",
+  "devDependencies": {
+    "file-loader": "^6.2.0"
+  }
 }
