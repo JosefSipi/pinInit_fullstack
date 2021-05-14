@@ -27,7 +27,6 @@ function Modal({ modal, closeModal }) {
     return(
         <div className="modal-background" onClick={closeModal}>
                 
-            <h1>do you see me</h1>
             <div className="modal-child" onClick={e => e.stopPropagation()}>
                 { loginOrSignup }
             </div>

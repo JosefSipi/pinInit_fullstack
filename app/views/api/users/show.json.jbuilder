@@ -1,5 +1,6 @@
-json.extract! @user,  :id, :email, :age
+json.extract! @user,  :id, :email, :age, :profile_pic
 
+json.partial! 'api/users/profile', profile: @user
   
 
 
@@ -11,5 +12,6 @@ json.extract! @user,  :id, :email, :age
 # {
 #     "id": 1
 #     "email": "josef@yahoo.com",
-#     "25"
+#     "age": "25",
+#     "profile_pic": "photo_url"
 # }

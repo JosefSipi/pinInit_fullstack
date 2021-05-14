@@ -13,21 +13,25 @@
     // background: rgba(26, 26, 26, 0.146);
     height: 100%;
     width: 100%;
-    overflow-y: hidden;
+    overflow-y: scroll;
     z-index: 10;
     background-color: rgba(0, 0, 0, 0.454);
     margin: 0;
     // border-style: solid;
     // border-color: red;
     .modal-child {
+
+        
+
+
         background-color: rgb(255, 255, 255);
         display: flex;
         justify-content: center;
         align-items: center;
         position: absolute;
         top: 34%;
-        width: 400px;
-        height: 500px;
+        width: 380px;
+        height: 450px;
         border-radius: 8px;
     
     }

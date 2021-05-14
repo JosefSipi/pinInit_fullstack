@@ -4,10 +4,13 @@ class User < ApplicationRecord
     validates :email, :age, :password_digest, :session_token, presence: true
     validates :password, length: {minimum: 6, allow_nil: true}
     validates :email, :username, :session_token, uniqueness: true
+    
 
     attr_reader :password
 
     after_initialize :ensure_session_token
+
+    has_one_attached :profile_pic
 
     has_many :boards,
         primary_key: :id,
