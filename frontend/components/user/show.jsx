@@ -1,36 +1,51 @@
 import React from 'react';
 // import { render } from 'react-dom';
 
-class User extends React.Component {
+
+class UserShow extends React.Component {
     constructor(props) {
         super(props);
-
+        
         this.state = {photoUrl: []};
+        this.state.display_name = props.f_name;
+
         // this.fetchUser = this.fetchUser.bind(this);
     }
 
     componentDidMount(){
-        debugger
+
         this.props.fetchUser(window.currentUser.id);
     }
 
 
+
     render() {
-        debugger
+
         return(
             <div>
+                
+                <div className="show-page-box-1">
+                    <header className="profile-header">
 
-                <ul>
-                    <div>{/* image logo */}</div>
-                    
-                    <div>email: {this.props.user.email}</div>
-                    <img src={this.props.user.photoUrl} alt="" />
+                        <div className="profile-div">
+                            <img className="profile-photo" src={this.props.user.photoUrl} alt="profile photo" />
+                        </div>
 
-                </ul>
+                        <h2 className="username-on-profile">{this.props.user.f_name}{(window.currentUser.l_name).charAt(0)}</h2>
+                        
+                        <h1 className="email-on-profile">{[this.props.user.email].slice("@")}</h1>
+
+                        <h1 className="email-on-profile"> 0 followers  • 0 following </h1>
+    
+                    </header>
+               </div>
+
+
+
 
             </div>
         )
     }
 }
 
-export default User;
+export default UserShow;

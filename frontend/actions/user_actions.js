@@ -16,7 +16,7 @@ export const receiveUser = user => {
 export const fetchUser = userId => {
     return (dispatch) => {
         return APIUtil.fetchUser(userId)
-            .then((user) => dispatch(receiveUser(user)));
+            .then((userinfo) => dispatch(receiveUser(userinfo)));
     };
 };
 

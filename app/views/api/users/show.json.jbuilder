@@ -1,8 +1,9 @@
-json.extract! @user,  :id, :email, :age, :profile_pic
+json.extract! @user,  :id, :email, :age, :f_name, :l_name, :username, :profile_pic, :bio
+json.photoUrl url_for(@user.profile_pic)
 
-json.partial! 'api/users/profile', profile: @user
+# json.partial! 'api/users/profile', profile: @user
   
-
+# json.extract! profile, :id, :email, :age, :f_name, :l_name, :username, :profile_pic
 
 # removed the following to get it working(:username, :f_name, :l_name, :bio,, :created_at )
 # still need to get all info for associations regarding comments likes and follows ect.
@@ -14,4 +15,8 @@ json.partial! 'api/users/profile', profile: @user
 #     "email": "josef@yahoo.com",
 #     "age": "25",
 #     "profile_pic": "photo_url"
+
+    # "photoUrl": {
+    #     info for photo
+    # }
 # }

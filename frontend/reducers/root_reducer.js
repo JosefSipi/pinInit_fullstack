@@ -6,7 +6,6 @@ import errorReducer from './error_reducer';
 import userReducer from './user_reducer';
 
 
-
 export default combineReducers({
     // entities: entitiesReducer,
     session: sessionReducer,

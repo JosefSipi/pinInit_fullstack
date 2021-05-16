@@ -1,4 +1,135 @@
+// overflow-y: hidden;
+// overflow-x: hidden;
+// border-radius: 100px;
+// height: 120px;
+// width: 120px;
+// ------------------------------------------------
+// pinterest logo in header while logged in
 
+.header-logged-in-1 {
+  height: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+}
+
+
+.logo-on-logged-in-header{
+  overflow-y: hidden;
+  overflow-x: hidden;
+  border-radius: 100px;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  &:hover{
+
+    background-color: #f1f1f1;
+  }
+}
+
+#logo-logged-in{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  // &:hover{
+  //   background-color: #c9c9c9;
+  // }  
+}
+
+#logo{
+  height: 18px;
+  width: auto;
+}
+// ------------------------------------------------
+// home link button in logged in header
+
+.header-left-home-btn-loggedin{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: inherit;
+  width: 63px;
+
+}
+
+.home-btn-loggedin{
+
+  height: 37px;
+  padding: 14px;
+  // padding-inline: 12px;
+  // padding-block: 8px;
+  width: fit-content;
+  border-radius: 18px;
+  
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  border: 0px;
+  font-weight: 750;
+  text-decoration: none;
+
+// --- puts text in center --
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+    &:hover {
+      background-color: #f1f1f1;
+    }
+    
+  }
+
+// ------------------------------------------------
+// --- the search bar on logged in
+
+.searchBar {
+  all: unset;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-self: stretch;
+  flex-grow: 1;
+  border-radius: 50px;
+  background-color: #f1f1f1;
+  border-color: none;
+  margin: 11px;
+  border-style: none;
+  text-align: left;
+  text-indent: 30px;
+
+}
+// ------------------------------------------------
+
+// right logged in div containing bell and to the right
+
+.header-right-logged-in {
+  height: inherit;
+  width: 168px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+
+}
+.header-left {
+  display: flex;
+  text-align: center;
+  justify-content: flex-start;
+  align-items: center;
+  width: 150px;
+  height: inherit;
+}
 
   .login-form{
     display: block;
@@ -8,11 +139,6 @@
   }
   
   
-  #logo{
-    height: 32px;
-    width: auto;
-    padding-left: 17px;
-  }
   .pinlabel {
 
     font-weight: bold;
@@ -62,17 +188,8 @@
       text-decoration: underline;
     }
   }
-  
-  
-  .header-left {
-    display: flex;
-    text-align: center;
-    justify-content: flex-start;
-    align-items: center;
-    width: 150px;
-  }
 
-
+  
   .header-right {
     font-size: 13px;
     font-weight: 800;
@@ -87,11 +204,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
+    height: 58px;
     
   }
-
+  
   header.nav-bar {
     font-family: 'Questrial', sans-serif;
   }
-  
+
+
+
+  .link-logo-div{
+    overflow-y: hidden;
+    overflow-x: hidden;
+    border-radius: 100px;
+    height: 10px;
+    width: 10px;
+  }

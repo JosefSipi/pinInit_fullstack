@@ -4,13 +4,17 @@ import React from 'react';
 class SignUp extends React.Component {
     constructor(props){
         super(props);
+        debugger
         this.state = {
             email: "",
             password: "",
-            age: ""
+            age: "",
+            profile_pic: null
         };
         this.handelSubmit = this.handelSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
+        // this.handelSubmitPhoto = this.handelSubmitPhoto.bind(this);
+        // this.handelFile = this.handelFile.bind(this);
     }
 
     onChange(field){
@@ -21,12 +25,14 @@ class SignUp extends React.Component {
 
     handelSubmit(e) {
         e.preventDefault();
-        
+        //     debugger
+        // this.handelSubmitPhoto();
+
         this.props.createNewUser(this.state)
             .then(() => {
                 this.props.history.push('/feed'),
                 this.props.closeModal();
-            }); // here we will want to redirect the user to their home feed and display a welcome model
+            });
     }
 
     renderErrors() {
@@ -40,12 +46,24 @@ class SignUp extends React.Component {
         )
     }
 
+    // handelSubmitPhoto(){
+    //     // e.preventDefault();
+    //     const formData = new FormData();
+    //     formData.append('profile_pic', this.state.profile_pic)
+    //     this.setState({profile_pic: formData})
+    // }
 
+
+    // handelFile(e){
+    //     debugger
+    //     this.setState({profile_pic: e.currentTarget.files[0]})
+    // }
 
     render(){
         return (
 
             <div className="session-form">
+                {console.log(this.state)}
                 <div className="theX" onClick={this.props.closeModal}>X</div>
 
                     <img className="logo-modal" src={require('../images/logo.png')} alt="pinterest logo" />
@@ -57,6 +75,9 @@ class SignUp extends React.Component {
 
                 <form className="page-form" onSubmit={this.handelSubmit}>
                     
+                        {/* <input type="file" className="input-box" onChange={this.handelFile}/> */}
+                        {/* <input type="file" className="input-box" onChange={this.handelFile} /> */}
+
                         <label className="input-box"> 
                         <input 
                             type="text"

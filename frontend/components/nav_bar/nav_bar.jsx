@@ -8,22 +8,59 @@ class NavBar extends React.Component {
 
     constructor(props) {
         super(props);
+
+    
+
 }
 
 
 render(){
-        if (this.props.currentUser) {this.bar = (
-            <div>
-                <img id="logo" src={require('../images/logo.png')} alt="pinterest logo" />
 
-                    <div>Account opt. dropdown
-                    <button onClick={this.props.logout}>Log out</button>
+        if (this.props.currentUser) {this.bar = (
+            <div className="header" >
+                <div className="header-logged-in-1">
+                    <div className="logo-on-logged-in-header">
+                        <Link id="logo-logged-in" to="/feed" >
+                            <img id="logo" src={require('../images/logo.png')} alt="pinterest logo" />
+                        </Link>
                     </div>
-                    <div>UserShowPage</div>
-                    <div>DM dropdown</div>
-                    <div>Updates dropdown</div>
-                    <div>search bar</div>
-                    <Link className="home-btn" to="/feed">Home</Link>
+                </div>
+
+                <div className="header-left-home-btn-loggedin">
+                    <Link className="home-btn-loggedin" to="/feed">Home</Link>
+                </div>
+
+                <div className="header-left-home-btn-loggedin">
+                    <Link className="home-btn-loggedin" to="/feed">Today</Link>
+                </div>
+
+                <input 
+                    className="searchBar"
+                    type="text">
+                        {/* <div className="searchBar">this will be the search bar</div>
+                        <div className="dropdown">DD-icon</div> */}
+                </input>
+
+                <div className="header-right-logged-in">
+                    <div>
+                        <img id="logo" src={require('../images/bell-solid.png')} alt="bell" />
+                    </div>
+                    <div>
+                        <img id="logo" src={require('../images/message-icon.png')} alt="bell" />
+                    </div>
+
+
+                    <div className="link-logo-div">
+                        <img id="logo-dropdown" src={require('../images/logo.png')} alt="pinterest logo" />
+                    </div>
+
+                    <div>dropdown
+                        <button onClick={this.props.logout}>Log out</button>
+                    </div>
+                </div>
+                    
+                    
+
                     <Link className="P-avatar" to="/feed"> P </Link>
             </div>
         ) } else {this.bar = (
