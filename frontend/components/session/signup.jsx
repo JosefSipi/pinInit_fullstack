@@ -13,8 +13,10 @@ class SignUp extends React.Component {
         };
         this.handelSubmit = this.handelSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
-        // this.handelSubmitPhoto = this.handelSubmitPhoto.bind(this);
-        // this.handelFile = this.handelFile.bind(this);
+        //-------------------------------------
+        this.handelSubmitPhoto = this.handelSubmitPhoto.bind(this);
+        this.handelFile = this.handelFile.bind(this);
+        //-------------------------------------
     }
 
     onChange(field){
@@ -25,9 +27,10 @@ class SignUp extends React.Component {
 
     handelSubmit(e) {
         e.preventDefault();
-        //     debugger
-        // this.handelSubmitPhoto();
-
+            debugger
+        //-------------------------------------
+        this.handelSubmitPhoto();
+        //-------------------------------------
         this.props.createNewUser(this.state)
             .then(() => {
                 this.props.history.push('/feed'),
@@ -45,20 +48,23 @@ class SignUp extends React.Component {
             </ul>
         )
     }
+//-------------------------------------
+    handelSubmitPhoto(){
+        // e.preventDefault();
+        const formData = new FormData();
+        formData.append('user[profile_pic]', this.state.profile_pic)
+        formData.append('user[email]', this.state.email)
+        formData.append('user[password]', this.state.password)
+        formData.append('user[age]', this.state.password)
+        this.setState(formData)
+    }
 
-    // handelSubmitPhoto(){
-    //     // e.preventDefault();
-    //     const formData = new FormData();
-    //     formData.append('profile_pic', this.state.profile_pic)
-    //     this.setState({profile_pic: formData})
-    // }
 
-
-    // handelFile(e){
-    //     debugger
-    //     this.setState({profile_pic: e.currentTarget.files[0]})
-    // }
-
+    handelFile(e){
+        debugger
+        this.setState({profile_pic: e.currentTarget.files[0]})
+    }
+//-------------------------------------
     render(){
         return (
 
@@ -75,7 +81,7 @@ class SignUp extends React.Component {
 
                 <form className="page-form" onSubmit={this.handelSubmit}>
                     
-                        {/* <input type="file" className="input-box" onChange={this.handelFile}/> */}
+                        <input type="file" className="input-box" onChange={this.handelFile}/>
                         {/* <input type="file" className="input-box" onChange={this.handelFile} /> */}
 
                         <label className="input-box"> 
