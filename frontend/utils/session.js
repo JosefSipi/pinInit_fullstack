@@ -11,8 +11,8 @@ export const postUser = (user) => (
         url: `/api/users`,
         method: "POST",
         data: {user},
-        contentType: false,
-        processData: false,
+        // contentType: false,
+        // processData: false,
     })
 );
 

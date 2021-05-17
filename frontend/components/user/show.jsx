@@ -7,8 +7,10 @@ class UserShow extends React.Component {
         super(props);
         
         this.state = {photoUrl: []};
-        this.state.display_name = props.f_name;
+        // this.state = { isBoxVisible: false};
 
+        this.state.display_name = props.f_name;
+        // this.toggleBox = this.toggleBox.bind(this);
         // this.fetchUser = this.fetchUser.bind(this);
     }
 
@@ -17,10 +19,21 @@ class UserShow extends React.Component {
         this.props.fetchUser(window.currentUser.id);
     }
 
+    // toggleBox() {
+    //     this.setState(prevState => ({ isBoxVisible:
+    //          !prevState.isBoxVisible}));
+    // }
 
 
     render() {
+        // let toggleBox = function() {
+        //     prevState =>({
+        //         isBoxVisible: !prevState
+        //     })
+        // };
 
+        // let isBoxVisible = false;
+        //     debugger
         return(
             <div>
                 
@@ -33,11 +46,53 @@ class UserShow extends React.Component {
 
                         <h2 className="username-on-profile">{this.props.user.f_name}{(window.currentUser.l_name).charAt(0)}</h2>
                         
-                        <h1 className="email-on-profile">{[this.props.user.email].slice("@")}</h1>
+                        <h1 className="email-on-profile">{"@"}{this.props.user.username}</h1>
 
                         <h1 className="email-on-profile"> 0 followers  • 0 following </h1>
     
                     </header>
+               </div>
+
+               <div className="edit-bar-profile-page">
+
+                    <div className="left-box-edit-bar">
+
+                        <div className="logo-on-logged-in-header">
+                            <img id="logo" src={require('../images/pen-solid.png')} alt="edit-pen-icon" />
+                        </div>
+
+                        <div className="logo-on-logged-in-header">
+                            <img id="logo" src={require('../images/share-logo.png')} alt="share-icon" />
+                        </div>
+
+                    </div>
+
+                    <div className="righ-box-edit-bar">
+
+                        <div className="logo-on-logged-in-header" onClick={this.toggleBox}>
+                            <img id="logo" src={require('../images/settings-icon.png')} alt="share-icon" />
+                        </div>
+
+                        <div className="show-dropdown">
+
+                            <div className="logo-on-logged-in-header" onClick={this.toggleBox}>
+                                <img id="logo" src={require('../images/plus-solid.png')} alt="share-icon" />
+                            </div>
+
+                            <div className="hidden">
+
+                                <ul >
+                                    <li>Pin</li>
+                                    <li>Board</li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
                </div>
 
 
