@@ -6,11 +6,14 @@ class UserShow extends React.Component {
     constructor(props) {
         super(props);
         
-        this.state = {photoUrl: []};
+        this.state = {
+            photoUrl: [],
+            isActive: false,
+        };
         // this.state = { isBoxVisible: false};
 
         this.state.display_name = props.f_name;
-        // this.toggleBox = this.toggleBox.bind(this);
+        this.toggleClass = this.toggleClass.bind(this);
         // this.fetchUser = this.fetchUser.bind(this);
     }
 
@@ -19,10 +22,10 @@ class UserShow extends React.Component {
         this.props.fetchUser(window.currentUser.id);
     }
 
-    // toggleBox() {
-    //     this.setState(prevState => ({ isBoxVisible:
-    //          !prevState.isBoxVisible}));
-    // }
+    toggleClass() {
+        debugger
+        this.setState({isActive: !this.state.isActive});
+    }
 
 
     render() {
@@ -34,7 +37,9 @@ class UserShow extends React.Component {
 
         // let isBoxVisible = false;
         //     debugger
+        
         return(
+
             <div>
                 
                 <div className="show-page-box-1">
@@ -87,6 +92,14 @@ class UserShow extends React.Component {
                                 </ul>
 
                             </div>
+                        </div>
+
+                        <div className="dropdown">
+                            {/* <button onClick={toggleClass()} className="dropbtn">Dropdown</button>
+                            <div id="myDropdown" className={this.state.isActive ? "displayed-dropdown" : "hidden"}>
+                                <a href="#">Link</a>
+                                
+                            </div> */}
                         </div>
 
 
