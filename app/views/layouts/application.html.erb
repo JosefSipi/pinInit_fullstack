@@ -12,7 +12,6 @@
   <body>
     <% if current_user %>
       <script>
-      debugger
         window.currentUser= {
 
           "id": <%= current_user.id %>,
@@ -22,7 +21,6 @@
           "f_name": "<%= current_user.f_name  %>",
           "l_name": "<%= current_user.l_name  %>",
           "username": "<%= current_user.username  %>",
-          "profile_pic": <%= current_user.profile_pic %>
         };
       </script>
     <% end %>

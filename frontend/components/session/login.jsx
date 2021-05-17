@@ -55,53 +55,75 @@ class LogIn extends React.Component {
     render() {
         return (
 
-            <div className="session-form" >
+        <div className="the-outer-box-modal">
+
+                <div className="logo-and-X">
+
+
+                    <div className="image-div">
+                        <img className="logo-modal" src={require('../images/logo.png')} alt="pinterest logo" />
+                    </div>
+
+
+                    <div className="logo-on-logged-in-header-x">
+                        <img className="logo-modal-x" src={require('../images/the-X.png')} alt="pinterest logo" onClick={this.props.closeModal} />
+                    </div>
 
                 
-            <div className="logo-and-X">
-
-                <div id="spaceholder"> </div>
-
-                <div className="image-div">
-                     <img className="logo-modal" src={require('../images/logo.png')} alt="pinterest logo" />
                 </div>
 
-                <div className="theX" onClick={this.props.closeModal}>X</div>
 
-            </div>
-
-                <h2>Welcome to PinInit</h2>
-            <div className="second-part-form"></div>
-                <form className="page-form" onSubmit={this.handelSubmit}>
-
-                        <label className="input-box">
-                        <input
-                            type="text"
-                            placeholder="Email"
-                            value={this.state.email}
-                            onChange={this.onChange("email")}
-                            />
-                        </label>
+            <div className="session-form" >
 
 
-                    <label className="input-box">
-                        <input
-                            type="password"
-                            placeholder="password"
-                            value={this.state.password}
-                            onChange={this.onChange("password")}
-                        />
-                    </label>
 
-                    <div className="errors">{this.renderErrors()}</div> 
+
+
+                <h1 className="welcome-pin-login">Welcome to Pininit</h1>
+
+
+                <div className="main-login-form">
+
+                    <input
+                        className="input-box"
+                        type="text"
+                        placeholder="Email"
+                        value={this.state.email}
+                        onChange={this.onChange("email")}
+                    />
+
+                    <input
+                        className="input-box"
+                        type="password"
+                        placeholder="password"
+                        value={this.state.password}
+                        onChange={this.onChange("password")}
+                    />
+
+                    <h2 className="forgot-pw">Forgot your password?</h2>
 
                     <input className="login-button" type="submit" value="Log in" />
 
+                    <h1 className="or-login-page">OR</h1>
+                    
+                    
+                    <div className="second-part-form"></div>
+
+            <form className="page-form" onSubmit={this.handelSubmit}>
+                <div className="errors">{this.renderErrors()}</div> 
+            </form>
+
                     <input className="login-button" type="submit" onClick={this.handelDemo} value="DemoUser" />
-                </form>
+
+                </div>
+
+                <h3 className="policy-text">By continuing, you agree to Pininit's </h3><h3 className="dark-text">Terms of Service, Privacy policy.</h3>
+
+                <div className="gray-line"></div>
 
                 <a className="sign-up-small-btn" href="#0" onClick={() => this.props.openModal('signup')}>Not on Pininit yet? Sign up</a>
             </div>
+        </div>
 
         )
     }

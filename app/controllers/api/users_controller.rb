@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
     end
 
     def create
-        # debugger
+
         @user = User.new(user_params)
         username = @user.email.split("@")
         @user.username = username[0]

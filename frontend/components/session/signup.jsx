@@ -4,7 +4,7 @@ import React from 'react';
 class SignUp extends React.Component {
     constructor(props){
         super(props);
-        debugger
+
         this.state = {
             email: "",
             password: "",
@@ -27,7 +27,7 @@ class SignUp extends React.Component {
 
     handelSubmit(e) {
         e.preventDefault();
-            debugger
+
         //-------------------------------------
         this.handelSubmitPhoto();
         //-------------------------------------
@@ -61,7 +61,7 @@ class SignUp extends React.Component {
 
 
     handelFile(e){
-        debugger
+
         this.setState({profile_pic: e.currentTarget.files[0]})
     }
 //-------------------------------------
@@ -70,7 +70,10 @@ class SignUp extends React.Component {
 
             <div className="session-form">
                 {console.log(this.state)}
-                <div className="theX" onClick={this.props.closeModal}>X</div>
+
+                <div className="logo-on-logged-in-header-x">
+                    <img className="logo-modal-x" src={require('../images/the-X.png')} alt="pinterest logo" onClick={this.props.closeModal} />
+                </div>
 
                     <img className="logo-modal" src={require('../images/logo.png')} alt="pinterest logo" />
 
