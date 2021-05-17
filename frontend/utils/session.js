@@ -6,15 +6,17 @@
 
 // creating a new user
 
-export const postUser = (user) => (
-    $.ajax({
+export const postUser = (user) => {
+    debugger
+    return $.ajax({
         url: `/api/users`,
         method: "POST",
         data: {user},
-        // contentType: false,
-        // processData: false,
-    })
-);
+        contentType: false,
+        processData: false,
+    });
+   
+};
 
 // logging user in
 

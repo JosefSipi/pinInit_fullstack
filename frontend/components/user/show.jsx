@@ -39,9 +39,9 @@ class UserShow extends React.Component {
         //     debugger
         
         return(
-
+            
             <div>
-                
+                              
                 <div className="show-page-box-1">
                     <header className="profile-header">
 
@@ -95,11 +95,11 @@ class UserShow extends React.Component {
                         </div>
 
                         <div className="dropdown">
-                            {/* <button onClick={toggleClass()} className="dropbtn">Dropdown</button>
+                            <button onClick={toggleClass()} className="dropbtn">Dropdown</button>
                             <div id="myDropdown" className={this.state.isActive ? "displayed-dropdown" : "hidden"}>
                                 <a href="#">Link</a>
                                 
-                            </div> */}
+                            </div>
                             {"testing out git branches"}
                         </div>
 

@@ -29,9 +29,14 @@ class SignUp extends React.Component {
         e.preventDefault();
 
         //-------------------------------------
-        this.handelSubmitPhoto();
+        const formData = new FormData();
+        formData.append('user[profile_pic]', this.state.profile_pic);
+        formData.append('user[email]', this.state.email);
+        formData.append('user[password]', this.state.password);
+        formData.append('user[age]', this.state.password);
+        // this.handelSubmitPhoto();
         //-------------------------------------
-        this.props.createNewUser(this.state)
+        this.props.createNewUser(formData)
             .then(() => {
                 this.props.history.push('/feed'),
                 this.props.closeModal();
@@ -51,11 +56,6 @@ class SignUp extends React.Component {
 //-------------------------------------
     handelSubmitPhoto(){
         // e.preventDefault();
-        const formData = new FormData();
-        formData.append('user[profile_pic]', this.state.profile_pic)
-        formData.append('user[email]', this.state.email)
-        formData.append('user[password]', this.state.password)
-        formData.append('user[age]', this.state.password)
         this.setState(formData)
     }
 

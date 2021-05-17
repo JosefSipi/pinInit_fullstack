@@ -45,6 +45,10 @@ class User < ApplicationRecord
         end
     end
 
+    def ensure_profile_pic
+        
+    end
+
 
     def self.find_by_cridentials(username, password)
         user = User.find_by(username: username)
