@@ -7,11 +7,10 @@
 // creating a new user
 
 export const postUser = (user) => {
-    debugger
     return $.ajax({
         url: `/api/users`,
         method: "POST",
-        data: {user},
+        data: user,
         contentType: false,
         processData: false,
     });

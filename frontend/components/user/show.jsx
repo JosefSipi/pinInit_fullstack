@@ -95,12 +95,12 @@ class UserShow extends React.Component {
                         </div>
 
                         <div className="dropdown">
-                            <button onClick={toggleClass()} className="dropbtn">Dropdown</button>
+                            {/* <button onClick={toggleClass()} className="dropbtn">Dropdown</button>
                             <div id="myDropdown" className={this.state.isActive ? "displayed-dropdown" : "hidden"}>
                                 <a href="#">Link</a>
                                 
                             </div>
-                            {"testing out git branches"}
+                            {"testing out git branches"} */}
                         </div>
 
 

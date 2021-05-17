@@ -8,7 +8,7 @@ import { AuthRoute, ProtectedRoute } from '../utils/route_utils';
 import Feed from './feed/feed';
 import Modal from './modal/modal';
 import UserProfileContainer from './user/show_container';
-// import UserEditContainer from './user/edit_container';
+import EditContainer from './user/edit_container';
 // import UserShowContainer from "./"
 
 export default () => (
@@ -23,6 +23,7 @@ export default () => (
             </header>
                 <Route path="/home" component={Home}/>
 
+            <ProtectedRoute path="/edit-profile" component={EditContainer}/>
             <ProtectedRoute path="/feed" component={Feed}/>
             <ProtectedRoute path="/profile" component={UserProfileContainer}/>
         </div>
