@@ -33,6 +33,7 @@ class Api::UsersController < ApplicationController
 
     def update
         debugger
+        
         @user = User.find(params[:id])
 
         if @user && @user.update_attributes(user_params)

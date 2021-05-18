@@ -26,4 +26,4 @@ const mDTP = dispatch => {
 };
 
 
-export default connect(mSTP, mDTP)(EditForm);
+export default withRouter(connect(mSTP, mDTP)(EditForm));

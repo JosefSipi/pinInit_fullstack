@@ -10,8 +10,8 @@ class EditForm extends React.Component {
 
 
     componentDidMount(){
+        debugger
         this.props.fetchUser(window.currentUser.id);
-        
     }
 
     handleChange(field){

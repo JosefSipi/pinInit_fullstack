@@ -33838,3 +33838,201 @@ ActionController::ParameterMissing - param is missing or the value is empty: use
   app/controllers/api/users_controller.rb:58:in `user_params'
   app/controllers/api/users_controller.rb:11:in `create'
 
+Started GET "/" for ::1 at 2021-05-17 22:07:18 -0500
+  [1m[35m (4.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/josephsipiorski/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 3886ms (Views: 3871.4ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/api/users/21" for ::1 at 2021-05-17 22:07:25 -0500
+Processing by Api::UsersController#show as */*
+  Parameters: {"default"=>{"format"=>:json}, "id"=>"21"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:28
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 21], ["record_type", "User"], ["name", "profile_pic"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mActiveStorage::Blob Load (1.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (105.7ms)
+Completed 200 OK in 175ms (Views: 138.5ms | ActiveRecord: 27.9ms)
+
+
+Started PATCH "/api/users/undefined" for ::1 at 2021-05-17 22:08:14 -0500
+Processing by Api::UsersController#update as */*
+  Parameters: {"user"=>{"profile_pic"=>#<ActionDispatch::Http::UploadedFile:0x00007fd86cfdcc70 @tempfile=#<Tempfile:/var/folders/p1/q_d39ht93s76ms6lwg73gkrc0000gn/T/RackMultipart20210517-42646-1yovpun.png>, @original_filename="Screen Shot 2021-05-13 at 9.03.01 PM.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[profile_pic]\"; filename=\"Screen Shot 2021-05-13 at 9.03.01 PM.png\"\r\nContent-Type: image/png\r\n">, "id"=>"21"}, "default"=>{"format"=>:json}, "id"=>"undefined"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:36
+Completed 404 Not Found in 191930ms (ActiveRecord: 1.4ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find User with 'id'=undefined:
+  app/controllers/api/users_controller.rb:36:in `update'
+
+Started GET "/" for ::1 at 2021-05-17 22:11:26 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 361ms (Views: 354.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/21" for ::1 at 2021-05-17 22:11:31 -0500
+Processing by Api::UsersController#show as */*
+  Parameters: {"default"=>{"format"=>:json}, "id"=>"21"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:28
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 21], ["record_type", "User"], ["name", "profile_pic"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (45.8ms)
+Completed 200 OK in 135ms (Views: 102.3ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04acdfb9d21dd68e3f046c69ca7027f004f9d158/Joseph_Sipiorski.jpg" for ::1 at 2021-05-17 22:11:31 -0500
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04acdfb9d21dd68e3f046c69ca7027f004f9d158", "filename"=>"Joseph_Sipiorski"}
+  [1m[36mActiveStorage::Blob Load (1.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/josephsipiorski/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+[36m  S3 Storage (6.5ms) [0m[34mGenerated URL for file at key: VY7BCGp2BXzDYDLNeYCuYiaP (https://pininit-dev.s3.us-east-2.amazonaws.com/VY7BCGp2BXzDYDLNeYCuYiaP?response-content-disposition=inline%3B%20filename%3D%22Joseph_Sipiorski.jpg%22%3B%20filename%2A%3DUTF-8%27%27Joseph_Sipiorski.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3T4DFPLE7NNCJDOD%2F20210518%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20210518T031131Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=b973caa658945d6e3598baa052936f1422b5c16c161bac1b390fcd9f2c1a45f3)[0m
+Redirected to https://pininit-dev.s3.us-east-2.amazonaws.com/VY7BCGp2BXzDYDLNeYCuYiaP?response-content-disposition=inline%3B%20filename%3D%22Joseph_Sipiorski.jpg%22%3B%20filename%2A%3DUTF-8%27%27Joseph_Sipiorski.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3T4DFPLE7NNCJDOD%2F20210518%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20210518T031131Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=b973caa658945d6e3598baa052936f1422b5c16c161bac1b390fcd9f2c1a45f3
+Completed 302 Found in 13ms (ActiveRecord: 1.1ms)
+
+
+Started PATCH "/api/users/undefined" for ::1 at 2021-05-17 22:13:56 -0500
+Processing by Api::UsersController#update as */*
+  Parameters: {"user"=>{"profile_pic"=>#<ActionDispatch::Http::UploadedFile:0x00007fd877a84128 @tempfile=#<Tempfile:/var/folders/p1/q_d39ht93s76ms6lwg73gkrc0000gn/T/RackMultipart20210517-42646-1s3dnft.png>, @original_filename="Screen Shot 2021-05-13 at 9.03.01 PM.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[profile_pic]\"; filename=\"Screen Shot 2021-05-13 at 9.03.01 PM.png\"\r\nContent-Type: image/png\r\n">, "id"=>"21"}, "default"=>{"format"=>:json}, "id"=>"undefined"}
+Started GET "/" for ::1 at 2021-05-17 22:14:38 -0500
+Processing by StaticPagesController#root as HTML
+  [1m[36mUser Load (35.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:37
+Completed 404 Not Found in 78410ms (ActiveRecord: 35.2ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find User with 'id'=undefined:
+  app/controllers/api/users_controller.rb:37:in `update'
+
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 350ms (Views: 341.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/21" for ::1 at 2021-05-17 22:15:18 -0500
+Processing by Api::UsersController#show as */*
+  Parameters: {"default"=>{"format"=>:json}, "id"=>"21"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:28
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (1.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 21], ["record_type", "User"], ["name", "profile_pic"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (13.7ms)
+Completed 200 OK in 143ms (Views: 93.8ms | ActiveRecord: 25.7ms)
+
+
+Started GET "/" for ::1 at 2021-05-17 22:21:46 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g4LWRprPnBPKIFm1X7_ZTw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 544ms (Views: 538.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/users/21" for ::1 at 2021-05-17 22:22:08 -0500
+Processing by Api::UsersController#show as */*
+  Parameters: {"default"=>{"format"=>:json}, "id"=>"21"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:28
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 21], ["record_type", "User"], ["name", "profile_pic"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (11.1ms)
+Completed 200 OK in 74ms (Views: 67.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04acdfb9d21dd68e3f046c69ca7027f004f9d158/Joseph_Sipiorski.jpg" for ::1 at 2021-05-17 22:22:08 -0500
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04acdfb9d21dd68e3f046c69ca7027f004f9d158", "filename"=>"Joseph_Sipiorski"}
+  [1m[36mActiveStorage::Blob Load (8.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/josephsipiorski/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+[36m  S3 Storage (1.5ms) [0m[34mGenerated URL for file at key: VY7BCGp2BXzDYDLNeYCuYiaP (https://pininit-dev.s3.us-east-2.amazonaws.com/VY7BCGp2BXzDYDLNeYCuYiaP?response-content-disposition=inline%3B%20filename%3D%22Joseph_Sipiorski.jpg%22%3B%20filename%2A%3DUTF-8%27%27Joseph_Sipiorski.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3T4DFPLE7NNCJDOD%2F20210518%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20210518T032208Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=41b834510c77aea176955f94b75eee5faddce879441124441bebc225592fedc5)[0m
+Redirected to https://pininit-dev.s3.us-east-2.amazonaws.com/VY7BCGp2BXzDYDLNeYCuYiaP?response-content-disposition=inline%3B%20filename%3D%22Joseph_Sipiorski.jpg%22%3B%20filename%2A%3DUTF-8%27%27Joseph_Sipiorski.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3T4DFPLE7NNCJDOD%2F20210518%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20210518T032208Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=41b834510c77aea176955f94b75eee5faddce879441124441bebc225592fedc5
+Completed 302 Found in 46ms (ActiveRecord: 8.9ms)
+
+
+Started PATCH "/api/users/undefined" for ::1 at 2021-05-17 22:24:39 -0500
+Processing by Api::UsersController#update as */*
+  Parameters: {"user"=>{"profile_pic"=>#<ActionDispatch::Http::UploadedFile:0x00007fd86ddb43e8 @tempfile=#<Tempfile:/var/folders/p1/q_d39ht93s76ms6lwg73gkrc0000gn/T/RackMultipart20210517-42646-1l3ng4e.png>, @original_filename="Screen Shot 2021-05-13 at 9.03.01 PM.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[profile_pic]\"; filename=\"Screen Shot 2021-05-13 at 9.03.01 PM.png\"\r\nContent-Type: image/png\r\n">, "id"=>"21"}, "default"=>{"format"=>:json}, "id"=>"undefined"}
+Started PATCH "/api/users/undefined" for ::1 at 2021-05-17 22:25:01 -0500

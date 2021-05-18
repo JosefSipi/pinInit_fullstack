@@ -7,17 +7,21 @@ class Uploader extends React.Component {
         super(props);
 
         this.state = {
-            profile_pic: null
+            profile_pic: null,
+            id: window.currentUser.id
         };
         
         this.handelSubmit = this.handelSubmit.bind(this);
         this.handelFile = this.handelFile.bind(this);
     }
+
+    
    
     handelSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
         formData.append('user[profile_pic]', this.state.profile_pic);
+        formData.append('user[id]', window.currentUser.id);
 
         this.props.updateUser(formData)
             .then(() => {
@@ -30,6 +34,7 @@ class Uploader extends React.Component {
     }
 
     render() {
+        debugger
         return(            
             <div className="the-outer-box-modal-editModal">
                 <h1 className="Change-pic-edit-modal">Change your picture</h1>
