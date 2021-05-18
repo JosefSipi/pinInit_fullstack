@@ -20,7 +20,6 @@ class Uploader extends React.Component {
     handelSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
-        debugger
         formData.append('user[profile_pic]', this.state.profile_pic);
         formData.append('user[id]', window.currentUser.id);
 

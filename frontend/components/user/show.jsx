@@ -23,7 +23,7 @@ class UserShow extends React.Component {
     }
 
     toggleClass() {
-        // debugger
+
         this.setState({isActive: !this.state.isActive});
     }
 
@@ -36,7 +36,7 @@ class UserShow extends React.Component {
         // };
 
         // let isBoxVisible = false;
-            debugger
+
         
         return(
             
