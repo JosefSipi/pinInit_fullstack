@@ -51,7 +51,7 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     aws-eventstream (1.1.1)
-    aws-partitions (1.456.0)
+    aws-partitions (1.457.0)
     aws-sdk-core (3.114.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
@@ -128,16 +128,10 @@ GEM
     marcel (1.0.1)
     method_source (1.0.0)
     mini_mime (1.1.0)
-    mini_portile2 (2.5.1)
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.7)
-    nokogiri (1.11.4)
-      mini_portile2 (~> 2.5.0)
-      racc (~> 1.4)
     nokogiri (1.11.4-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.11.4-x86_64-linux)
       racc (~> 1.4)
     pg (1.2.3)
     public_suffix (4.0.6)
@@ -224,14 +218,12 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
-  x68_64-linux
   x86_64-darwin-20
-  x86_64-linux
 
 DEPENDENCIES
   annotate
   aws-sdk-s3
-  bcrypt
+  bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)

@@ -21,7 +21,8 @@ render(){
                 <div className="header-logged-in-1">
                     <div className="logo-on-logged-in-header">
                         <Link id="logo-logged-in" to="/feed" >
-                            <img id="logo" src={require('../images/logo.png')} alt="pinterest logo" />
+                            {/* src={require('../images/logo.png')} */}
+                            <img id="logo" src={window.logoURL} alt="logo" />
                         </Link>
                     </div>
                 </div>
@@ -43,15 +44,16 @@ render(){
 
                 <div className="header-right-logged-in">
                     <div>
-                        <img id="logo" src={require('../images/bell-solid.png')} alt="bell" />
+                        <img id="logo" src={window.bellURL} alt="bell" />
                     </div>
                     <div>
-                        <img id="logo" src={require('../images/message-icon.png')} alt="bell" />
+                        <img id="logo" src={window.messageIconURL} alt="message Icon" />
                     </div>
 
 
                     <div className="link-logo-div">
-                        <img id="logo-dropdown" src={require('../images/logo.png')} alt="pinterest logo" />
+                        {/* src={require('../images/logo.png')} */}
+                        <img id="logo-dropdown" src={window.logoURL}  alt="logo" />
                     </div>
 
                     <div>dropdown
@@ -66,7 +68,8 @@ render(){
         ) } else {this.bar = (
                 <div className="header">
                     <div className="header-left" >
-                        <img id="logo" src={require('../images/logo.png')} alt="pinterest logo" />
+                    {/* require('../images/logo.png') */}
+                    <img id="logo" src={window.logoURL} alt="logo" />
                         <h4 className="pinlabel" >Pininit</h4>
                     </div>
 

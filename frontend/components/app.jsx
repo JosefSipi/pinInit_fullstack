@@ -10,6 +10,7 @@ import Modal from './modal/modal';
 import ModalUpload from './modal/uploadModal';
 import UserProfileContainer from './user/show_container';
 import EditContainer from './user/edit_container';
+import SignUpModal from './modal/signUpModal';
 // import UserShowContainer from "./"
 
 export default () => (
@@ -19,6 +20,7 @@ export default () => (
         
         <Modal />
         <ModalUpload/>
+        <SignUpModal/>
         <div className="the-whole-page">
             <header>
                 <Route path="/" component={NavBarContainer}/>

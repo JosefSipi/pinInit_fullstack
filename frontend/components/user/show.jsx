@@ -23,7 +23,7 @@ class UserShow extends React.Component {
     }
 
     toggleClass() {
-        debugger
+        // debugger
         this.setState({isActive: !this.state.isActive});
     }
 
@@ -36,12 +36,12 @@ class UserShow extends React.Component {
         // };
 
         // let isBoxVisible = false;
-        //     debugger
+            debugger
         
         return(
             
             <div>
-                              
+
                 <div className="show-page-box-1">
                     <header className="profile-header">
 
@@ -63,11 +63,11 @@ class UserShow extends React.Component {
                     <div className="left-box-edit-bar">
 
                         <div className="logo-on-logged-in-header">
-                            <img id="logo" src={require('../images/pen-solid.png')} alt="edit-pen-icon" />
+                            <img id="logo" src={window.penURL} alt="edit-pen-icon" />
                         </div>
 
                         <div className="logo-on-logged-in-header">
-                            <img id="logo" src={require('../images/share-logo.png')} alt="share-icon" />
+                            <img id="logo" src={window.shareLogoURL} alt="share-icon" />
                         </div>
 
                     </div>
@@ -75,13 +75,13 @@ class UserShow extends React.Component {
                     <div className="righ-box-edit-bar">
 
                         <div className="logo-on-logged-in-header" onClick={this.toggleBox}>
-                            <img id="logo" src={require('../images/settings-icon.png')} alt="share-icon" />
+                            <img id="logo" src={window.settingsIconURL} alt="settings-icon" />
                         </div>
 
                         <div className="show-dropdown">
 
                             <div className="logo-on-logged-in-header" onClick={this.toggleBox}>
-                                <img id="logo" src={require('../images/plus-solid.png')} alt="share-icon" />
+                                <img id="logo" src={window.plusURL} alt="+ icon" />
                             </div>
 
                             <div className="hidden">

@@ -61,12 +61,13 @@ class LogIn extends React.Component {
 
 
                     <div className="image-div">
-                        <img className="logo-modal" src={require('../images/logo.png')} alt="pinterest logo" />
+
+                        <img className="logo-modal" src={window.logoURL} alt="logo" />
                     </div>
 
 
                     <div className="logo-on-logged-in-header-x">
-                        <img className="logo-modal-x" src={require('../images/the-X.png')} alt="pinterest logo" onClick={this.props.closeModal} />
+                        <img className="logo-modal-x" src={window.theXURL} alt="X logo" onClick={this.props.closeModal} />
                     </div>
 
                 
@@ -82,7 +83,7 @@ class LogIn extends React.Component {
                 <h1 className="welcome-pin-login">Welcome to Pininit</h1>
 
 
-                <div className="main-login-form">
+                <form className="main-login-form" onSubmit={this.handelSubmit}>
 
                     <input
                         className="input-box"
@@ -109,13 +110,13 @@ class LogIn extends React.Component {
                     
                     <div className="second-part-form"></div>
 
-            <form className="page-form" onSubmit={this.handelSubmit}>
-                <div className="errors">{this.renderErrors()}</div> 
-            </form>
 
                     <input className="login-button" type="submit" onClick={this.handelDemo} value="DemoUser" />
 
-                </div>
+                </form>
+                    <form className="page-form" onSubmit={this.handelSubmit}>
+                        <div className="errors">{this.renderErrors()}</div> 
+                    </form>
 
                 <h3 className="policy-text">By continuing, you agree to Pininit's </h3><h3 className="dark-text">Terms of Service, Privacy policy.</h3>
 

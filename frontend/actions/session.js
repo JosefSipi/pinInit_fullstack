@@ -22,7 +22,7 @@ const receiveErrors = (errors) => ({
 
 
 export const createNewUser = formUser => dispatch => {
-    // debugger
+
     return postUser(formUser)
     .then(user => dispatch(receiveCurrentUser(user)), err => dispatch(receiveErrors(err.responseJSON)))};
     

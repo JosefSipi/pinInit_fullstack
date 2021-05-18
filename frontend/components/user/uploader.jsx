@@ -20,6 +20,7 @@ class Uploader extends React.Component {
     handelSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
+        debugger
         formData.append('user[profile_pic]', this.state.profile_pic);
         formData.append('user[id]', window.currentUser.id);
 
@@ -29,12 +30,16 @@ class Uploader extends React.Component {
             });
     }
 
+    // componentDidMount(){
+    //     this.props.fetchUser(window.currentUser.id);
+    // }
+
     handelFile(e) {
         this.setState({ profile_pic: e.currentTarget.files[0] });
     }
 
     render() {
-        debugger
+
         return(            
             <div className="the-outer-box-modal-editModal">
                 <h1 className="Change-pic-edit-modal">Change your picture</h1>

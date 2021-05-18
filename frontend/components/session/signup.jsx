@@ -1,5 +1,5 @@
 import React from 'react';
-
+// import DocumentPicker from 'react-native-document-picker';
 
 class SignUp extends React.Component {
     constructor(props){
@@ -14,7 +14,7 @@ class SignUp extends React.Component {
         this.handelSubmit = this.handelSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
         //-------------------------------------
-        this.handelSubmitPhoto = this.handelSubmitPhoto.bind(this);
+        // this.handelSubmitPhoto = this.handelSubmitPhoto.bind(this);
         this.handelFile = this.handelFile.bind(this);
         //-------------------------------------
     }
@@ -24,6 +24,8 @@ class SignUp extends React.Component {
             this.setState({[field]: e.target.value });
         };
     }
+
+
 
     handelSubmit(e) {
         e.preventDefault();
@@ -62,58 +64,89 @@ class SignUp extends React.Component {
     render(){
         return (
 
-            <div className="session-form">
-                {console.log(this.state)}
+            <div className="the-outer-box-modal">
 
-                <div className="logo-on-logged-in-header-x">
-                    <img className="logo-modal-x" src={require('../images/the-X.png')} alt="pinterest logo" onClick={this.props.closeModal} />
-                </div>
+                
+                <div className="logo-and-X">
+                    <div className="image-div">
+                        <img className="logo-modal" src={window.logoURL} alt="logo" />
+                    </div>
 
-                    <img className="logo-modal" src={require('../images/logo.png')} alt="pinterest logo" />
-
-                    <h2>Welcome to Pininit</h2>
-                    <h3>Find new ideas to try</h3>
-
-                <div className="second-part-form">
-
-                <form className="page-form" onSubmit={this.handelSubmit}>
+                    <div className="logo-on-logged-in-header-x">
+                        <img className="logo-modal-x" src={window.theXURL} alt="X logo" onClick={this.props.closeModal} />
+                    </div>
                     
-                        {/* <input type="file" className="input-box" onChange={this.handelFile}/> */}
-                        {/* <input type="file" className="input-box" onChange={this.handelFile} /> */}
+                </div>
+                
 
-                        <label className="input-box"> 
-                        <input 
+
+
+
+
+                <div className="session-form-signUp">
+
+                    <h1 className="welcome-pin-login-signUp">Welcome to Pininit</h1>
+                    <h3 className="findNew-signUp">Find new ideas to try</h3>
+                    <div className="errors">{this.renderErrors()}</div>
+
+
+
+                <form className="main-login-form" onSubmit={this.handelSubmit}>
+                        <input
+                            className="input-box-signUp"
                             type="text"
                             placeholder="Email"
                             value={this.state.email}
                             onChange={this.onChange("email")}
                         />
-                    </label>
 
-                    <label className="input-box">
                         <input
+                            className="input-box-signUp"
                             type="password"
-                            placeholder="Create a password"
+                            placeholder="Create a passowrd"
                             value={this.state.password}
                             onChange={this.onChange("password")}
                         />
-                    </label>
 
-                    <label className="input-box">
                         <input
+                            className="input-box-signUp"
                             type="number"
                             placeholder="Age"
                             value={this.state.age}
                             onChange={this.onChange("age")}
                         />
-                    </label>
 
-                    <div className="errors">{this.renderErrors()}</div>
+                       
+                        <input className="login-button-signUp-Modal" type="submit" value="Continue" />
 
-                    <input className="login-button" type="submit" value="Continue" />
+
+
+                        <h1 className="or-login-page">OR</h1>
+                    {/* <div className="has-continue-btn"> */}
+                        <h3 className="policy-text-signUp">By continuing, you agree to Pininit's </h3><h3 className="dark-text-signUp">Terms of Service, Privacy policy.</h3>
+                        <a className="sign-up-small-btn" href="#0" onClick={() => this.props.openModal('login')}>Already a member? Log in</a>
+
+                    {/* </div> */}
 
                 </form>
-                    <a className="sign-up-small-btn" href="#0" onClick={() => this.props.openModal('login')}>Already a member? Log in</a>
+{/* -------------------------------------------- */}
+
+                {/* <form className="page-form" onSubmit={this.handelSubmit}> */}
+                    
+
+
+
+                        {/* <input type="file" className="input-box" onChange={this.handelFile}/> */}
+                        {/* <input type="file" className="input-box" onChange={this.handelFile} /> */}
+
+                  
+
+
+
+                    {/* <input className="login-button" type="submit" value="Continue" /> */}
+
+                {/* </form> */}
+                    
              </div>
             </div>
 

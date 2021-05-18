@@ -1,10 +1,10 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal';
 import { connect } from 'react-redux';
-import SignUpContainer from '../session/signup_container';
+// import SignUpContainer from '../session/signup_container';
 import LogInContainer from '../session/login_container';
 import { withRouter } from 'react-router-dom';
-import UploadEditContainer from '../user/edit_modal';
+// import UploadEditContainer from '../user/edit_modal';
 
 function Modal({ modal, closeModal }) {
     if (!modal) {
@@ -17,9 +17,9 @@ function Modal({ modal, closeModal }) {
         case 'login':
             loginOrSignup = <LogInContainer />;
             break;
-        case 'signup':
-            loginOrSignup = <SignUpContainer />
-            break;
+        // case 'signup':
+        //     loginOrSignup = <SignUpContainer />
+        //     break;
         // case 'uploadPhoto':
         //     loginOrSignup = <UploadEditContainer/>
         //     break;

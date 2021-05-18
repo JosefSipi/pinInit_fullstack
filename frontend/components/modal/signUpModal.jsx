@@ -1,9 +1,8 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal';
 import { connect } from 'react-redux';
+import SignUpContainer from '../session/signup_container';
 import { withRouter } from 'react-router-dom';
-import UploadEditContainer from '../user/edit_modal';
-import { fetchUser } from '../../actions/user_actions';
 
 function Modal({ modal, closeModal }) {
     if (!modal) {
@@ -13,9 +12,15 @@ function Modal({ modal, closeModal }) {
     let loginOrSignup;
 
     switch (modal) {
-        case 'uploadPhoto':
-            loginOrSignup = <UploadEditContainer />
+        // case 'login':
+        //     loginOrSignup = <LogInContainer />;
+        //     break;
+        case 'signup':
+            loginOrSignup = <SignUpContainer />
             break;
+        // case 'uploadPhoto':
+        //     loginOrSignup = <UploadEditContainer/>
+        //     break;
         default:
             return null;
     }
@@ -23,7 +28,7 @@ function Modal({ modal, closeModal }) {
 
     return (
         <div className="modal-background" onClick={closeModal}>
-            <div className="modal-child-upload" onClick={e => e.stopPropagation()}>
+            <div className="modal-child-signUp" onClick={e => e.stopPropagation()}>
                 {loginOrSignup}
             </div>
 
@@ -40,10 +45,7 @@ const mSTP = state => {
 
 const mDTP = dispatch => {
     return {
-        closeModal: () => dispatch(closeModal()),
-        fetchUser: (userId) => {
-            return dispatch(fetchUser(userId));
-        }
+        closeModal: () => dispatch(closeModal())
     };
 };
 
