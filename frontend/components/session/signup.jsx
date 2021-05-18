@@ -34,7 +34,7 @@ class SignUp extends React.Component {
         formData.append('user[email]', this.state.email);
         formData.append('user[password]', this.state.password);
         formData.append('user[age]', this.state.password);
-        // this.handelSubmitPhoto();
+        
         //-------------------------------------
         this.props.createNewUser(formData)
             .then(() => {
@@ -54,12 +54,6 @@ class SignUp extends React.Component {
         )
     }
 //-------------------------------------
-    handelSubmitPhoto(){
-        // e.preventDefault();
-        this.setState(formData)
-    }
-
-
     handelFile(e){
 
         this.setState({profile_pic: e.currentTarget.files[0]})
@@ -84,7 +78,7 @@ class SignUp extends React.Component {
 
                 <form className="page-form" onSubmit={this.handelSubmit}>
                     
-                        <input type="file" className="input-box" onChange={this.handelFile}/>
+                        {/* <input type="file" className="input-box" onChange={this.handelFile}/> */}
                         {/* <input type="file" className="input-box" onChange={this.handelFile} /> */}
 
                         <label className="input-box"> 

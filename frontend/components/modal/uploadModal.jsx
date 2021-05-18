@@ -1,8 +1,6 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal';
 import { connect } from 'react-redux';
-import SignUpContainer from '../session/signup_container';
-import LogInContainer from '../session/login_container';
 import { withRouter } from 'react-router-dom';
 import UploadEditContainer from '../user/edit_modal';
 
@@ -13,25 +11,19 @@ function Modal({ modal, closeModal }) {
 
     let loginOrSignup;
 
-    switch(modal) {
-        case 'login':
-            loginOrSignup = <LogInContainer />;
+    switch (modal) {
+        case 'uploadPhoto':
+            loginOrSignup = <UploadEditContainer />
             break;
-        case 'signup':
-            loginOrSignup = <SignUpContainer />
-            break;
-        // case 'uploadPhoto':
-        //     loginOrSignup = <UploadEditContainer/>
-        //     break;
         default:
             return null;
     }
 
 
-    return(
-        <div className="modal-background" onClick={closeModal}> 
-            <div className="modal-child" onClick={e => e.stopPropagation()}>
-                { loginOrSignup }
+    return (
+        <div className="modal-background" onClick={closeModal}>
+            <div className="modal-child-upload" onClick={e => e.stopPropagation()}>
+                {loginOrSignup}
             </div>
 
         </div>

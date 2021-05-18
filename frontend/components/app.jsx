@@ -7,6 +7,7 @@ import { AuthRoute, ProtectedRoute } from '../utils/route_utils';
 // import LogInContainer from '../components/session/login_container';
 import Feed from './feed/feed';
 import Modal from './modal/modal';
+import ModalUpload from './modal/uploadModal';
 import UserProfileContainer from './user/show_container';
 import EditContainer from './user/edit_container';
 // import UserShowContainer from "./"
@@ -17,6 +18,7 @@ export default () => (
         <AuthRoute exact path="/login" component={LogInContainer}/> */}
         
         <Modal />
+        <ModalUpload/>
         <div className="the-whole-page">
             <header>
                 <Route path="/" component={NavBarContainer}/>

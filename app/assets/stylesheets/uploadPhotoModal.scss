@@ -1,0 +1,80 @@
+.modal-background {
+   position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+//     color: chartreuse;
+//     border-width: 2px;
+    // border-color: chocolate;
+//     border-style: solid;
+//     z-index: 10;
+    position: fixed;
+//     right: 50%;
+    // background: rgba(26, 26, 26, 0.146);
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.454);
+    margin: 0;
+    // border-style: solid;
+    // border-color: red;
+    .modal-child-upload {
+
+        
+
+
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        position: absolute;
+        // top: 34%;
+        width: 540px;
+        height: 167px;
+        border-radius: 33px;
+        // margin: center auto;
+
+    }
+}
+
+.the-outer-box-modal-editModal{
+    display: flex;
+    align-content: space-between;
+    justify-content: space-around;
+    align-items: center;
+    height: inherit;
+    width: inherit;
+    flex-direction: column;
+}
+
+.Change-pic-edit-modal{
+    font-size: 25px;
+    font-weight: bold;
+    padding-top: 25px;
+}
+
+.login-btn-upload-modal {
+    all: unset;
+    height: 40px;
+    padding-inline: 12px;
+    padding-bottom: 5px;
+    width: fit-content;
+    border-radius: 20px;
+    // font-size: 13px;
+    // font-weight: 600;
+    color: rgb(255, 255, 255);
+    background-color: #cb2127;
+    border: 0px;
+    font-weight: bold;
+    font-size: 16px;
+    padding-top: 5px;
+    &:hover {
+      background-color: #bd001c;
+    }
+  }
+
+#the-click-file-event{
+    position: absolute;
+    display: none;
+}
