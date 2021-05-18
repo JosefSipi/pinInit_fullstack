@@ -9,6 +9,7 @@ class Uploader extends React.Component {
         this.state = {
             profile_pic: null
         };
+        
         this.handelSubmit = this.handelSubmit.bind(this);
         this.handelFile = this.handelFile.bind(this);
     }
@@ -27,7 +28,7 @@ class Uploader extends React.Component {
     handelFile(e) {
         this.setState({ profile_pic: e.currentTarget.files[0] });
     }
-    
+
     render() {
         return(            
             <div className="the-outer-box-modal-editModal">

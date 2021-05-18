@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/user_actions';
-import EditProfilePic from './uploader';
+import Uploader from './uploader';
 import { closeModal, openModal } from '../../actions/modal';
 import { withRouter } from 'react-router-dom';
 
@@ -18,4 +18,4 @@ const mDTP = dispatch => ({
     openModal: (modal) => dispatch(openModal(modal))
 });
 
-export default withRouter(connect(mSTP, mDTP)(EditProfilePic));
+export default withRouter(connect(mSTP, mDTP)(Uploader));
