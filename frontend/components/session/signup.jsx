@@ -8,8 +8,8 @@ class SignUp extends React.Component {
         this.state = {
             email: "",
             password: "",
-            age: "",
-            profile_pic: null
+            age: '',
+            // profile_pic: null          //--form Data format -'refactor'
         };
         this.handelSubmit = this.handelSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
@@ -26,23 +26,35 @@ class SignUp extends React.Component {
     }
 
 
+// - using formData format --
+    // handelSubmit(e) {
+    //     e.preventDefault();
+
+    //     //-------------------------------------
+    //     const formData = new FormData();
+    //     formData.append('user[profile_pic]', this.state.profile_pic);
+    //     formData.append('user[email]', this.state.email);
+    //     formData.append('user[password]', this.state.password);
+    //     formData.append('user[age]', this.state.age);
+        
+    //     //-------------------------------------
+    //     this.props.createNewUser(formData)
+    //         .then(() => {
+    //             this.props.history.push('/feed'),
+    //             this.props.closeModal();
+    //         });
+    // }
+
+// -- using form data format--
 
     handelSubmit(e) {
         e.preventDefault();
 
-        //-------------------------------------
-        const formData = new FormData();
-        formData.append('user[profile_pic]', this.state.profile_pic);
-        formData.append('user[email]', this.state.email);
-        formData.append('user[password]', this.state.password);
-        formData.append('user[age]', this.state.password);
-        
-        //-------------------------------------
-        this.props.createNewUser(formData)
+        this.props.createNewUser(this.state)
             .then(() => {
                 this.props.history.push('/feed'),
-                this.props.closeModal();
-            });
+                    this.props.closeModal();
+            }); 
     }
 
     renderErrors() {
