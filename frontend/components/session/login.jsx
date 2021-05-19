@@ -26,7 +26,7 @@ class LogIn extends React.Component {
 
         this.props.login(this.state)
             .then(() => {
-                this.props.history.push('/feed'),
+                this.props.history.push('/feed');
                 this.props.closeModal();
             }); // here we will want to redirect the user to their home feed
     }
@@ -36,7 +36,7 @@ class LogIn extends React.Component {
         this.setState({ email: "demoUser@email.com", password: "123456" });
         this.props.login({email: "demoUser@email.com", password: "123456"})
             .then(() => { 
-                this.props.history.push('/feed'), 
+                this.props.history.push('/feed');
                 this.props.closeModal();
             });
     }
