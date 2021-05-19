@@ -17,6 +17,7 @@ const mDTP = dispatch => {
         fetchUser: (userId) => {
             return dispatch(fetchUser(userId));
         },
+        
     };
 };
 

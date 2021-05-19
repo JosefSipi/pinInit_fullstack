@@ -48,7 +48,7 @@ class Api::UsersController < ApplicationController
     def destroy
         @user = User.find(params[:id])
         if @user
-            user.destroy
+            @user.destroy                   # not sure if this need to just be 'user' instead of @user
         else
             render json: ['User not found']
         end
