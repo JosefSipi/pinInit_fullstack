@@ -33,6 +33,7 @@ class LogIn extends React.Component {
 
 
     handelDemo(e){
+        this.setState({ email: "demoUser@email.com", password: "123456" });
         this.props.login({email: "demoUser@email.com", password: "123456"})
             .then(() => { 
                 this.props.history.push('/feed'), 
