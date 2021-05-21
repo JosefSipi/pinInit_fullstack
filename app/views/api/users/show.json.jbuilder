@@ -1,7 +1,7 @@
 json.extract! @user,  :id, :email, :age, :f_name, :l_name, :username, :profile_pic, :bio
-# debugger
+
 if (@user.profile_pic.attached?)
-    # debugger
+
     json.photoUrl url_for(@user.profile_pic)
 end
 

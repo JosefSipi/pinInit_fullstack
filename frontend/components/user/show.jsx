@@ -22,7 +22,7 @@ class UserShow extends React.Component {
     }
 
     componentDidMount(){
-        // debugger
+
         // this.props.fetchUser(window.currentUser.id);
         this.props.fetchUser(this.props.match.params.id);
         this.props.fetchBoards(this.props.match.params.id);

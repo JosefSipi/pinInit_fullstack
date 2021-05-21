@@ -27,9 +27,9 @@ class Api::BoardsController < ApplicationController
     end
     
     def index
-        # debugger
+        #
         user = User.find(params[:user_id])
-        # debugger
+        #
         @boards = user.boards
         # @boards = Board.all
 
@@ -37,13 +37,13 @@ class Api::BoardsController < ApplicationController
 
 
 
-        # debugger
+        #
         # @boards.each do |board|
-        #     debugger
+        #    
         #     c_user = current_user
         #     @users_arr = {}
         #     if board.owner_id == 21 # c_user.id
-        #         debugger
+        #        
         #         @users_arr[board.owner_id] = board
         #     end
         # end

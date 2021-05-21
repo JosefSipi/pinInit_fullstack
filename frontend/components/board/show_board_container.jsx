@@ -6,7 +6,7 @@ import BoardShow from './show_board';
 
 
 const mSTP = (state) => {
-    debugger
+
     return {
         boards: state.boards
     };
