@@ -123,7 +123,7 @@ class LogIn extends React.Component {
 
                 <div className="gray-line"></div>
 
-                <a className="sign-up-small-btn" href="#0" onClick={() => this.props.openModal('signup')}>Not on Pininit yet? Sign up</a>
+                <div className="sign-up-small-btn" href="#0" onClick={() => this.props.openModal('signup')}>Not on Pininit yet? Sign up</div>
             </div>
         </div>
 
