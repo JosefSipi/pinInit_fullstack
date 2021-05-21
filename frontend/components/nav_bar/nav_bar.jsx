@@ -103,7 +103,7 @@ render(){
                                     <img id="logo-arrow" src={window.dropdownIcon} alt="dropdown-icon" />
                             </div>
                             <ul className={`${showDropdown ? "ul-logged-dropdown-active" : "ul-logged-dropdown"}`}>
-                                <Link className="link-settings" to="/edit-profile"><li className="the-li-dropdown"> <Link className="link-settings" to="/edit-profile">Settings</Link> </li></Link>
+                                <Link className="link-settings" to="/edit-profile"><li className="the-li-dropdown"> Settings</li></Link>
                                 <li className="the-li-dropdown" ><div className="logout-dropdown-btn" onClick={this.props.logout}>Log out</div></li>
                             </ul>
 

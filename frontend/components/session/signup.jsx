@@ -136,7 +136,7 @@ class SignUp extends React.Component {
                         <h1 className="or-login-page">OR</h1>
                     {/* <div className="has-continue-btn"> */}
                         <h3 className="policy-text-signUp">By continuing, you agree to Pininit's </h3><h3 className="dark-text-signUp">Terms of Service, Privacy policy.</h3>
-                        <a className="sign-up-small-btn" href="#0" onClick={() => this.props.openModal('login')}>Already a member? Log in</a>
+                        <div className="sign-up-small-btn" href="#0" onClick={() => this.props.openModal('login')}>Already a member? Log in</div>
 
                     {/* </div> */}
 
