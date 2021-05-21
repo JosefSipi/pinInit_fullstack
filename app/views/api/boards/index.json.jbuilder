@@ -3,20 +3,12 @@
 
 
 # :title :udated_at
-
-@board.each do |board|
-    json.set board.id do
-        json.set! board.id do
-
+# debugger
+@boards.each do |board|
+    # debugger
+    json.set! board.id do
+        # debugger
+        json.extract! board, :id, :owner_id, :title, :description, :updated_at, :is_private
     end
 
 end
-
-
-#
-# 
-#
-#
-#
-#
-#

@@ -17,10 +17,3 @@ export const updateUser = (user) => {
         processData: false,
     });
 };
-
-export const fetchBoards = (userId) => {
-    return $.ajax({
-        method: 'GET',
-        url: '/api/boards'
-    })
-}

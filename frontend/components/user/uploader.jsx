@@ -35,7 +35,10 @@ class Uploader extends React.Component {
 
     handelFile(e) {
         this.setState({ profile_pic: e.currentTarget.files[0] });
+
     }
+
+    
 
     render() {
 
@@ -44,8 +47,10 @@ class Uploader extends React.Component {
                 <h1 className="Change-pic-edit-modal">Change your picture</h1>
 
                     <form onSubmit={this.handelSubmit}>
-                        <input type="file" className="input-box" onChange={this.handelFile}/>
-                        <button>submit</button>
+                    <div className="input-box-modal-file-div">
+                            <input type="file" className="input-box-modal-file" onChange={this.handelFile}/>
+                            <button>submit</button>
+                        </div>
                     </form>
 
 

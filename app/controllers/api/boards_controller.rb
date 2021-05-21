@@ -27,18 +27,29 @@ class Api::BoardsController < ApplicationController
     end
     
     def index
-        debugger
-        @boards = Board.all
-        debugger
-        @boards.each do |board|
-            debugger
-            @users_arr = {}
-            if board.owner_id == 21 # current_user.id
-                debugger
-                @users_arr[board.owner_id] = board
-            end
-        end
-        render json: @users_arr
+        # debugger
+        user = User.find(params[:user_id])
+        # debugger
+        @boards = user.boards
+        # @boards = Board.all
+
+
+
+
+
+        # debugger
+        # @boards.each do |board|
+        #     debugger
+        #     c_user = current_user
+        #     @users_arr = {}
+        #     if board.owner_id == 21 # c_user.id
+        #         debugger
+        #         @users_arr[board.owner_id] = board
+        #     end
+        # end
+        # render json: @users_arr
+
+        render 'api/boards/index'
     end
 
     def destroy

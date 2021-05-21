@@ -51,3 +51,26 @@ div.profile-div {
     font-weight: 100;
 }
 
+
+
+// -- main edit bar container --
+
+.edit-bar-profile-page{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5px;
+}
+
+.left-box-edit-bar{
+    display: flex;
+    flex-direction: row;
+    padding: 7px;
+    margin-left: 10px;
+}
+
+.righ-box-edit-bar{ 
+    display: flex;
+    flex-direction: row;
+    padding: 7px;
+    margin-right: 10px;
+}

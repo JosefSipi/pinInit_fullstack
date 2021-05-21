@@ -18,8 +18,9 @@ export const receiveBoards = boards => {
     };
 };
 
-// export const fetchBoard = userId => {
-//     return (dispatch) => {
-//         return APIUtil.fetchBoard(userId)
-//     }
-// }
+export const fetchBoards = userId => {
+    return (dispatch) => {
+        return APIUtil.fetchBoards(userId)
+            .then(boards => dispatch(receiveBoards(boards)));
+    };
+};

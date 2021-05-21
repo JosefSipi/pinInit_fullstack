@@ -4,6 +4,7 @@ import sessionReducer from './session';
 import uiReducer from './ui_reducer';
 import errorReducer from './error_reducer';
 import userReducer from './user_reducer';
+import boardReducer from './board_reducer';
 
 
 export default combineReducers({
@@ -12,4 +13,5 @@ export default combineReducers({
     ui: uiReducer,
     errors: errorReducer,
     user: userReducer,
+    boards: boardReducer,
 });

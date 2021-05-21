@@ -26,10 +26,10 @@ export default () => (
                 <Route path="/" component={NavBarContainer}/>
             </header>
                 <Route path="/home" component={Home}/>
-
+            {/* <Route path={`/profile/`} */}
             <ProtectedRoute path="/edit-profile" component={EditContainer}/>
             <ProtectedRoute path="/feed" component={Feed}/>
-            <ProtectedRoute path="/profile" component={UserProfileContainer}/>
+            <ProtectedRoute path="/profile/:id" component={UserProfileContainer}/>
         </div>
 
 

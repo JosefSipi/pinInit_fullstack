@@ -78,3 +78,39 @@
     position: absolute;
     display: none;
 }
+
+
+.input-box-modal-file-div{
+    all: unset;
+    height: 40px;
+    padding-inline: 12px;
+    padding-bottom: 5px;
+    width: fit-content;
+    border-radius: 20px;
+    // font-size: 13px;
+    // font-weight: 600;
+    color: rgb(255, 255, 255);
+    background-color: #cb2127;
+    border: 0px;
+    font-weight: bold;
+    font-size: 16px;
+    padding-top: 5px;
+    &:hover {
+      background-color: #bd001c;
+    }
+
+}
+
+// .input-box-modal-file {
+//   display: inline-block;
+//   width: 100%;
+//   padding: 120px 0 0 0;
+//   height: 100px;
+//   overflow: hidden;
+//   -webkit-box-sizing: border-box;
+//   -moz-box-sizing: border-box;
+//   box-sizing: border-box;
+//   border-radius: 20px;
+//   background-size: 60px 60px;
+  
+// }
