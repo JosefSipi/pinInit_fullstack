@@ -6,10 +6,6 @@ import BoardShow from './show_board';
 
 
 const mSTP = (state) => {
-<<<<<<< HEAD
-
-=======
->>>>>>> boards
     return {
         boards: state.boards
     };
