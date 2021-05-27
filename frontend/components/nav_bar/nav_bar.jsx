@@ -32,6 +32,7 @@ render(){
 
         let {showDropdown} = this.state;
 
+
         if (this.props.currentUser) {this.bar = (
             <div className="header" >
                {/* <h1 className="very-hidden">
@@ -99,13 +100,18 @@ render(){
 
 
                         <div className="the-outer-dropdown">
-                        <div className="logo-on-logged-in-header-dropdown" onClick={this.toggleContent}>
+                            <div className="logo-on-logged-in-header-dropdown" onClick={this.toggleContent}>
                                     <img id="logo-arrow" src={window.dropdownIcon} alt="dropdown-icon" />
                             </div>
-                            <ul className={`${showDropdown ? "ul-logged-dropdown-active" : "ul-logged-dropdown"}`}>
-                                <Link className="link-settings" to="/edit-profile"><li className="the-li-dropdown"> Settings</li></Link>
-                                <li className="the-li-dropdown" ><div className="logout-dropdown-btn" onClick={this.props.logout}>Log out</div></li>
-                            </ul>
+
+                            <div className={`${showDropdown ? "ul-logged-dropdown-active-background" : "ul-logged-dropdown-background"}`} onClick={this.toggleContent}> 
+
+                                <ul className={`${showDropdown ? "ul-logged-dropdown-active" : "ul-logged-dropdown"}`}>
+                                    <Link className="link-settings" to="/edit-profile"><li className="the-li-dropdown"> Settings</li></Link>
+                                    <li className="the-li-dropdown" ><div className="logout-dropdown-btn" onClick={this.props.logout}>Log out</div></li>
+                                </ul>
+
+                            </div>
 
                         </div>
 
