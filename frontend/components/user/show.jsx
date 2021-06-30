@@ -77,11 +77,6 @@ class UserShow extends React.Component {
     
                     </header>
                </div>
-
-
-
-
-
 {/* ----------------------- this is the profile page edit bar while loged it as user ------------- */}
 
                <div className="edit-bar-profile-page">

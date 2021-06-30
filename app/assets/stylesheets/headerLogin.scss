@@ -28,7 +28,6 @@
   align-items: center;
   justify-content: center;
   &:hover{
-
     background-color: #f1f1f1;
   }
 }
@@ -54,6 +53,9 @@
   width: auto;
   align-self: center;
   justify-content: center;
+  &:hover{
+    cursor: pointer;
+  }
 
 }
 
