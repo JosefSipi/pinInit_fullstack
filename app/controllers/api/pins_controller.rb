@@ -18,14 +18,24 @@ class Api::PinsController < ApplicationController
     def destroy
         # should only remove the pin from user's board and it's association to the user's account so other user's that have
         # pinned this pin can still display the pin by making a backend request to retrieve this pin's info
-        
+
+        @pin = Pin.find(params[:id])
+
+        if @pin
+            @pin.destroy
+        else
+            render json: ['This pin was not able to be deleted']
+        end
 
     end
 
-    def edit
-    end
+    # def edit
+    # end
 
     def index
+        @pins = Pin.all
+
+        render 'api/pins/index'
     end
 
     def show
