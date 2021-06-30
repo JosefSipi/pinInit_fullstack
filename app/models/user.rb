@@ -19,7 +19,8 @@ class User < ApplicationRecord
     
     has_many :pins,
         primary_key: :id,
-        foreign_key: :pinner_id,
+        # foreign_key: :pinner_id,
+        foreign_key: :creator_id,
         class_name: :Pin
     
     has_many :likes,

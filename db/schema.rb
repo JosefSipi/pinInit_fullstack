@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_19_020821) do
+ActiveRecord::Schema.define(version: 2021_06_30_164829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,27 @@ ActiveRecord::Schema.define(version: 2021_05_19_020821) do
     t.datetime "updated_at", null: false
     t.boolean "is_private", default: false
     t.index ["owner_id"], name: "index_boards_on_owner_id"
+  end
+
+  create_table "boards_pin_joins", force: :cascade do |t|
+    t.integer "pin_id", null: false
+    t.integer "board_id", null: false
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_boards_pin_joins_on_board_id"
+    t.index ["pin_id"], name: "index_boards_pin_joins_on_pin_id"
+  end
+
+  create_table "pins", force: :cascade do |t|
+    t.integer "creator_id", null: false
+    t.string "title", null: false
+    t.string "description"
+    t.string "description2"
+    t.string "websiteURL"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_pins_on_creator_id"
   end
 
   create_table "users", force: :cascade do |t|

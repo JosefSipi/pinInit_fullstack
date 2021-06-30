@@ -1,0 +1,1 @@
+json.extract! @boards_pin_joins, :id, :pin_id, :board_id, :note
