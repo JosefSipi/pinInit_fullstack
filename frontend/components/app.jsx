@@ -11,6 +11,7 @@ import ModalUpload from './modal/uploadModal';
 import UserProfileContainer from './user/show_container';
 import EditContainer from './user/edit_container';
 import SignUpModal from './modal/signUpModal';
+import CreateBoardModal from './modal/createBoard'
 // import UserShowContainer from "./"
 
 export default () => (
@@ -21,6 +22,7 @@ export default () => (
         <Modal />
         <ModalUpload/>
         <SignUpModal/>
+        <CreateBoardModal/>
         <div className="the-whole-page">
             <header>
                 <Route path="/" component={NavBarContainer}/>

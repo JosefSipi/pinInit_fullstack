@@ -39,9 +39,19 @@ class Api::PinsController < ApplicationController
     end
 
     def show
+        @pin = Pin.find(params[:id])
+        render :show
     end
 
     def update
+
+        @pin = Pin.find(params[:id])
+
+        if @pin && @pin.update_attributes(pin_params)
+            render :show
+        else
+            render json: @pin.errors.full_messages, status: 401
+        end
     end
 
     private

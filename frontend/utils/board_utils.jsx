@@ -1,4 +1,11 @@
 
+export const createNewBoard = (creatForm) => {
+    return $.ajax({
+        method: 'POST',
+        data: {board: creatForm},
+        url: `/api/boards`
+    })
+}
 
 export const fetchBoards = (userId) => {
     return $.ajax({
@@ -6,3 +13,4 @@ export const fetchBoards = (userId) => {
         url: `/api/users/${userId}/boards`
     });
 };
+

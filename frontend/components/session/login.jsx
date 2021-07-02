@@ -37,6 +37,7 @@ class LogIn extends React.Component {
         this.props.login({email: "demoUser@email.com", password: "123456"})
             .then(() => { 
                 this.props.history.push('/feed');
+
                 this.props.closeModal();
             });
     }

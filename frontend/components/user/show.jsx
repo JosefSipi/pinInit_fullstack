@@ -13,10 +13,15 @@ class UserShow extends React.Component {
             isActive: false,
             boards: []
         };
+
+        this.state = {
+            showDropdown: false
+        };
         // this.state = { isBoxVisible: false};
 
         this.state.display_name = props.f_name;
         this.toggleClass = this.toggleClass.bind(this);
+        this.toggleBox = this.toggleBox.bind(this);
         // this.numDays = this.numDays.bind(this);
         // this.fetchUser = this.fetchUser.bind(this);
     }
@@ -32,6 +37,27 @@ class UserShow extends React.Component {
         this.setState({isActive: !this.state.isActive});
     }
 
+    toggleBox(e){
+            e.preventDefault();
+
+        let dropDiv = document.getElementById('hidden-plus-opt')
+        let backgroundDiv = document.getElementById('background-plus-modal')
+        // let logoHeader = document.body.getElementsById('logo-on-logged-in-header-plus-id')
+
+        if (dropDiv.className === "hidden-plus-opt-h"){
+            dropDiv.className = "hidden-plus-opt";
+            backgroundDiv.className="ul-logged-dropdown-active-background-plus"
+            // logoHeader.style.backgroundColor = "red";
+        } else if (backgroundDiv.className === "ul-logged-dropdown-active-background-plus") {
+            backgroundDiv.className = "ul-logged-dropdown-background-plus"
+            dropDiv.className = "hidden-plus-opt-h"
+        }
+        // } else {
+        //     dropDiv.className = "hidden-plus-opt-h"
+        //     backgroundDiv.className = "ul-logged-dropdown-background-plus"
+        //     logoHeader.style.backgroundColor = "white";
+        // }
+    }
     // numDays(updatedTime) {
     //     let currentTime = new Date();
     //     let expireTime = new Date(updatedTime);
@@ -42,13 +68,7 @@ class UserShow extends React.Component {
 
 
     render() {
-        // let toggleBox = function() {
-        //     prevState =>({
-        //         isBoxVisible: !prevState
-        //     })
-        // };
 
-        // let isBoxVisible = false;
 
         const handelDate = (updatedTime) => {
             let currentTime = new Date();
@@ -77,7 +97,7 @@ class UserShow extends React.Component {
     
                     </header>
                </div>
-{/* ----------------------- this is the profile page edit bar while loged it as user ------------- */}
+{/* ----------------------- this is the profile page edit bar while loged in as user ------------- */}
 
                <div className="edit-bar-profile-page">
 
@@ -99,24 +119,26 @@ class UserShow extends React.Component {
 
                     <div className="righ-box-edit-bar">
 
-                        <div className="logo-on-logged-in-header" onClick={this.toggleBox}>
+                        <div className="logo-on-logged-in-header">
                             <img id="logo" src={window.settingsIconURL} alt="settings-icon" />
                         </div>
 
                         <div className="show-dropdown">
 
                             <div className="logo-on-logged-in-header" onClick={this.toggleBox}>
-                                <img id="logo" src={window.plusURL} alt="+ icon" />
+                                <img id="logo-cross" src={window.plusURL} alt="+ icon" />
                             </div>
-
-                            <div className="hidden">
-
-                                <ul >
-                                    <li>Pin</li>
-                                    <li>Board</li>
-                                </ul>
-
+                            <div className="ul-logged-dropdown-background-plus" id="background-plus-modal" onClick={this.toggleBox}>
                             </div>
+                                <div className="hidden-plus-opt-h" id="hidden-plus-opt">
+                                    <p className="create-p-tag">Create</p>
+                                    <ul className="list-plus-men">
+                                        <li>Pin</li>
+                                        <li onClick={() => this.props.openModal('createBoard')} >Board</li> 
+                                    </ul>
+
+                                </div>
+
                         </div>
 
                         <div className="dropdown">
@@ -177,8 +199,7 @@ class UserShow extends React.Component {
                        
                        <div className="title-pin-section">
 
-                            <h2 className="board-title">{board.title.charAt(1).toUpperCase() + board.title.slice(2, -1)}</h2>
-                            
+                            <h2 className="board-title">{ board.title.charAt(1).toUpperCase() + board.title.slice(2, -1)}</h2>
                             <div className="pins-days"> 
                                 <h2 className="pin-num-board"> 3 Pins </h2>   
                                 <h2 className="days-number">{handelDate(board.updated_at)} d</h2> 

@@ -5,6 +5,7 @@ import { fetchUser } from '../../actions/user_actions';
 import { fetchBoards } from '../../actions/board_actions';
 import UserShow from './show';
 
+import { openModal, closeModal } from '../../actions/modal';
 
 const mSTP = state => {
 
@@ -15,17 +16,29 @@ const mSTP = state => {
     };
 };
 
-const mDTP = dispatch => {
-
-    return {
-        fetchUser: (userId) => {
-            return dispatch(fetchUser(userId));
-        },
-        fetchBoards: (userId) => {
-            return dispatch(fetchBoards(userId));
-        }
-    };
-};
+const mDTP = dispatch => ({
+    openModal: (modal) => dispatch(openModal(modal)),
+    closeModal: () => dispatch(closeModal()),
+    // return {
+    fetchUser: (userId) => {
+        return dispatch(fetchUser(userId));
+    },
+    fetchBoards: (userId) => {
+        return dispatch(fetchBoards(userId));
+    }
+    // };
+});
+// const mDTP = dispatch => {
+    
+//     return {
+//         fetchUser: (userId) => {
+//             return dispatch(fetchUser(userId));
+//         },
+//         fetchBoards: (userId) => {
+//             return dispatch(fetchBoards(userId));
+//         }
+//     };
+// };
 
 
 export default withRouter(connect(mSTP, mDTP)(UserShow));

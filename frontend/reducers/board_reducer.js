@@ -1,4 +1,4 @@
-import { RECEIVE_BOARDS } from '../actions/board_actions';
+import { RECEIVE_BOARDS, RECEIVE_BOARD } from '../actions/board_actions';
 
 export default (state = {}, action) => {
 
@@ -7,6 +7,9 @@ export default (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_BOARDS:
             return action.boards;
+        case RECEIVE_BOARD: {
+            return action.board
+        }
         default:
             return state;
     }

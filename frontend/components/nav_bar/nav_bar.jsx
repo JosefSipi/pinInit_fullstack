@@ -14,7 +14,7 @@ class NavBar extends React.Component {
         this.state = {
             showDropdown: false
         };
-}
+    }
 
 componentDidMount(){
     if (!window.currentUser) {

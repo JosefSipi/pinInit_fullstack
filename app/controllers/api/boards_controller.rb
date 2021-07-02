@@ -1,6 +1,6 @@
 class Api::BoardsController < ApplicationController
 
-    # skip_before_action :verify_authenticity_token
+    skip_before_action :verify_authenticity_token
 
     def new
         @board = Board.new
@@ -8,6 +8,7 @@ class Api::BoardsController < ApplicationController
     
     def create
 
+        # debugger
 
         @board = Board.new(board_params)
 
