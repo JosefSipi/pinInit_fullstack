@@ -1,5 +1,8 @@
 
 export const createNewBoard = (creatForm) => {
+
+    // debugger
+
     return $.ajax({
         method: 'POST',
         data: {board: creatForm},

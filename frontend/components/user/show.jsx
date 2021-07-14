@@ -7,7 +7,6 @@ import BoardForShowPage from '../board/show_board_container';
 class UserShow extends React.Component {
     constructor(props) {
         super(props);
-        
         this.state = {
             photoUrl: [],
             isActive: false,
@@ -17,23 +16,19 @@ class UserShow extends React.Component {
         this.state = {
             showDropdown: false
         };
-        // this.state = { isBoxVisible: false};
 
         this.state.display_name = props.f_name;
         this.toggleClass = this.toggleClass.bind(this);
         this.toggleBox = this.toggleBox.bind(this);
-        // this.numDays = this.numDays.bind(this);
-        // this.fetchUser = this.fetchUser.bind(this);
     }
 
     componentDidMount(){
-        // this.props.fetchUser(window.currentUser.id);
         this.props.fetchUser(this.props.match.params.id);
         this.props.fetchBoards(this.props.match.params.id);
     }
 
-    toggleClass() {
 
+    toggleClass(e) {
         this.setState({isActive: !this.state.isActive});
     }
 
@@ -52,23 +47,11 @@ class UserShow extends React.Component {
             backgroundDiv.className = "ul-logged-dropdown-background-plus"
             dropDiv.className = "hidden-plus-opt-h"
         }
-        // } else {
-        //     dropDiv.className = "hidden-plus-opt-h"
-        //     backgroundDiv.className = "ul-logged-dropdown-background-plus"
-        //     logoHeader.style.backgroundColor = "white";
-        // }
+    
     }
-    // numDays(updatedTime) {
-    //     let currentTime = new Date();
-    //     let expireTime = new Date(updatedTime);
-
-    //     let days = (currentTime - expireTime) / (1000 * 3600 * 24);
-    //     return (Math.floor(days));
-    // }
 
 
     render() {
-
 
         const handelDate = (updatedTime) => {
             let currentTime = new Date();
@@ -77,6 +60,8 @@ class UserShow extends React.Component {
             let days = (currentTime - expireTime) / (1000 * 3600 * 24);
             return (Math.floor(days));
         };
+
+        let {boards} = this.props
 
         return(
             
@@ -171,7 +156,7 @@ class UserShow extends React.Component {
 
                     </div>
                 )} */}
-                    {this.props.boards.map(board => 
+                    {boards.map(board => 
 
                     <div className="board-display-card">
 
@@ -199,7 +184,8 @@ class UserShow extends React.Component {
                        
                        <div className="title-pin-section">
 
-                            <h2 className="board-title">{ board.title.charAt(1).toUpperCase() + board.title.slice(2, -1)}</h2>
+                            <h2 className="board-title">{ board.title.charAt(0).toUpperCase() + board.title.slice(1)}</h2>
+                            {/* <h2 className="board-title">{ board.title.charAt(1).toUpperCase() + board.title.slice(2, -1)}</h2> */}
                             <div className="pins-days"> 
                                 <h2 className="pin-num-board"> 3 Pins </h2>   
                                 <h2 className="days-number">{handelDate(board.updated_at)} d</h2> 

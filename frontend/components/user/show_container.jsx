@@ -28,17 +28,6 @@ const mDTP = dispatch => ({
     }
     // };
 });
-// const mDTP = dispatch => {
-    
-//     return {
-//         fetchUser: (userId) => {
-//             return dispatch(fetchUser(userId));
-//         },
-//         fetchBoards: (userId) => {
-//             return dispatch(fetchBoards(userId));
-//         }
-//     };
-// };
 
 
 export default withRouter(connect(mSTP, mDTP)(UserShow));

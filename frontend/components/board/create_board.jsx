@@ -4,8 +4,6 @@ class CreateBoard extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log(this.props)
-
         this.state = {
 
             title: "",
@@ -18,16 +16,16 @@ class CreateBoard extends React.Component {
         this.handelSubmit = this.handelSubmit.bind(this);
     }
 
+    componentDidMount(e){
+        this.props.fetchBoards(this.props.history.location.pathname.slice(-2));
+    }
+    
+
     handelSubmit(e){
         e.preventDefault();
         // debugger
         let board = this.state;
-        this.props.createNewBoard(board)
-            .then(
-                this.props.closeModal(),
-                this.props.fetchBoards(this.props.match.params.id) // not sure this will work but i need to grab boards i think
-                );
-
+        this.props.createNewBoard(board).then(this.props.closeModal())
     }
 
     updateTitle(e) {
