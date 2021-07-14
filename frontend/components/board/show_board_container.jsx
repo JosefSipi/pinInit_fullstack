@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { fetchBoards } from '../../actions/board_actions';
+import { fetchBoards, fetchBoard } from '../../actions/board_actions';
 import BoardShow from './show_board';
 
 
@@ -15,6 +15,9 @@ const mDTP = dispatch => {
     return {
         fetchBoards: (userId) => {
             return dispatch(fetchBoards(userId));
+        },
+        fetchBoard: (boardId) => {
+            return dispatch(fetchBoard(boardId));
         }
     };
 };

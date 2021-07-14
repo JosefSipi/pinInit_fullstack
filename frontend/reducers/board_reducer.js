@@ -1,4 +1,4 @@
-import { RECEIVE_BOARDS, RECEIVE_BOARD } from '../actions/board_actions';
+import { RECEIVE_BOARDS, RECEIVE_BOARD, RECEIVE_BOARDSHOW } from '../actions/board_actions';
 
 export default (state = {}, action) => {
 
@@ -11,6 +11,8 @@ export default (state = {}, action) => {
         case RECEIVE_BOARD: {
             return Object.assign({}, state, {[action.board.id]: action.board})
         }
+        case RECEIVE_BOARDSHOW: 
+            return action.board
         default:
             return state;
     }

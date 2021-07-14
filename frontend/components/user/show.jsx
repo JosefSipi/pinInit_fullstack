@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BoardForShowPage from '../board/show_board_container';
+// import BoardForShowPage from '../board/show_board_container';
 // import { render } from 'react-dom';
 
 
@@ -21,6 +21,26 @@ class UserShow extends React.Component {
         this.toggleClass = this.toggleClass.bind(this);
         this.toggleBox = this.toggleBox.bind(this);
     }
+
+    // clickBoardDD(e){
+    //     e.preventDefault();
+    //     (e) => this.props.openModal('createBoard')
+
+        // let dropDiv = document.getElementById('hidden-plus-opt')
+        // let backgroundDiv = document.getElementById('background-plus-modal')
+        // // let logoHeader = document.body.getElementsById('logo-on-logged-in-header-plus-id')
+
+        // if (dropDiv.className === "hidden-plus-opt-h"){
+        //     dropDiv.className = "hidden-plus-opt";
+        //     backgroundDiv.className="ul-logged-dropdown-active-background-plus"
+        //     // logoHeader.style.backgroundColor = "red";
+        // } else if (backgroundDiv.className === "ul-logged-dropdown-active-background-plus") {
+        //     backgroundDiv.className = "ul-logged-dropdown-background-plus"
+        //     dropDiv.className = "hidden-plus-opt-h"
+        // }
+
+
+    // }
 
     componentDidMount(){
         this.props.fetchUser(this.props.match.params.id);
@@ -61,8 +81,9 @@ class UserShow extends React.Component {
             return (Math.floor(days));
         };
 
+        debugger
         let {boards} = this.props
-
+        debugger
         return(
             
             <div>
@@ -157,43 +178,42 @@ class UserShow extends React.Component {
                     </div>
                 )} */}
                     {boards.map(board => 
-
-                    <div className="board-display-card">
-
-                        <div className="image-section-board">
-                            <div className="large-image-onboard">
-                               <img className="image-board-1" src={window.photo1} alt="logo" />
-                            </div>
-
+                            <Link id="board-show-link" to={`/board/${board.id}`}>
+                        <div className="board-display-card">
+                            <div className="image-section-board">
+                                <div className="large-image-onboard">
+                                <img className="image-board-1" src={window.photo1} alt="logo" />
+                                </div>
 
 
 
-                            <div className="other-two-images">
 
-                                <div className="top-box-123">
-                                    <img className="image-board-2" src={window.photo2} alt="logo" />
+                                <div className="other-two-images">
+
+                                    <div className="top-box-123">
+                                        <img className="image-board-2" src={window.photo2} alt="logo" />
+                                    </div>
+                                    
+                                    <div className="bottom-box">
+                                        <img className="image-board-3" src={window.photo3} alt="logo" />
+                                    </div>
                                 </div>
                                 
-                                <div className="bottom-box">
-                                    <img className="image-board-3" src={window.photo3} alt="logo" />
+                            </div>
+                        
+                        
+                        <div className="title-pin-section">
+
+                                <h2 className="board-title">{ board.title.charAt(0).toUpperCase() + board.title.slice(1)}</h2>
+                                {/* <h2 className="board-title">{ board.title.charAt(1).toUpperCase() + board.title.slice(2, -1)}</h2> */}
+                                <div className="pins-days"> 
+                                    <h2 className="pin-num-board"> 3 Pins </h2>   
+                                    <h2 className="days-number">{handelDate(board.updated_at)} d</h2> 
                                 </div>
-                            </div>
-                            
+
                         </div>
-                       
-                       
-                       <div className="title-pin-section">
-
-                            <h2 className="board-title">{ board.title.charAt(0).toUpperCase() + board.title.slice(1)}</h2>
-                            {/* <h2 className="board-title">{ board.title.charAt(1).toUpperCase() + board.title.slice(2, -1)}</h2> */}
-                            <div className="pins-days"> 
-                                <h2 className="pin-num-board"> 3 Pins </h2>   
-                                <h2 className="days-number">{handelDate(board.updated_at)} d</h2> 
-                            </div>
-
-                       </div>
-                    </div>
-                    
+                        </div>
+                        </Link>
                     )}
 
                 </div>

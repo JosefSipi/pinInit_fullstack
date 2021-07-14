@@ -1,6 +1,5 @@
 
 export const createNewBoard = (creatForm) => {
-
     // debugger
 
     return $.ajax({
@@ -16,4 +15,11 @@ export const fetchBoards = (userId) => {
         url: `/api/users/${userId}/boards`
     });
 };
+
+export const fetchBoard = (boardId) => {
+    return $.ajax({
+        method: 'GET',
+        url: `/api/boards/${boardId}`
+    })
+}
 

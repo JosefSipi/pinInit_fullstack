@@ -17,15 +17,27 @@ class CreateBoard extends React.Component {
     }
 
     componentDidMount(e){
-        this.props.fetchBoards(this.props.history.location.pathname.slice(-2));
+        let dropDiv = document.getElementById('hidden-plus-opt')
+        let backgroundDiv = document.getElementById('background-plus-modal')
+
+        if (dropDiv.className === "hidden-plus-opt-h"){
+            dropDiv.className = "hidden-plus-opt";
+            backgroundDiv.className="ul-logged-dropdown-active-background-plus"
+        } else if (backgroundDiv.className === "ul-logged-dropdown-active-background-plus") {
+            backgroundDiv.className = "ul-logged-dropdown-background-plus"
+            dropDiv.className = "hidden-plus-opt-h"
+        }
+
+        // this.props.fetchBoards(this.props.history.location.pathname.slice(-2));
     }
     
 
     handelSubmit(e){
         e.preventDefault();
-        // debugger
         let board = this.state;
-        this.props.createNewBoard(board).then(this.props.closeModal())
+        this.props.createNewBoard(board).then(
+            this.props.closeModal()
+            )
     }
 
     updateTitle(e) {

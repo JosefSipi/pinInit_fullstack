@@ -7,22 +7,26 @@ class BoardShow extends React.Component {
     }
 
     componentDidMount(){
-        fetchBoards()
+        debugger
+        this.props.fetchBoard(Number(this.props.match.params.id)),
+        console.log(Number(this.props.match.params.id))
+        debugger
     }
 
     render(){
+        debugger
         return (
         <div>
 
-            <div className="boards-grid-area">
+            <div className="boards-grid-area-for-pins">
                 
-                <div className="images-part-board">
-                    
-                    {/* will contain images of pins from within the board */}
+                <div className="top-section">
+                    <h1>{this.props.boards.title}</h1>
+                    <img src="" alt="" />
                 </div>
 
                 <div className="title-pinscount-updatedat">
-                    <h1>{this.props.title}</h1>
+                    <h1>{this.props.boards.title}</h1>
                 </div>
 
             </div>
