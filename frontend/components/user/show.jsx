@@ -44,9 +44,10 @@ class UserShow extends React.Component {
 
     componentDidMount(){
         this.props.fetchUser(this.props.match.params.id);
+        debugger
         this.props.fetchBoards(this.props.match.params.id);
+        debugger
     }
-
 
     toggleClass(e) {
         this.setState({isActive: !this.state.isActive});
@@ -178,7 +179,7 @@ class UserShow extends React.Component {
                     </div>
                 )} */}
                     {boards.map(board => 
-                            <Link id="board-show-link" to={`/board/${board.id}`}>
+                            <Link key={board.id} id="board-show-link" to={`/board/${board.id}`}>
                         <div className="board-display-card">
                             <div className="image-section-board">
                                 <div className="large-image-onboard">

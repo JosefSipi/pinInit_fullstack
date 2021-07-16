@@ -4,7 +4,6 @@ export default (state = {}, action) => {
 
 
     Object.freeze(state);
-    // debugger
     switch (action.type) {
         case RECEIVE_BOARDS:
             return action.boards;
@@ -12,7 +11,8 @@ export default (state = {}, action) => {
             return Object.assign({}, state, {[action.board.id]: action.board})
         }
         case RECEIVE_BOARDSHOW: 
-            return action.board
+            return Object.assign({}, state, {displayBoard: action.board})
+            // return action.board
         default:
             return state;
     }
