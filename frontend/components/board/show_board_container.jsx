@@ -7,7 +7,6 @@ import BoardShow from './show_board';
 
 
 const mSTP = (state) => {
-    debugger
     return {
         boards: state.boards,
         boardProfile: state.boards.displayBoard,
@@ -28,8 +27,5 @@ const mDTP = dispatch => {
         }
     };
 };
-
-// what i'm going to need availabler
-// - fetch info for each bord for this specific user
 
 export default withRouter(connect(mSTP, mDTP)(BoardShow));

@@ -20,6 +20,7 @@ class UserShow extends React.Component {
         this.state.display_name = props.f_name;
         this.toggleClass = this.toggleClass.bind(this);
         this.toggleBox = this.toggleBox.bind(this);
+        this.editPen = this.editPen.bind(this);
     }
 
     // clickBoardDD(e){
@@ -44,13 +45,19 @@ class UserShow extends React.Component {
 
     componentDidMount(){
         this.props.fetchUser(this.props.match.params.id);
-        debugger
         this.props.fetchBoards(this.props.match.params.id);
-        debugger
     }
 
     toggleClass(e) {
         this.setState({isActive: !this.state.isActive});
+    }
+
+    editPen(e){
+        debugger
+        window.editingBoard = e.currentTarget.id;
+        // e.stopPropagation();
+        e.preventDefault();
+        this.props.openModal('editBoard');
     }
 
     toggleBox(e){
@@ -70,7 +77,26 @@ class UserShow extends React.Component {
         }
     
     }
+// ---------- create darkening effect when hovering tile ----------- 
+    // hoverEvent(){
+    //     // e.preventDefault();
+    //     debugger
+    //     if(condition){
+    //         console.log('condition true')
+    //         debugger
+    //     } else {
+    //         debugger
+    //         console.log('condition false')
+    //     }
+    //     debugger
+    //     // let imageSection = document.getElementById('image-section-board');
+    //     // imageSection.style.filter = 'brightness(0.9)';
 
+    //     // let editIcon = document.getElementById('');
+    //     // editIcon.style.display = "relative"
+
+
+    // };
 
     render() {
 
@@ -82,9 +108,7 @@ class UserShow extends React.Component {
             return (Math.floor(days));
         };
 
-        debugger
         let {boards} = this.props
-        debugger
         return(
             
             <div>
@@ -161,27 +185,23 @@ class UserShow extends React.Component {
 {/* -------------------------- the below boards will render either way ----------------- */}
 
                 <div className="boards-grid-area">
-                    {/* I will need to pass in profile user :id not current user :id */}
-
-                    {/* <BoardForShowPage profileId={this.props.match.params.id} /> */}
-
-                {/* {this.props.boards.map((board) =>
-                    <div>   
-                        <div className="photosection">
-
-                        </div>
-
-                        <div className="title-pins">
-                            this.
-                        </div>
-
-
-                    </div>
-                )} */}
+                
                     {boards.map(board => 
-                            <Link key={board.id} id="board-show-link" to={`/board/${board.id}`}>
+                    <div className='dont-show-me' key={board.id} >
+                        <div className="logo-on-logged-in-header-board-tile" onClick={this.editPen} id={board.id}>
+                                <img id="logo-edit-board" src={window.penURL} alt="edit-pen-icon" />
+                        </div>
+                            <Link key={board.id} id="board-show-link" to={`/board/${board.id}`}      
+                                // onMouseEnter={() => this.hoverEvent(board.id)}
+                                // onMouseLeave={() => this.hoverEvent(board.id)}
+                            >
+
                         <div className="board-display-card">
-                            <div className="image-section-board">
+                            {/* Place a lock icon if the board is private */}
+                        <div className="outer-div-tile-edit">
+                            
+                        </div>
+                            <div className="image-section-board" id="image-section-board">
                                 <div className="large-image-onboard">
                                 <img className="image-board-1" src={window.photo1} alt="logo" />
                                 </div>
@@ -215,6 +235,7 @@ class UserShow extends React.Component {
                         </div>
                         </div>
                         </Link>
+                    </div>
                     )}
 
                 </div>

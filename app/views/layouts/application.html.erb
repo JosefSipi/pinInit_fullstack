@@ -11,6 +11,7 @@
 
   <body>
 
+
     <% if current_user %>
 
       <script>
@@ -44,6 +45,10 @@
         window.photo2 = "<%= image_url('pexels-pixabay-40896.jpg')%>"
         window.photo3 = "<%= image_url('pexels-visually-us-1643416.jpg')%>"
         window.avatar = "<%= image_url('default_inst.jpg')%>"
+      </script>
+
+      <script type="text/javascript">
+        window.editingBoard = "0";
       </script>
 
     <%= yield %>

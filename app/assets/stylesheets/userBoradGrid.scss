@@ -5,15 +5,6 @@
   width: auto;
 }
 
-
-
-
-
-
-
-
-
-
 .boards-grid-area {
     display: flex;
     flex-wrap: wrap;
@@ -61,6 +52,9 @@
 
     overflow-x: hidden;
     overflow-y: hidden;
+    // &:hover{
+    //     filter: brightness(0.9);
+    // }
 }
 
 .title-pin-section{
@@ -180,3 +174,47 @@
     border-top-width: 1px;
     border-top-color: white;
 }
+
+// ------------------ edit icon on board tiles -----------
+
+.logo-on-logged-in-header-board-tile{
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    border-radius: 100px;
+    height: 34px;
+    width: 34px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    left: 211px;
+    top: 129px;
+    z-index: 7;
+  &:hover{
+    cursor: pointer;
+    background-color: rgb(241, 241, 241);
+  }
+}
+
+img#logo-edit-board{
+
+  height: 14px;
+  width: auto;
+
+}
+
+
+div.outer-div-tile-edit{
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    // pointer-events: none;
+
+}
+
+div.dont-show-me{
+
+}
+// ------------------ edit icon on board tiles -----------

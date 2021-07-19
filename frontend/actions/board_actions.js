@@ -49,3 +49,10 @@ export const createNewBoard = formBoard => {
             .then(board => dispatch(receiveBoard(board))); // posibly add in error handeling
     }
 }
+
+export const updateBoard = board => {
+    return (dispatch) => {
+        return APIUtil.updateBoard(board)
+            .then(board => dispatch(receiveBoard(board)));
+    }
+}

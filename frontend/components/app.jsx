@@ -8,6 +8,7 @@ import { AuthRoute, ProtectedRoute } from '../utils/route_utils';
 import Feed from './feed/feed';
 import Modal from './modal/modal';
 import ModalUpload from './modal/uploadModal';
+import EditModal from './modal/editBoard';
 import UserProfileContainer from './user/show_container';
 import EditContainer from './user/edit_container';
 
@@ -24,6 +25,7 @@ export default () => (
         <Modal />
         <ModalUpload/>
         <SignUpModal/>
+        <EditModal/>
         <CreateBoardModal/>
         <div className="the-whole-page">
             <header>
