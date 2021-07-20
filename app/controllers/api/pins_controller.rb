@@ -5,6 +5,7 @@ class Api::PinsController < ApplicationController
     end
 
     def create
+        debugger
         @pin = Pin.new(pin_params)
 
         if @pin.save

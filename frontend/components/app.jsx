@@ -11,11 +11,13 @@ import ModalUpload from './modal/uploadModal';
 import EditModal from './modal/editBoard';
 import UserProfileContainer from './user/show_container';
 import EditContainer from './user/edit_container';
-
 import SignUpModal from './modal/signUpModal';
 import CreateBoardModal from './modal/createBoard';
 // import UserShowContainer from "./"
 import BoardShow from './board/show_board_container';
+import CreatePin from './pin/create_pin_container';
+import CreatePinLink from './pin/create_pin_link_container';
+
 
 export default () => (
     <div>
@@ -27,6 +29,7 @@ export default () => (
         <SignUpModal/>
         <EditModal/>
         <CreateBoardModal/>
+        <CreatePinLink/>
         <div className="the-whole-page">
             <header>
                 <Route path="/" component={NavBarContainer}/>
@@ -34,6 +37,7 @@ export default () => (
                 <Route path="/home" component={Home}/>
             {/* <Route path={`/profile/`} */}
             <Route path="/board/:id" component={BoardShow}/>
+            <ProtectedRoute path='/pin-create' component={CreatePin}/>
             <ProtectedRoute path="/edit-profile" component={EditContainer}/>
             <ProtectedRoute path="/feed" component={Feed}/>
             <ProtectedRoute path="/profile/:id" component={UserProfileContainer}/>

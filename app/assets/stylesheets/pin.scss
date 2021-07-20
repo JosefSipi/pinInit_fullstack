@@ -1,0 +1,33 @@
+
+
+.logo-on-logged-in-header-plus-allpage{
+  position: absolute;
+    right: 3vh;
+    bottom: 3vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  border-radius: 100px;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: 6;
+  color: black;
+  font-size: 46px;
+    font-weight: 100;
+    text-decoration: none;
+  &:hover{
+    cursor: pointer;
+    background-color: #f1f1f1;
+  }
+}
+
+div#alt-text-area-button{
+    background-color: rgb(220, 220, 220);
+    &:hover{
+        background-color: rgb(191, 191, 191);
+        cursor: pointer;
+    }
+}
