@@ -34,11 +34,6 @@ class Api::BoardsController < ApplicationController
         #
         @boards = user.boards
         # @boards = Board.all
-
-
-
-
-
         #
         # @boards.each do |board|
         #    
@@ -58,7 +53,7 @@ class Api::BoardsController < ApplicationController
         @board = Board.find(params[:id])
         if @board
             @board.destroy
-
+            render json: ['Board Deleted!']
         else
             render json: ['Board was not able to be deleted']
         end

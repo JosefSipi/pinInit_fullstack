@@ -10,6 +10,7 @@ class EditBoardShow extends React.Component {
         }
         this.handelChange = this.handelChange.bind(this);
         this.handelSubmit = this.handelSubmit.bind(this);
+        this.handelDelete = this.handelDelete.bind(this);
     }
 
     componentDidMount(){
@@ -32,6 +33,12 @@ class EditBoardShow extends React.Component {
             }
             this.setState({ board: prevState})
         }
+    }
+
+    handelDelete(e){
+        e.preventDefault();
+        this.props.deleteBoard(this.state.board.id);
+        this.props.closeModal();
     }
 
     handelSubmit(e){
@@ -81,13 +88,15 @@ class EditBoardShow extends React.Component {
                     </div>
                 </form>
 
-                {/* <div>
+                <div>
                     <p>Action</p>
-                    <h2>Delete board</h2>
-                    <h3>Delete this board and all its Pins forever.
-                        You can't undo this!</h3>
+                    <div className="delete-action-div" onClick={this.handelDelete}>
+                        <h2>Delete board</h2>
+                        <h3>Delete this board and all its Pins forever.
+                            You can't undo this!</h3>
+                    </div>
 
-                </div> */}
+                </div>
 
             </div>
 

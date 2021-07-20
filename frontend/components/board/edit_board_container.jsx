@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { fetchBoard, updateBoard } from '../../actions/board_actions';
+import { fetchBoard, updateBoard, deleteBoard } from '../../actions/board_actions';
 import { closeModal } from '../../actions/modal';
+// import { deleteBoard } from '../../utils/board_utils';
 import EditBoardShow from './edit_board';
 
 const mSTP = (state) => {
@@ -19,7 +20,8 @@ const mDTP = dispatch => {
         },
         updateBoard: (board) => {
             return dispatch(updateBoard(board))
-        }
+        },
+        deleteBoard: (boardId) => dispatch(deleteBoard(boardId))
     }
 }
 

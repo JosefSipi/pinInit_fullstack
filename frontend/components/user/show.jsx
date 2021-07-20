@@ -48,7 +48,15 @@ class UserShow extends React.Component {
         this.props.fetchBoards(this.props.match.params.id);
     }
 
+    // componentDidUpdate(prevProps){
+    //     debugger
+    //     if(prevProps.boards !== this.props.boards){
+    //         this.props.fetchBoards(this.props.match.params.id);
+    //     }
+    // }
+
     toggleClass(e) {
+        // e.preventDefault();
         this.setState({isActive: !this.state.isActive});
     }
 
@@ -98,6 +106,9 @@ class UserShow extends React.Component {
     // };
 
     render() {
+        // if (!this.props.boards){
+        //     return null
+        // }
 
         const handelDate = (updatedTime) => {
             let currentTime = new Date();
@@ -107,7 +118,7 @@ class UserShow extends React.Component {
             return (Math.floor(days));
         };
 
-        let lock = document.getElementById('outer-div-tile-edit');
+        // let lock = document.getElementById('outer-div-tile-edit');
 
         let {boards} = this.props
         return(
