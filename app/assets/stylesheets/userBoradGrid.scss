@@ -189,8 +189,8 @@
     align-items: center;
     justify-content: center;
     background-color: white;
-    left: 211px;
-    top: 129px;
+    left: 217px;
+    top: 169px;
     z-index: 7;
   &:hover{
     cursor: pointer;
@@ -203,6 +203,11 @@ img#logo-edit-board{
   height: 14px;
   width: auto;
 
+}
+
+img#logo-lock-icon{
+    height: 18px;
+    width: 20px;
 }
 
 
@@ -218,3 +223,22 @@ div.dont-show-me{
 
 }
 // ------------------ edit icon on board tiles -----------
+
+// ------------------- lock icon ---------------------
+
+.logo-on-logged-in-header-board-lock{
+    position: absolute;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    border-radius: 100px;
+    height: 34px;
+    width: 34px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    left: 8px;
+    top: 7px;
+}
+// ------------------- lock icon ---------------------

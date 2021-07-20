@@ -24,7 +24,6 @@ export const fetchBoard = (boardId) => {
 }
 
 export const updateBoard = (board) => {
-debugger
     return $.ajax({
         method: 'PATCH',
         url: `api/boards/${board.id}`,

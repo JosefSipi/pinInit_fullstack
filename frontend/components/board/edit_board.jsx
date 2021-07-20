@@ -23,10 +23,8 @@ class EditBoardShow extends React.Component {
     }
 
     handelChange(field){
-        debugger
         let prevState = this.state.board
         return (e) => {
-            debugger
             if (field === "is_private"){
                 prevState[field] = e.currentTarget.checked
             } else {
@@ -38,7 +36,6 @@ class EditBoardShow extends React.Component {
 
     handelSubmit(e){
         e.preventDefault();
-        debugger
         const updatedBoard = this.state.board
         this.props.updateBoard(updatedBoard);
         this.props.closeModal();
@@ -57,7 +54,6 @@ class EditBoardShow extends React.Component {
         // } else {
         //     this.description = "What's your board about?"
         // }
-        debugger
         return(
             <div>
                 <p>Edit your board</p>
