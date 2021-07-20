@@ -1,11 +1,10 @@
 import React from 'react';
-import { closeModal } from 'react-redux';
+import { closeModal } from '../../actions/modal';
 import { connect } from 'react-redux';
 import EditBoardContainer from '../board/edit_board_container';
 import { withRouter } from 'react-router-dom';
 
 function Modal({ modal, closeModal}) {
-    debugger
     if(!modal) {
         return null;
     }

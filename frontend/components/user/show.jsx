@@ -53,7 +53,6 @@ class UserShow extends React.Component {
     }
 
     editPen(e){
-        debugger
         window.editingBoard = e.currentTarget.id;
         // e.stopPropagation();
         e.preventDefault();

@@ -1,17 +1,19 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchBoard, updateBoard } from '../../actions/board_actions';
+import { closeModal } from '../../actions/modal';
 import EditBoardShow from './edit_board';
 
 const mSTP = (state) => {
-    debugger
     return{
-        board: state.board
+        boards: state.boards
     }
 }
 
 const mDTP = dispatch => {
     return {
+        closeModal: () => dispatch(closeModal()),
+
         fetchBoard: (boardId) => {
             return dispatch(fetchBoard(boardId));
         },
