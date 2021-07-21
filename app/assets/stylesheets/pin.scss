@@ -91,3 +91,13 @@ img#logo-lock-icon-pin-page{
   height: 16px;
     width: 17px;
 }
+
+div.save-button-create-pin{
+    display: relative;
+    height: fill;
+    color: white;
+    background-color: red;
+    &:hover{
+        cursor: pointer;
+    }
+}

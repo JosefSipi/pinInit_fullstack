@@ -13,13 +13,35 @@ class CreatePin extends React.Component {
                 description2: null,
                 websiteURL: null,
                 board_id: null,
-
+                photo: null,
             }
         }
 
         this.handelAddText = this.handelAddText.bind(this);
         this.handelUlClick = this.handelUlClick.bind(this);
         this.boardClickSelect = this.boardClickSelect.bind(this);
+        this.handelSubmit = this.handelSubmit.bind(this);
+        // this.mouseHoverBoard = this.mouseHoverBoard.bind(this);
+        this.handelPhotoSelect = this.handelPhotoSelect.bind(this);
+    }
+
+    handelSubmit(e) {
+        e.preventDefault();
+        debugger
+        const formData = new FormData();
+        formData.append('pin[photo]', this.state.pin.photo);
+        formData.append('pin[creator_id]', this.state.pin.creator_id);
+        formData.append('pin[title]', this.state.pin.title);
+        formData.append('pin[description]', this.state.pin.description);
+        formData.append('pin[description2]', this.state.pin.description2);
+        formData.append('pin[websiteURL]', this.state.pin.websiteURL);
+        formData.append('pin[board_id]', this.state.pin.board_id);
+debugger
+        this.props.createNewPin(formData)
+            .then(() => {
+                // direct to pin show page
+                console.log('should now direct to pin show page')
+            })
     }
 
 
@@ -85,6 +107,22 @@ class CreatePin extends React.Component {
         displayTitle.innerText = e.currentTarget.innerText;
     }
 
+    // mouseHoverBoard(e){
+    //     e.preventDefault();
+    //     debugger
+    //     let elementHovered = document.getElementById(e.currentTarget.id + "save-button")
+    //     if(elementHovered.style.display === 'relative'){
+    //         elementHovered.style.display = 'none';
+    //     } else {
+    //         elementHovered.style.display = 'relative';
+    //     }
+    // }
+
+    handelPhotoSelect(e){
+        let prevState = this.state.pin
+        prevState["photo"] = e.currentTarget.files[0]
+        this.setState({ pin: prevState });
+    }
 
     render() {
         debugger
@@ -95,22 +133,29 @@ class CreatePin extends React.Component {
         const boards = this.props.boards
         const firstBoard = boards[0].title
         // const dropDDisplayB = this.state.pin.board_id;
-            debugger
         return (
             <div className="create-pin-main-div">
 
                 <div className="top-bar-create-pin">
-                    <div placeholder="Select" id="board-dd-create-pin" className="board-dd-create-pin" onClick={this.handelUlClick}>{firstBoard}</div>
+                    <div>
+                        <div placeholder="Select" id="board-dd-create-pin" className="board-dd-create-pin" onClick={this.handelUlClick}>
+                            {firstBoard} 
+                        </div>
+
+                        <div className="save-button-create-pin" onClick={this.handelSubmit}>Save</div>
+                    </div>
+
                     <div className="board-dropdown-create-pin" id="board-dropdown-create-pin">
                         <ul className="board-dropdown-ol" id="board-dropdown-ol">
                            {boards.map(board => 
-                               <div className="this-list-children-pin" key={board.id} onClick={this.boardClickSelect} id={board.id} >
+                               <div className="this-list-children-pin" key={board.id} onClick={this.boardClickSelect} id={board.id} onMouseEnter={this.mouseHoverBoard} onMouseLeave={this.mouseHoverBoard}>
                                    {board.title}
 
                                     <div className="logo-on-logged-in-header-board-lock-pin" style={board.is_private ? {display: "flex" } : { display: "none" }}>
                                         <img id="logo-lock-icon-pin-page" src={window.lockURL} alt="lock-icon" />
                                     </div>
 
+                                    {/* <div className="save-button-create-pin" id={board.id + "save-button"}>Save</div> */}
                                    </div>
                             //    <li>{"Photo"}{board.title}</li>
                            )}
@@ -122,7 +167,9 @@ class CreatePin extends React.Component {
 
                 <div className="bottom-create-pin">
                     <div className="left-side-create-pin">
-                        <input type="file" name="" id="" />
+                        <input type="file" name="" id="" 
+                        onChange={this.handelPhotoSelect}
+                        />
                     </div>
 
                     <div className="right-side-create-pin">
