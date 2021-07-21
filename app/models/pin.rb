@@ -1,9 +1,10 @@
 class Pin < ApplicationRecord
 
 
-    validates :creator_id, :title, presence: true
+    validates :creator_id, :title, :board_id, presence: true
     validates :description, :description2, length: { maximum: 500 }
 
+    has_one_attached :photo
 
     belongs_to :creator,
         primary_key: :id,

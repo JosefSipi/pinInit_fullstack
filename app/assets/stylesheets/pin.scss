@@ -31,3 +31,63 @@ div#alt-text-area-button{
         cursor: pointer;
     }
 }
+
+// ul.board-dropdown-ol{
+//     display: block;
+// }
+
+div.board-dropdown-create-pin{
+    display: none;
+    max-height: 450px;
+    width: 323px;
+    overflow-y: scroll;
+    border: solid black 2px;
+}
+
+div.board-dd-create-pin{
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+
+ div.this-list-children-pin{
+
+    height: 53px;
+    color: black;
+    border-radius: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 14px;
+    margin-right: 14px;
+    text-align: start;
+    display: flex;
+    align-items: center;
+    text-indent: 10px;
+    justify-content: space-between;
+    &:hover{
+        background-color: rgb(225, 225, 225);
+    }
+}
+
+.logo-on-logged-in-header-board-lock-pin{
+    position: inline;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    border-radius: 100px;
+    height: 34px;
+    width: 34px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    left: 8px;
+    top: 7px;
+    margin-right: 5px;
+}
+
+img#logo-lock-icon-pin-page{
+  height: 16px;
+    width: 17px;
+}
