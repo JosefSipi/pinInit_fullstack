@@ -49,7 +49,7 @@ class UserShow extends React.Component {
     }
 
     // componentDidUpdate(prevProps){
-    //     debugger
+    //   
     //     if(prevProps.boards !== this.props.boards){
     //         this.props.fetchBoards(this.props.match.params.id);
     //     }
@@ -87,15 +87,15 @@ class UserShow extends React.Component {
 // ---------- create darkening effect when hovering tile ----------- 
     // hoverEvent(){
     //     // e.preventDefault();
-    //     debugger
+    //   
     //     if(condition){
     //         console.log('condition true')
-    //         debugger
+    //       
     //     } else {
-    //         debugger
+    //       
     //         console.log('condition false')
     //     }
-    //     debugger
+    //   
     //     // let imageSection = document.getElementById('image-section-board');
     //     // imageSection.style.filter = 'brightness(0.9)';
 

@@ -11,7 +11,6 @@ const mSTP = state => {
         boards: Object.values(state.boards)
     }
 }
-debugger
 
 const mDTP = dispatch => {
     return {

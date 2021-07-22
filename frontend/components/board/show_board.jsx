@@ -8,18 +8,28 @@ class BoardShow extends React.Component {
 
     componentDidMount(){
         this.props.fetchBoard(Number(this.props.match.params.id))
+        this.props.fetchPins(Number(this.props.match.params.id))
     }
 
     componentDidUpdate(prevProps){
         if(prevProps.boardProfile !== this.props.boardProfile){
             this.props.fetchUser(this.props.boardProfile.owner_id)
-        }
+        } 
     }
 
     render(){
-        if (!this.props.boardProfile){
+        
+        if (!this.props.boardProfile || !this.props.pins.pins){
             return null
         }
+        
+
+        
+        const pins = Object.values(this.props.pins.pins)
+        
+        // const photoUrl = this.props.pins.pin.pins.photoUrl
+        const theHeight = 26;
+
         return (
         <div>
 
@@ -52,16 +62,34 @@ class BoardShow extends React.Component {
 
                 {/* <button>Share</button> */}
 
-                <div>
-
-                    this will display all pins in this board
-
-                    
-                </div>
                 </div>
 
             </div>
 
+                <div className="pin-area-on-board-show" >
+                    <div className="pin_container" id="pin_container">
+                        {pins.map(pin => 
+
+                            <div className="card" key={pin.id} >
+                            {/* <div className="card" style={{gridRowEnd: `span ${theHeight}` }} key={pin.id}> */}
+                                
+                                <div className="over-lay">
+                                   <img className="pin-photo" src={pin.photoUrl} alt="pin photo"/>
+                                   
+                                </div>
+
+                                <div className="card-title-pin">{pin.title}</div>
+                                <div>
+                                    {/* image of user who originally pined this pin */}
+                                    {/* name of user who originaly pined this pin */}
+
+                                </div>
+                            </div>
+
+                        )}
+                        
+                    </div>
+                </div>
         </div>
         )
     }

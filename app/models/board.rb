@@ -11,8 +11,13 @@ class Board < ApplicationRecord
 
     has_many :pins,
         primary_key: :id,
-        foreign_key: :creator_id,
+        foreign_key: :board_id,
         class_name: :Pin
+
+    # has_many :pins,
+    #     primary_key: :id,
+    #     foreign_key: :creator_id,
+    #     class_name: :Pin
 
     has_many :boards_pin_joins,
         primary_key: :id,

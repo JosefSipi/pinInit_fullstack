@@ -7,7 +7,6 @@ export const fetchPin = (pinId) => {
 }
 
 export const createNewPin = (pinForm ) => {
-    debugger
     return $.ajax({
         method: 'POST',
         url: '/api/pins',
@@ -17,3 +16,9 @@ export const createNewPin = (pinForm ) => {
     })
 }
 
+export const fetchPins = boardId => {
+    return $.ajax({
+        method: 'GET',
+        url: `api/boards/${boardId}/pins`
+    })
+}

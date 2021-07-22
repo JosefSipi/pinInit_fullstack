@@ -5,7 +5,6 @@ class Api::PinsController < ApplicationController
     end
 
     def create
-        debugger
         @pin = Pin.new(pin_params)
 
         if @pin.save
@@ -34,7 +33,12 @@ class Api::PinsController < ApplicationController
     # end
 
     def index
-        @pins = Pin.all
+
+        board = Board.find(params[:board_id]) # not sure where :board_id in this situation is coming from
+
+        # @pins = Pin.all
+
+        @pins = board.pins
 
         render 'api/pins/index'
     end

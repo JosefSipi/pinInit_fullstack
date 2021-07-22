@@ -3,7 +3,6 @@ import React from 'react';
 class CreatePin extends React.Component {
     constructor(props) {
         super(props);
-        debugger
 
         this.state = {
             pin: {
@@ -27,7 +26,7 @@ class CreatePin extends React.Component {
 
     handelSubmit(e) {
         e.preventDefault();
-        debugger
+
         const formData = new FormData();
         formData.append('pin[photo]', this.state.pin.photo);
         formData.append('pin[creator_id]', this.state.pin.creator_id);
@@ -36,7 +35,6 @@ class CreatePin extends React.Component {
         formData.append('pin[description2]', this.state.pin.description2);
         formData.append('pin[websiteURL]', this.state.pin.websiteURL);
         formData.append('pin[board_id]', this.state.pin.board_id);
-debugger
         this.props.createNewPin(formData)
             .then(() => {
                 // direct to pin show page
@@ -55,9 +53,7 @@ debugger
     }
 
     // componentDidUpdate(prevProps){
-    //     debugger
     //     if(prevProps.boards !== this.props.boards || this.props.boards === undefined){
-    //         debugger
     //         this.props.fetchBoards(window.currentUser.id)
     //     }
     // }
@@ -71,9 +67,8 @@ debugger
     }
 
     handelUlClick(e){
-        debugger
         e.preventDefault();
-        debugger
+
         let ul = document.getElementById('board-dropdown-create-pin')
         if (ul.style.display === "block") {
             ul.style.display = "none"
@@ -84,11 +79,9 @@ debugger
 
     inputChange(field){
         let prevState = this.state.pin
-        debugger
         return (e) => {
             prevState[field] = e.currentTarget.value
             this.setState({ pin: prevState })
-            debugger
         }
     }
 
@@ -109,7 +102,6 @@ debugger
 
     // mouseHoverBoard(e){
     //     e.preventDefault();
-    //     debugger
     //     let elementHovered = document.getElementById(e.currentTarget.id + "save-button")
     //     if(elementHovered.style.display === 'relative'){
     //         elementHovered.style.display = 'none';
@@ -125,7 +117,6 @@ debugger
     }
 
     render() {
-        debugger
         if (!this.props.boards || this.props.boards === undefined || this.props.boards.length === 0){
             return null
         }
