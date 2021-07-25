@@ -8,7 +8,7 @@ class CreatePin extends React.Component {
             pin: {
                 creator_id: window.currentUser.id,
                 title: null,
-                description: null,
+                description: "",
                 description2: null,
                 websiteURL: null,
                 board_id: null,
@@ -69,7 +69,7 @@ class CreatePin extends React.Component {
     handelUlClick(e){
         e.preventDefault();
 
-        let ul = document.getElementById('board-dropdown-create-pin')
+        let ul = document.getElementById('middle-box-thing')
         if (ul.style.display === "block") {
             ul.style.display = "none"
         } else {
@@ -93,7 +93,7 @@ class CreatePin extends React.Component {
         this.setState({ pin: prevState })
 
 
-        let ul = document.getElementById('board-dropdown-create-pin')
+        let ul = document.getElementById('middle-box-thing')
         ul.style.display = "none"
 
         let displayTitle = document.getElementById('board-dd-create-pin');
@@ -123,67 +123,119 @@ class CreatePin extends React.Component {
         
         const boards = this.props.boards
         const firstBoard = boards[0].title
+
+        let description1 = 500 - this.state.pin.description.length
         // const dropDDisplayB = this.state.pin.board_id;
         return (
             <div className="create-pin-main-div">
+                <div className="primary-createpin-card">
 
-                <div className="top-bar-create-pin">
-                    <div>
-                        <div placeholder="Select" id="board-dd-create-pin" className="board-dd-create-pin" onClick={this.handelUlClick}>
-                            {firstBoard} 
+                    <div className="top-bar-create-pin">
+
+                        <div className="delete-duplicate-button-dd">
+                                <img src={window.moreURL} alt="more icon" id="more-logo-icon"/>
                         </div>
 
-                        <div className="save-button-create-pin" onClick={this.handelSubmit}>Save</div>
-                    </div>
-
-                    <div className="board-dropdown-create-pin" id="board-dropdown-create-pin">
-                        <ul className="board-dropdown-ol" id="board-dropdown-ol">
-                           {boards.map(board => 
-                               <div className="this-list-children-pin" key={board.id} onClick={this.boardClickSelect} id={board.id} onMouseEnter={this.mouseHoverBoard} onMouseLeave={this.mouseHoverBoard}>
-                                   {board.title}
-
-                                    <div className="logo-on-logged-in-header-board-lock-pin" style={board.is_private ? {display: "flex" } : { display: "none" }}>
-                                        <img id="logo-lock-icon-pin-page" src={window.lockURL} alt="lock-icon" />
-                                    </div>
-
-                                    {/* <div className="save-button-create-pin" id={board.id + "save-button"}>Save</div> */}
-                                   </div>
-                            //    <li>{"Photo"}{board.title}</li>
-                           )}
-                        </ul>
-                    </div>
-                </div>
-
-
-
-                <div className="bottom-create-pin">
-                    <div className="left-side-create-pin">
-                        <input type="file" name="" id="" 
-                        onChange={this.handelPhotoSelect}
-                        />
-                    </div>
-
-                    <div className="right-side-create-pin">
-
-                        <input type="text" placeholder="Add your title" onChange={this.inputChange('title')}/>
-                        <div>
-                            <div className="profile-div-small">
-                                <img className="profile-photo-icon" src={this.props.user.photoUrl} alt="logo" />
+                        <div className="left-top-bar-createpindiv">
+                            
+                            <div placeholder="Select" id="board-dd-create-pin" className="board-dd-create-pin" onClick={this.handelUlClick}>
+                                {firstBoard} 
                             </div>
 
-                            <div>{this.props.user.f_name} {this.props.user.l_name}</div>
+                            <div className="down-arrow-div" onClick={this.handelUlClick} >
 
+                                <img src={window.downArrowURL} alt="down arrow icon" id="down-arrow-image-create-pin" />
+                            </div>
+
+                            <div className="save-button-create-pin" onClick={this.handelSubmit}>Save</div>
+                        
+                            <div className="middle-box-thing" id="middle-box-thing">
+                                                <div className="board-dropdown-create-pin" id="board-dropdown-create-pin">
+                                                    <ul className="board-dropdown-ol" id="board-dropdown-ol">
+                                                    {boards.map(board => 
+                                                        <div className="this-list-children-pin" key={board.id} onClick={this.boardClickSelect} id={board.id} onMouseEnter={this.mouseHoverBoard} onMouseLeave={this.mouseHoverBoard}>
+                                                            {board.title}
+
+                                                                <div className="logo-on-logged-in-header-board-lock-pin" style={board.is_private ? {display: "flex" } : { display: "none" }}>
+                                                                    <img id="logo-lock-icon-pin-page" src={window.lockURL} alt="lock-icon" />
+                                                                </div>
+
+                                                                {/* <div className="save-button-create-pin" id={board.id + "save-button"}>Save</div> */}
+                                                            </div>
+                                                        //    <li>{"Photo"}{board.title}</li>
+                                                    )}
+                                                    </ul>
+                                                </div>
+                            </div>
                         </div>
 
-                        <textarea  onChange={this.inputChange('description')} name="" id="" cols="40" rows="1" placeholder="Tell everyone what your Pin is about">
-                        </textarea>
-
-                        <textarea onChange={this.inputChange('description2')} name="" id="alt-text-area" cols="40" rows="1" placeholder="Explain what people can see in the Pin" style={{display: 'none'}}>
-                        </textarea>
-                        <div  onClick={this.handelAddText} id="alt-text-area-button">Add alt text</div>
-
-                        <input onChange={this.inputChange('websiteURL')} type="text" placeholder="Add a destination link"/>
+                            {/* ------------------ drop down part --------------- */}
                     </div>
+
+
+
+
+                    <div className="bottom-create-pin">
+
+                        <div className="left-side-create-pin">
+
+                            <label htmlFor="input-image-pin" id="input-image-label-pin" onChange={this.handelPhotoSelect}>
+                                
+                                <div className="upload-img-container">
+                                    <div className="doted-border">
+                                        <img src={window.upArrowURL} alt="up Arrow" id="up-arrow-icon" />
+
+                                        <div>Drag and drop or click to upload</div>
+                                        <div className="second-blerb-pin">Recomendation: Use high-quality .jpg files less than 20MB</div>
+                                    </div>
+                                </div>
+
+                                <input type="file" name="input-image-pin" id="input-image-pin" 
+                                onChange={this.handelPhotoSelect}/>
+
+                            </label>
+
+                            <div className="modals_pin">
+                                <div className="pin_image">
+                                    <img src="" alt="pin_image" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="right-side-create-pin">
+
+                            <input type="text" placeholder="Add your title" onChange={this.inputChange('title')}/>
+
+                            <div>
+                                <div className="profile-div-small">
+                                    <img className="profile-photo-icon" src={this.props.user.photoUrl} alt="logo" />
+                                </div>
+
+                                <div>{this.props.user.f_name} {this.props.user.l_name}</div>
+
+                            </div>
+
+                            <textarea  onChange={this.inputChange('description')} name="" id="" cols="40" rows="1" placeholder="Tell everyone what your Pin is about">
+                            </textarea>
+                            <div>
+                                <div>People will usually see the first 50 characters when they click on your Pin </div>
+                                <div>{description1}</div>
+                            </div>
+
+                            <textarea onChange={this.inputChange('description2')} name="" id="alt-text-area" cols="40" rows="1" placeholder="Explain what people can see in the Pin" style={{display: 'none'}}>
+                            </textarea>
+
+                            {/* <div>
+                                <div>This text will be read aloud by screen readers</div>
+                                <div>{description2}</div>
+                            </div> */}
+
+                            <div  onClick={this.handelAddText} id="alt-text-area-button">Add alt text</div>
+
+                            <input onChange={this.inputChange('websiteURL')} type="text" placeholder="Add a destination link"/>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>

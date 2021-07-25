@@ -55,7 +55,7 @@
 img.pin-photo {
     width: 234px;
     height: auto;
-    margin: 0px 5px 5px 5px;
+    margin: 0px 5px 0px 5px;
     border-radius: 16px;
 }
 div.card-title-pin{
@@ -88,8 +88,7 @@ div.over-lay{
     // /* border: 1px solid white; */
     align-items: center;
     border-radius: 16px;
-    filter: brightness(0.45);
     &:hover{
-        
+        filter: brightness(0.45);
     }
 }

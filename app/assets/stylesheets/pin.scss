@@ -37,11 +37,16 @@ div#alt-text-area-button{
 // }
 
 div.board-dropdown-create-pin{
-    display: none;
+    display: fixed;
     max-height: 450px;
     width: 323px;
     overflow-y: scroll;
     border: solid black 2px;
+    position: relative;
+    right: 289px;
+    top: 52px;
+    background: white;
+    border-radius: 16px;
 }
 
 div.board-dd-create-pin{
@@ -93,11 +98,215 @@ img#logo-lock-icon-pin-page{
 }
 
 div.save-button-create-pin{
-    display: relative;
-    height: fill;
     color: white;
     background-color: red;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    border-radius: 0px 16px 16px 0px;
+    width: 69px;
     &:hover{
         cursor: pointer;
     }
+}
+
+div.delete-duplicate-button-dd{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    // overflow: hidden;
+}
+
+img#more-logo-icon{
+    height: 15px;
+    width: 15;
+}
+
+div.create-pin-main-div{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    background-color: #efefef;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+
+}
+
+div.primary-createpin-card{
+    background-color: white;
+    border-radius: 16px;
+    overflow: hidden;
+    width: 880px;
+    height: 651px;
+    z-index: 8;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px;
+}
+
+div.top-bar-create-pin{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: solid 1px;
+}
+
+div.delete-duplicate-button-dd{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: solid 1px;
+    &:hover{
+        background-color: #f3f3f3;
+        cursor: pointer;
+    }
+}
+
+img#more-logo-icon{
+    height: 20px;
+    width: auto;
+    border: solid 1px;
+}
+
+.top-bar-create-pin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 800px;
+    height: 40px;
+    border: solid 1px;
+}
+
+div.left-top-bar-createpindiv{
+    border: solid 1px;
+    display: flex;
+    flex-direction: row;
+    background-color: #EFEFEF;
+    border-radius: 16px;
+    overflow: visible;
+    img{
+        background: transparent;
+        height: 18px;
+
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.board-dd-create-pin{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-indent: 13px;
+    width: 136px;
+    background: transparent;
+    text-align: center;
+}
+
+.bottom-create-pin{
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+}
+
+.left-side-create-pin{
+    margin: 0;
+    padding: 0;
+    border-radius: 8px;
+    font-size: 100%;
+    font: inherit;
+    font-family: 'Questrial', sans-serif;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 450px;
+    width: 340px;
+}
+
+.right-side-create-pin{
+    border: solid 1px;
+}
+
+div.down-arrow-div{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+div.middle-box-thing{
+    display: none;
+    height: 0px;
+    width: 0px;
+    overflow: visible;
+}
+
+.second-blerb-pin{
+    text-align: center;
+}
+
+
+#input-image-label-pin{
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+}
+
+#input-image-pin{
+    border: solid green 1px;
+}
+
+div.doted-border{
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    border: dashed 2px #DADADA;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    // margin: 11px;
+}
+
+.upload-img-container{
+    background-color: rgba(239, 239, 239, 1);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+#input-image-pin{
+    display: none;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+
+.modals_pin{
+    width: 252px;
+    height: 512px;
+    border-radius: 16px;
+
+    position: relative;
+    overflow: hidden;
+    display: none;
 }
