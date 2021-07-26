@@ -13,7 +13,9 @@ class CreatePin extends React.Component {
                 websiteURL: null,
                 board_id: null,
                 photo: null,
-            }
+            },
+            isTrue: false,
+            thePhotoURL: ""
         }
 
         this.handelAddText = this.handelAddText.bind(this);
@@ -22,6 +24,7 @@ class CreatePin extends React.Component {
         this.handelSubmit = this.handelSubmit.bind(this);
         // this.mouseHoverBoard = this.mouseHoverBoard.bind(this);
         this.handelPhotoSelect = this.handelPhotoSelect.bind(this);
+        this.deletePreview = this.deletePreview.bind(this);
     }
 
     handelSubmit(e) {
@@ -90,7 +93,7 @@ class CreatePin extends React.Component {
         e.preventDefault();
         let prevState = this.state.pin
         prevState["board_id"] = e.currentTarget.id
-        this.setState({ pin: prevState })
+        this.setState({ pin: prevState }).then(this.setState({isTrue: true}))
 
 
         let ul = document.getElementById('middle-box-thing')
@@ -100,6 +103,14 @@ class CreatePin extends React.Component {
         displayTitle.innerText = e.currentTarget.innerText;
     }
 
+    deletePreview(e){
+        e.preventDefault();
+       let labelElement = document.getElementById('input-image-label-pin')
+       labelElement.style.display = 'flex'
+
+       let uploadImageStateEl = document.getElementById('modals_pin-display')
+       uploadImageStateEl.style.display = 'none';
+    }
     // mouseHoverBoard(e){
     //     e.preventDefault();
     //     let elementHovered = document.getElementById(e.currentTarget.id + "save-button")
@@ -111,9 +122,26 @@ class CreatePin extends React.Component {
     // }
 
     handelPhotoSelect(e){
-        let prevState = this.state.pin
+        debugger
+        const prevState = this.state.pin
         prevState["photo"] = e.currentTarget.files[0]
-        this.setState({ pin: prevState });
+        
+        const file = e.currentTarget.files[0];
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            
+            this.setState({ pin: prevState, thePhotoURL: fileReader.result, isTrue: true });
+        }
+        
+        if(file) {
+            fileReader.readAsDataURL(file);
+        }
+
+       let labelElement = document.getElementById('input-image-label-pin')
+       labelElement.style.display = 'none'
+
+       let uploadImageStateEl = document.getElementById('modals_pin-display')
+       uploadImageStateEl.style.display = 'flex';
     }
 
     render() {
@@ -125,6 +153,11 @@ class CreatePin extends React.Component {
         const firstBoard = boards[0].title
 
         let description1 = 500 - this.state.pin.description.length
+
+        if (this.state.isTrue){
+            debugger
+           
+        }
         // const dropDDisplayB = this.state.pin.board_id;
         return (
             <div className="create-pin-main-div">
@@ -135,6 +168,7 @@ class CreatePin extends React.Component {
                         <div className="delete-duplicate-button-dd">
                                 <img src={window.moreURL} alt="more icon" id="more-logo-icon"/>
                         </div>
+
 
                         <div className="left-top-bar-createpindiv">
                             
@@ -179,13 +213,13 @@ class CreatePin extends React.Component {
 
                         <div className="left-side-create-pin">
 
-                            <label htmlFor="input-image-pin" id="input-image-label-pin" onChange={this.handelPhotoSelect}>
+                            <label htmlFor="input-image-pin" id="input-image-label-pin">
                                 
                                 <div className="upload-img-container">
                                     <div className="doted-border">
                                         <img src={window.upArrowURL} alt="up Arrow" id="up-arrow-icon" />
 
-                                        <div>Drag and drop or click to upload</div>
+                                        <div className="drag-class-name">Drag and drop or click to upload</div>
                                         <div className="second-blerb-pin">Recomendation: Use high-quality .jpg files less than 20MB</div>
                                     </div>
                                 </div>
@@ -195,9 +229,12 @@ class CreatePin extends React.Component {
 
                             </label>
 
-                            <div className="modals_pin">
+                            <div className="modals_pin" id="modals_pin-display">
                                 <div className="pin_image">
-                                    <img src="" alt="pin_image" />
+                                    <img src={this.state.isTrue ? this.state.thePhotoURL : ""} alt="pin_image" className="preview-image"/>
+                                    <div className="delete-icon-logo-div" onClick={this.deletePreview}>
+                                        <img className="delete-icon-logo" src={window.deleteURL} alt="Delete icon" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
