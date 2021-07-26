@@ -25,7 +25,11 @@ class CreatePin extends React.Component {
         // this.mouseHoverBoard = this.mouseHoverBoard.bind(this);
         this.handelPhotoSelect = this.handelPhotoSelect.bind(this);
         this.deletePreview = this.deletePreview.bind(this);
+        this.deleteDropDownClick = this.deleteDropDownClick.bind(this);
+        this.moreClicked = this.moreClicked.bind(this);
+        this.backdropClick = this.backdropClick.bind(this);
     }
+
 
     handelSubmit(e) {
         e.preventDefault();
@@ -42,6 +46,7 @@ class CreatePin extends React.Component {
             .then(() => {
                 // direct to pin show page
                 console.log('should now direct to pin show page')
+
             })
     }
 
@@ -72,11 +77,20 @@ class CreatePin extends React.Component {
     handelUlClick(e){
         e.preventDefault();
 
+        let backdrop = document.getElementById('backdrop-div-create-pin')
+        if(backdrop.style.display === "none"){
+            backdrop.style.display = "block"
+        } else {
+            backdrop.style.display = "none"
+        }
+        
         let ul = document.getElementById('middle-box-thing')
         if (ul.style.display === "block") {
             ul.style.display = "none"
+            backdrop.style.display = "none"
         } else {
             ul.style.display = "block"
+            backdrop.style.display = "block"
         }
     }
 
@@ -93,14 +107,29 @@ class CreatePin extends React.Component {
         e.preventDefault();
         let prevState = this.state.pin
         prevState["board_id"] = e.currentTarget.id
-        this.setState({ pin: prevState }).then(this.setState({isTrue: true}))
+        this.setState({ pin: prevState })
 
 
         let ul = document.getElementById('middle-box-thing')
         ul.style.display = "none"
 
+        debugger
+
         let displayTitle = document.getElementById('board-dd-create-pin');
-        displayTitle.innerText = e.currentTarget.innerText;
+        let titleWorkingOn = e.currentTarget.innerText;
+        if(titleWorkingOn.length > 13){
+            displayTitle.innerText = titleWorkingOn.slice(0, 13).trim() + "..."
+        } else {
+            displayTitle = titleWorkingOn
+        }
+
+        let backdrop = document.getElementById('backdrop-div-create-pin')
+        if(backdrop.style.display === "none"){
+            // dropDown.style.display = "flex"
+            // backdrop.style.display = "block"
+        } else {
+            backdrop.style.display = "none"
+        }
     }
 
     deletePreview(e){
@@ -144,13 +173,56 @@ class CreatePin extends React.Component {
        uploadImageStateEl.style.display = 'flex';
     }
 
+    deleteDropDownClick(e){
+        let dropDown = document.getElementById("delete-dropdown-menue-id");
+
+        dropDown.style.display = "none"
+
+        window.location.reload();
+    }
+
+    moreClicked(e){
+        e.preventDefault();
+
+        let dropDown = document.getElementById("delete-dropdown-menue-id");
+        let backdrop = document.getElementById('backdrop-div-create-pin')
+        if(dropDown.style.display === "none"){
+            dropDown.style.display = "flex"
+            backdrop.style.display = "block"
+        } else {
+            dropDown.style.display = "none"
+            backdrop.style.display = "none"
+        }
+    }
+    backdropClick(e){
+        e.preventDefault();
+
+       let dropDown = document.getElementById("delete-dropdown-menue-id");
+        let backdrop = document.getElementById('backdrop-div-create-pin')
+        if(dropDown.style.display === "none"){
+            // dropDown.style.display = "flex"
+            // backdrop.style.display = "block"
+        } else {
+            dropDown.style.display = "none"
+            backdrop.style.display = "none"
+        }
+
+
+        let ul = document.getElementById('middle-box-thing')
+        if (ul.style.display === "block") {
+            ul.style.display = "none"
+        } else {
+            // ul.style.display = "block"
+        }
+    }
+
     render() {
         if (!this.props.boards || this.props.boards === undefined || this.props.boards.length === 0){
             return null
         }
-        
         const boards = this.props.boards
         const firstBoard = boards[0].title
+
 
         let description1 = 500 - this.state.pin.description.length
 
@@ -158,17 +230,24 @@ class CreatePin extends React.Component {
             debugger
            
         }
+
+
         // const dropDDisplayB = this.state.pin.board_id;
         return (
             <div className="create-pin-main-div">
+            <div className="backdrop-div-create-pin" onClick={this.backdropClick, this.handelUlClick} id="backdrop-div-create-pin"></div>
+
+            <div className="delete-dropdown-menue" id="delete-dropdown-menue-id">
+                <div onClick={this.deleteDropDownClick}>Delete</div>
+                <div >Duplicate</div>
+            </div>
+
                 <div className="primary-createpin-card">
 
                     <div className="top-bar-create-pin">
-
-                        <div className="delete-duplicate-button-dd">
+                        <div className="delete-duplicate-button-dd" onClick={this.moreClicked}>
                                 <img src={window.moreURL} alt="more icon" id="more-logo-icon"/>
                         </div>
-
 
                         <div className="left-top-bar-createpindiv">
                             
@@ -188,7 +267,7 @@ class CreatePin extends React.Component {
                                                     <ul className="board-dropdown-ol" id="board-dropdown-ol">
                                                     {boards.map(board => 
                                                         <div className="this-list-children-pin" key={board.id} onClick={this.boardClickSelect} id={board.id} onMouseEnter={this.mouseHoverBoard} onMouseLeave={this.mouseHoverBoard}>
-                                                            {board.title}
+                                                             {board.title.length > 20 ? board.title.slice(0, 20).trim() + "..." : board.title}
 
                                                                 <div className="logo-on-logged-in-header-board-lock-pin" style={board.is_private ? {display: "flex" } : { display: "none" }}>
                                                                     <img id="logo-lock-icon-pin-page" src={window.lockURL} alt="lock-icon" />

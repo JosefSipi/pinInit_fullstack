@@ -145,6 +145,7 @@ div.primary-createpin-card{
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    position: absolute;
 }
 
 .top-bar-create-pin{
@@ -250,6 +251,7 @@ div.middle-box-thing{
     height: 0px;
     width: 0px;
     overflow: visible;
+    z-index: 5;
 }
 
 .second-blerb-pin{
@@ -312,7 +314,6 @@ div.doted-border{
     
     position: relative;
     overflow: hidden;
-    border: red solid 2px;
     display: flex;
 }
 
@@ -367,4 +368,51 @@ div.doted-border{
         background-color: rgb(233, 230, 230);
         cursor: pointer;
     }
+}
+
+.delete-dropdown-menue{
+    position: relative;
+    top: -169px;
+    right: 382px;
+    z-index: 6;
+    border-radius: 16px;
+    height: 100px;
+    width: 200px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.08);
+    div{
+    width: 100%;
+    height: 35px;
+    color: black;
+    margin-left: 14px;
+    margin-right: 14px;
+    text-align: start;
+    display: flex;
+    align-items: center;
+    text-indent: 6px;
+    justify-content: flex-start;
+    font-weight: 550;
+    border-left: solid 1px white;
+    border-right: solid 1px white;
+        &:hover{
+            background-color: rgb(218, 218, 218);
+            cursor: pointer;
+
+        }
+    }
+}
+
+.backdrop-div-create-pin{
+    display: none;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: transparent;
+    left: 0;
+    top: 0;
+    z-index: 5;
 }
