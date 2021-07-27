@@ -5,7 +5,7 @@ import { fetchBoards, fetchBoard } from '../../actions/board_actions';
 import { fetchUser } from '../../actions/user_actions';
 import { fetchPins } from '../../actions/pin_action';
 import BoardShow from './show_board';
-
+import { openModal, closeModal } from '../../actions/modal';
 
 const mSTP = (state) => {
     return {
@@ -29,7 +29,9 @@ const mDTP = dispatch => {
         },
         fetchPins: (boardId) => {
             return dispatch(fetchPins(boardId))
-        }
+        },
+        openModal: (modal) => dispatch(openModal(modal)),
+        closeModal: () => dispatch(closeModal())
     };
 };
 

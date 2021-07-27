@@ -4,6 +4,14 @@ import { Link } from 'react-router-dom';
 class BoardShow extends React.Component {
     constructor(props){
         super(props);
+        this.modalFunction = this.modalFunction.bind(this);
+    }
+
+    modalFunction(e){
+        e.preventDefault();
+        debugger
+        window.editPin = e.currentTarget.id
+        this.props.openModal('editPin')
     }
 
     componentDidMount(){
@@ -16,6 +24,7 @@ class BoardShow extends React.Component {
             this.props.fetchUser(this.props.boardProfile.owner_id)
         } 
     }
+
 
     render(){
         
@@ -72,22 +81,17 @@ debugger
                     <div className="pin_container" id="pin_container">
                         {pins.map(pin => 
 
-                            // <div className="card" key={pin.id} >
                             <div className="card" style={{gridRowEnd: `span ${((Math.trunc((pin.heightof / 100) * 45)) )}` }} key={pin.id}>
-                            {/* // <div className="card" style={{gridRowEnd: `span ${pin.heightof}` }} key={pin.id}> */}
-                                
-                                {/* <div className="over-lay"> */}
-                                   <img className="pin-photo" src={pin.photoUrl} alt="pin photo"/>
 
-                                {/* </div> */}
-                                {console.log('this is the heightof')}
-                                {console.log(((pin.heightof / 100) * 45) + 10 )}
-                                <div className="card-title-pin">{pin.title}</div>
-                                <div>
-                                    {/* image of user who originally pined this pin */}
-                                    {/* name of user who originaly pined this pin */}
+                                {/* <div className="over-lay">
+                                </div> */}
 
+                                <div id={pin.id} className="edit-pen-div-show-board" onClick={this.modalFunction}>
+                                   <img src={window.editPenURL} alt="edit pen" />
                                 </div>
+                                
+                                <img className="pin-photo" src={pin.photoUrl} alt="pin photo"/>
+                                <div className="card-title-pin">{pin.title}</div>
                             </div>
 
                         )}

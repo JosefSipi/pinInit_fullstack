@@ -129,3 +129,23 @@ div.over-lay{
     display: flex;
     flex-direction: column;
 }
+
+
+.edit-pen-div-show-board{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    position: fixed;
+    background-color: white;
+    &:hover{
+        cursor: pointer;
+    }
+    img{
+        height: 18px;
+        width: auto;
+    }
+}
