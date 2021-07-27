@@ -113,14 +113,12 @@ class CreatePin extends React.Component {
         let ul = document.getElementById('middle-box-thing')
         ul.style.display = "none"
 
-        debugger
-
         let displayTitle = document.getElementById('board-dd-create-pin');
         let titleWorkingOn = e.currentTarget.innerText;
         if(titleWorkingOn.length > 13){
             displayTitle.innerText = titleWorkingOn.slice(0, 13).trim() + "..."
         } else {
-            displayTitle = titleWorkingOn
+            displayTitle.innerText = titleWorkingOn
         }
 
         let backdrop = document.getElementById('backdrop-div-create-pin')
@@ -152,7 +150,6 @@ class CreatePin extends React.Component {
     // }
 
     handelPhotoSelect(e){
-        debugger
         const prevState = this.state.pin
         prevState["photo"] = e.currentTarget.files[0]
         
@@ -229,10 +226,9 @@ class CreatePin extends React.Component {
 
         let description1 = 500 - this.state.pin.description.length
 
-        if (this.state.isTrue){
-            debugger
+        // if (this.state.isTrue){
            
-        }
+        // }
 
 
         // const dropDDisplayB = this.state.pin.board_id;
@@ -323,7 +319,7 @@ class CreatePin extends React.Component {
 
                         <div className="right-side-create-pin">
 
-                            <input type="text" placeholder="Add your title" onChange={this.inputChange('title')}/>
+                            <input className="input-for-title-pin" type="text" placeholder="Add your title" onChange={this.inputChange('title')}/>
 
                             <div>
                                 <div className="profile-div-small">

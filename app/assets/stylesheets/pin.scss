@@ -235,6 +235,7 @@ div.left-top-bar-createpindiv{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
 }
 
 div.down-arrow-div{
@@ -415,4 +416,13 @@ div.doted-border{
     left: 0;
     top: 0;
     z-index: 1;
+}
+
+.input-for-title-pin{
+    &:focus{
+        border-bottom: rgb(31, 139, 255);
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
 }
