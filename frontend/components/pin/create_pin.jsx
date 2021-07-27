@@ -1,4 +1,6 @@
 import React from 'react';
+// import { Redirect } from 'react-router';
+import { browserHistory } from 'react-router';
 
 class CreatePin extends React.Component {
     constructor(props) {
@@ -7,12 +9,13 @@ class CreatePin extends React.Component {
         this.state = {
             pin: {
                 creator_id: window.currentUser.id,
-                title: null,
+                title: "",
                 description: "",
                 description2: null,
                 websiteURL: null,
                 board_id: null,
                 photo: null,
+                heightof: null,
             },
             isTrue: false,
             thePhotoURL: ""
@@ -28,12 +31,23 @@ class CreatePin extends React.Component {
         this.deleteDropDownClick = this.deleteDropDownClick.bind(this);
         this.moreClicked = this.moreClicked.bind(this);
         this.backdropClick = this.backdropClick.bind(this);
+        this.supTextShow = this.supTextShow.bind(this);
+        // this.togleClass = this.togleClass.bind(this);
     }
 
 
     handelSubmit(e) {
         e.preventDefault();
+        debugger
+        let thePinHeightFinder = document.getElementById('pin_image-create-pin-height');
+        let imageHeightFor43 = document.getElementById('preview-image-456');
+        if(imageHeightFor43.offsetHeight >= thePinHeightFinder.offsetHeight){
+            var heightOfValue = 100;
+        } else {
+            var heightOfValue = ((imageHeightFor43 / thePinHeightFinder) * 100)
+        }
 
+        debugger
         const formData = new FormData();
         formData.append('pin[photo]', this.state.pin.photo);
         formData.append('pin[creator_id]', this.state.pin.creator_id);
@@ -42,11 +56,12 @@ class CreatePin extends React.Component {
         formData.append('pin[description2]', this.state.pin.description2);
         formData.append('pin[websiteURL]', this.state.pin.websiteURL);
         formData.append('pin[board_id]', this.state.pin.board_id);
+        formData.append('pin[heightof]', heightOfValue);
         this.props.createNewPin(formData)
             .then(() => {
                 // direct to pin show page
-                console.log('should now direct to pin show page')
-
+                console.log('should now direct to pin show page'),
+               this.props.history.push(`/profile/${window.currentUser.id}`)
             })
     }
 
@@ -163,12 +178,14 @@ class CreatePin extends React.Component {
         if(file) {
             fileReader.readAsDataURL(file);
         }
+    
 
        let labelElement = document.getElementById('input-image-label-pin')
        labelElement.style.display = 'none'
 
        let uploadImageStateEl = document.getElementById('modals_pin-display')
        uploadImageStateEl.style.display = 'flex';
+       debugger
     }
 
     deleteDropDownClick(e){
@@ -215,6 +232,29 @@ class CreatePin extends React.Component {
             // ul.style.display = "block"
         }
     }
+
+    supTextShow(e){
+        e.preventDefault();
+        let divFocus = document.getElementById('second-div-title-pininput-1')
+        let divFocus2 = document.getElementById('second-div-title-pininput-2')
+        if(divFocus.style.display === "flex"){
+            divFocus.style.display = 'none'
+            divFocus2.style.display = 'none'
+        } else {
+            divFocus.style.display = 'flex'
+            divFocus2.style.display = 'flex'
+        }
+    }
+
+    // togleClass(e){
+    //     e.preventDefault();
+    //     let theElement = document.getElementById("text-area-pin-create")
+    //     if(theElement.className === 'text-area-pin-create'){
+    //         theElement.className = 'text-area-pin-create2'
+    //     } else {
+
+    //     }
+    // }
 
     render() {
         if (!this.props.boards || this.props.boards === undefined || this.props.boards.length === 0){
@@ -308,8 +348,8 @@ class CreatePin extends React.Component {
                             </label>
 
                             <div className="modals_pin" id="modals_pin-display">
-                                <div className="pin_image">
-                                    <img src={this.state.isTrue ? this.state.thePhotoURL : ""} alt="pin_image" className="preview-image"/>
+                                <div className="pin_image" id="pin_image-create-pin-height">
+                                    <img src={this.state.isTrue ? this.state.thePhotoURL : ""} alt="pin_image" id="preview-image-456" className="preview-image"/>
                                     <div className="delete-icon-logo-div" onClick={this.deletePreview}>
                                         <img className="delete-icon-logo" src={window.deleteURL} alt="Delete icon" />
                                     </div>
@@ -319,10 +359,14 @@ class CreatePin extends React.Component {
 
                         <div className="right-side-create-pin">
 
-                            <input className="input-for-title-pin" type="text" placeholder="Add your title" onChange={this.inputChange('title')}/>
-
-                            <div>
-                                <div className="profile-div-small">
+                            <div className="input-div-top">
+                                <input className="input-for-title-pin" type="text" placeholder="Add your title" onChange={this.inputChange('title')} onFocus={this.supTextShow} onBlur={this.supTextShow}/>
+                                <div className="second-div-title-pininput-outer" id="second-div-title-pininput">
+                                    <div className="second-div-title-pininput-1" id="second-div-title-pininput-1">Your first 40 characters are what usually show up in feeds </div> <div id="second-div-title-pininput-2" className="second-div-title-pininput-2">{100 - this.state.pin.title.length}</div>                              
+                                </div>
+                            </div>
+                            <div className="outer-div-for-profile-photo-pin">
+                                <div className="profile-div-small-pin">
                                     <img className="profile-photo-icon" src={this.props.user.photoUrl} alt="logo" />
                                 </div>
 
@@ -330,7 +374,7 @@ class CreatePin extends React.Component {
 
                             </div>
 
-                            <textarea  onChange={this.inputChange('description')} name="" id="" cols="40" rows="1" placeholder="Tell everyone what your Pin is about">
+                            <textarea id="text-area-pin-create" className="text-area-pin-create" onChange={this.inputChange('description')} name="" cols="40" rows="1" placeholder="Tell everyone what your Pin is about">
                             </textarea>
                             <div>
                                 <div>People will usually see the first 50 characters when they click on your Pin </div>

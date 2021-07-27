@@ -30,3 +30,24 @@ export const fetchPins = boardId => {
             .then(pins => dispatch(receivePins(pins)));
     }
 }
+
+export const fetchPin = pinId => {
+    return  (dispatch) => {
+        return APIUtil.fetchPin(pinId)
+            .then(pin => dispatch(receivePin(pin)));
+    }
+}
+
+export const updatePin = (pinId) => {
+    return (dispatch) => {
+        return APIUtil.updatePin(pinId)
+            .then(pin => dispatch(receivePin(pin)));
+    }
+}
+
+export const deletePin = pinId => {
+    return (dispatch) => {
+        return APIUtil.deletePin(pinId)
+            .then(deleteInfo => dispatch(deletePin(deleteInfo)));
+    }
+}

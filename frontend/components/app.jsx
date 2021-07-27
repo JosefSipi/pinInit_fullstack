@@ -9,6 +9,7 @@ import Feed from './feed/feed';
 import Modal from './modal/modal';
 import ModalUpload from './modal/uploadModal';
 import EditModal from './modal/editBoard';
+import EditPin from './modal/editPin';
 import UserProfileContainer from './user/show_container';
 import EditContainer from './user/edit_container';
 import SignUpModal from './modal/signUpModal';
@@ -27,6 +28,7 @@ export default () => (
         <Modal />
         <ModalUpload/>
         <SignUpModal/>
+        <EditPin/> {/* this should be a protected page */}
         <EditModal/>
         <CreateBoardModal/>
         <CreatePinLink/>

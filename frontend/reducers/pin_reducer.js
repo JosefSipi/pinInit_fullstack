@@ -1,6 +1,7 @@
 import { RECEIVE_PIN, RECEIVE_PINS } from '../actions/pin_action';
 
 export default (state = {}, action) => {
+    debugger
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_PIN:

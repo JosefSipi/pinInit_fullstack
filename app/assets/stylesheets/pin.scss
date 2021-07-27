@@ -234,8 +234,9 @@ div.left-top-bar-createpindiv{
     width: 380px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+
 }
 
 div.down-arrow-div{
@@ -316,6 +317,7 @@ div.doted-border{
     position: relative;
     overflow: hidden;
     display: flex;
+    align-items: center;
 }
 
 // ----- inner div
@@ -412,17 +414,91 @@ div.doted-border{
     position: absolute;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(128, 128, 128, 0.406);
     left: 0;
     top: 0;
     z-index: 1;
 }
 
-.input-for-title-pin{
+
+
+input.input-for-title-pin {
+
+    margin-bottom: 20px;
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-bottom: 2px solid #C6C6C6;
+    outline: none;
+    
+    font-size: 30px;
+    font-weight: 600;
+    
+    background-color: transparent;
+    
     &:focus{
-        border-bottom: rgb(31, 139, 255);
-        border-top: none;
-        border-left: none;
-        border-right: none;
+        
+        border-bottom: 2px solid #0074e8;
+    }
+}
+
+div.input-div-top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.second-div-title-pininput-outer{
+    font-size: 12px;
+    position: relative;
+    top: -15px;
+    font-weight: 100;
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    height: 13px;
+}
+
+.second-div-title-pininput-1{
+    display: none;
+
+}
+.second-div-title-pininput-2{
+    display: none;
+
+}
+
+.outer-div-for-profile-photo-pin{
+    display: flex;
+    align-self: start;
+    width: 156px;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 21px;
+}
+
+div.profile-div-small-pin {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  border-radius: 100px;
+  height: 50px;
+  width: 50px;
+}
+
+.text-area-pin-create{
+    margin-bottom: 20px;
+    width: 95%;
+    height: auto;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 100;
+    background-color: transparent;
+    font-family: 'Questrial', sans-serif;
+    
+    &:focus{
+        
+        border-bottom: 2px solid #0074e8;
     }
 }

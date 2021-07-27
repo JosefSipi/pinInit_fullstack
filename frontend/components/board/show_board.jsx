@@ -28,9 +28,11 @@ class BoardShow extends React.Component {
         const pins = Object.values(this.props.pins.pins)
         
         // const photoUrl = this.props.pins.pin.pins.photoUrl
-        const theHeight = 26;
-
+        // debugger
+        const theHeight = 45;
+debugger
         return (
+
         <div>
 
             <div className="boards-grid-area-for-pins">
@@ -70,14 +72,16 @@ class BoardShow extends React.Component {
                     <div className="pin_container" id="pin_container">
                         {pins.map(pin => 
 
-                            <div className="card" key={pin.id} >
-                            {/* <div className="card" style={{gridRowEnd: `span ${theHeight}` }} key={pin.id}> */}
+                            // <div className="card" key={pin.id} >
+                            <div className="card" style={{gridRowEnd: `span ${((Math.trunc((pin.heightof / 100) * 45)) )}` }} key={pin.id}>
+                            {/* // <div className="card" style={{gridRowEnd: `span ${pin.heightof}` }} key={pin.id}> */}
                                 
-                                <div className="over-lay">
+                                {/* <div className="over-lay"> */}
                                    <img className="pin-photo" src={pin.photoUrl} alt="pin photo"/>
-                                   
-                                </div>
 
+                                {/* </div> */}
+                                {console.log('this is the heightof')}
+                                {console.log(((pin.heightof / 100) * 45) + 10 )}
                                 <div className="card-title-pin">{pin.title}</div>
                                 <div>
                                     {/* image of user who originally pined this pin */}
