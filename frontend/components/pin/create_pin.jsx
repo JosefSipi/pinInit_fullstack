@@ -127,6 +127,7 @@ class CreatePin extends React.Component {
         if(backdrop.style.display === "none"){
             // dropDown.style.display = "flex"
             // backdrop.style.display = "block"
+            backdrop.style.display = "none"
         } else {
             backdrop.style.display = "none"
         }
@@ -202,6 +203,8 @@ class CreatePin extends React.Component {
         if(dropDown.style.display === "none"){
             // dropDown.style.display = "flex"
             // backdrop.style.display = "block"
+
+            backdrop.style.display = "none"
         } else {
             dropDown.style.display = "none"
             backdrop.style.display = "none"
@@ -235,7 +238,7 @@ class CreatePin extends React.Component {
         // const dropDDisplayB = this.state.pin.board_id;
         return (
             <div className="create-pin-main-div">
-            <div className="backdrop-div-create-pin" onClick={this.backdropClick, this.handelUlClick} id="backdrop-div-create-pin"></div>
+            <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
 
             <div className="delete-dropdown-menue" id="delete-dropdown-menue-id">
                 <div onClick={this.deleteDropDownClick}>Delete</div>
