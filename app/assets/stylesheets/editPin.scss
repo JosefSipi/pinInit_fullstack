@@ -1,17 +1,18 @@
 .dd-list-edit-p{
-    position: relative;
+    position: absolute;
+    top: 150px;
     width: 325px;
     height: 443px;
     overflow: scroll;
     // display: flex;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
     border-radius: 16px;
     box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.16);
-    z-index: 11;
+    z-index: 199;
 }
 
 
@@ -29,7 +30,13 @@
 }
 
 .board-label-edit-pin-dd{
+    padding-left: 15px;
+    font-weight: 500;
+}
 
+#down-arrow-image-edit-pin{
+    height: 24px;
+    padding-right: 14px;
 }
 
 .modal-background-edit-pin {
@@ -82,7 +89,7 @@ background-color: white;
 
 .middle-section-edit-pin{
     border: solid 2px red;
-    max-width: 690px;
+    max-width: 800px;
     max-height: 900px;
     overflow: scroll;
     display: flex;
@@ -94,22 +101,179 @@ background-color: white;
     height: 90px;
     width: 100%;
     align-self: flex-end;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.backdrop-div-edit-pin{
+#backdrop-div-edit-pin{
     display: none;
-    position: absolute;
+    position: fixed;
     height: 100vh;
     width: 100vw;
     left: 0;
     top: 0;
-    z-index: 10;
+    z-index: 150;
+    background-color: rgba(255, 0, 0, 0.303);
 }
 
 .board-word-edit-p{
-    cursor: pointer;
-    width: 150px;
+   
+}
+
+.board-section-edit-p{
+    // height: 66px;
+    // padding-left: 16px;
+    // padding-right: 16px;
+    // padding-top: 12px;
+    // padding-bottom: 12px;
+    // width: 100%;
+    // display: flex;
+    // flex-direction: row;
+    // border: solid 1px orchid;
+
+}
+
+.title-edit-pin{
+    //    height: 66px;
+    // padding-left: 16px;
+    // padding-right: 16px;
+    // padding-top: 12px;
+    // padding-bottom: 12px;
+    // width: 100%;
+    // display: flex;
+    // flex-direction: row;
+    // border: solid 1px orchid;
+}
+
+.description-section-edit-p{
+    //    height: 66px;
+    // padding-left: 16px;
+    // padding-right: 16px;
+    // padding-top: 12px;
+    // padding-bottom: 12px;
+    // width: 100%;
+    // display: flex;
+    // flex-direction: row;
+    // border: solid 1px orchid;
+}
+
+.url-link-edit-p{
+    //    height: 66px;
+    // padding-left: 16px;
+    // padding-right: 16px;
+    // padding-top: 12px;
+    // padding-bottom: 12px;
+    // width: 100%;
+    // display: flex;
+    // flex-direction: row;
+    // border: solid 1px orchid;
+}
+
+.alt-txt-edit-p{
+    //    height: 66px;
+    // padding-left: 16px;
+    // padding-right: 16px;
+    // padding-top: 12px;
+    // padding-bottom: 12px;
+    // width: 100%;
+    // display: flex;
+    // flex-direction: row;
+    // border: solid 1px orchid;
+}
+
+.all-left-section-edit-p{
+    height: fit-content;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border: solid 1px orchid;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.drop-down-display-edit-pin{
+    width: 353px;
     height: 50px;
-    border: solid black 2px;
-    z-index: 200;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(239, 239, 239, 1);
+    &:hover{
+        background-color: rgb(211, 211, 211);
+        cursor: pointer;
+    }
+}
+
+.the-edit-labels{
+    width: 150px;
+    z-index: 10;
+    align-self: start;
+    font-weight: 100;
+    font-size: 14px;
+    padding-top: 8px;
+}
+
+.input-section-edit-pin-123{
+    width: 344px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-radius: 14px;
+    border: solid 2px gainsboro;
+    text-indent: 10px;
+}
+
+.input-section-alt-txt-edit-p{
+    width: 350px;
+}
+
+.alt-txt-underinput-edit-p{
+    font-weight: 100;
+    color: #767676;
+}
+
+.right-side-footer-edit-p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+}
+.footer-edit-pin-gray-button{
+    background-color: #e4e4e4;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 14px;
+    padding-left: 14px;
+    border-radius: 27px;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 30px;
+    &:hover{
+        background-color:  #d8d8d8;
+        cursor: pointer;
+    }
+}
+
+.save-btn-edit-pin{
+    background-color: #e60023;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 14px;
+    padding-left: 14px;
+    border-radius: 27px;
+    font-weight: 550;
+    font-size: 16px;
+    margin-right: 30px;
+    color: white;
+    &:hover{
+        background-color:  #ad081b;
+        cursor: pointer;
+    }
 }

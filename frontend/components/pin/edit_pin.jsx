@@ -13,35 +13,50 @@ class EditPinShow extends React.Component {
 
         this.handelBoardSelect = this.handelBoardSelect.bind(this);
         this.deletePinFunction = this.deletePinFunction.bind(this);
-        this.showHideDD = this.showHideDD.bind(this);
+        // this.showHideDD = this.showHideDD.bind(this);
         this.backdropClick = this.backdropClick.bind(this);
+        this.testingClick = this.testingClick.bind(this);
 
     }
-    backdropClick(e){
+
+    testingClick(e){
         e.preventDefault();
+        debugger
         let backdrop = document.getElementById('backdrop-div-edit-pin');
         let pinDD = document.getElementById('dd-list-edit-p');
-        if(pinDD.style.display === "none"){
-            backdrop.style.display = "none"
+        if(pinDD.style.display === "" || pinDD.style.display === 'none'){
+            backdrop.style.display = "block"
+            pinDD.style.display = 'flex'
         } else {
             pinDD.style.display = 'none'
             backdrop.style.display = "none"
         }
     }
-
-    showHideDD(e){
-        debugger
+    backdropClick(e){
         e.preventDefault();
-        let pinDD = document.getElementById('dd-list-edit-p');
         let backdrop = document.getElementById('backdrop-div-edit-pin');
-        if(pinDD.style.display === 'none'){
-            backdrop.style.display = "block"
-            pinDD.style.display = 'flex'
-        } else if (pinDD.style.display === 'flex'){
-            backdrop.style.display = "none"
-            pinDD.style.display = 'none'
-        }
+        let pinDD = document.getElementById('dd-list-edit-p');
+        // if(pinDD.style.display === "none"){
+        //     backdrop.style.display = "none"
+        // } else {
+        // }
+        pinDD.style.display = 'none'
+        backdrop.style.display = "none"
     }
+
+    // showHideDD(e){
+    //     debugger
+    //     e.preventDefault();
+    //     let pinDD = document.getElementById('dd-list-edit-p');
+    //     let backdrop = document.getElementById('backdrop-div-edit-pin');
+    //     if(pinDD.style.display === 'none'){
+    //         backdrop.style.display = "block"
+    //         pinDD.style.display = 'flex'
+    //     } else if (pinDD.style.display === 'flex'){
+    //         backdrop.style.display = "none"
+    //         pinDD.style.display = 'none'
+    //     }
+    // }
 
     handelBoardSelect(e){
 
@@ -78,8 +93,10 @@ class EditPinShow extends React.Component {
     }
 
     deletePinFunction(e){
-        debugger
-        this.props.deletePin(this.state.pin.id)
+        this.props.deletePin(Number(window.editPin)).then(
+            this.props.closeModal(),
+            this.props.history.push(`/profile/${window.currentUser.id}`)
+        )
     }
 
     handelChange(field){
@@ -114,10 +131,12 @@ class EditPinShow extends React.Component {
                 <div className="middle-section-edit-pin">
                     <div className="left-section-edit-p">
 
-                        <div className="board-section-edit-p">
+                        <div className="board-section-edit-p all-left-section-edit-p">
                             
-                            <div className="board-word-edit-p" onClick={this.showHideDD}>Board</div>
-                                <div className="backdrop-div-edit-pin" onClick={this.backdropClick} id="backdrop-div-edit-pin"></div>
+                            <div className="board-word-edit-p the-edit-labels" >Board</div>
+                            <div className="backdrop-div-edit-pin" onClick={this.backdropClick} id="backdrop-div-edit-pin"></div>
+                            <div className="drop-down-display-edit-pin" onClick={this.testingClick}>
+
                                 <div id="dd-list-edit-p" className="dd-list-edit-p">{boards.map(boardList => 
                                         <div key={boardList.id} className="list-item-edit-p" value={boardList.title} id={boardList.id} onClick={this.handelBoardSelect, this.handelChange('boardListTitle')} >
                                             <div>{boardList.title}</div>
@@ -128,8 +147,11 @@ class EditPinShow extends React.Component {
                                 )}</div>
 
                                 <div className="board-label-edit-pin-dd">
-                                    {this.state.titleofBoard}
+                                    Board Title
                                 </div>
+
+                                <img src={window.downArrowURL} alt="down arrow icon" id="down-arrow-image-edit-pin" />
+                            </div> 
                         </div>
 
                         {/* <div className="section-section-edit-p">
@@ -137,26 +159,26 @@ class EditPinShow extends React.Component {
                             <div className="section-dd-edit-p"></div>
                         </div> */}
 
-                        <div className="title-edit-pin">
-                            <div className="title-word">Title</div>
-                            <input type="text" className="edit-pin-input" value={this.state.pin.title} onChange={this.handelChange('title')}/>
+                        <div className="title-edit-pin all-left-section-edit-p">
+                            <div className="title-word the-edit-labels">Title</div>
+                            <input type="text" className="edit-pin-input input-section-edit-pin-123" value={this.state.pin.title} onChange={this.handelChange('title')}/>
                         </div>
 
-                        <div className="description-section-edit-p">
-                            <div className="description-word-edit-p">Description</div>
-                            <textarea value={this.state.pin.description} onChange={this.handelChange('description')} name="" id="" cols="30" rows="3"></textarea>
+                        <div className="description-section-edit-p all-left-section-edit-p">
+                            <div className="description-word-edit-p the-edit-labels">Description</div>
+                            <textarea className="description-input-edit-p input-section-edit-pin-123" value={this.state.pin.description} onChange={this.handelChange('description')} name="" id="" cols="30" rows="3"></textarea>
                             {/* <input type="text" className="edit-pin-input" value={this.state.pin.description} onChange={this.handelChange('description')}/> */}
                         </div>
 
-                        <div className="url-link-edit-p">
-                            <div className="url-website-edit-p-word">Website</div>
-                            <input type="text" className="edit-pin-input" value={this.state.pin.websiteURL} onChange={this.handelChange('websiteURL')}/>
+                        <div className="url-link-edit-p all-left-section-edit-p">
+                            <div className="url-website-edit-p-word the-edit-labels">Website</div>
+                            <input type="text" className="edit-pin-input input-section-edit-pin-123" value={this.state.pin.websiteURL} onChange={this.handelChange('websiteURL')}/>
                         </div>
 
-                        <div className="alt-txt-edit-p">
-                            <div className="alt-txt-word-edit-p">Alt Text</div>
+                        <div className="alt-txt-edit-p all-left-section-edit-p">
+                            <div className="alt-txt-word-edit-p the-edit-labels">Alt Text</div>
                             <div className="input-section-alt-txt-edit-p">
-                                <input className="edit-pin-input" type="text" value={this.state.pin.description2} onChange={this.handelChange('description2')}/>
+                                <input className="edit-pin-input input-section-edit-pin-123" type="text" value={this.state.pin.description2} onChange={this.handelChange('description2')}/>
                                 <div className="alt-txt-underinput-edit-p">
                                     This helps people using screen readers understand what your Pin is about.
                                 </div>
@@ -186,8 +208,11 @@ class EditPinShow extends React.Component {
 
                 <div className="bottom-section-edit-pin" >
                     <div className="footer-edit-pin-gray-button" onClick={this.deletePinFunction}>Delete</div>
-                    <div className="footer-edit-pin-gray-button">Cancel</div>
-                    <div className="save-btn-edit-pin">Save</div>
+                    
+                    <div className="right-side-footer-edit-p">
+                        <div className="footer-edit-pin-gray-button">Cancel</div>
+                        <div className="save-btn-edit-pin">Save</div>
+                    </div>
                 </div>
             </div>
         )
