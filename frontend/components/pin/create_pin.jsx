@@ -257,10 +257,14 @@ class CreatePin extends React.Component {
     // }
 
     render() {
-        if (!this.props.boards || this.props.boards === undefined || this.props.boards.length === 0){
+        debugger
+        if (!this.props.boards.boards || this.props.boards.boards === undefined || this.props.boards.boards.length === 0){
+        // if (!this.props.boards || this.props.boards === undefined || this.props.boards.length === 0){
             return null
         }
-        const boards = this.props.boards
+        
+        // const boards = this.props.boards
+        const boards = Object.values(this.props.boards.boards)
         const firstBoard = boards[0].title
 
 

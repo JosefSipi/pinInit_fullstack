@@ -12,7 +12,8 @@ const mSTP = state => {
     return {
         user: state.user,
         photo: state.photoUrl,
-        boards: Object.values(state.boards)
+        // boards: Object.values(state.boards)
+        boards: state.boards
     };
 };
 

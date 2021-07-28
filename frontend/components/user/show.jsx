@@ -46,14 +46,15 @@ class UserShow extends React.Component {
     componentDidMount(){
         this.props.fetchUser(this.props.match.params.id);
         this.props.fetchBoards(this.props.match.params.id);
+        // this.setState({boards: Object.values(this.props.boards.boards)});
     }
 
-    // componentDidUpdate(prevProps){
-    //   
-    //     if(prevProps.boards !== this.props.boards){
-    //         this.props.fetchBoards(this.props.match.params.id);
-    //     }
-    // }
+    componentDidUpdate(prevProps){
+      debugger
+        if(prevProps.boards !== this.props.boards){
+            this.setState({boards: Object.values(this.props.boards.boards)});
+        }
+    }
 
     toggleClass(e) {
         // e.preventDefault();
@@ -106,6 +107,12 @@ class UserShow extends React.Component {
     // };
 
     render() {
+
+        debugger
+
+        if (!this.state.boards){
+            return null
+        }
         // if (!this.props.boards){
         //     return null
         // }
@@ -120,7 +127,7 @@ class UserShow extends React.Component {
 
         // let lock = document.getElementById('outer-div-tile-edit');
 
-        let {boards} = this.props
+        let boards = Object.values(this.props.boards.boards)
         return(
             
             <div>

@@ -1,0 +1,115 @@
+.dd-list-edit-p{
+    position: relative;
+    width: 325px;
+    height: 443px;
+    overflow: scroll;
+    // display: flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.16);
+    z-index: 11;
+}
+
+
+.list-item-edit-p{
+    display: flex;
+    height: 30px;
+    width: 100%;
+    border: red 1px solid;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.board-label-edit-pin-dd{
+
+}
+
+.modal-background-edit-pin {
+   position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.454);
+    margin: 0;
+    .modal-child-edit-pin {
+        // background-color: rgb(255, 255, 255);
+        // display: flex;
+        // justify-content: center;
+        // align-items: flex-end;
+        // position: absolute;
+        // width: 540px;
+        // border-radius: 35px;
+background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    // max-width: 900px;
+    border-radius: 35px;
+    // max-height: 560px;
+    }
+
+}
+
+.outer-div-edit-pin-modalthing{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+}
+
+.top-section-edit-pin{
+    border: solid rgb(0, 233, 0) 2px;
+    height: 90px;
+    width: 100%;
+    align-self: flex-start;
+}
+
+.middle-section-edit-pin{
+    border: solid 2px red;
+    max-width: 690px;
+    max-height: 900px;
+    overflow: scroll;
+    display: flex;
+    flex-direction: row;
+}
+
+.bottom-section-edit-pin{
+    border: solid 2px blue;
+    height: 90px;
+    width: 100%;
+    align-self: flex-end;
+}
+
+.backdrop-div-edit-pin{
+    display: none;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.board-word-edit-p{
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    border: solid black 2px;
+    z-index: 200;
+}

@@ -20,6 +20,7 @@ class BoardShow extends React.Component {
     }
 
     componentDidUpdate(prevProps){
+        debugger
         if(prevProps.boardProfile !== this.props.boardProfile){
             this.props.fetchUser(this.props.boardProfile.owner_id)
         } 

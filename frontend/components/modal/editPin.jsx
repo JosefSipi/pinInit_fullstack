@@ -20,8 +20,8 @@ function Modal({ modal, closeModal}) {
     }
 
     return(
-        <div className="modal-background-create-b" onClick={closeModal}> 
-            <div className="modal-child-create-b" onClick={e => e.stopPropagation()}>
+        <div className="modal-background-edit-pin" onClick={closeModal}> 
+            <div className="modal-child-edit-pin" onClick={e => e.stopPropagation()}>
                 { renderModal }
             </div>
         </div>
