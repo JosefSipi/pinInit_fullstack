@@ -21,8 +21,14 @@ class UserShow extends React.Component {
         this.toggleClass = this.toggleClass.bind(this);
         this.toggleBox = this.toggleBox.bind(this);
         this.editPen = this.editPen.bind(this);
+        this.directToCreatePin = this.directToCreatePin.bind(this);
     }
 
+    directToCreatePin(e){
+        e.preventDefault();
+
+        this.props.history.push('/pin-create')
+    }
     // clickBoardDD(e){
     //     e.preventDefault();
     //     (e) => this.props.openModal('createBoard')
@@ -180,8 +186,8 @@ class UserShow extends React.Component {
                                 <div className="hidden-plus-opt-h" id="hidden-plus-opt">
                                     <p className="create-p-tag">Create</p>
                                     <ul className="list-plus-men">
-                                        <li>Pin</li>
-                                        <li onClick={() => this.props.openModal('createBoard')} >Board</li> 
+                                        <li className="pin-link-bton-mid-bar" onClick={this.directToCreatePin}>Pin</li>
+                                        <li className="pin-link-bton-mid-bar" onClick={() => this.props.openModal('createBoard')} >Board</li> 
                                     </ul>
 
                                 </div>

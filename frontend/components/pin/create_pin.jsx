@@ -37,7 +37,6 @@ class CreatePin extends React.Component {
     }
 
     toggleDesTxt(e){
-        debugger
         e.preventDefault();
         let toggleTxt = document.getElementById('txt-create-p-fifty');
         if(toggleTxt.style.display === "flex"){

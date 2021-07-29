@@ -20,7 +20,7 @@ class EditPinShow extends React.Component {
     }
 
     handeSave(e){
-        debugger
+        
         let theboardId = this.state.pin.board_id
         this.props.updatePin(this.state.pin).then(
 
@@ -132,7 +132,7 @@ class EditPinShow extends React.Component {
         if(!this.state.pin || !this.state.boards){
             return null
         }
-        debugger
+        
 
         const boards = Object.values(this.props.boards.boards)
         const stateBoard = boards.filter(board => board.id === Number(this.state.pin.board_id))
