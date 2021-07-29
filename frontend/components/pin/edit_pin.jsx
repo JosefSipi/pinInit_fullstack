@@ -19,6 +19,11 @@ class EditPinShow extends React.Component {
 
     }
 
+    handeSave(){
+
+    }
+
+    
     testingClick(e){
         e.preventDefault();
         debugger
@@ -126,7 +131,7 @@ class EditPinShow extends React.Component {
         // const stateBoard = boards.filter(board => board.id === this.state.pin.board_id)
         return(
             <div className="outer-div-edit-pin-modalthing">
-                <div className="top-section-edit-pin">Top Section</div>
+                <div className="top-section-edit-pin">Edit this Pin</div>
 
                 <div className="middle-section-edit-pin">
                     <div className="left-section-edit-p">
@@ -201,7 +206,7 @@ class EditPinShow extends React.Component {
                     
 
                     <div className="right-section-edit-p">
-                        <img className="pin-photo" src={this.state.pin.photoUrl} alt="pin photo" />
+                        <img className="pin-photo-edit-pin" src={this.state.pin.photoUrl} alt="pin photo" />
                     </div>
                     
                 </div>
@@ -210,7 +215,7 @@ class EditPinShow extends React.Component {
                     <div className="footer-edit-pin-gray-button" onClick={this.deletePinFunction}>Delete</div>
                     
                     <div className="right-side-footer-edit-p">
-                        <div className="footer-edit-pin-gray-button">Cancel</div>
+                        <div className="footer-edit-pin-gray-button" onClick={this.props.closeModal}>Cancel</div>
                         <div className="save-btn-edit-pin">Save</div>
                     </div>
                 </div>
