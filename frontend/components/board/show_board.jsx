@@ -4,7 +4,25 @@ import { Link } from 'react-router-dom';
 class BoardShow extends React.Component {
     constructor(props){
         super(props);
+
         this.modalFunction = this.modalFunction.bind(this);
+        this.photoLoaded = this.photoLoaded.bind(this);
+    }
+
+    photoLoaded(e){
+        e.preventDefault();
+        debugger
+        let imageHeight = e.currentTarget.children[1].clientHeight;
+        let spanVal = Math.trunc((imageHeight/10) + 7)
+        debugger
+
+        let card = document.getElementById(`${e.currentTarget.id}`)
+
+        card.style.gridRowEnd = `span ${spanVal}`
+        
+        debugger
+        e.currentTarget.style.visibility = "";
+
     }
 
     modalFunction(e){
@@ -16,7 +34,9 @@ class BoardShow extends React.Component {
     componentDidMount(){
         this.props.fetchBoard(Number(this.props.match.params.id))
         this.props.fetchPins(Number(this.props.match.params.id))
+
     }
+
 
     componentDidUpdate(prevProps){
         if(prevProps.boardProfile !== this.props.boardProfile){
@@ -37,6 +57,10 @@ class BoardShow extends React.Component {
         
         // const photoUrl = this.props.pins.pin.pins.photoUrl
         const theHeight = 45;
+
+
+
+
         return (
 
         <div>
@@ -78,21 +102,22 @@ class BoardShow extends React.Component {
                     <div className="pin_container" id="pin_container">
                         {pins.map(pin => 
 
-                            <div className="card" style={{gridRowEnd: `span ${((Math.trunc((pin.heightof / 100) * 45)) )}` }} key={pin.id}>
+                            <div onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id}>
 
-                                {/* <div className="over-lay">
-                                </div> */}
+                                
+                                <div className="outside-edit-pin-board-show">
+                                    <div id={pin.id} className="edit-pen-div-show-board" onClick={this.modalFunction}>
+                                    <img src={window.editPenURL} alt="edit pen" />
+                                    </div>
 
-                                <div id={pin.id} className="edit-pen-div-show-board" onClick={this.modalFunction}>
-                                   <img src={window.editPenURL} alt="edit pen" />
                                 </div>
                                 
-                                <img className="pin-photo" src={pin.photoUrl} alt="pin photo"/>
+                                <img className="pin-photo" src={pin.photoUrl} alt="pin photo" />
                                 <div className="card-title-pin">{pin.title}</div>
                             </div>
 
+
                         )}
-                        
                     </div>
                 </div>
         </div>
