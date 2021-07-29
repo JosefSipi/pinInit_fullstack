@@ -11,8 +11,8 @@ class CreatePin extends React.Component {
                 creator_id: window.currentUser.id,
                 title: "",
                 description: "",
-                description2: null,
-                websiteURL: null,
+                description2: "",
+                websiteURL: "",
                 board_id: null,
                 photo: null,
                 heightof: null,
@@ -32,13 +32,26 @@ class CreatePin extends React.Component {
         this.moreClicked = this.moreClicked.bind(this);
         this.backdropClick = this.backdropClick.bind(this);
         this.supTextShow = this.supTextShow.bind(this);
+        this.toggleDesTxt = this.toggleDesTxt.bind(this);
         // this.togleClass = this.togleClass.bind(this);
     }
 
+    toggleDesTxt(e){
+        debugger
+        e.preventDefault();
+        let toggleTxt = document.getElementById('txt-create-p-fifty');
+        if(toggleTxt.style.display === "flex"){
+            toggleTxt.style.display = "none"
+        } else {
+            toggleTxt.style.display = "flex"
+
+        }
+    }
 
     handelSubmit(e) {
         e.preventDefault();
-        debugger
+        let theBoardDest = Number(this.state.pin.board_id);
+        
         let thePinHeightFinder = document.getElementById('pin_image-create-pin-height');
         let imageHeightFor43 = document.getElementById('preview-image-456');
         if(imageHeightFor43.offsetHeight >= thePinHeightFinder.offsetHeight){
@@ -47,7 +60,7 @@ class CreatePin extends React.Component {
             var heightOfValue = ((imageHeightFor43 / thePinHeightFinder) * 100)
         }
 
-        debugger
+        
         const formData = new FormData();
         formData.append('pin[photo]', this.state.pin.photo);
         formData.append('pin[creator_id]', this.state.pin.creator_id);
@@ -61,7 +74,7 @@ class CreatePin extends React.Component {
             .then(() => {
                 // direct to pin show page
                 console.log('should now direct to pin show page'),
-               this.props.history.push(`/profile/${window.currentUser.id}`)
+               this.props.history.push(`/board/${theBoardDest}`)
             })
     }
 
@@ -93,13 +106,14 @@ class CreatePin extends React.Component {
         e.preventDefault();
 
         let backdrop = document.getElementById('backdrop-div-create-pin')
+
         if(backdrop.style.display === "none"){
             backdrop.style.display = "block"
         } else {
             backdrop.style.display = "none"
         }
         
-        let ul = document.getElementById('middle-box-thing')
+        let ul = document.getElementById('board-dropdown-create-pin')
         if (ul.style.display === "block") {
             ul.style.display = "none"
             backdrop.style.display = "none"
@@ -125,7 +139,7 @@ class CreatePin extends React.Component {
         this.setState({ pin: prevState })
 
 
-        let ul = document.getElementById('middle-box-thing')
+        let ul = document.getElementById('board-dropdown-create-pin')
         ul.style.display = "none"
 
         let displayTitle = document.getElementById('board-dd-create-pin');
@@ -185,7 +199,7 @@ class CreatePin extends React.Component {
 
        let uploadImageStateEl = document.getElementById('modals_pin-display')
        uploadImageStateEl.style.display = 'flex';
-       debugger
+       
     }
 
     deleteDropDownClick(e){
@@ -225,7 +239,7 @@ class CreatePin extends React.Component {
         }
 
 
-        let ul = document.getElementById('middle-box-thing')
+        let ul = document.getElementById('board-dropdown-create-pin')
         if (ul.style.display === "block") {
             ul.style.display = "none"
         } else {
@@ -257,7 +271,7 @@ class CreatePin extends React.Component {
     // }
 
     render() {
-        debugger
+        
         if (!this.props.boards.boards || this.props.boards.boards === undefined || this.props.boards.boards.length === 0){
         // if (!this.props.boards || this.props.boards === undefined || this.props.boards.length === 0){
             return null
@@ -282,7 +296,7 @@ class CreatePin extends React.Component {
 
             <div className="delete-dropdown-menue" id="delete-dropdown-menue-id">
                 <div onClick={this.deleteDropDownClick}>Delete</div>
-                <div >Duplicate</div>
+                {/* <div >Duplicate</div> */}
             </div>
 
                 <div className="primary-createpin-card">
@@ -305,7 +319,7 @@ class CreatePin extends React.Component {
 
                             <div className="save-button-create-pin" onClick={this.handelSubmit}>Save</div>
                         
-                            <div className="middle-box-thing" id="middle-box-thing">
+                            {/* <div className="middle-box-thing" id="middle-box-thing"> */}
                                                 <div className="board-dropdown-create-pin" id="board-dropdown-create-pin">
                                                     <ul className="board-dropdown-ol" id="board-dropdown-ol">
                                                     {boards.map(board => 
@@ -322,7 +336,7 @@ class CreatePin extends React.Component {
                                                     )}
                                                     </ul>
                                                 </div>
-                            </div>
+                            {/* </div> */}
                         </div>
 
                             {/* ------------------ drop down part --------------- */}
@@ -341,7 +355,7 @@ class CreatePin extends React.Component {
                                     <div className="doted-border">
                                         <img src={window.upArrowURL} alt="up Arrow" id="up-arrow-icon" />
 
-                                        <div className="drag-class-name">Drag and drop or click to upload</div>
+                                        <div className="drag-class-name">Click to upload</div>
                                         <div className="second-blerb-pin">Recomendation: Use high-quality .jpg files less than 20MB</div>
                                     </div>
                                 </div>
@@ -378,24 +392,24 @@ class CreatePin extends React.Component {
 
                             </div>
 
-                            <textarea id="text-area-pin-create" className="text-area-pin-create" onChange={this.inputChange('description')} name="" cols="40" rows="1" placeholder="Tell everyone what your Pin is about">
+                            <textarea id="text-area-pin-create" className="text-area-pin-create" onChange={this.inputChange('description')} name="" cols="40" rows="1" placeholder="Tell everyone what your Pin is about" onFocus={this.toggleDesTxt} onBlur={this.toggleDesTxt}>
                             </textarea>
-                            <div>
-                                <div>People will usually see the first 50 characters when they click on your Pin </div>
-                                <div>{description1}</div>
+                            <div className="txt-create-p-fifty" id="txt-create-p-fifty">
+                                <div className="char-fifty-txt-create-p">People will usually see the first 50 characters when they click on your Pin </div>
+                                <div className="description-char-count">{description1}</div>
                             </div>
 
-                            <textarea onChange={this.inputChange('description2')} name="" id="alt-text-area" cols="40" rows="1" placeholder="Explain what people can see in the Pin" style={{display: 'none'}}>
+                            <textarea className="text-area-pin-create txt-area-create-p-moveup" onChange={this.inputChange('description2')} name="" id="alt-text-area" cols="40" rows="1" placeholder="Explain what people can see in the Pin" style={{display: 'none'}}>
                             </textarea>
-
+                            
                             {/* <div>
                                 <div>This text will be read aloud by screen readers</div>
                                 <div>{description2}</div>
                             </div> */}
 
-                            <div  onClick={this.handelAddText} id="alt-text-area-button">Add alt text</div>
+                            <div className="footer-create-pin-gray-button" onClick={this.handelAddText} id="alt-text-area-button">Add alt text</div>
 
-                            <input onChange={this.inputChange('websiteURL')} type="text" placeholder="Add a destination link"/>
+                            <input className="text-area-pin-create last-in-556" onChange={this.inputChange('websiteURL')} type="text" placeholder="Add a destination link"/>
                         </div>
                     </div>
 

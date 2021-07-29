@@ -6,7 +6,6 @@ import { fetchBoards } from '../../actions/board_actions';
 import EditPinShow from './edit_pin';
 
 const mSTP = (state) => {
-    debugger
     return{
         pin: state.pin,
         boards: state.boards

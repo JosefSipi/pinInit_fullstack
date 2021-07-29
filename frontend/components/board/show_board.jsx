@@ -9,7 +9,6 @@ class BoardShow extends React.Component {
 
     modalFunction(e){
         e.preventDefault();
-        debugger
         window.editPin = e.currentTarget.id
         this.props.openModal('editPin')
     }
@@ -20,7 +19,6 @@ class BoardShow extends React.Component {
     }
 
     componentDidUpdate(prevProps){
-        debugger
         if(prevProps.boardProfile !== this.props.boardProfile){
             this.props.fetchUser(this.props.boardProfile.owner_id)
         } 
@@ -38,9 +36,7 @@ class BoardShow extends React.Component {
         const pins = Object.values(this.props.pins.pins)
         
         // const photoUrl = this.props.pins.pin.pins.photoUrl
-        // debugger
         const theHeight = 45;
-debugger
         return (
 
         <div>

@@ -1,6 +1,6 @@
 
 export const fetchPin = (pinId) => {
-    debugger
+
     return $.ajax({
         method: 'GET',
         url: `/api/pins/${pinId}`
@@ -24,17 +24,17 @@ export const fetchPins = boardId => {
     })
 }
 
-export const updatePin = pinId => {
-    debugger
+export const updatePin = (pin) => {
+
     return $.ajax({
         method: 'PATCH',
-        url: `api/pins/${pinId}`,
+        url: `api/pins/${pin.id}`,
         data: {pin}
     });
 };
 
 export const deletePin = pinId => {
-    debugger
+
     return $.ajax({
         method: 'DELETE',
         url: `api/pins/${pinId}`

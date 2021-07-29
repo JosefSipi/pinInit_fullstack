@@ -6,7 +6,6 @@ import { withRouter } from 'react-router';
 import { fetchBoards } from '../../actions/board_actions';
 
 const mSTP = state => {
-    debugger
     return {
         user: state.user,
         // boards: Object.values(state.boards)

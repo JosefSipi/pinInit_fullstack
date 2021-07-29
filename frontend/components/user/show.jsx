@@ -50,7 +50,6 @@ class UserShow extends React.Component {
     }
 
     componentDidUpdate(prevProps){
-      debugger
         if(prevProps.boards !== this.props.boards){
             this.setState({boards: Object.values(this.props.boards.boards)});
         }
@@ -107,8 +106,6 @@ class UserShow extends React.Component {
     // };
 
     render() {
-
-        debugger
 
         if (!this.state.boards){
             return null

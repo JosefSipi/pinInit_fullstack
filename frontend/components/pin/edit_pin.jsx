@@ -3,7 +3,6 @@ import React from 'react';
 class EditPinShow extends React.Component {
     constructor(props){
         super(props);
-        debugger
 
         this.state= {
             pin: this.props.pin.pin,
@@ -16,19 +15,28 @@ class EditPinShow extends React.Component {
         // this.showHideDD = this.showHideDD.bind(this);
         this.backdropClick = this.backdropClick.bind(this);
         this.testingClick = this.testingClick.bind(this);
+        this.handeSave = this.handeSave.bind(this);
 
     }
 
-    handeSave(){
+    handeSave(e){
+        debugger
+        let theboardId = this.state.pin.board_id
+        this.props.updatePin(this.state.pin).then(
+
+            this.props.closeModal(),
+            this.props.history.push(`/board/${theboardId}`),
+            window.location.reload()
+        )
 
     }
 
-    
+
     testingClick(e){
         e.preventDefault();
-        debugger
+
         let backdrop = document.getElementById('backdrop-div-edit-pin');
-        let pinDD = document.getElementById('dd-list-edit-p');
+        let pinDD = document.getElementById('outer-of-edit-dropdown');
         if(pinDD.style.display === "" || pinDD.style.display === 'none'){
             backdrop.style.display = "block"
             pinDD.style.display = 'flex'
@@ -40,7 +48,7 @@ class EditPinShow extends React.Component {
     backdropClick(e){
         e.preventDefault();
         let backdrop = document.getElementById('backdrop-div-edit-pin');
-        let pinDD = document.getElementById('dd-list-edit-p');
+        let pinDD = document.getElementById('outer-of-edit-dropdown');
         // if(pinDD.style.display === "none"){
         //     backdrop.style.display = "none"
         // } else {
@@ -50,7 +58,6 @@ class EditPinShow extends React.Component {
     }
 
     // showHideDD(e){
-    //     debugger
     //     e.preventDefault();
     //     let pinDD = document.getElementById('dd-list-edit-p');
     //     let backdrop = document.getElementById('backdrop-div-edit-pin');
@@ -69,7 +76,6 @@ class EditPinShow extends React.Component {
         prevState["board_id"] = e.currentTarget.id
         this.setState({pin: prevState})
         console.log(`handel board at ${e.currentTarget.id}`)
-        // debugger
         // // this.setState({titleofBoard: title})
 
         // return(e) => {
@@ -81,7 +87,7 @@ class EditPinShow extends React.Component {
     }
 
     componentDidMount(){
-        debugger
+
         console.log('pin edit modal component did mount')
         this.props.fetchPin(window.editPin)
 
@@ -100,18 +106,19 @@ class EditPinShow extends React.Component {
     deletePinFunction(e){
         this.props.deletePin(Number(window.editPin)).then(
             this.props.closeModal(),
-            this.props.history.push(`/profile/${window.currentUser.id}`)
+            window.location.reload(),
+            this.props.history.push(`/board/${this.state.pin.board_id}`)
         )
     }
 
     handelChange(field){
-        debugger
+
         let prevState = this.state.pin
         return (e) => {
-            debugger
+
             if(field === "boardListTitle"){
                 this.setState({titleofBoard: e.currentTarget.value})
-            }else {
+            } else {
                 prevState[field] = e.currentTarget.value
                 console.log(prevState[field])
                 this.setState({pin: prevState})
@@ -128,7 +135,7 @@ class EditPinShow extends React.Component {
         debugger
 
         const boards = Object.values(this.props.boards.boards)
-        // const stateBoard = boards.filter(board => board.id === this.state.pin.board_id)
+        const stateBoard = boards.filter(board => board.id === Number(this.state.pin.board_id))
         return(
             <div className="outer-div-edit-pin-modalthing">
                 <div className="top-section-edit-pin">Edit this Pin</div>
@@ -141,18 +148,20 @@ class EditPinShow extends React.Component {
                             <div className="board-word-edit-p the-edit-labels" >Board</div>
                             <div className="backdrop-div-edit-pin" onClick={this.backdropClick} id="backdrop-div-edit-pin"></div>
                             <div className="drop-down-display-edit-pin" onClick={this.testingClick}>
+                                <div className="outer-of-edit-dropdown" id="outer-of-edit-dropdown">
 
-                                <div id="dd-list-edit-p" className="dd-list-edit-p">{boards.map(boardList => 
-                                        <div key={boardList.id} className="list-item-edit-p" value={boardList.title} id={boardList.id} onClick={this.handelBoardSelect, this.handelChange('boardListTitle')} >
-                                            <div>{boardList.title}</div>
-                                            <div className="logo-on-logged-in-header-board-lock-pin" style={boardList.is_private ? {display: "flex" } : { display: "none" }}>
-                                                <img id="logo-lock-icon-pin-page" src={window.lockURL} alt="lock-icon" />
+                                    <div id="dd-list-edit-p" className="dd-list-edit-p">{boards.map(boardList => 
+                                            <div key={boardList.id} className="list-item-edit-p" value={boardList.title} id={boardList.id} onClick={this.handelBoardSelect} >
+                                                <div>{boardList.title}</div>
+                                                <div className="logo-on-logged-in-header-board-lock-pin logo-mod-edit-pin" style={boardList.is_private ? {display: "flex" } : { display: "none" }}>
+                                                    <img id="logo-lock-icon-pin-page" src={window.lockURL} alt="lock-icon" />
+                                                </div>
                                             </div>
-                                        </div>
-                                )}</div>
+                                    )}</div>
+                                </div>
 
                                 <div className="board-label-edit-pin-dd">
-                                    Board Title
+                                    {stateBoard[0].title}
                                 </div>
 
                                 <img src={window.downArrowURL} alt="down arrow icon" id="down-arrow-image-edit-pin" />
@@ -216,7 +225,7 @@ class EditPinShow extends React.Component {
                     
                     <div className="right-side-footer-edit-p">
                         <div className="footer-edit-pin-gray-button" onClick={this.props.closeModal}>Cancel</div>
-                        <div className="save-btn-edit-pin">Save</div>
+                        <div className="save-btn-edit-pin" onClick={this.handeSave}>Save</div>
                     </div>
                 </div>
             </div>

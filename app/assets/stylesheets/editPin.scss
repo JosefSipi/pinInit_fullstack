@@ -1,16 +1,13 @@
 .dd-list-edit-p{
     position: absolute;
-    top: 150px;
-    width: 325px;
-    height: 443px;
-    overflow: scroll;
-    // display: flex;
-    display: none;
+    top: 0px;
+    width: 100%;
+    display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: white;
-    border-radius: 16px;
+    border-radius: 8px;
     box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.16);
     z-index: 199;
 }
@@ -18,15 +15,42 @@
 
 .list-item-edit-p{
     display: flex;
-    height: 30px;
+    height: 34px;
     width: 100%;
-    border: red 1px solid;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-weight: 600;
+    border-radius: 8px;
+    /* background-color: #eaeaea; */
+    padding-top: 8px;
+    padding-bottom: 8px;
     &:hover{
         cursor: pointer;
+        background-color: rgb(242, 242, 242);
     }
+}
+
+.outer-of-edit-dropdown{
+    width: 363px;
+    height: 240px;
+    max-height: 343px;
+    // display: flex;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow: scroll;
+    position: absolute;
+    top: 153px;
+    left: 175px;
+    z-index: 210;
+    border-radius: 8px;
+    border: #b7b7b7 1px solid;
+}
+.logo-mod-edit-pin{
+    margin-right: -9px;
 }
 
 .board-label-edit-pin-dd{
@@ -117,7 +141,6 @@ background-color: white;
     left: 0;
     top: 0;
     z-index: 150;
-    background-color: rgba(255, 0, 0, 0.303);
 }
 
 .board-word-edit-p{

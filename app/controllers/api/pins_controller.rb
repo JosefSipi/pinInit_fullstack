@@ -48,8 +48,6 @@ class Api::PinsController < ApplicationController
     end
 
     def update
-
-        debugger
         
         @pin = Pin.find(params[:id])
 
