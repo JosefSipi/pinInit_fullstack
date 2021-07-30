@@ -7,7 +7,46 @@ class BoardShow extends React.Component {
 
         this.modalFunction = this.modalFunction.bind(this);
         this.photoLoaded = this.photoLoaded.bind(this);
+        this.isProfileUser = this.isProfileUser.bind(this);
+        // this.moreClickedDD = this.moreClickedDD.bind(this);
+        // this.backdropClick = this.backdropClick.bind(this);
     }
+
+    // moreClickedDD(e){
+    //     e.preventDefault();
+    //     let dropDown = document.getElementById("delete-dropdown-menue-id");
+    //     let backdrop = document.getElementById('backdrop-div-create-pin')
+    //     if(dropDown.style.display === "none"){
+    //         dropDown.style.display = "flex"
+    //         backdrop.style.display = "block"
+    //     } else {
+    //         dropDown.style.display = "none"
+    //         backdrop.style.display = "none"
+    //     }
+    // }
+    // backdropClick(e){
+    //     e.preventDefault();
+
+    //    let dropDown = document.getElementById("delete-dropdown-menue-id");
+    //     let backdrop = document.getElementById('backdrop-div-create-pin')
+    //     if(dropDown.style.display === "none"){
+    //         // dropDown.style.display = "flex"
+    //         // backdrop.style.display = "block"
+
+    //         backdrop.style.display = "none"
+    //     } else {
+    //         dropDown.style.display = "none"
+    //         backdrop.style.display = "none"
+    //     }
+
+
+    //     let ul = document.getElementById('board-dropdown-create-pin')
+    //     if (ul.style.display === "block") {
+    //         ul.style.display = "none"
+    //     } else {
+    //         // ul.style.display = "block"
+    //     }
+    // }
 
     photoLoaded(e){
         e.preventDefault();
@@ -44,6 +83,82 @@ class BoardShow extends React.Component {
         } 
     }
 
+    isProfileUser(){
+            debugger
+        if(window.currentUser.id === this.props.boardProfile.owner_id){
+                return (
+            <div className="top-section">
+                {/* <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div> */}
+                {/* <div className="delete-dropdown-menue" id="delete-dropdown-menue-id">
+                    <div onClick={}>Edit</div>
+                </div> */}
+
+                <div>
+
+                    <h1>{this.props.boardProfile.title}</h1>
+
+                    <div className="delete-duplicate-button-dd" onClick={this.moreClickedDD}>
+                        <img src={window.moreURL} alt="more icon" id="more-logo-icon"/>
+                    </div>
+                </div>
+
+                <Link to={`/profile/${this.props.userProfile.id}`}>
+                    <div className="profile-div-small-photo-div-123">
+                        <img src={this.props.userProfile.photoUrl} alt="profile photo" />
+                        {/* <img className="profile-photo-header-bar" src={window.currentUser.profile_pic} alt="profile photo" /> */}
+                    </div>
+                </Link>
+
+            <div>
+                <h2>{this.props.boardProfile.description} </h2>
+                <div className="is-private-board-show" style={this.props.boardProfile.is_private ? {display: "block"} : {display: "none"}} ><img src={window.smallLockURL} alt="lock" />secret board</div>
+            </div>
+
+            {/* <p>45 followers</p> */}
+
+            {/* <button>Share</button> */}
+
+            </div>
+
+        )
+
+
+        } else {
+
+            return (
+                <div className="top-section">
+                        <h1>{this.props.boardProfile.title}</h1>
+
+                        <Link to={`/profile/${this.props.userProfile.id}`}>
+                            <div className="logo-on-logged-in-header">
+
+                                <div className="profile-div-small">
+
+                                    <img className="profile-photo-icon" src={this.props.userProfile.photoUrl} alt="profile photo" />
+                                    {/* <img className="profile-photo-header-bar" src={window.currentUser.profile_pic} alt="profile photo" /> */}
+                                </div>
+
+                            </div>
+                        </Link>
+
+                    <div>
+                        <Link to={`/profile/${this.props.userProfile.id}`}> 
+                            <p>{this.props.userProfile.f_name} {this.props.userProfile.l_name}</p>
+                        </Link> 
+
+                        <h2>· {this.props.boardProfile.description} </h2>
+                    </div>
+
+                    {/* <p>45 followers</p> */}
+
+                    {/* <button>Share</button> */}
+
+                </div>
+
+            )
+        }
+    }
+
 
     render(){
         
@@ -66,35 +181,8 @@ class BoardShow extends React.Component {
         <div>
 
             <div className="boards-grid-area-for-pins">
-                
-                <div className="top-section">
-                    <h1>{this.props.boardProfile.title}</h1>
 
-                    <Link to={`/profile/${this.props.userProfile.id}`}>
-                        <div className="logo-on-logged-in-header">
-
-                            <div className="profile-div-small">
-
-                                <img className="profile-photo-icon" src={this.props.userProfile.photoUrl} alt="profile photo" />
-                                {/* <img className="profile-photo-header-bar" src={window.currentUser.profile_pic} alt="profile photo" /> */}
-                            </div>
-
-                        </div>
-                    </Link>
-
-                <div>
-                    <Link to={`/profile/${this.props.userProfile.id}`}> 
-                        <p>{this.props.userProfile.f_name} {this.props.userProfile.l_name}</p>
-                    </Link> 
-
-                    <h2>· {this.props.boardProfile.description} </h2>
-                </div>
-
-                {/* <p>45 followers</p> */}
-
-                {/* <button>Share</button> */}
-
-                </div>
+                { this.isProfileUser()}
 
             </div>
 
