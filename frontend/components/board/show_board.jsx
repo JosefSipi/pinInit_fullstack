@@ -8,45 +8,65 @@ class BoardShow extends React.Component {
         this.modalFunction = this.modalFunction.bind(this);
         this.photoLoaded = this.photoLoaded.bind(this);
         this.isProfileUser = this.isProfileUser.bind(this);
-        // this.moreClickedDD = this.moreClickedDD.bind(this);
-        // this.backdropClick = this.backdropClick.bind(this);
+        this.moreClickedDD = this.moreClickedDD.bind(this);
+        this.backdropClick = this.backdropClick.bind(this);
+        this.editPen = this.editPen.bind(this);
     }
 
-    // moreClickedDD(e){
-    //     e.preventDefault();
-    //     let dropDown = document.getElementById("delete-dropdown-menue-id");
-    //     let backdrop = document.getElementById('backdrop-div-create-pin')
-    //     if(dropDown.style.display === "none"){
-    //         dropDown.style.display = "flex"
-    //         backdrop.style.display = "block"
-    //     } else {
-    //         dropDown.style.display = "none"
-    //         backdrop.style.display = "none"
-    //     }
-    // }
-    // backdropClick(e){
-    //     e.preventDefault();
+    editPen(e){
+        e.preventDefault();
+        window.editingBoard = e.currentTarget.id
+        this.props.openModal('editBoard');
 
-    //    let dropDown = document.getElementById("delete-dropdown-menue-id");
-    //     let backdrop = document.getElementById('backdrop-div-create-pin')
-    //     if(dropDown.style.display === "none"){
-    //         // dropDown.style.display = "flex"
-    //         // backdrop.style.display = "block"
+        
+        let dropDown = document.getElementById("edit-dropdown-menue-123-id");
+        let backdrop = document.getElementById('backdrop-div-create-pin')
+        if(dropDown.style.display === "none"){
+            dropDown.style.display = "none"
+            // backdrop.style.display = "block"
 
-    //         backdrop.style.display = "none"
-    //     } else {
-    //         dropDown.style.display = "none"
-    //         backdrop.style.display = "none"
-    //     }
+            backdrop.style.display = "none"
+        } else {
+            dropDown.style.display = "none"
+            backdrop.style.display = "none"
+        }
+    }
+
+    moreClickedDD(e){
+        e.preventDefault();
+        let dropDown = document.getElementById("edit-dropdown-menue-123-id");
+        let backdrop = document.getElementById('backdrop-div-create-pin')
+        if(dropDown.style.display === "none" || dropDown.style.display === "" ){
+            dropDown.style.display = "flex"
+            backdrop.style.display = "block"
+        } else {
+            dropDown.style.display = "none"
+            backdrop.style.display = "none"
+        }
+    }
+    backdropClick(e){
+        e.preventDefault();
+
+       let dropDown = document.getElementById("edit-dropdown-menue-123-id");
+        let backdrop = document.getElementById('backdrop-div-create-pin')
+        if(dropDown.style.display === "none"){
+            dropDown.style.display = "none"
+            // backdrop.style.display = "block"
+
+            backdrop.style.display = "none"
+        } else {
+            dropDown.style.display = "none"
+            backdrop.style.display = "none"
+        }
 
 
-    //     let ul = document.getElementById('board-dropdown-create-pin')
-    //     if (ul.style.display === "block") {
-    //         ul.style.display = "none"
-    //     } else {
-    //         // ul.style.display = "block"
-    //     }
-    // }
+        // let ul = document.getElementById('board-dropdown-create-pin')
+        // if (ul.style.display === "block") {
+        //     ul.style.display = "none"
+        // } else {
+        //     // ul.style.display = "block"
+        // }
+    }
 
     photoLoaded(e){
         e.preventDefault();
@@ -88,18 +108,22 @@ class BoardShow extends React.Component {
         if(window.currentUser.id === this.props.boardProfile.owner_id){
                 return (
             <div className="top-section">
-                {/* <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div> */}
-                {/* <div className="delete-dropdown-menue" id="delete-dropdown-menue-id">
-                    <div onClick={}>Edit</div>
-                </div> */}
+                <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
 
                 <div>
 
-                    <h1>{this.props.boardProfile.title}</h1>
-
-                    <div className="delete-duplicate-button-dd" onClick={this.moreClickedDD}>
-                        <img src={window.moreURL} alt="more icon" id="more-logo-icon"/>
+                    <h1 className="header-title-boards-show-123">{this.props.boardProfile.title}<div className="board-duplicate-button-dd" onClick={this.moreClickedDD}>
+                        <img className="boards-123-1" src={window.dotsBlackURL} alt="more icon"/>
                     </div>
+                        <div className="div-holder-helper-123">
+                            <div className="edit-dropdown-menue-123" id="edit-dropdown-menue-123-id">
+                                <h1 className="title-dd">Board options</h1>
+                                <div onClick={this.editPen} id={this.props.boardProfile.id}>Edit</div>
+                            </div>
+                        </div>
+                    </h1>
+
+                    
                 </div>
 
                 <Link to={`/profile/${this.props.userProfile.id}`}>

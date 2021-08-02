@@ -1,5 +1,5 @@
 .boards-grid-area-for-pins {
-        border-color: red solid 3px;
+    border-color: red solid 3px;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -7,5 +7,6 @@
     margin-left: 80px;
     margin-right: 80px;
     flex-grow: 0;
-    overflow-y: scroll;
+    // overflow-y: scroll;
+    height: fit-content;
 }

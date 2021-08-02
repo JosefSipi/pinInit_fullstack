@@ -52,8 +52,6 @@ class EditBoardShow extends React.Component {
         if (!this.state.board){
             return null
         }
-        console.log(this.state.board.title)
-        console.log(this.state.board.description)
 
 
         // if (this.state.board.description === null || this.state.board.description.trim().length > 0){
@@ -62,41 +60,53 @@ class EditBoardShow extends React.Component {
         //     this.description = "What's your board about?"
         // }
         return(
-            <div>
-                <p>Edit your board</p>
+            <div className="div-prim-edit-board">
+                <div className="top-div-edit-board-modal">
+                    <div className="filler"></div>
+                    <p>Edit your board</p>   
+                   
+                    <div className="X-icon-div">
+                        <img className="x-on-edit-board" src={window.theXURL} alt="X icon" />
+                    </div>
+                        
+                </div>
 
-                <form action="" onSubmit={this.handelSubmit}>
-                    <p>Name</p>
-                    <input type="text" value={this.state.board.title} onChange={this.handelChange('title')}/>
 
-                    <p>Description</p>
-                    <textarea onChange={this.handelChange('description')} name="" id="" cols="30" rows="10" >
+            <div className="middle-section-edit-from-board">
+                <form className="editng-board-from-board" id="the-button-edinging-board-onboard" onSubmit={this.handelSubmit}>
+                    <p className="name-div-editing-1">Name</p>
+                    <input className="edit-pin-input input-section-edit-pin-123" type="text" value={this.state.board.title} onChange={this.handelChange('title')}/>
+
+                    <p className="name-div-editing-1">Description</p>
+                    <textarea className="description-input-edit-p input-section-edit-pin-123" onChange={this.handelChange('description')} name="" id=""  >
                         {this.state.board.description}
                     </textarea>
 
-                    <p>Settings</p>
+                    <p className="name-div-editing-1" >Settings</p>
                         
-                    <input checked={this.state.board.is_private === true ? true : false} type="checkbox" name="example name" id="private-checkbox" value={!this.state.board.is_private} onChange={this.handelChange('is_private')}/> 
-                    <label for="private-checkbox">
-                        <p>Keep this board secret</p>
-                        <div>So only you and collaborators can see it.</div>
+                    <label className="check-box-label-edingboard" htmlFor="private-checkbox">
+                        <input className="the-check-box-edingingboardonboard" checked={this.state.board.is_private === true ? true : false} type="checkbox" name="example name" id="private-checkbox" value={!this.state.board.is_private} onChange={this.handelChange('is_private')}/> 
+                        <p classNaem="theediningkeep-board">Keep this board secret</p>
                     </label>
+                        <div className="div-word-1">So only you and collaborators can see it.</div>
 
-
-                    <div>
-                        <button>Done</button>
-                    </div>
                 </form>
 
-                <div>
-                    <p>Action</p>
+                <div className="edit-board-bottom-div">
+                    <p className="name-div-editing-1" >Action</p>
                     <div className="delete-action-div" onClick={this.handelDelete}>
-                        <h2>Delete board</h2>
-                        <h3>Delete this board and all its Pins forever.
-                            You can't undo this!</h3>
+                        <h2 className="div-word-2">Delete board</h2>
+                        <div className="div-word-3" >Delete this board and all its Pins forever. <br />
+                            You can't undo this!</div>
                     </div>
 
                 </div>
+
+            </div>
+
+            <div className="bottom-div-edit-board-on-board">
+                    <div className="save-btn-edit-pin" onClick={this.handelSubmit} >Done</div>
+            </div>
 
             </div>
 
