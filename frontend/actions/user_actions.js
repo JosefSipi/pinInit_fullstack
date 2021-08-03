@@ -2,6 +2,7 @@ import * as APIUtil from "../utils/user_utils";
 
 
 export const RECEIVE_USER = "RECEIVE_USER";
+export const RECEIVE_USERS = "RECEIVE_USERS";
 
 
 export const receiveUser = user => {
@@ -10,6 +11,13 @@ export const receiveUser = user => {
         user
     };
 };
+
+export const receiveUsers = users => {
+    return {
+        type: RECEIVE_USERS,
+        users
+    }
+}
 
 export const fetchUser = userId => {
     return (dispatch) => {
@@ -25,3 +33,11 @@ export const updateUser = user => {
             .then(user => dispatch(receiveUser(user)));
     };
 };
+
+export const updateSearch = input => {
+    debugger
+    return(dispatch) => {
+        return APIUtil.updateSearch(input)
+            .then(user => dispatch(receiveUsers(user)),  err => dispatch(receiveErrors(err.responseJSON)));
+    }
+}

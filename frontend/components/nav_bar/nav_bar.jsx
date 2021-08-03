@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { debounce } from 'lodash';
 // import { openModal } from '../../actions/modal';
 
 
@@ -12,9 +13,29 @@ class NavBar extends React.Component {
 
         this.toggleContent = this.toggleContent.bind(this);
         this.state = {
-            showDropdown: false
+            showDropdown: false,
+            searchInput: ''
         };
+        this.prepSearch = this.prepSearch.bind(this);
+        this.updateState = this.updateState.bind(this);
     }
+
+
+prepSearch = debounce(() => {
+    debugger
+    this.props.updateSearch(this.state.searchInput); // this should take a string which will be used to query the users
+
+}, 2000);
+
+updateState(e){
+    e.preventDefault();
+    // debugger
+    console.log('before' + this.state.searchInput)
+    this.setState({ searchInput: e.currentTarget.value})
+    
+    console.log('after' + this.state.searchInput)
+    this.prepSearch(this.state.searchInput)
+}
 
 componentDidMount(){
     if (!window.currentUser) {
@@ -26,6 +47,7 @@ componentDidMount(){
 toggleContent (e){
     e.preventDefault();
     this.setState({showDropdown: !this.state.showDropdown});
+
 }
 
 render(){
@@ -55,12 +77,10 @@ render(){
                     <Link className="home-btn-loggedin" to="/feed">Today</Link>
                 </div>
 
-                <input 
-                    className="searchBar"
-                    type="text">
-                        {/* <div className="searchBar">this will be the search bar</div>
-                        <div className="dropdown">DD-icon</div> */} 
-                </input>
+                <div className="search-bar-section-1">
+                    <img className="search-bar-icon" src={window.magnaURL} alt="search icon" />
+                    <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState }></input>
+                </div>
                 
 {/* <button onClick={this.props.logout}>Log out</button> */}
 

@@ -17,3 +17,12 @@ export const updateUser = (user) => {
         processData: false,
     });
 };
+
+export const updateSearch = input => {
+    debugger
+    return $.ajax({
+        method: 'GET',
+        url: '/api/users',
+        data: {input}
+    })
+}

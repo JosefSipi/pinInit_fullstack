@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_27_164359) do
+ActiveRecord::Schema.define(version: 2021_08_03_194317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,7 +80,10 @@ ActiveRecord::Schema.define(version: 2021_07_27_164359) do
     t.string "f_name"
     t.string "l_name"
     t.string "username"
+    t.index ["f_name"], name: "index_users_on_f_name"
+    t.index ["l_name"], name: "index_users_on_l_name"
     t.index ["session_token"], name: "index_users_on_session_token"
+    t.index ["username"], name: "index_users_on_username"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

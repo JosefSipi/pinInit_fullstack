@@ -36,7 +36,8 @@ class CreateBoard extends React.Component {
         e.preventDefault();
         let board = this.state;
         this.props.createNewBoard(board).then(
-            this.props.closeModal()
+            this.props.closeModal(),
+            this.props.fetchBoards(window.currentUser.id)
             )
     }
 

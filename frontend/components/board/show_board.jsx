@@ -18,7 +18,7 @@ class BoardShow extends React.Component {
         window.editingBoard = e.currentTarget.id
         this.props.openModal('editBoard');
 
-        
+
         let dropDown = document.getElementById("edit-dropdown-menue-123-id");
         let backdrop = document.getElementById('backdrop-div-create-pin')
         if(dropDown.style.display === "none"){
@@ -118,7 +118,7 @@ class BoardShow extends React.Component {
                         <div className="div-holder-helper-123">
                             <div className="edit-dropdown-menue-123" id="edit-dropdown-menue-123-id">
                                 <h1 className="title-dd">Board options</h1>
-                                <div onClick={this.editPen} id={this.props.boardProfile.id}>Edit</div>
+                                <div onClick={this.editPen} id={this.props.boardProfile.id}>Edit board</div>
                             </div>
                         </div>
                     </h1>
@@ -216,16 +216,19 @@ class BoardShow extends React.Component {
 
                             <div onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id}>
 
-                                
-                                <div className="outside-edit-pin-board-show">
-                                    <div id={pin.id} className="edit-pen-div-show-board" onClick={this.modalFunction}>
-                                    <img src={window.editPenURL} alt="edit pen" />
+                                    <div className="outside-edit-pin-board-show">
+                                        <div id={pin.id} className="edit-pen-div-show-board" onClick={this.modalFunction}>
+                                        <img src={window.editPenURL} alt="edit pen" />
+                                        </div>
+
                                     </div>
 
-                                </div>
-                                
-                                <img className="pin-photo" src={pin.photoUrl} alt="pin photo" />
-                                <div className="card-title-pin">{pin.title}</div>
+                                    
+                                    <img className="pin-photo" src={pin.photoUrl} alt="pin photo" />
+                                    <div className="card-title-pin">{pin.title}</div>
+
+
+
                             </div>
 
 

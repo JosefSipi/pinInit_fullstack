@@ -39,6 +39,8 @@ class EditBoardShow extends React.Component {
         e.preventDefault();
         this.props.deleteBoard(this.state.board.id);
         this.props.closeModal();
+        this.props.history.push(`/profile/${window.currentUser.id}`);
+        this.props.fetchBoards(window.currentUser.id);
     }
 
     handelSubmit(e){
@@ -62,11 +64,11 @@ class EditBoardShow extends React.Component {
         return(
             <div className="div-prim-edit-board">
                 <div className="top-div-edit-board-modal">
-                    <div className="filler"></div>
+                   
                     <p>Edit your board</p>   
                    
                     <div className="X-icon-div">
-                        <img className="x-on-edit-board" src={window.theXURL} alt="X icon" />
+                        <img onClick={this.props.closeModal} className="x-on-edit-board" src={window.theXURL} alt="X icon" />
                     </div>
                         
                 </div>
@@ -86,7 +88,7 @@ class EditBoardShow extends React.Component {
                         
                     <label className="check-box-label-edingboard" htmlFor="private-checkbox">
                         <input className="the-check-box-edingingboardonboard" checked={this.state.board.is_private === true ? true : false} type="checkbox" name="example name" id="private-checkbox" value={!this.state.board.is_private} onChange={this.handelChange('is_private')}/> 
-                        <p classNaem="theediningkeep-board">Keep this board secret</p>
+                        <p className="theediningkeep-board">Keep this board secret</p>
                     </label>
                         <div className="div-word-1">So only you and collaborators can see it.</div>
 
