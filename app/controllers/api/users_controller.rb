@@ -56,7 +56,7 @@ class Api::UsersController < ApplicationController
 
     def index
         debugger
-        @test = User.find_by()
+        # @test = User.find_by()
     end
 
     private
