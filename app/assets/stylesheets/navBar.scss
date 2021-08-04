@@ -5,7 +5,8 @@
     justify-self: center;
     align-self: center;
     position: relative;
-    left: 41px;
+    left: 25px;
+    bottom: 43px;
 
 }
 
@@ -13,9 +14,74 @@ div.search-bar-section-1{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     align-self: stretch;
     width: 2000px;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+.drop-down-holder-nav-bar{
+    position: inherit;
+    height: 0;
+    align-self: stretch;
+}
+
+
+.search-user-img{
+    height: 67px;
+    width: auto;
+}
+
+.div-for-search-user-img{
+   border-radius: 50%;
+    height: 66px;
+    width: 66px;
+    overflow: hidden;
+    margin: 3px;
+    margin-right: 13px;
+}
+
+div.last-div-1{
+    font-weight: 600;
+}
+
+.the-dropdown-on-nav-bar-search{
+    display: none;
+
+    border-radius: 8px;
+    border-top: -13px;
+    padding-top: 35px;
+    padding-bottom: 17px;
+    top: -28px;
+    left: 10px;
+    width: 98%;
+    z-index: 230;
+
+    flex-direction: column;
+    position: relative;
+    background-color: white;
+}
+
+.list-search-user{
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    &:hover{
+        cursor: pointer;
+        background-color: #f3f3f3;
+    }
+}
+
+.backdrop-div-create-search{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.274);
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    left: 0;
+    top: 80px;
+    z-index: 20;
 }
