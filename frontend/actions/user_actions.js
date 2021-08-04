@@ -4,6 +4,11 @@ import * as APIUtil from "../utils/user_utils";
 export const RECEIVE_USER = "RECEIVE_USER";
 export const RECEIVE_USERS = "RECEIVE_USERS";
 
+export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+const receiveErrors = (errors) => ({
+    type: RECEIVE_ERRORS,
+    errors
+});
 
 export const receiveUser = user => {
     return {
@@ -18,6 +23,7 @@ export const receiveUsers = users => {
         users
     }
 }
+
 
 export const fetchUser = userId => {
     return (dispatch) => {

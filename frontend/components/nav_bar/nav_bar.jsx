@@ -18,6 +18,7 @@ class NavBar extends React.Component {
         };
         this.prepSearch = this.prepSearch.bind(this);
         this.updateState = this.updateState.bind(this);
+        this.searchingTime = this.searchingTime.bind(this);
     }
 
 
@@ -25,7 +26,12 @@ prepSearch = debounce(() => {
     debugger
     this.props.updateSearch(this.state.searchInput); // this should take a string which will be used to query the users
 
-}, 2000);
+}, 500);
+
+searchingTime(e){
+    e.preventDefault();
+    
+}
 
 updateState(e){
     e.preventDefault();
@@ -79,7 +85,7 @@ render(){
 
                 <div className="search-bar-section-1">
                     <img className="search-bar-icon" src={window.magnaURL} alt="search icon" />
-                    <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState }></input>
+                    <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState } onFocus={this.searchingTime}></input>
                 </div>
                 
 {/* <button onClick={this.props.logout}>Log out</button> */}

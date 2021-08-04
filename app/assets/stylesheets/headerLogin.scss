@@ -271,7 +271,6 @@ p.create-p-tag{
   display: flex;
   flex-direction: row;
   align-items: center;
-  align-items: flex-end;
 
 }
 .header-left {
@@ -357,7 +356,7 @@ p.create-p-tag{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 58px;
+    height: 80px;
     z-index: 100;
     
   }

@@ -6,11 +6,10 @@ import { logout } from '../../actions/session';
 import { fetchUser } from '../../actions/user_actions';
 import { updateSearch } from '../../actions/user_actions';
 
-
 const mSTP = state => ({
-
     currentUser: state.session.currentUser,
     user: state.user,
+    users: state.user.users
 });
 
 const mDTP = dispatch => ({
@@ -21,7 +20,6 @@ const mDTP = dispatch => ({
         return dispatch(fetchUser(userId));
     },
     updateSearch: (input) => {
-        debugger
         return dispatch(updateSearch(input))
     }
     

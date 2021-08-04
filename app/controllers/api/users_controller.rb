@@ -55,8 +55,9 @@ class Api::UsersController < ApplicationController
     end
 
     def index
-        debugger
-        # @test = User.find_by()
+        @users = User.limit(10).where("username LIKE '%#{params['input']}%'")
+
+        render :index
     end
 
     private
