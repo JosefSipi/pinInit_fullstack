@@ -14,7 +14,8 @@ class UserShow extends React.Component {
         };
 
         this.state = {
-            showDropdown: false
+            showDropdown: false,
+            currentUserProfile: false
         };
 
         this.state.display_name = props.f_name;
@@ -50,6 +51,12 @@ class UserShow extends React.Component {
     // }
 
     componentDidMount(){
+        debugger
+        if(Number(window.currentUser.id) === Number(this.props.match.params.id)){
+            console.log('current user on window matches profile')
+            debugger
+            this.setState({currentUserProfile: true})
+        }
         this.props.fetchUser(this.props.match.params.id);
         this.props.fetchBoards(this.props.match.params.id);
         // this.setState({boards: Object.values(this.props.boards.boards)});
@@ -113,6 +120,8 @@ class UserShow extends React.Component {
 
     render() {
 
+        debugger
+
         if (!this.state.boards){
             return null
         }
@@ -131,8 +140,11 @@ class UserShow extends React.Component {
         // let lock = document.getElementById('outer-div-tile-edit');
 
         let boards = Object.values(this.props.boards.boards)
-        return(
-            
+
+
+
+
+        if(this.state.currentUserProfile){ this.profilePage = (
             <div>
 
                 <div className="show-page-box-1">
@@ -264,6 +276,152 @@ class UserShow extends React.Component {
 
                 </div>
 
+            </div>
+        )
+
+        } else { this.profilePage = (
+            <div>
+
+                <div className="show-page-box-1">
+                    <header className="profile-header">
+
+                        <div className="profile-div">
+                            <img className="profile-photo" src={this.props.user.photoUrl} alt="profile photo" />
+                        </div>
+
+                        <h2 className="username-on-profile">{this.props.user.f_name}{(this.props.user.l_name ? this.props.user.l_name : "").charAt(0)}</h2>
+                        
+                        <h1 className="email-on-profile">{"@"}{this.props.user.username}</h1>
+
+                        <h1 className="email-on-profile"> 0 followers  • 0 following </h1>
+
+                        <div> Follow / Following </div>
+    
+                    </header>
+               </div>
+{/* ----------------------- this is the profile page edit bar while loged in as user ------------- */}
+
+               <div className="edit-bar-profile-page">
+
+                    <div className="left-box-edit-bar">
+
+                        {/* <Link to="/edit-profile">
+                            <div className="logo-on-logged-in-header">
+                                <img id="logo" src={window.penURL} alt="edit-pen-icon" />
+                            </div>
+                        </Link> */}
+
+                        
+                        <div className="logo-on-logged-in-header">
+                            <img id="logo-share-icon" src={window.shareLogoURL} alt="share-icon" />
+                        </div>
+
+
+                    </div>
+
+                    {/* <div className="righ-box-edit-bar">
+
+                        <div className="logo-on-logged-in-header">
+                            <img id="logo" src={window.settingsIconURL} alt="settings-icon" />
+                        </div>
+
+                        <div className="show-dropdown">
+
+                            <div className="logo-on-logged-in-header" onClick={this.toggleBox}>
+                                <img id="logo-cross" src={window.plusURL} alt="+ icon" />
+                            </div>
+                            <div className="ul-logged-dropdown-background-plus" id="background-plus-modal" onClick={this.toggleBox}>
+                            </div>
+                                <div className="hidden-plus-opt-h" id="hidden-plus-opt">
+                                    <p className="create-p-tag">Create</p>
+                                    <ul className="list-plus-men">
+                                        <li className="pin-link-bton-mid-bar" onClick={this.directToCreatePin}>Pin</li>
+                                        <li className="pin-link-bton-mid-bar" onClick={() => this.props.openModal('createBoard')} >Board</li> 
+                                    </ul>
+
+                                </div>
+
+                        </div>
+
+                        <div className="dropdown">
+                           
+                        </div>
+
+
+                    </div> */}
+               </div>
+
+{/* --------------- will need to display one or the other depending if profile's user is logged in ---------------------------------- */}
+
+{/* -------------------------- the below boards will render either way ----------------- */}
+
+                <div className="boards-grid-area">
+                
+                    {boards.map(board => 
+                    
+                    {if(!board.is_private){<div className='dont-show-me' key={board.id} >
+                        {/* <div className="logo-on-logged-in-header-board-tile" onClick={this.editPen} id={board.id}>
+                                <img id="logo-edit-board" src={window.penURL} alt="edit-pen-icon" />
+                        </div> */}
+                            <Link key={board.id} id="board-show-link" to={`/board/${board.id}`}      
+                                // onMouseEnter={() => this.hoverEvent(board.id)}
+                                // onMouseLeave={() => this.hoverEvent(board.id)}
+                            >
+
+                        <div className="board-display-card">
+                        <div className="outer-div-tile-edit" id="outer-div-tile-edit">
+                            {/* <div className="logo-on-logged-in-header-board-lock" style={board.is_private ? {display: "flex" } : { display: "none" }}>
+                                    <img id="logo-lock-icon" src={window.lockURL} alt="lock-icon" />
+                            </div>  */}
+                        </div>
+                            <div className="image-section-board" id="image-section-board">
+                                <div className="large-image-onboard">
+                                <img className="image-board-1" src={window.photo1} alt="logo" />
+                                </div>
+
+
+
+
+                                <div className="other-two-images">
+
+                                    <div className="top-box-123">
+                                        <img className="image-board-2" src={window.photo2} alt="logo" />
+                                    </div>
+                                    
+                                    <div className="bottom-box">
+                                        <img className="image-board-3" src={window.photo3} alt="logo" />
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        
+                        
+                        <div className="title-pin-section">
+
+                                <h2 className="board-title">{ board.title.charAt(0).toUpperCase() + board.title.slice(1)}</h2>
+                                {/* <h2 className="board-title">{ board.title.charAt(1).toUpperCase() + board.title.slice(2, -1)}</h2> */}
+                                <div className="pins-days"> 
+                                    <h2 className="pin-num-board"> 3 Pins </h2>   
+                                    <h2 className="days-number">{handelDate(board.updated_at)} d</h2> 
+                                </div>
+
+                        </div>
+                        </div>
+                        </Link>
+                    </div>}}
+                    )}
+
+                </div>
+
+            </div>
+        )}
+
+
+
+
+        return (
+            <div>
+                {this.profilePage}
             </div>
         )
     }

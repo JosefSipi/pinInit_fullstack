@@ -120,8 +120,6 @@ render(){
 
         let {showDropdown} = this.state;
 
-        debugger
-
         let ready = false
 
         let theUsers
@@ -133,6 +131,8 @@ render(){
         }
 
         debugger
+
+        
 
 
         if (this.props.currentUser) {this.bar = (
