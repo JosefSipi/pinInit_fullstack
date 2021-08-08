@@ -20,6 +20,8 @@ class NavBar extends React.Component {
         this.updateState = this.updateState.bind(this);
         this.searchingTime = this.searchingTime.bind(this);
         this.searchOver = this.searchOver.bind(this);
+        this.redirectProfile = this.redirectProfile.bind(this);
+        this.logoutFunction = this.logoutFunction.bind(this);
     }
 
 
@@ -28,6 +30,18 @@ prepSearch = debounce(() => {
     this.props.updateSearch(this.state.searchInput); // this should take a string which will be used to query the users
 
 }, 100);
+
+logoutFunction(){
+    this.props.logout().then(
+        this.props.history.push('/home')
+    )
+
+}
+
+redirectProfile(e){
+    this.props.history.push(`/profile/${e.currentTarget.getAttribute('data-user_id')}`)
+    window.location.reload();
+}
 
 searchingTime(e){
     // debugger
@@ -130,11 +144,6 @@ render(){
             ready = true
         }
 
-        debugger
-
-        
-
-
         if (this.props.currentUser) {this.bar = (
             
             <div className="header" >
@@ -168,13 +177,14 @@ render(){
                         <div className="the-dropdown-on-nav-bar-search" id="the-dropdown-on-nav-bar-search">
                             { ready ? 
                                 theUsers.map(user => 
-                                    <Link to={`/profile/${user.id}`} >
-                                    <div key={user.id} className="list-search-user">
+                                    // <Link to={`/profile/${user.id}`} >
+                                    <div key={user.id} className="list-search-user" onClick={this.redirectProfile} data-user_id={user.id}>
                                         <div className="div-for-search-user-img">
                                             <img className="search-user-img" src={user.photoUrl} alt="user avatar" />
                                         </div>
                                         <div className="last-div-1">{user.username}</div>
-                                    </div></Link>
+                                    </div>
+                                    // </Link>
 
                                 ) : <div></div>
                             }
@@ -229,7 +239,8 @@ render(){
 
                                 <ul className={`${showDropdown ? "ul-logged-dropdown-active" : "ul-logged-dropdown"}`}>
                                     <Link className="link-settings" to="/edit-profile"><li className="the-li-dropdown"> Settings</li></Link>
-                                    <li className="the-li-dropdown" ><div className="logout-dropdown-btn" onClick={this.props.logout}>Log out</div></li>
+                                    <li className="the-li-dropdown" ><div className="logout-dropdown-btn" onClick={this.logoutFunction}>Log out</div></li>
+                                    {/* <li className="the-li-dropdown" ><div className="logout-dropdown-btn" onClick={this.props.logout}>Log out</div></li> */}
                                 </ul>
 
                             </div>

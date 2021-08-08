@@ -27,8 +27,15 @@ class User < ApplicationRecord
         primary_key: :id,
         foreign_key: :liker_id,
         class_name: :Like
+# --------------------------- new association below
+    has_many :received_follows, 
+        foreign_key: :followed_user_id, 
+        class_name: :Follow
 
-    
+    has_many :followers,
+        through: :received_follows,
+        source: :follow
+
     # has_many :comments,
     #     as: :commentable
     # polymorphic association

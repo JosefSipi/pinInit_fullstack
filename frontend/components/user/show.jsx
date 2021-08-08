@@ -23,7 +23,14 @@ class UserShow extends React.Component {
         this.toggleBox = this.toggleBox.bind(this);
         this.editPen = this.editPen.bind(this);
         this.directToCreatePin = this.directToCreatePin.bind(this);
+        this.isUserFollowing = this.isUserFollowing.bind(this);
     }
+
+    isUserFollowing(e){
+        e.preventDefault();
+        
+    }
+
 
     directToCreatePin(e){
         e.preventDefault();
@@ -63,6 +70,7 @@ class UserShow extends React.Component {
     }
 
     componentDidUpdate(prevProps){
+        debugger
         if(prevProps.boards !== this.props.boards){
             this.setState({boards: Object.values(this.props.boards.boards)});
         }
@@ -125,9 +133,6 @@ class UserShow extends React.Component {
         if (!this.state.boards){
             return null
         }
-        // if (!this.props.boards){
-        //     return null
-        // }
 
         const handelDate = (updatedTime) => {
             let currentTime = new Date();
@@ -141,10 +146,11 @@ class UserShow extends React.Component {
 
         let boards = Object.values(this.props.boards.boards)
 
+        let profilePage
 
+        debugger
 
-
-        if(this.state.currentUserProfile){ this.profilePage = (
+        if(this.state.currentUserProfile){profilePage = (
             <div>
 
                 <div className="show-page-box-1">
@@ -158,7 +164,7 @@ class UserShow extends React.Component {
                         
                         <h1 className="email-on-profile">{"@"}{this.props.user.username}</h1>
 
-                        <h1 className="email-on-profile"> 0 followers  • 0 following </h1>
+                        <h1 className="email-on-profile"> 0 followers  • 0 following condition confirmed</h1>
     
                     </header>
                </div>
@@ -175,9 +181,9 @@ class UserShow extends React.Component {
                         </Link>
 
                         
-                            <div className="logo-on-logged-in-header">
-                                <img id="logo-share-icon" src={window.shareLogoURL} alt="share-icon" />
-                            </div>
+                        <div className="logo-on-logged-in-header">
+                            <img id="logo-share-icon" src={window.shareLogoURL} alt="share-icon" />
+                        </div>
 
 
                     </div>
@@ -279,9 +285,8 @@ class UserShow extends React.Component {
             </div>
         )
 
-        } else { this.profilePage = (
+        } else {profilePage = (
             <div>
-
                 <div className="show-page-box-1">
                     <header className="profile-header">
 
@@ -295,21 +300,14 @@ class UserShow extends React.Component {
 
                         <h1 className="email-on-profile"> 0 followers  • 0 following </h1>
 
-                        <div> Follow / Following </div>
+                        <div className="following-btn-22-1">{this.isUserFollowing}</div>
     
                     </header>
                </div>
 {/* ----------------------- this is the profile page edit bar while loged in as user ------------- */}
 
                <div className="edit-bar-profile-page">
-
                     <div className="left-box-edit-bar">
-
-                        {/* <Link to="/edit-profile">
-                            <div className="logo-on-logged-in-header">
-                                <img id="logo" src={window.penURL} alt="edit-pen-icon" />
-                            </div>
-                        </Link> */}
 
                         
                         <div className="logo-on-logged-in-header">
@@ -318,37 +316,6 @@ class UserShow extends React.Component {
 
 
                     </div>
-
-                    {/* <div className="righ-box-edit-bar">
-
-                        <div className="logo-on-logged-in-header">
-                            <img id="logo" src={window.settingsIconURL} alt="settings-icon" />
-                        </div>
-
-                        <div className="show-dropdown">
-
-                            <div className="logo-on-logged-in-header" onClick={this.toggleBox}>
-                                <img id="logo-cross" src={window.plusURL} alt="+ icon" />
-                            </div>
-                            <div className="ul-logged-dropdown-background-plus" id="background-plus-modal" onClick={this.toggleBox}>
-                            </div>
-                                <div className="hidden-plus-opt-h" id="hidden-plus-opt">
-                                    <p className="create-p-tag">Create</p>
-                                    <ul className="list-plus-men">
-                                        <li className="pin-link-bton-mid-bar" onClick={this.directToCreatePin}>Pin</li>
-                                        <li className="pin-link-bton-mid-bar" onClick={() => this.props.openModal('createBoard')} >Board</li> 
-                                    </ul>
-
-                                </div>
-
-                        </div>
-
-                        <div className="dropdown">
-                           
-                        </div>
-
-
-                    </div> */}
                </div>
 
 {/* --------------- will need to display one or the other depending if profile's user is logged in ---------------------------------- */}
@@ -359,7 +326,10 @@ class UserShow extends React.Component {
                 
                     {boards.map(board => 
                     
-                    {if(!board.is_private){<div className='dont-show-me' key={board.id} >
+                    {if(!board.is_private){
+                    
+                    return (<div className='dont-show-me' key={board.id} >
+
                         {/* <div className="logo-on-logged-in-header-board-tile" onClick={this.editPen} id={board.id}>
                                 <img id="logo-edit-board" src={window.penURL} alt="edit-pen-icon" />
                         </div> */}
@@ -408,7 +378,10 @@ class UserShow extends React.Component {
                         </div>
                         </div>
                         </Link>
-                    </div>}}
+                    </div> )}
+                    
+                
+                }
                     )}
 
                 </div>
@@ -421,7 +394,7 @@ class UserShow extends React.Component {
 
         return (
             <div>
-                {this.profilePage}
+                {profilePage}
             </div>
         )
     }

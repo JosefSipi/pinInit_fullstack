@@ -28,9 +28,9 @@
 // ------------------------------------
 
 img.pin-photo {
-    width: 228px;
-    height: auto;
-    margin: 0px 5px 0px 5px;
+    width: 100%;
+    height: 100%;
+    // margin: 0px 5px 0px 5px;
     border-radius: 16px;
 }
 div.card-title-pin{
@@ -93,22 +93,72 @@ div.over-lay{
 
 
 .edit-pen-div-show-board{
-    height: 50px;
-    width: 50px;
+    height: 32px;
+    width: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     overflow: hidden;
-    position: fixed;
     background-color: white;
+    position: absolute;
+    bottom: .7em;
+    left: 11.5em;
+    z-index: 1;
     &:hover{
         cursor: pointer;
     }
     img{
-        height: 18px;
+        height: 14px;
         width: auto;
     }
+}
+
+.website-url-div-hoverthing{
+   border-radius: 16px;
+    width: 134px;
+    height: 32px;
+    left: 1em;
+    bottom: .7em;
+    background-color: white;
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center;
+    z-index: 1;
+    border: solid 1px red;
+    padding-left: 9px;
+    font-weight: 550;
+    font-size: 15px;
+    background-color: rgb(224, 224, 224);
+    &:hover{
+        background-color: rgb(241, 241, 241);
+        cursor: pointer;
+    }
+}
+
+.arr-in-website{
+    height: 17px;
+    width: auto;
+    padding-right: 3px;
+}
+
+.outside-surrounding-pin-image-div{
+    position: relative;
+    border-radius: 16px;
+
+}
+
+.the-shade-over-pin{
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: rgba(0,0,0,0.5);
+    border-radius: 16px;
+    top: 0;
+    left: 0;
 }
 
 .absolute-position-1{
@@ -140,10 +190,6 @@ div.over-lay{
     }
 }
 
-.outside-edit-pin-board-show{
-
-}
-
 .is-private-board-show{
     text-align: center;
     color: gray;
@@ -170,6 +216,44 @@ div.over-lay{
         height: 51px;
         width: auto;
     }
+}
+
+div.div-22-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.link-surrounding-profile-image{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 11px;
+
+}
+.profile-photo-icon-22-22 {
+   height: 51px;
+   width: auto;
+}
+
+.div-22-22{
+    display: flex;
+}
+.board-username-link-to-profile{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.h2-non-user-board-show{
+    font-size: 17px;
+    font-weight: 100;
 }
 
 .header-title-boards-show-123{

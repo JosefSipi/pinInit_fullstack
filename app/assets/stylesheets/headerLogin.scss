@@ -300,8 +300,10 @@ p.create-p-tag{
   
   .login-btn {
     height: 37px;
-    padding-inline: 12px;
-    padding-block: 8px;
+    padding-right: 12px;
+    padding-left: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     width: fit-content;
     border-radius: 18px;
     // font-size: 13px;
@@ -310,14 +312,17 @@ p.create-p-tag{
     background-color: #cb2127;
     border: 0px;
     &:hover {
+      cursor: pointer;
       background-color: #bd001c;
     }
   }
   
   .signup-btn {
     height: 37px;
-    padding-inline: 12px;
-    padding-block: 8px;
+    padding-right: 12px;
+    padding-left: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     border-radius: 18px;
     // font-size: 13px;
     // font-weight: 600;
@@ -325,6 +330,7 @@ p.create-p-tag{
     border: 0px;
     background-color: rgb(232, 230, 230);
     &:hover {
+      cursor: pointer;
       background-color: rgb(213, 213, 213);
     }
   }
@@ -524,7 +530,7 @@ div.profile-div-small {
   text-align: center;
   text-indent: 10px;
   &:hover{
-
+    cursor: pointer;
     background-color: rgb(233, 233, 233);
   }
 }

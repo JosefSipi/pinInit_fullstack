@@ -11,8 +11,35 @@ class BoardShow extends React.Component {
         this.moreClickedDD = this.moreClickedDD.bind(this);
         this.backdropClick = this.backdropClick.bind(this);
         this.editPen = this.editPen.bind(this);
+        this.openTheLink = this.openTheLink.bind(this);
+        this.onMouseLeaveCall = this.onMouseLeaveCall.bind(this);
+        this.onMouseEnterCall = this.onMouseEnterCall.bind(this);
     }
 
+    onMouseLeaveCall(e){
+        e.preventDefault();
+        debugger
+        let theId = Number(e.currentTarget.children[1].children[1].getAttribute('data-div_id'))
+        debugger
+        let shadowCover = document.getElementById(`the-shade-over-pin${theId}`)
+        shadowCover.style.display = 'none'
+        debugger
+    }
+    
+    onMouseEnterCall(e){
+        e.preventDefault();
+        debugger
+        let theId = Number(e.currentTarget.children[1].children[1].getAttribute('data-div_id'))
+        debugger
+        let shadowCover = document.getElementById(`the-shade-over-pin${theId}`)
+        shadowCover.style.display = 'block'
+        debugger
+    }
+
+    openTheLink(e){
+        e.preventDefault();
+        window.open(e.currentTarget.id)
+    }
     editPen(e){
         e.preventDefault();
         window.editingBoard = e.currentTarget.id
@@ -103,84 +130,159 @@ class BoardShow extends React.Component {
         } 
     }
 
-    isProfileUser(){
-            debugger
+    isProfileUser(pins){
+
         if(window.currentUser.id === this.props.boardProfile.owner_id){
-                return (
-            <div className="top-section">
-                <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
-
+            return (
                 <div>
+                    {console.log('current user is board user')}
+                    <div className="boards-grid-area-for-pins">
+                        <div className="top-section">
+                            <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
 
-                    <h1 className="header-title-boards-show-123">{this.props.boardProfile.title}<div className="board-duplicate-button-dd" onClick={this.moreClickedDD}>
-                        <img className="boards-123-1" src={window.dotsBlackURL} alt="more icon"/>
-                    </div>
-                        <div className="div-holder-helper-123">
-                            <div className="edit-dropdown-menue-123" id="edit-dropdown-menue-123-id">
-                                <h1 className="title-dd">Board options</h1>
-                                <div onClick={this.editPen} id={this.props.boardProfile.id}>Edit board</div>
+                            <div>
+
+                                <h1 className="header-title-boards-show-123">{this.props.boardProfile.title}<div className="board-duplicate-button-dd" onClick={this.moreClickedDD}>
+                                    <img className="boards-123-1" src={window.dotsBlackURL} alt="more icon"/>
+                                </div>
+                                    <div className="div-holder-helper-123">
+                                        <div className="edit-dropdown-menue-123" id="edit-dropdown-menue-123-id">
+                                            <h1 className="title-dd">Board options</h1>
+                                            <div onClick={this.editPen} id={this.props.boardProfile.id}>Edit board</div>
+                                        </div>
+                                    </div>
+                                </h1>
+
+                                
                             </div>
+
+                            <Link to={`/profile/${this.props.userProfile.id}`}>
+                                <div className="profile-div-small-photo-div-123">
+                                    <img src={this.props.userProfile.photoUrl} alt="profile photo" />
+                                    {/* <img className="profile-photo-header-bar" src={window.currentUser.profile_pic} alt="profile photo" /> */}
+                                </div>
+                            </Link>
+
+                        <div>
+                            <h2 className="h2-non-user-board-show" >{this.props.boardProfile.description} </h2>
+                            <div className="is-private-board-show" style={this.props.boardProfile.is_private ? {display: "block"} : {display: "none"}} ><img src={window.smallLockURL} alt="lock" />secret board</div>
                         </div>
-                    </h1>
 
-                    
-                </div>
+                        {/* <p>45 followers</p> */}
 
-                <Link to={`/profile/${this.props.userProfile.id}`}>
-                    <div className="profile-div-small-photo-div-123">
-                        <img src={this.props.userProfile.photoUrl} alt="profile photo" />
-                        {/* <img className="profile-photo-header-bar" src={window.currentUser.profile_pic} alt="profile photo" /> */}
+                        {/* <button>Share</button> */}
+
+                        </div>
                     </div>
-                </Link>
 
-            <div>
-                <h2>{this.props.boardProfile.description} </h2>
-                <div className="is-private-board-show" style={this.props.boardProfile.is_private ? {display: "block"} : {display: "none"}} ><img src={window.smallLockURL} alt="lock" />secret board</div>
-            </div>
+                    <div className="pin-area-on-board-show" >
+                        <div className="pin_container" id="pin_container">
+                            {pins.map(pin => 
 
-            {/* <p>45 followers</p> */}
+                                <div onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
 
-            {/* <button>Share</button> */}
+                                    <div className="outside-edit-pin-board-show">
 
-            </div>
+                                    </div>
 
-        )
+                                    <div className="outside-surrounding-pin-image-div">
+                                        <img className="pin-photo" src={pin.photoUrl} alt="pin photo" />
+
+                                        <div data-div_id={pin.id} className="the-shade-over-pin" id={`the-shade-over-pin${pin.id}`}>
+                                            <div style={ pin.websiteURL.length < 3 ? {display: 'none'} : {display: 'block'}} className="website-url-div-hoverthing" id={pin.websiteURL} onClick={this.openTheLink}> <img className="arr-in-website" src={window.upRightArrowURL} alt="up arrow" /> {`${pin.websiteURL}`.slice(8, 16)+ "...."}</div>
+                                            
+                                            <div id={pin.id} className="edit-pen-div-show-board" onClick={this.modalFunction}>
+                                                <img src={window.editPenURL} alt="edit pen" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div className="card-title-pin">{pin.title}</div>
+
+                                </div>
+
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )
 
 
         } else {
 
             return (
-                <div className="top-section">
-                        <h1>{this.props.boardProfile.title}</h1>
+                
+    <div>
+        <div className="boards-grid-area-for-pins">
+            <div className="top-section">
+                <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
 
-                        <Link to={`/profile/${this.props.userProfile.id}`}>
-                            <div className="logo-on-logged-in-header">
+                <div className="div-22-1">
 
-                                <div className="profile-div-small">
-
-                                    <img className="profile-photo-icon" src={this.props.userProfile.photoUrl} alt="profile photo" />
-                                    {/* <img className="profile-photo-header-bar" src={window.currentUser.profile_pic} alt="profile photo" /> */}
-                                </div>
-
-                            </div>
-                        </Link>
-
-                    <div>
-                        <Link to={`/profile/${this.props.userProfile.id}`}> 
-                            <p>{this.props.userProfile.f_name} {this.props.userProfile.l_name}</p>
-                        </Link> 
-
-                        <h2>· {this.props.boardProfile.description} </h2>
+                    <h1 className="header-title-boards-show-123">{this.props.boardProfile.title}
+                    {/* <div className="board-duplicate-button-dd" onClick={this.moreClickedDD}>
+                        <img className="boards-123-1" src={window.dotsBlackURL} alt="more icon"/>
                     </div>
+                        <div className="div-holder-helper-123">
+                            <div className="edit-dropdown-menue-123" id="edit-dropdown-menue-123-id">
+                                <h1 className="title-dd">Board options</h1>
+                                <div id={this.props.boardProfile.id}>Follow</div>
+                            </div>
+                        </div> */}
+                    </h1>         
+                </div>
+
+                <Link to={`/profile/${this.props.userProfile.id}`} className="link-surrounding-profile-image">
+                    <img className="profile-photo-icon-22-22" src={this.props.userProfile.photoUrl} alt="profile photo" />
+                </Link>
+
+                <div className="div-22-22">
+                    <Link to={`/profile/${this.props.userProfile.id}`} className="board-username-link-to-profile"> 
+                        <p>{this.props.userProfile.f_name} {this.props.userProfile.l_name}</p>
+                    </Link> 
+
+                    <h2 className="h2-non-user-board-show">· {this.props.boardProfile.description} </h2>
+                </div>
 
                     {/* <p>45 followers</p> */}
 
                     {/* <button>Share</button> */}
 
-                </div>
+            </div>
+        </div>
 
-            )
-        }
+         <div className="pin-area-on-board-show" >
+            <div className="pin_container" id="pin_container">
+                {pins.map(pin => 
+
+                    <div onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
+
+                        <div className="outside-edit-pin-board-show">
+
+                        </div>
+
+                         <div className="outside-surrounding-pin-image-div">
+                            <img className="pin-photo" src={pin.photoUrl} alt="pin photo" />
+
+                            <div data-div_id={pin.id} className="the-shade-over-pin" id={`the-shade-over-pin${pin.id}`}>
+                                <div style={ pin.websiteURL.length < 3 ? {display: 'none'} : {display: 'flex'}} className="website-url-div-hoverthing" id={pin.websiteURL} onClick={this.openTheLink}> <img className="arr-in-website" src={window.upRightArrowURL} alt="up arrow" /> {`${pin.websiteURL}`.slice(8, 16)+ "...."}</div>
+                                
+                                {/* <div id={pin.id} className="edit-pen-div-show-board" onClick={this.modalFunction}>
+                                    <img src={window.editPenURL} alt="edit pen" />
+                                </div> */}
+                            </div>
+
+                        </div>
+
+                        <div className="card-title-pin">{pin.title}</div>
+
+                    </div>
+                )}
+            </div>
+        </div>
+    </div>
+)}
     }
 
 
@@ -194,48 +296,13 @@ class BoardShow extends React.Component {
         
         const pins = Object.values(this.props.pins.pins)
         
-        // const photoUrl = this.props.pins.pin.pins.photoUrl
-        const theHeight = 45;
-
-
+        // const theHeight = 45;
 
 
         return (
-
-        <div>
-
-            <div className="boards-grid-area-for-pins">
-
-                { this.isProfileUser()}
-
+            <div>
+                { this.isProfileUser(pins)}
             </div>
-
-                <div className="pin-area-on-board-show" >
-                    <div className="pin_container" id="pin_container">
-                        {pins.map(pin => 
-
-                            <div onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id}>
-
-                                    <div className="outside-edit-pin-board-show">
-                                        <div id={pin.id} className="edit-pen-div-show-board" onClick={this.modalFunction}>
-                                        <img src={window.editPenURL} alt="edit pen" />
-                                        </div>
-
-                                    </div>
-
-                                    
-                                    <img className="pin-photo" src={pin.photoUrl} alt="pin photo" />
-                                    <div className="card-title-pin">{pin.title}</div>
-
-
-
-                            </div>
-
-
-                        )}
-                    </div>
-                </div>
-        </div>
         )
     }
 }
