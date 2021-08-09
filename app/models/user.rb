@@ -27,21 +27,34 @@ class User < ApplicationRecord
         primary_key: :id,
         foreign_key: :liker_id,
         class_name: :Like
+
+
 # --------------------------- new association below
-    has_many :received_follows, 
+    # Will return an array of follows for the given user instance
+    has_many :received_follows,
+        primary_key: :id,
         foreign_key: :followed_user_id, 
         class_name: :Follow
 
-    has_many :followers,
-        through: :received_follows,
-        source: :follow
+    # Will return an array of users who follow the user instance
+    has_many :followers, 
+        through: :received_follows, 
+        source: :follower
+
+
+    has_many :given_follows,
+        primary_key: :id,
+        foreign_key: :follower_id,
+        class_name: :Follow
+
+    has_many :followings,
+        through: :given_follows,
+        source: :followed_user
+    
+
 
     # has_many :comments,
     #     as: :commentable
-    # polymorphic association
-
-    # has_many :follows,
-    #     as: :followable
     # polymorphic association
   
     def self.find_by_cridentialsEmail(email, password)
