@@ -18,5 +18,43 @@
 }
 
 .following-btn-22-1{
+    border: none;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #e60023;
+    font-weight: 550;
+    font-size: 16px;
+    color: white;
+    height: 48px;
+    width: fit-content;
+    padding-left: 18px;
+    padding-right: 18px;
+    &:hover{
+        background-color: #ad081b;
+        cursor: pointer;
+    }
+}
+
+.following-btn-22-2{
+    border: none;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #111111;
+    font-weight: 550;
+    font-size: 16px;
+    color: white;
+    height: 48px;
+    width: fit-content;
+    padding-left: 18px;
+    padding-right: 18px;
+    &:hover{
+        cursor: pointer;
+    }
     
 }

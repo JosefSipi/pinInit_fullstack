@@ -6,6 +6,7 @@ import errorReducer from './error_reducer';
 import userReducer from './user_reducer';
 import boardReducer from './board_reducer';
 import pinReducer from './pin_reducer';
+import follow_reducer from './follow_reducer';
 
 
 export default combineReducers({
@@ -15,5 +16,6 @@ export default combineReducers({
     errors: errorReducer,
     user: userReducer,
     boards: boardReducer,
-    pin: pinReducer
+    pin: pinReducer,
+    follow: follow_reducer,
 });

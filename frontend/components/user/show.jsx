@@ -24,13 +24,52 @@ class UserShow extends React.Component {
         this.editPen = this.editPen.bind(this);
         this.directToCreatePin = this.directToCreatePin.bind(this);
         this.isUserFollowing = this.isUserFollowing.bind(this);
+        this.unfollowUser = this.unfollowUser.bind(this);
+        this.followUser = this.followUser.bind(this);
     }
 
     isUserFollowing(e){
         e.preventDefault();
-        
+
     }
 
+    unfollowUser(e){
+        e.preventDefault();
+        debugger
+        let delteIds = {
+            follower_id: window.currentUser.id,
+            followed_user_id: Number(this.props.match.params.id),
+            id: window.currentUser.id
+        }
+        
+
+        this.props.unfollowUser(delteIds)
+        debugger
+        let buttonRed = document.getElementById('following-btn-22-1')
+        let buttonBlack = document.getElementById('following-btn-22-2')
+
+        buttonRed.style.display = 'flex';
+        buttonBlack.style.display = 'none';
+    }
+
+    followUser(e){
+        e.preventDefault();
+        debugger
+
+        let followForm = {
+            follower_id: window.currentUser.id,
+            followed_user_id: Number(this.props.match.params.id)
+        }
+
+        debugger
+
+        this.props.createFollow(followForm)
+        let buttonRed = document.getElementById('following-btn-22-1')
+        let buttonBlack = document.getElementById('following-btn-22-2')
+
+        buttonRed.style.display = 'none';
+        buttonBlack.style.display = 'flex';
+    }
 
     directToCreatePin(e){
         e.preventDefault();
@@ -63,7 +102,15 @@ class UserShow extends React.Component {
             console.log('current user on window matches profile')
             debugger
             this.setState({currentUserProfile: true})
+        } else {
+            debugger
+            // let followStuff = {follower_id: window.currentUser.id, followed_user_id: Number(this.props.match.params.id), info: 'isFollowing'}
+            // this.props.isFollowing(followStuff)
         }
+        debugger
+        
+        this.props.fetchUserFollowing(Number(this.props.match.params.id));
+        
         this.props.fetchUser(this.props.match.params.id);
         this.props.fetchBoards(this.props.match.params.id);
         // this.setState({boards: Object.values(this.props.boards.boards)});
@@ -300,7 +347,9 @@ class UserShow extends React.Component {
 
                         <h1 className="email-on-profile"> 0 followers  • 0 following </h1>
 
-                        <div className="following-btn-22-1">{this.isUserFollowing}</div>
+                        <div className="following-btn-22-1" id="following-btn-22-1" onClick={this.followUser}>Follow</div>
+
+                        <div className="following-btn-22-2" id="following-btn-22-2" onClick={this.unfollowUser}>Following</div>
     
                     </header>
                </div>

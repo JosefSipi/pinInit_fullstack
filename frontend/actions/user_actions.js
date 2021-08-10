@@ -41,7 +41,7 @@ export const updateUser = user => {
 };
 
 export const updateSearch = input => {
-    debugger
+    // debugger
     return(dispatch) => {
         return APIUtil.updateSearch(input)
             .then(user => dispatch(receiveUsers(user)),  err => dispatch(receiveErrors(err.responseJSON)));

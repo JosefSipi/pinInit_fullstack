@@ -5,7 +5,7 @@ import { openModal, closeModal } from '../../actions/modal';
 import { logout } from '../../actions/session';
 import { fetchUser } from '../../actions/user_actions';
 import { updateSearch } from '../../actions/user_actions';
-    debugger
+    // debugger
 const mSTP = state => ({
     currentUser: state.session.currentUser,
     user: state.user,
@@ -20,7 +20,7 @@ const mDTP = dispatch => ({
         return dispatch(fetchUser(userId));
     },
     updateSearch: (input) => {
-        debugger
+        // debugger
         return dispatch(updateSearch(input))
     }
     

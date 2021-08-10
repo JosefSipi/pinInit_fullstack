@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api, default: {format: :json} do
     resources :users  do 
       resources :boards, only: [:index]
+      resources :follows, only: [:index]
       # resources :pins, only: [:]
     end
 
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
     resources :boards, only: [:new, :create, :destroy, :update, :edit, :show ]
     resources :pins, only: [:new, :create, :destroy, :edit, :show, :update]
     resources :boards_pin_joins, only: [:new, :create, :edit, :destroy, :update, :show, :index]
-    resources :follows, only: [:index, :create, :destroy, :show, :new]
+    resources :follows, only: [:create, :destroy, :show, :new]
   end
 
 

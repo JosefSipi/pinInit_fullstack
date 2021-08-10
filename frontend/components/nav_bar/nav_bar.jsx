@@ -105,7 +105,7 @@ updateState(e){
 }
 
 componentDidMount(){
-    debugger
+    // debugger
     // this.setState({searchUsers: this.props.users})
     if (!window.currentUser) {
     } else {
@@ -139,7 +139,7 @@ render(){
         let theUsers
 
         if(!!this.props.users){
-            debugger
+            // debugger
             theUsers = Object.values(this.props.users)
             ready = true
         }
