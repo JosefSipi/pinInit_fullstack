@@ -1,6 +1,6 @@
 class Api::FollowsController < ApplicationController
 
-    # debugger
+    
     # skip_before_action :verify_authenticity_token
 
     def new
@@ -13,7 +13,7 @@ class Api::FollowsController < ApplicationController
 
         if @new_follow.save
 
-            # debugger
+            
 
             # @amFollowingStat = true
 
@@ -21,7 +21,7 @@ class Api::FollowsController < ApplicationController
 
             # @following = User.find(follows_params[:followed_user_id]).followings
 
-            # debugger
+            
 
             render :show
         else
@@ -31,20 +31,20 @@ class Api::FollowsController < ApplicationController
     end
 
     def destroy
-        # debugger
+        
 
         followed_user_id = params[:deleteIds][:followed_user_id]
         follower_id = params[:deleteIds][:follower_id]
 
 
         @follow = Follow.find_by(followed_user_id: followed_user_id, follower_id: follower_id)
-        # debugger
+        
         if @follow
             @follow.destroy
         else
             render json: ['Something went wrong, unfollow was unsuccessful :(']
         end
-        # debugger
+        
     end
 
     def index
@@ -71,7 +71,7 @@ class Api::FollowsController < ApplicationController
     end
 
     def show
-        # debugger
+        
         # @follow = Follow.find(params[:id])
 
         # render :show

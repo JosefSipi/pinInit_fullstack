@@ -1,6 +1,6 @@
 
 export const isFollowing = follows => {
-    // debugger
+    //
     return $.ajax({
         method: 'GET',
         data: {follows},
@@ -9,7 +9,7 @@ export const isFollowing = follows => {
 }
 
 export const fetchUserFollowing = (userId) => {
-    debugger
+
     return $.ajax({
         method: 'GET',
         url: `/api/users/${userId.id}/follows`,
@@ -18,7 +18,7 @@ export const fetchUserFollowing = (userId) => {
 }
 
 export const createFollow = follow => {
-    // debugger
+    //
     return $.ajax({
         method: 'POST',
         data: {follow: follow},
@@ -27,7 +27,7 @@ export const createFollow = follow => {
 }
 
 export const deleteFollow = deleteIds => {
-    // debugger
+    //
     return $.ajax({
         method: 'DELETE',
         url: `/api/follows/${deleteIds.id}`,

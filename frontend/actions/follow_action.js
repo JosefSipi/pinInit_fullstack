@@ -5,7 +5,7 @@ export const RECIEVE_USERS_FOLLOWING = 'RECIEVE_USERS_FOLLOWING';
 export const RECIEVE_DELETE_MESSAGE = 'RECIEVE_DELETE_MESSAGE';
 
 export const recieveDeleteMessage = message => {
-    // debugger
+    //
     return {
         type: RECIEVE_DELETE_MESSAGE,
         message
@@ -13,7 +13,7 @@ export const recieveDeleteMessage = message => {
 }
 
 export const recieveFollowStatus = info => {
-    // debugger
+    //
     return {
         type: RECEIVE_FOLLOW_STATUS,
         info
@@ -21,7 +21,7 @@ export const recieveFollowStatus = info => {
 }
 
 export const recieveUsersFollowing = UsersFollowInfo => {
-    // debugger
+    //
     return {
         type: RECIEVE_USERS_FOLLOWING,
         UsersFollowInfo
@@ -29,7 +29,7 @@ export const recieveUsersFollowing = UsersFollowInfo => {
 }
 
 export const isFollowing = info => {
-    // debugger
+    //
     return (dispatch) => {
         return APIUtil.isFollowing(info)
             .then(followInst => dispatch(recieveFollowStatus(followInst)))
@@ -37,7 +37,7 @@ export const isFollowing = info => {
 }
 
 export const fetchUserFollowing = userId => {
-    debugger
+
     return (dispatch) => {
         return APIUtil.fetchUserFollowing(userId)
             .then(following => dispatch(recieveUsersFollowing(following)))

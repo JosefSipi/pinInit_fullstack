@@ -28,7 +28,7 @@ class NavBar extends React.Component {
 
 
 prepSearch = debounce(() => {
-    // debugger
+    // 
     this.props.updateSearch(this.state.searchInput); // this should take a string which will be used to query the users
 
 }, 100);
@@ -56,7 +56,7 @@ redirectProfile(e){
 }
 
 searchingTime(e){
-    // debugger
+    // 
     e.preventDefault();
     let ddSearch = document.getElementById('the-dropdown-on-nav-bar-search')
     let backdrop = document.getElementById('backdrop-div-create-search')
@@ -107,7 +107,7 @@ searchOver(e){
 
 updateState(e){
     e.preventDefault();
-    // debugger
+    // 
     console.log('before' + this.state.searchInput)
     this.setState({ searchInput: e.currentTarget.value})
     
@@ -117,7 +117,7 @@ updateState(e){
 }
 
 componentDidMount(){
-    // debugger
+    // 
     // this.setState({searchUsers: this.props.users})
     if (!window.currentUser) {
     } else {
@@ -126,7 +126,7 @@ componentDidMount(){
 }
 
 // componentDidUpdate(prevProps){
-//     debugger
+//     
     // if(this.props.users !== prevProps.users && this.props.users !== undefined){
     //     this.setState({searchUsers: this.props.users})
     // }
@@ -151,7 +151,7 @@ render(){
         let theUsers
 
         if(!!this.props.users){
-            // debugger
+            // 
             theUsers = Object.values(this.props.users)
             ready = true
         }

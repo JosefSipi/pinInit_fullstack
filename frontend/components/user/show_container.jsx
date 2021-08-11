@@ -9,7 +9,7 @@ import { isFollowing, fetchUserFollowing, createFollow, deleteFollow } from '../
 import { openModal, closeModal } from '../../actions/modal';
 
 const mSTP = state => {
-    debugger
+    
     return {
         user: state.user,
         userProfile: state.user.profileUser,
@@ -37,11 +37,11 @@ const mDTP = dispatch => ({
         return dispatch(fetchBoards(userId));
     },
     isFollowing: (info) => {
-        // debugger
+        // 
         return dispatch(isFollowing(info))
     },
     fetchUserFollowing: (userId) => {
-        debugger
+        
         return dispatch(fetchUserFollowing(userId))
     },
     createFollow: followForm => dispatch(createFollow(followForm)),

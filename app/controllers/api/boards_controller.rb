@@ -10,8 +10,6 @@ class Api::BoardsController < ApplicationController
 
         @board = Board.new(board_params)
 
-        # debugger
-
         if @board.save
             render :show
         else
