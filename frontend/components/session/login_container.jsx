@@ -4,6 +4,7 @@ import { login } from '../../actions/session';
 import LogIn from './login';
 import { openModal, closeModal } from '../../actions/modal';
 import { withRouter } from 'react-router-dom';
+import { fetchUser } from '../../actions/user_actions'
 
 const mSTP = state => {
 
@@ -22,7 +23,10 @@ const mDTP = dispatch => ({
         </button>
     ),
     closeModal: () => dispatch(closeModal()),
-    openModal: (modal) => dispatch(openModal(modal))
+    openModal: (modal) => dispatch(openModal(modal)),
+    fetchUser: userId => {
+        return dispatch(fetchUser(userId))
+    }
 });
 
 export default withRouter(connect(mSTP, mDTP)(LogIn));

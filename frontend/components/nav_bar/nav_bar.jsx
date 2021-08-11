@@ -117,12 +117,17 @@ updateState(e){
 }
 
 componentDidMount(){
-    // 
-    // this.setState({searchUsers: this.props.users})
-    if (!window.currentUser) {
-    } else {
-        this.props.fetchUser(window.currentUser.id);
+
+    debugger
+    
+    if (!!window.currentUser || !!this.props.currentUser) {
+
+        this.props.fetchUser(this.props.currentUser.id || window.currentUser.id);
     }
+    // if (!window.currentUser) {
+    // } else {
+    //     this.props.fetchUser(window.currentUser.id);
+    // }
 }
 
 // componentDidUpdate(prevProps){
@@ -156,7 +161,8 @@ render(){
             ready = true
         }
 
-        if (this.props.currentUser) {this.bar = (
+        debugger
+        if (!!this.props.currentUser) {this.bar = (
             
             <div className="header" >
                 <div className="backdrop-div-create-search"  id="backdrop-div-create-search" onClick={this.searchOver}></div>
@@ -222,12 +228,13 @@ render(){
                     </div>
                     
 
-                    <Link to={`/profile/${window.currentUser.id}`} >
+                    <Link to={`/profile/${this.props.currentUser.id}`} >
+                    {/* <Link to={`/profile/${window.currentUser.id}`} > */}
                         <div className="logo-on-logged-in-header">
 
                             <div className="profile-div-small">
 
-                                <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" />
+                                <img className="profile-photo-icon" src={window.currentUser.photoUrl} alt="profile photo" />
                                 {/* <img className="profile-photo-icon" src={this.props.user.photoUrl} alt="profile photo" /> */}
                                 {/* <img className="profile-photo-header-bar" src={window.currentUser.profile_pic} alt="profile photo" /> */}
                             </div>
@@ -268,7 +275,9 @@ render(){
                     
 
             </div>
-        ) } else {this.bar = (
+        ) } else {
+            debugger
+            this.bar = (
                 <div className="header">
                     <div className="header-left" >
                     {/* require('../images/logo.png') */}
