@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :users  do 
       resources :boards, only: [:index]
       resources :follows, only: [:index]
+      resources :pins, only: [:index]
+
       # resources :pins, only: [:]
     end
 

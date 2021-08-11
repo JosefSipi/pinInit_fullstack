@@ -118,7 +118,7 @@ updateState(e){
 
 componentDidMount(){
 
-    debugger
+    
     
     if (!!window.currentUser || !!this.props.currentUser) {
 
@@ -161,7 +161,7 @@ render(){
             ready = true
         }
 
-        debugger
+        
         if (!!this.props.currentUser) {this.bar = (
             
             <div className="header" >
@@ -276,7 +276,7 @@ render(){
 
             </div>
         ) } else {
-            debugger
+            
             this.bar = (
                 <div className="header">
                     <div className="header-left" >
