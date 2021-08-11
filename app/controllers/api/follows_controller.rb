@@ -8,20 +8,26 @@ class Api::FollowsController < ApplicationController
     end
 
     def create
-        # debugger
 
-        @follow = Follow.new( follows_params )
+        @new_follow = Follow.new( follows_params )
 
-        # debugger
+        if @new_follow.save
 
-        if @follow.save
             # debugger
+
+            # @amFollowingStat = true
+
+            # @followers = User.find(follows_params[:followed_user_id]).followers
+
+            # @following = User.find(follows_params[:followed_user_id]).followings
+
+            # debugger
+
             render :show
         else
-            render json: @follow.errors.full_messages, status: 422
+            render json: @new_follow.errors.full_messages, status: 422
         end
 
-        # debugger
     end
 
     def destroy

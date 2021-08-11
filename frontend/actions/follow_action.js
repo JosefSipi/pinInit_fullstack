@@ -47,7 +47,7 @@ export const fetchUserFollowing = userId => {
 export const createFollow = follow => {
     return (dispatch) => {
         return APIUtil.createFollow(follow)
-            .then(followStatus => dispatch(recieveFollowStatus(followStatus)))
+            .then(followingStat => dispatch(recieveFollowStatus(followingStat)))
     }
 }
 

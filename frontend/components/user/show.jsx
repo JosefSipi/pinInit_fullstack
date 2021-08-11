@@ -10,7 +10,8 @@ class UserShow extends React.Component {
         this.state = {
             photoUrl: [],
             isActive: false,
-            boards: []
+            boards: [],
+            userProfile: []
         };
 
         this.state = {
@@ -21,7 +22,7 @@ class UserShow extends React.Component {
 
         this.state = {
             showDropdown: false,
-            currentUserProfile: false
+            currentUserProfile: false,
         };
 
         this.state.display_name = props.f_name;
@@ -133,7 +134,7 @@ class UserShow extends React.Component {
         //         )
         // }
 
-        this.props.fetchUser(this.props.match.params.id);
+        this.props.fetchUserProfile(this.props.match.params.id);
         this.props.fetchBoards(this.props.match.params.id);
         // this.setState({boards: Object.values(this.props.boards.boards)});
     }
@@ -144,7 +145,11 @@ class UserShow extends React.Component {
             this.setState({boards: Object.values(this.props.boards.boards)});
         } else if (prevProps.follow !== this.props.follow) {
             this.setState(
-                {following: this.props.follow.isFollowing, followers_count: this.props.follow.followers.count, following_count: this.props.follow.following.count})
+                {following: this.props.follow.amFollowing, followers_count: this.props.follow.followers.count, following_count: this.props.follow.following.count})
+        } else if (prevProps.userProfile !== this.props.userProfile){
+            this.setState(
+                {userProfile: this.props.userProfile}
+            )
         }
 
         // if(prevProps.followers !== this.props.followers || prevProps.following !== this.props.following || prevProps.isFollowing !== this.props.isFollowing) {
@@ -208,7 +213,7 @@ class UserShow extends React.Component {
 
     render() {
 
-        if (!this.state.boards ){
+        if (!this.state.boards || !this.state.userProfile){
         // if (!this.state.boards || !this.state.following){
         // if (!this.state.boards || !this.state.following || !this.state.following_count || !this.state.followers_count){
             debugger
@@ -238,7 +243,7 @@ class UserShow extends React.Component {
 
         let profilePage
 
-        // debugger
+        debugger
 
         if(this.state.currentUserProfile){profilePage = (
             <div>
@@ -247,12 +252,12 @@ class UserShow extends React.Component {
                     <header className="profile-header">
 
                         <div className="profile-div">
-                            <img className="profile-photo" src={this.props.user.photoUrl} alt="profile photo" />
+                            <img className="profile-photo" src={this.props.userProfile.photoUrl} alt="profile photo" />
                         </div>
 
-                        <h2 className="username-on-profile">{this.props.user.f_name}{(this.props.user.l_name ? this.props.user.l_name : "").charAt(0)}</h2>
+                        <h2 className="username-on-profile">{this.props.userProfile.f_name}{(this.props.userProfile.l_name ? this.props.userProfile.l_name : "").charAt(0)}</h2>
                         
-                        <h1 className="email-on-profile">{"@"}{this.props.user.username}</h1>
+                        <h1 className="email-on-profile">{"@"}{this.props.userProfile.username}</h1>
 
                         <h1 className="email-on-profile"> {this.state.followers_count} followers • {this.state.following_count} following</h1>
     
@@ -381,18 +386,18 @@ class UserShow extends React.Component {
                     <header className="profile-header">
 
                         <div className="profile-div">
-                            <img className="profile-photo" src={this.props.user.photoUrl} alt="profile photo" />
+                            <img className="profile-photo" src={this.props.userProfile.photoUrl} alt="profile photo" />
                         </div>
 
-                        <h2 className="username-on-profile">{this.props.user.f_name}{(this.props.user.l_name ? this.props.user.l_name : "").charAt(0)}</h2>
+                        <h2 className="username-on-profile">{this.props.userProfile.f_name}{(this.props.userProfile.l_name ? this.props.userProfile.l_name : "").charAt(0)}</h2>
                         
-                        <h1 className="email-on-profile">{"@"}{this.props.user.username}</h1>
+                        <h1 className="email-on-profile">{"@"}{this.props.userProfile.username}</h1>
 
                         <h1 className="email-on-profile"> {this.state.followers_count} followers • {this.state.following_count} following</h1>
 
-                        <div className="following-btn-22-1" id="following-btn-22-1" onClick={this.followUser}>Follow</div>
+                        <div className="following-btn-22-1" id="following-btn-22-1" onClick={this.followUser} style={this.state.following ? {display: 'none'} : {display: 'flex'}} >Follow</div>
 
-                        <div className="following-btn-22-2" id="following-btn-22-2" onClick={this.unfollowUser}>Following</div>
+                        <div className="following-btn-22-2" id="following-btn-22-2" onClick={this.unfollowUser} style={this.state.following ? {display: 'flex'} : {display: 'none'}}>Following</div>
     
                     </header>
                </div>
