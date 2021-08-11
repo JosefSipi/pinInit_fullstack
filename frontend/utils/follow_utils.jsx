@@ -1,6 +1,6 @@
 
 export const isFollowing = follows => {
-    debugger
+    // debugger
     return $.ajax({
         method: 'GET',
         data: {follows},
@@ -12,12 +12,13 @@ export const fetchUserFollowing = (userId) => {
     debugger
     return $.ajax({
         method: 'GET',
-        url: `/api/users/${userId}/follows`
+        url: `/api/users/${userId.id}/follows`,
+        data: {userId}
     })
 }
 
 export const createFollow = follow => {
-    debugger
+    // debugger
     return $.ajax({
         method: 'POST',
         data: {follow: follow},
@@ -26,7 +27,7 @@ export const createFollow = follow => {
 }
 
 export const deleteFollow = deleteIds => {
-    debugger
+    // debugger
     return $.ajax({
         method: 'DELETE',
         url: `/api/follows/${deleteIds.id}`,

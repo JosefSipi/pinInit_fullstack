@@ -1,6 +1,6 @@
 class Follow < ApplicationRecord
 
-    debugger
+    # debugger
     validates :follower_id, :followed_user_id, presence: true
     validates :follower_id, uniqueness: { scope: :followed_user_id}
 

@@ -14,6 +14,12 @@ class UserShow extends React.Component {
         };
 
         this.state = {
+            following: [],
+            followers_count: [],
+            following_count: [],
+        }
+
+        this.state = {
             showDropdown: false,
             currentUserProfile: false
         };
@@ -35,7 +41,7 @@ class UserShow extends React.Component {
 
     unfollowUser(e){
         e.preventDefault();
-        debugger
+        // debugger
         let delteIds = {
             follower_id: window.currentUser.id,
             followed_user_id: Number(this.props.match.params.id),
@@ -44,7 +50,7 @@ class UserShow extends React.Component {
         
 
         this.props.unfollowUser(delteIds)
-        debugger
+        // debugger
         let buttonRed = document.getElementById('following-btn-22-1')
         let buttonBlack = document.getElementById('following-btn-22-2')
 
@@ -54,14 +60,14 @@ class UserShow extends React.Component {
 
     followUser(e){
         e.preventDefault();
-        debugger
+        // debugger
 
         let followForm = {
             follower_id: window.currentUser.id,
             followed_user_id: Number(this.props.match.params.id)
         }
 
-        debugger
+        // debugger
 
         this.props.createFollow(followForm)
         let buttonRed = document.getElementById('following-btn-22-1')
@@ -100,17 +106,33 @@ class UserShow extends React.Component {
         debugger
         if(Number(window.currentUser.id) === Number(this.props.match.params.id)){
             console.log('current user on window matches profile')
-            debugger
+            // debugger
             this.setState({currentUserProfile: true})
         } else {
-            debugger
+            // debugger
             // let followStuff = {follower_id: window.currentUser.id, followed_user_id: Number(this.props.match.params.id), info: 'isFollowing'}
             // this.props.isFollowing(followStuff)
         }
         debugger
+
+        let followData = {
+
+            id: Number(this.props.match.params.id),
+            current_user_id: window.currentUser.id,
+            profile_users_id: Number(this.props.match.params.id)
+        }
         
-        this.props.fetchUserFollowing(Number(this.props.match.params.id));
-        
+        this.props.fetchUserFollowing(followData);
+
+        // if(!!this.props.followers){
+        //     debugger
+        //     this.setState(
+        //         {following: this.props.isFollowing},
+        //         {followers_count: this.props.followers.count},
+        //         {following_count: this.props.following.count}
+        //         )
+        // }
+
         this.props.fetchUser(this.props.match.params.id);
         this.props.fetchBoards(this.props.match.params.id);
         // this.setState({boards: Object.values(this.props.boards.boards)});
@@ -120,7 +142,18 @@ class UserShow extends React.Component {
         debugger
         if(prevProps.boards !== this.props.boards){
             this.setState({boards: Object.values(this.props.boards.boards)});
+        } else if (prevProps.follow !== this.props.follow) {
+            this.setState(
+                {following: this.props.follow.isFollowing, followers_count: this.props.follow.followers.count, following_count: this.props.follow.following.count})
         }
+
+        // if(prevProps.followers !== this.props.followers || prevProps.following !== this.props.following || prevProps.isFollowing !== this.props.isFollowing) {
+        //     this.setState(
+        //         {following: this.props.isFollowing},
+        //         {followers_count: this.props.followers.count},
+        //         {following_count: this.props.following.count}
+        //         )
+        // }
     }
 
     toggleClass(e) {
@@ -175,11 +208,21 @@ class UserShow extends React.Component {
 
     render() {
 
-        debugger
-
-        if (!this.state.boards){
+        if (!this.state.boards ){
+        // if (!this.state.boards || !this.state.following){
+        // if (!this.state.boards || !this.state.following || !this.state.following_count || !this.state.followers_count){
+            debugger
             return null
         }
+
+
+        // if (!this.state.following){
+        //     this.setState(
+        //         {following: this.props.isFollowing},
+        //         {followers_count: this.props.followers.count},
+        //         {following_count: this.props.following.count}
+        //         )
+        // }
 
         const handelDate = (updatedTime) => {
             let currentTime = new Date();
@@ -195,7 +238,7 @@ class UserShow extends React.Component {
 
         let profilePage
 
-        debugger
+        // debugger
 
         if(this.state.currentUserProfile){profilePage = (
             <div>
@@ -211,7 +254,7 @@ class UserShow extends React.Component {
                         
                         <h1 className="email-on-profile">{"@"}{this.props.user.username}</h1>
 
-                        <h1 className="email-on-profile"> 0 followers  • 0 following condition confirmed</h1>
+                        <h1 className="email-on-profile"> {this.state.followers_count} followers • {this.state.following_count} following</h1>
     
                     </header>
                </div>
@@ -345,7 +388,7 @@ class UserShow extends React.Component {
                         
                         <h1 className="email-on-profile">{"@"}{this.props.user.username}</h1>
 
-                        <h1 className="email-on-profile"> 0 followers  • 0 following </h1>
+                        <h1 className="email-on-profile"> {this.state.followers_count} followers • {this.state.following_count} following</h1>
 
                         <div className="following-btn-22-1" id="following-btn-22-1" onClick={this.followUser}>Follow</div>
 

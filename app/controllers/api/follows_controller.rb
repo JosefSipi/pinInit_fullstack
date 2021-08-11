@@ -1,60 +1,63 @@
 class Api::FollowsController < ApplicationController
 
-    debugger
+    # debugger
     # skip_before_action :verify_authenticity_token
 
     def new
-        # @follow = Follow.new
-        debugger
+        @follow = Follow.new
     end
 
     def create
-        debugger
+        # debugger
 
         @follow = Follow.new( follows_params )
 
-        debugger
+        # debugger
 
         if @follow.save
-            debugger
+            # debugger
             render :show
         else
             render json: @follow.errors.full_messages, status: 422
         end
 
-        debugger
+        # debugger
     end
 
     def destroy
-        debugger
+        # debugger
 
         followed_user_id = params[:deleteIds][:followed_user_id]
         follower_id = params[:deleteIds][:follower_id]
 
 
         @follow = Follow.find_by(followed_user_id: followed_user_id, follower_id: follower_id)
-        debugger
+        # debugger
         if @follow
             @follow.destroy
         else
             render json: ['Something went wrong, unfollow was unsuccessful :(']
         end
-        debugger
+        # debugger
     end
 
     def index
 
-        debugger
+        dataPar = params[:userId]
+
+        follow = Follow.find_by(followed_user_id: dataPar[:profile_users_id], follower_id: dataPar[:current_user_id])
+
+        if follow 
+            @amFollowingStat = true
+        else
+            @amFollowingStat = false
+        end
 
         @user_id = params[:user_id]
 
         @followers = User.find(params[:user_id]).followers
 
-        debugger
-
         @following = User.find(params[:user_id]).followings
-
-        debugger
 
         render :index
 
@@ -62,7 +65,7 @@ class Api::FollowsController < ApplicationController
     end
 
     def show
-        debugger
+        # debugger
         # @follow = Follow.find(params[:id])
 
         # render :show
@@ -71,7 +74,7 @@ class Api::FollowsController < ApplicationController
     private
 
     def follows_params
-        params.require(:follow).permit(:follower_id, :followed_user_id, :info)
+        params.require(:follow).permit(:follower_id, :followed_user_id, :info, :userId)
     end
 
 end

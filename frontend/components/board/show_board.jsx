@@ -18,22 +18,22 @@ class BoardShow extends React.Component {
 
     onMouseLeaveCall(e){
         e.preventDefault();
-        debugger
+        // debugger
         let theId = Number(e.currentTarget.children[1].children[1].getAttribute('data-div_id'))
-        debugger
+        // debugger
         let shadowCover = document.getElementById(`the-shade-over-pin${theId}`)
         shadowCover.style.display = 'none'
-        debugger
+        // debugger
     }
     
     onMouseEnterCall(e){
         e.preventDefault();
-        debugger
+        // debugger
         let theId = Number(e.currentTarget.children[1].children[1].getAttribute('data-div_id'))
-        debugger
+        // debugger
         let shadowCover = document.getElementById(`the-shade-over-pin${theId}`)
         shadowCover.style.display = 'block'
-        debugger
+        // debugger
     }
 
     openTheLink(e){
@@ -97,16 +97,16 @@ class BoardShow extends React.Component {
 
     photoLoaded(e){
         e.preventDefault();
-        debugger
+        // debugger
         let imageHeight = e.currentTarget.children[1].clientHeight;
         let spanVal = Math.trunc((imageHeight/10) + 7)
-        debugger
+        // debugger
 
         let card = document.getElementById(`${e.currentTarget.id}`)
 
         card.style.gridRowEnd = `span ${spanVal}`
         
-        debugger
+        // debugger
         e.currentTarget.style.visibility = "";
 
     }

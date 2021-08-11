@@ -9,14 +9,15 @@ import { isFollowing, fetchUserFollowing, createFollow, deleteFollow } from '../
 import { openModal, closeModal } from '../../actions/modal';
 
 const mSTP = state => {
-
+    debugger
     return {
         user: state.user,
         photo: state.photoUrl,
         // boards: Object.values(state.boards)
         boards: state.boards,
-        followers: state.follow.followers,
-        following: state.follow.following
+        follow: state.follow.usersFollowing,
+        // following: state.follow.usersFollowing,
+        // isFollowing: state.follow.usersFollowing
     };
 };
 
@@ -31,7 +32,7 @@ const mDTP = dispatch => ({
         return dispatch(fetchBoards(userId));
     },
     isFollowing: (info) => {
-        debugger
+        // debugger
         return dispatch(isFollowing(info))
     },
     fetchUserFollowing: (userId) => {

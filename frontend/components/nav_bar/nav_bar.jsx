@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useState } from 'react';
 import { debounce } from 'lodash';
 // import { openModal } from '../../actions/modal';
@@ -22,6 +22,8 @@ class NavBar extends React.Component {
         this.searchOver = this.searchOver.bind(this);
         this.redirectProfile = this.redirectProfile.bind(this);
         this.logoutFunction = this.logoutFunction.bind(this);
+        this.reloadIng = this.reloadIng.bind(this);
+        // this.redirectProfileCurrentUser = this.redirectProfileCurrentUser.bind(this);
     }
 
 
@@ -37,6 +39,16 @@ logoutFunction(){
     )
 
 }
+
+reloadIng(){
+
+    window.location.reload();
+}
+
+// redirectProfileCurrentUser(){
+//     this.props.history.push(`profile/${window.currentUser.id}`);
+//     window.location.reload();
+// }
 
 redirectProfile(e){
     this.props.history.push(`/profile/${e.currentTarget.getAttribute('data-user_id')}`)
@@ -210,7 +222,7 @@ render(){
                     </div>
                     
 
-                    <Link to={`/profile/${this.props.currentUser.id}`}>
+                    <Link to={`/profile/${window.currentUser.id}`} >
                         <div className="logo-on-logged-in-header">
 
                             <div className="profile-div-small">

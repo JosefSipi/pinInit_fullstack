@@ -5,7 +5,6 @@ export default (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_USER:
             return Object.assign({}, state, action.user)
-            // return action.user;
         case RECEIVE_USERS:
             return Object.assign({}, state, {searchUsers: action.users})
         default:
