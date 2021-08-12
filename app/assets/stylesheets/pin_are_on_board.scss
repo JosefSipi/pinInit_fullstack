@@ -175,6 +175,9 @@ div.over-lay{
     justify-content: flex-start;
     display: flex;
     flex-direction: column;
+    &:hover{
+        cursor: zoom-in;
+    }
 }
 
 .top-section{
@@ -340,4 +343,10 @@ div.board-duplicate-button-dd{
 .X-icon-div{
     position: relative;
     left: 129px;
+}
+
+.link-pin-on-board-pins{
+    text-decoration: none;
+    color: black;
+    
 }
