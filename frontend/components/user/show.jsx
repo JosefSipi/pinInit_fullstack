@@ -106,16 +106,9 @@ class UserShow extends React.Component {
     componentDidMount(){
         
         if(Number(window.currentUser.id) === Number(this.props.match.params.id)){
-            console.log('current user on window matches profile')
-            // 
             this.setState({currentUserProfile: true})
-        } else {
-            // 
-            // let followStuff = {follower_id: window.currentUser.id, followed_user_id: Number(this.props.match.params.id), info: 'isFollowing'}
-            // this.props.isFollowing(followStuff)
         }
         
-
         let followData = {
 
             id: Number(this.props.match.params.id),
@@ -125,18 +118,9 @@ class UserShow extends React.Component {
         
         this.props.fetchUserFollowing(followData);
 
-        // if(!!this.props.followers){
-        //     
-        //     this.setState(
-        //         {following: this.props.isFollowing},
-        //         {followers_count: this.props.followers.count},
-        //         {following_count: this.props.following.count}
-        //         )
-        // }
-
         this.props.fetchUserProfile(this.props.match.params.id);
         this.props.fetchBoards(this.props.match.params.id);
-        // this.setState({boards: Object.values(this.props.boards.boards)});
+
     }
 
     componentDidUpdate(prevProps){

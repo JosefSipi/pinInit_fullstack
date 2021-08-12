@@ -32,6 +32,7 @@ export const fetchPins = boardId => {
 }
 
 export const fetchPin = pinId => {
+    debugger
     return  (dispatch) => {
         return APIUtil.fetchPin(pinId)
             .then(pin => dispatch(receivePin(pin)));

@@ -1,10 +1,23 @@
-// overflow-y: hidden;
-// overflow-x: hidden;
-// border-radius: 100px;
-// height: 120px;
-// width: 120px;
+
+
+header.primary-header-app{
+  position: fixed;
+  width: 100vw;
+  background-color: white;
+}
+
+.space-provider{
+  height: 82px;
+  width: 100%;
+  // border: red 2px solid;
+  // background-color: rgba(21, 255, 0, 0.253);
+}
+
+
+
 // ------------------------------------------------
 // pinterest logo in header while logged in
+
 
 .header-logged-in-1 {
   height: inherit;
@@ -244,7 +257,6 @@ p.create-p-tag{
 // --- the search bar on logged in
 
 .searchBar {
-  all: unset;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -364,11 +376,17 @@ p.create-p-tag{
     align-items: center;
     height: 80px;
     z-index: 100;
-    
+    width: 100%;
   }
   
   header.nav-bar {
     font-family: 'Questrial', sans-serif;
+    width: 100%;
+
+  }
+
+  .nav-bar-sub-div-1{
+    width: 100%;
   }
 
 

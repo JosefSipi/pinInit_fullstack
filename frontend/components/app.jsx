@@ -18,6 +18,7 @@ import CreateBoardModal from './modal/createBoard';
 import BoardShow from './board/show_board_container';
 import CreatePin from './pin/create_pin_container';
 import CreatePinLink from './pin/create_pin_link_container';
+import PinShow from './pin/pin_show_container';
 
 
 export default () => (
@@ -33,12 +34,14 @@ export default () => (
         <CreateBoardModal/>
         <CreatePinLink/>
         <div className="the-whole-page">
-            <header>
+            <header className='primary-header-app'>
                 <Route path="/" component={NavBarContainer}/>
             </header>
+            <div className="space-provider"></div>
                 <Route path="/home" component={Home}/>
             {/* <Route path={`/profile/`} */}
             <Route path="/board/:id" component={BoardShow}/>
+            <Route path="/pin/:id" component={PinShow} />
             <ProtectedRoute path='/pin-create' component={CreatePin}/>
             <ProtectedRoute path="/edit-profile" component={EditContainer}/>
             <ProtectedRoute path="/feed" component={Feed}/>

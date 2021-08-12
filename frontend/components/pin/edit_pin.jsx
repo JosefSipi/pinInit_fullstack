@@ -75,23 +75,11 @@ class EditPinShow extends React.Component {
         let prevState = this.state.pin
         prevState["board_id"] = e.currentTarget.id
         this.setState({pin: prevState})
-        console.log(`handel board at ${e.currentTarget.id}`)
-        // // this.setState({titleofBoard: title})
-
-        // return(e) => {
-        //     let prevState = this.state.pin
-        //     prevState["board_id"] = e.currentTarget.id
-        //     this.setState({pin: prevState})
-        //     console.log(`handel board at ${e.currentTarget.id}`)
-        // }
     }
 
     componentDidMount(){
-
-        console.log('pin edit modal component did mount')
         this.props.fetchPin(window.editPin)
-
-        this.props.fetchBoards(window.currentUser.id).then(console.log('we hit fetchBoards in edit_pin component'))
+        this.props.fetchBoards(window.currentUser.id)
     }
     
     componentDidUpdate(prevProps){
@@ -120,7 +108,6 @@ class EditPinShow extends React.Component {
                 this.setState({titleofBoard: e.currentTarget.value})
             } else {
                 prevState[field] = e.currentTarget.value
-                console.log(prevState[field])
                 this.setState({pin: prevState})
             }
         }

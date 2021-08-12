@@ -135,7 +135,6 @@ class BoardShow extends React.Component {
         if(window.currentUser.id === this.props.boardProfile.owner_id){
             return (
                 <div>
-                    {console.log('current user is board user')}
                     <div className="boards-grid-area-for-pins">
                         <div className="top-section">
                             <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>

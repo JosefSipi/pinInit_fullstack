@@ -16,9 +16,9 @@ div.search-bar-section-1{
     align-items: center;
     flex-direction: column;
     align-self: stretch;
-    width: 2000px;
     padding-top: 5px;
     padding-bottom: 5px;
+    flex-grow: 1;
 }
 
 .drop-down-holder-nav-bar{

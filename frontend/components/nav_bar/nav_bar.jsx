@@ -65,7 +65,6 @@ searchingTime(e){
         ddSearch.style.display = 'flex'
         backdrop.style.display = 'block'
     } else {
-        console.log('AAAAAAAAAAAAAAAAAAAAAA!!!!! for some reason we hit the else in searchingTime funciton AAAAAAAAAAa')
         ddSearch.style.display = 'none'
         backdrop.style.display = 'none'
     }
@@ -107,11 +106,7 @@ searchOver(e){
 
 updateState(e){
     e.preventDefault();
-    // 
-    console.log('before' + this.state.searchInput)
     this.setState({ searchInput: e.currentTarget.value})
-    
-    console.log('after' + this.state.searchInput)
     this.prepSearch(this.state.searchInput)
 
 }
@@ -299,7 +294,7 @@ render(){
 
         return (
             <header className="nav-bar">
-                <div>
+                <div className="nav-bar-sub-div-1">
                     {this.bar}
                 </div>
             </header>

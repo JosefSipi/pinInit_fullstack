@@ -71,8 +71,6 @@ class CreatePin extends React.Component {
         formData.append('pin[heightof]', heightOfValue);
         this.props.createNewPin(formData)
             .then(() => {
-                // direct to pin show page
-                console.log('should now direct to pin show page'),
                this.props.history.push(`/board/${theBoardDest}`)
             })
     }
