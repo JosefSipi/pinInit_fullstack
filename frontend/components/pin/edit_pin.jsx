@@ -25,8 +25,9 @@ class EditPinShow extends React.Component {
         this.props.updatePin(this.state.pin).then(
 
             this.props.closeModal(),
-            this.props.history.push(`/board/${theboardId}`),
-            window.location.reload()
+            // this.props.history.push(`/board/${theboardId}`),
+            // window.location.reload(),
+            this.props.fetchPin(window.editPin)
         )
 
     }

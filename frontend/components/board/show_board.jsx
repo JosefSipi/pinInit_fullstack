@@ -79,10 +79,12 @@ class BoardShow extends React.Component {
             backdrop.style.display = "none"
         }
     }
+
+
     backdropClick(e){
         e.preventDefault();
 
-       let dropDown = document.getElementById("edit-dropdown-menue-123-id");
+        let dropDown = document.getElementById("edit-dropdown-menue-123-id");
         let backdrop = document.getElementById('backdrop-div-create-pin')
         if(dropDown.style.display === "none"){
             dropDown.style.display = "none"
@@ -185,8 +187,8 @@ class BoardShow extends React.Component {
                     <div className="pin-area-on-board-show" >
                         <div className="pin_container" id="pin_container">
                             {pins.map(pin => 
-                               <Link className="link-pin-on-board-pins" to={`/pin/${pin.id}`} key={pin.id + 'pin-key'}> 
-                                    <div onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall} onClick={() => this.showPin(pin.id)}>
+                            //    <Link className="link-pin-on-board-pins" to={`/pin/${pin.id}`} key={pin.id + 'pin-key'}> 
+                                    <Link to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall} onClick={() => this.showPin(pin.id)}>
 
                                         <div className="outside-edit-pin-board-show">
 
@@ -207,8 +209,8 @@ class BoardShow extends React.Component {
 
                                         <div className="card-title-pin">{pin.title}</div>
 
-                                    </div>
-                                </Link>
+                                    </Link>
+                                // </Link>
                             )}
                         </div>
                     </div>

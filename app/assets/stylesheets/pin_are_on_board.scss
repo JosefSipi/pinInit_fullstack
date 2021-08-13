@@ -168,6 +168,8 @@ div.over-lay{
 }
 
 .card-update {
+    text-decoration: none;
+    color: black;
     padding: 0;
     margin: 15px 10px;
     border-radius: var(--card_border_radius);
@@ -348,5 +350,5 @@ div.board-duplicate-button-dd{
 .link-pin-on-board-pins{
     text-decoration: none;
     color: black;
-    
+
 }
