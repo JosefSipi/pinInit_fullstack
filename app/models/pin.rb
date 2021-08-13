@@ -16,5 +16,9 @@ class Pin < ApplicationRecord
         foreign_key: :board_id,
         class_name: :Board
 
+    has_many :comments,
+        primary_key: :id,
+        foreign_key: :commenter_id,
+        class_name: :Comment
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_10_180015) do
+ActiveRecord::Schema.define(version: 2021_08_13_051838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(version: 2021_08_10_180015) do
     t.datetime "updated_at", null: false
     t.index ["board_id"], name: "index_boards_pin_joins_on_board_id"
     t.index ["pin_id"], name: "index_boards_pin_joins_on_pin_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "commenter_id", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commenter_id"], name: "index_comments_on_commenter_id"
   end
 
   create_table "follows", force: :cascade do |t|

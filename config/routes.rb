@@ -14,6 +14,10 @@ Rails.application.routes.draw do
       resources :pins, only: [:index]
     end
 
+    resources :pins do 
+      resources :comments, only: [:create, :destroy, :new, :update, :show, :edit, :index]
+    end
+
     resource :session, only: [:new, :create, :destroy]
     resources :boards, only: [:new, :create, :destroy, :update, :edit, :show ]
     resources :pins, only: [:new, :create, :destroy, :edit, :show, :update]

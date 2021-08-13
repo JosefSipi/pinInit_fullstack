@@ -82,21 +82,59 @@
 }
 
 .comments-section{
-    border-bottom: solid black 3px;
     padding-top: 12px;
     padding-bottom: 12px;
     align-self: flex-start;
     font-weight: 550;
+    width: 100%;
 }
 
 .comments-lable-pin-show{
-
+    border-bottom: solid black 3px;
+    padding-top: 12px;
+    padding-bottom: 13px;
+    align-self: flex-start;
+    font-weight: 550;
+    width: fit-content;
 }
 
 .comments-in-section{
     width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
 }
 
 .pin-show{
     top: 57px;
+}
+
+
+.describing-comments{
+    font-size: 13px;
+    font-weight: 100;
+    padding-top: 34px;
+    padding-bottom: 12px;
+}
+
+.input-pin-show{
+    height: 47px;
+    border-radius: 16px;
+    margin-left: 10px;
+    border: solid 1px #dddddd;
+    width: 100%;
+}
+
+.image-div-show-pin-page{
+    height: 69px;
+    width: 69px;
+    border-radius: 50%;
+    overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.profile-icon-photo-pinshow{
+    height: 68px;
+    width: auto;
 }

@@ -102,9 +102,16 @@ class PinShow extends React.Component {
 
                         <div className='comments-section'>
                             <div className="comments-lable-pin-show">Comments</div>
-                            <div className="comments-in-section" >
 
-                            </div>
+                            <div className="describing-comments">Share feedback, ask a question or give a high five</div>
+
+                            <form className="comments-in-section" >
+                                <div className="image-div-show-pin-page" >
+                                    <img className="profile-icon-photo-pinshow" src={window.currentUser.photoUrl} alt="profile" />
+                                </div>
+                                <input className="input-pin-show" type="text" name="" id="" />
+                            </form>
+
                         </div>
                     </div>
 
