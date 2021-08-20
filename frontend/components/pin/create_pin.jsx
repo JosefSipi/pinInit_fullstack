@@ -310,7 +310,6 @@ class CreatePin extends React.Component {
                             </div>
 
                             <div className="down-arrow-div" onClick={this.handelUlClick} >
-
                                 <img src={window.downArrowURL} alt="down arrow icon" id="down-arrow-image-create-pin" />
                             </div>
 
