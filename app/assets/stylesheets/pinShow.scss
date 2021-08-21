@@ -113,28 +113,55 @@
 .describing-comments{
     font-size: 13px;
     font-weight: 100;
-    padding-top: 34px;
-    padding-bottom: 12px;
+    padding-top: 39px;
+    padding-bottom: 27px;
 }
 
 .input-pin-show{
     height: 47px;
-    border-radius: 16px;
+    border-radius: 30px;
     margin-left: 10px;
     border: solid 1px #dddddd;
-    width: 100%;
+    flex-grow: 1;
 }
 
 .image-div-show-pin-page{
-    height: 69px;
-    width: 69px;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     overflow: hidden;
-    padding-top: 10px;
-    padding-bottom: 10px;
+
 }
 
 .profile-icon-photo-pinshow{
-    height: 68px;
+    height: 50px;
     width: auto;
+}
+
+.change-input{
+    border-radius: 16px;
+}
+
+.image-show-pin-1{
+}
+
+.outer-comment-pin-show-1{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.outer-comment-pin-show-2{
+    display: flex;
+    padding-top: 14px;
+}
+
+.button-show-pin-comment{
+    padding: 12px;
+    background-color: #e2e2e2;
+    border-radius: 50px;
+}
+
+.cancel-btn-show-pin{
+    margin-right: 10px;
 }

@@ -8,11 +8,16 @@ class PinShow extends React.Component {
         }
 
         this.editPin = this.editPin.bind(this);
+        this.classAddInput = this.classAddInput.bind(this);
+    }
+
+    classAddInput(e){
+        e.preventDefault();
+        e.currentTarget.classList.add('change-input')
     }
 
     editPin(e){
         e.preventDefault();
-        debugger
         window.editPin = Number(this.props.match.params.id)
         this.backdropClick(e)
         this.props.openModal('editPin')
@@ -48,13 +53,11 @@ class PinShow extends React.Component {
      }
 
     componentDidMount(){
-        debugger
         this.props.fetchPin(Number(this.props.match.params.id))
     }
 
 
     componentDidUpdate(prevProps){
-        debugger
         if(this.props.pin !== prevProps.pin){
             this.setState({pin: this.props.pin.pin})
         }
@@ -66,15 +69,15 @@ class PinShow extends React.Component {
             return null
         }
 
-        debugger
-
         return(
 
             <div className='background-div-pin-show'>
                 <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
                 <div className='main-div-pin-show'>
 
-                    <img className='image-show-pin' src={this.state.pin.photoUrl} alt="photo?" />
+                    <div className="image-show-pin-1">
+                        <img className='image-show-pin' src={this.state.pin.photoUrl} alt="photo?" />
+                    </div>
 
                     <div className='right-half-pin-show'>
                         <div className='top-bar-right-show-pin'>
@@ -105,12 +108,19 @@ class PinShow extends React.Component {
 
                             <div className="describing-comments">Share feedback, ask a question or give a high five</div>
 
-                            <form className="comments-in-section" >
+                        <div className="outer-comment-pin-show-1">
+                            <div className="comments-in-section" >
                                 <div className="image-div-show-pin-page" >
                                     <img className="profile-icon-photo-pinshow" src={window.currentUser.photoUrl} alt="profile" />
                                 </div>
-                                <input className="input-pin-show" type="text" name="" id="" />
-                            </form>
+                                <input className="input-pin-show" type="text" name="" id="" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
+                            </div>
+
+                            <div className='outer-comment-pin-show-2'>
+                                <div className="button-show-pin-comment cancel-btn-show-pin" >Cancel</div>
+                                <div className="button-show-pin-comment" >Done</div>
+                            </div>
+                        </div>
 
                         </div>
                     </div>
