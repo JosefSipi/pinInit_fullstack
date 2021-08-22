@@ -15,6 +15,7 @@ const mDTP = dispatch => {
         fetchPin: (pinId) => {
             return dispatch(fetchPin(pinId));
         },
+        
         openModal: (modal) => dispatch(openModal(modal))
     }
 }

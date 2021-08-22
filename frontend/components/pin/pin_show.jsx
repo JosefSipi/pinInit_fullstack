@@ -9,11 +9,25 @@ class PinShow extends React.Component {
 
         this.editPin = this.editPin.bind(this);
         this.classAddInput = this.classAddInput.bind(this);
+        this.isFieldEmpty = this.isFieldEmpty.bind(this);
     }
 
     classAddInput(e){
         e.preventDefault();
         e.currentTarget.classList.add('change-input')
+        let buttons = document.getElementById('pin-show-btn');
+        buttons.style.display = 'flex'
+    }
+
+    isFieldEmpty(e){
+        e.preventDefault();
+        if(e.currentTarget.value.trim().length === 0){
+            let doneBtn = document.getElementById('done-btn-show-pin')
+            doneBtn.classList.remove('done-red-btn')
+        } else {
+            let doneBtn = document.getElementById('done-btn-show-pin')
+            doneBtn.classList.add('done-red-btn')
+        }
     }
 
     editPin(e){
@@ -113,12 +127,12 @@ class PinShow extends React.Component {
                                 <div className="image-div-show-pin-page" >
                                     <img className="profile-icon-photo-pinshow" src={window.currentUser.photoUrl} alt="profile" />
                                 </div>
-                                <input className="input-pin-show" type="text" name="" id="" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
+                                <input className="input-pin-show" type="text" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
                             </div>
 
-                            <div className='outer-comment-pin-show-2'>
-                                <div className="button-show-pin-comment cancel-btn-show-pin" >Cancel</div>
-                                <div className="button-show-pin-comment" >Done</div>
+                            <div id="pin-show-btn" className='outer-comment-pin-show-2'>
+                                <div id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin" >Cancel</div>
+                                <div id='done-btn-show-pin' className="button-show-pin-comment done-123" >Done</div>
                             </div>
                         </div>
 

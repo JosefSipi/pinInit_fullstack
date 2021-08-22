@@ -123,6 +123,7 @@
     margin-left: 10px;
     border: solid 1px #dddddd;
     flex-grow: 1;
+    text-indent: 10px;
 }
 
 .image-div-show-pin-page{
@@ -152,7 +153,7 @@
 }
 
 .outer-comment-pin-show-2{
-    display: flex;
+    display: none;
     padding-top: 14px;
 }
 
@@ -160,8 +161,27 @@
     padding: 12px;
     background-color: #e2e2e2;
     border-radius: 50px;
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 .cancel-btn-show-pin{
     margin-right: 10px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.done-123{
+    color: gray;
+}
+
+.done-red-btn{
+    color: white;
+    background-color: #e60023;
+    &:hover{
+        background-color: #ad081b;
+        cursor: pointer;
+    }
 }
