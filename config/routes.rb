@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
 
     resources :pins do 
-      resources :comments, only: [:create, :destroy, :new, :update, :show, :edit, :index]
+      resources :comments, only: [:destroy, :new, :update, :show, :edit, :index]
     end
 
     resource :session, only: [:new, :create, :destroy]
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :pins, only: [:new, :create, :destroy, :edit, :show, :update]
     resources :boards_pin_joins, only: [:new, :create, :edit, :destroy, :update, :show, :index]
     resources :follows, only: [:create, :destroy, :show, :new]
+    resources :comments, only: [:create]
   end
 
 

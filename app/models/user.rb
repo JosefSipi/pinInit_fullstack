@@ -52,6 +52,10 @@ class User < ApplicationRecord
         source: :followed_user
     
 
+    has_many :comments,
+        primary_key: :id,
+        foreign_key: :commenter_id,
+        class_name: :Comment
 
     # has_many :comments,
     #     as: :commentable

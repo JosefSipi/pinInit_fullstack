@@ -4,12 +4,30 @@ class PinShow extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            pin: null
+            pin: null,
+            comment: {
+                commenter_id: window.currentUser.id,
+                pin_id: Number(this.props.match.params.id),
+                body: null
+            }
         }
 
         this.editPin = this.editPin.bind(this);
         this.classAddInput = this.classAddInput.bind(this);
         this.isFieldEmpty = this.isFieldEmpty.bind(this);
+        this.handelSubmitComment = this.handelSubmitComment.bind(this);
+    }
+
+    handelSubmitComment(e){
+        e.preventDefault();
+        debugger
+
+        if(e.currentTarget.classList.length === 3){
+            debugger
+            this.props.newComment(this.state.comment)
+        }
+
+        debugger
     }
 
     classAddInput(e){
@@ -21,6 +39,14 @@ class PinShow extends React.Component {
 
     isFieldEmpty(e){
         e.preventDefault();
+        debugger
+
+        let prevState = this.state.comment
+        prevState.body = e.currentTarget.value
+        this.setState({comment: prevState})
+
+        debugger
+
         if(e.currentTarget.value.trim().length === 0){
             let doneBtn = document.getElementById('done-btn-show-pin')
             doneBtn.classList.remove('done-red-btn')
@@ -132,7 +158,7 @@ class PinShow extends React.Component {
 
                             <div id="pin-show-btn" className='outer-comment-pin-show-2'>
                                 <div id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin" >Cancel</div>
-                                <div id='done-btn-show-pin' className="button-show-pin-comment done-123" >Done</div>
+                                <div id='done-btn-show-pin' className="button-show-pin-comment done-123" onClick={this.handelSubmitComment}>Done</div>
                             </div>
                         </div>
 
