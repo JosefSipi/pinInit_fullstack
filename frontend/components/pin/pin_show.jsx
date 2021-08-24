@@ -17,6 +17,8 @@ class PinShow extends React.Component {
         this.classAddInput = this.classAddInput.bind(this);
         this.isFieldEmpty = this.isFieldEmpty.bind(this);
         this.handelSubmitComment = this.handelSubmitComment.bind(this);
+        this.moreClickedDDComment = this.moreClickedDDComment.bind(this);
+        this.moreClickedDD = this.moreClickedDD.bind(this);
     }
 
     handelSubmitComment(e){
@@ -64,7 +66,20 @@ class PinShow extends React.Component {
         this.props.openModal('editPin')
     }
 
-     moreClickedDD(e){
+    moreClickedDD(e){
+        e.preventDefault();
+        let dropDown = document.getElementById("edit-dropdown-menue-123-id");
+        let backdrop = document.getElementById('backdrop-div-create-pin')
+        if(dropDown.style.display === "none" || dropDown.style.display === "" ){
+            dropDown.style.display = "flex"
+            backdrop.style.display = "block"
+        } else {
+            dropDown.style.display = "none"
+            backdrop.style.display = "none"
+        }
+    }
+
+    moreClickedDDComment(e){
         e.preventDefault();
         let dropDown = document.getElementById("edit-dropdown-menue-123-id");
         let backdrop = document.getElementById('backdrop-div-create-pin')
@@ -169,9 +184,10 @@ class PinShow extends React.Component {
                             <div className='comment-array-pin-show'>
                                 {
                                     comments.map( comment => 
+                                    <div className='outside-comment-main' key={comment.id + "outside"}>
                                         <div className='one-comment-pin-show' key={comment.id}>
                                         
-                                            <div className="image-div-show-pin-page">
+                                            <div className="image-div-show-pin-page comment-list-2">
                                                 <img className='profile-icon-photo-pinshow' src={comment.photoUrl} alt="pic" />
                                             </div>
 
@@ -180,6 +196,24 @@ class PinShow extends React.Component {
                                                 <div className='body-list-pin-show'>{comment.body}</div>
                                             </div>
                                         </div>
+
+                                        <div className='bottom-section-comment-pin-show'>
+                                            
+                                            <h1 className="header-title-boards-show-123">
+                                            
+                                            <div className="pin-duplicate-button-dd comment-edition-div" onClick={this.moreClickedDD}>
+                                                <img className="pin-123-1 comment-edition-dot" src={window.dotsBlackURL} alt="more icon"/>
+                                            </div>
+                                                <div className="div-holder-helper-123">
+                                                    <div className="edit-dropdown-menue-123 pin-show" id="edit-dropdown-menue-123-id">
+                                                        <div onClick={this.editPin} >Edit Pin</div>
+                                                    </div>
+                                                </div>
+                                            </h1>
+
+                                        </div>
+
+                                    </div>
                                     )
                                 }
                             </div>

@@ -201,17 +201,20 @@
     align-items: flex-start;
     flex-direction: column;
     width: 100%;
-    border: 7px solid blue;
 }
 
 .body-list-pin-show{
-
+    font-weight: 200;
+    font-size: 13px;
+    padding-top: 4px;
 }
 
 .name-list-pin-show{
     display: flex;
-    font-weight: normal;
+    font-weight: 550;
     color: black;
+    font-size: 14px;
+    letter-spacing: .5px;
 }
 
 .one-comment-pin-show{
@@ -220,10 +223,41 @@
     width: 100%;
     justify-content: flex-start;
     align-items: center;
-    border: 2px solid red;
 }
 
 .right-txt-pin-show{
-    border: greenyellow solid 1px;
-    border-radius: 8px;
+    border: #dddddd solid 1px;
+    border-radius: 16px;
+    flex-grow: 1;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 13px;
+    padding-right: 13px;
+}
+
+.comment-list-2{
+    margin-right: 10px;
+}
+
+.outside-comment-main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+}
+
+.bottom-section-comment-pin-show{
+   width: 100%;
+   height: fit-content;
+
+}
+
+.comment-edition-dot{
+    height: 17px;
+}
+
+.comment-edition-div{
+    height: 33px;
+    width: 33px;
+    border: 1px red solid;
 }
