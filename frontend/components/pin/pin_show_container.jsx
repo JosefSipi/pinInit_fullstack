@@ -3,9 +3,10 @@ import { withRouter } from 'react-router-dom';
 import { fetchPin } from '../../actions/pin_action';
 import PinShow from './pin_show';
 import { openModal } from '../../actions/modal';
-import { newComment } from '../../actions/comment_actions';
+import { newComment, fetchComments } from '../../actions/comment_actions';
 
 const mSTP = (state) => {
+    debugger
     return {
         pin: state.pin
     }
@@ -19,6 +20,10 @@ const mDTP = dispatch => {
         newComment: (comment) => {
             debugger
             return dispatch(newComment(comment))
+        },
+        fetchComments: pinId => {
+            debugger
+            return dispatch(fetchComments(pinId))
         },
         openModal: (modal) => dispatch(openModal(modal))
     }

@@ -9,7 +9,8 @@ class PinShow extends React.Component {
                 commenter_id: window.currentUser.id,
                 pin_id: Number(this.props.match.params.id),
                 body: null
-            }
+            },
+            comments: null
         }
 
         this.editPin = this.editPin.bind(this);
@@ -98,16 +99,31 @@ class PinShow extends React.Component {
 
 
     componentDidUpdate(prevProps){
+        debugger
         if(this.props.pin !== prevProps.pin){
+            debugger
             this.setState({pin: this.props.pin.pin})
+            this.setState({ comments: Object.values(this.props.pin.pin.comments)})
         }
+        // } else if (this.props.comments !== prevProps.comments) {
+        //     debugger
+        //     this.setState({comments: this.props.pin})
+        // }
     }
 
     render(){
 
         if(!this.state.pin){
+            debugger
             return null
-        }
+        } 
+        // else if (!this.state.comments) {
+        //     debugger
+        //     return null
+        // }
+        debugger
+
+        const comments = this.state.comments
 
         return(
 
@@ -149,6 +165,27 @@ class PinShow extends React.Component {
                             <div className="describing-comments">Share feedback, ask a question or give a high five</div>
 
                         <div className="outer-comment-pin-show-1">
+
+                            <div className='comment-array-pin-show'>
+                                {
+                                    comments.map( comment => 
+                                        <div className='one-comment-pin-show' key={comment.id}>
+                                        
+                                            <div className="image-div-show-pin-page">
+                                                <img className='profile-icon-photo-pinshow' src={comment.photoUrl} alt="pic" />
+                                            </div>
+
+                                            <div className='right-txt-pin-show'>
+                                                <div className='name-list-pin-show' >{comment.name}</div>
+                                                <div className='body-list-pin-show'>{comment.body}</div>
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                            </div>
+
+                            <div className="comment-count">{comments.length} comments </div>
+
                             <div className="comments-in-section" >
                                 <div className="image-div-show-pin-page" >
                                     <img className="profile-icon-photo-pinshow" src={window.currentUser.photoUrl} alt="profile" />

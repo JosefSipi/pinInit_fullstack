@@ -5,18 +5,15 @@ class Api::CommentsController < ApplicationController
     end
 
     def index
-        debugger
     end
 
     def create
-        debugger
         @comment = Comment.new(comment_params)
-        debugger
         if @comment.save
-            debugger
+
             render json: ['comment was saved correctly']
         else
-            debugger
+
             render json: ['comment could not be saved']
         end 
     end

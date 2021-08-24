@@ -43,6 +43,10 @@ class Api::PinsController < ApplicationController
     end
 
     def show
+        # need to get an array of comments including the associated user avatar for each commenter
+
+        @comments = Comment.where(pin_id: params[:id])
+
         @pin = Pin.find(params[:id])
         render :show
     end
