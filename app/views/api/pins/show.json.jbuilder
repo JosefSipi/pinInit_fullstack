@@ -5,7 +5,6 @@ if (@pin.photo.attached?)
     json.photoUrl url_for(@pin.photo)
 end
 
-
 json.comments do
     @comments.each do |comment|
         

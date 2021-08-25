@@ -31,3 +31,10 @@ export const fetchComments = pinId => {
             .then(comments => dispatch(receiveComments(comments)))
     }
 }
+
+export const deleteComment = commentIds => {
+    return dispatch => {
+        return APIUtil.deleteComment(commentIds)
+            .then(message => dispatch(receiveMessage(message)))
+    }
+}

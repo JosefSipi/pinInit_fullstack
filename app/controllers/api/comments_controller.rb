@@ -19,7 +19,17 @@ class Api::CommentsController < ApplicationController
     end
 
     def destroy
-        # @comment.find(params[:id])
+
+        @comment = Comment.find(params[:id])
+
+        if @comment 
+            @comment.destroy
+            render json: ['comment was deleted']
+        else
+            render json: ['comment was not deleted']
+        end
+
+
     end
 
     def edit

@@ -14,3 +14,11 @@ export const fetchComments = pinId => {
         url: `/api/pins/${pinId}/comments`
     })
 }
+
+export const deleteComment = commentIds => {
+    debugger
+    return $.ajax({
+        method: 'DELETE',
+        url: `/api/pins/${commentIds.pinId}/comments/${commentIds.commentId}`
+    })
+}
