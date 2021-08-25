@@ -25,6 +25,13 @@ class PinShow extends React.Component {
         this.moreClickedDD = this.moreClickedDD.bind(this);
         this.deleteComment = this.deleteComment.bind(this);
         this.backdropClick = this.backdropClick.bind(this);
+        this.handelEditChange = this.handelEditChange.bind(this);
+        // this.handelSubmitCommentEdit = this.handelSubmitCommentEdit.bind(this);
+    }
+
+    handelEditChange(e){
+        e.preventDefault();
+        this.setState({editComment: e.currentTarget.value})
     }
 
     editComment(e){
@@ -39,7 +46,7 @@ class PinShow extends React.Component {
         optionsDiv.style.display = 'none'
         backdrop.style.display = 'none'
         debugger
-        this.setState({editComment: e.currentTarget})
+        this.setState({editComment: e.currentTarget.getAttribute('data-div_val')})
 
         let commentIds = {
             commentId: e.currentTarget.id,
@@ -254,9 +261,10 @@ class PinShow extends React.Component {
                                 { comments.map( comment => 
                                     <div className='outside-comment-main' key={comment.id + "outside"}>
                                         <div className='one-comment-pin-show' key={comment.id}>
-                                        
-                                            <div className="image-div-show-pin-page comment-list-2">
-                                                <img className='profile-icon-photo-pinshow' src={comment.photoUrl} alt="pic" />
+                                            <div>
+                                                <div className="image-div-show-pin-page comment-list-2">
+                                                    <img className='profile-icon-photo-pinshow' src={comment.photoUrl} alt="pic" />
+                                                </div>
                                             </div>
 
                                             <div className='right-txt-pin-show' id={`right-txt-pin-show`+ comment.id} >
@@ -265,7 +273,11 @@ class PinShow extends React.Component {
                                             </div>
 
                                             <div className='edit-form-div-outter' id={'edit-form-div' + comment.id} >
-                                                <input placeholder='Add a comment' className='blank-input-style' type="text" value={this.state.editComment}/>
+                                                <textarea placeholder='Add a comment' className='blank-input-style' type="text" value={this.state.editComment} onChange={this.handelEditChange} />
+                                                <div className='edit-comment-btns'>
+                                                    <div id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin" >Cancel</div>
+                                                    <div id='done-btn-show-pin' className="button-show-pin-comment done-123" onClick={this.handelSubmitCommentEdit}>Save</div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -278,7 +290,7 @@ class PinShow extends React.Component {
                                             </div> : null}
                                                 <div className="div-holder-helper-123-pin-show">
                                                     <div className="edit-dropdown-menue-123-pin-show" id={`edit-dropdown-menue-124-id` + comment.id}>
-                                                        <div id={comment.id} onClick={this.editComment}>Edit</div>
+                                                        <div data-div_val={comment.body} id={comment.id} onClick={this.editComment}>Edit</div>
                                                         <div id={comment.id} onClick={this.deleteComment}>Delete</div>
                                                     </div>
                                                 </div>

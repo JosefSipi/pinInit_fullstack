@@ -218,7 +218,7 @@
     flex-direction: row;
     width: 100%;
     justify-content: flex-start;
-    align-items: center;
+
 }
 
 .right-txt-pin-show{
@@ -313,9 +313,24 @@
 .blank-input-style{
     border: brown solid 1px;
     border: none;
+    flex-grow: 1;
+    resize: none;
+    outline: none;
+    overflow: visible;
+    font-family: 'Questrial', sans-serif;
+    padding: 14px;
+    font-size: 17px;
+    font-weight: 100;
 }
 
 .edit-form-div-outter{
-     border: greenyellow solid 1px;
      display: none;
+     flex-grow: 1;
+     flex-direction: column;
+}
+
+.edit-comment-btns{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
