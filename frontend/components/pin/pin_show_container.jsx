@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { fetchPin } from '../../actions/pin_action';
 import PinShow from './pin_show';
 import { openModal } from '../../actions/modal';
-import { newComment, fetchComments, deleteComment } from '../../actions/comment_actions';
+import { newComment, fetchComments, deleteComment, editComment } from '../../actions/comment_actions';
 
 const mSTP = (state) => {
     debugger
@@ -26,8 +26,11 @@ const mDTP = dispatch => {
         },
         openModal: (modal) => dispatch(openModal(modal)),
         deleteComment: (commentIds) => {
-            debugger
             return dispatch(deleteComment(commentIds))
+        },
+        editComment: (commentIds) => {
+            debugger
+            return dispatch(editComment(commentIds))
         }
     }
 }
