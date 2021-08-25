@@ -16,7 +16,7 @@ json.comments do
         
             if(commenter.profile_pic.attached?)
                 json.photoUrl url_for(commenter.profile_pic)
-                json.name commenter.f_name
+                json.name commenter.f_name 
             end
     
         end
