@@ -56,7 +56,6 @@ redirectProfile(e){
 }
 
 searchingTime(e){
-    // 
     e.preventDefault();
     let ddSearch = document.getElementById('the-dropdown-on-nav-bar-search')
     let backdrop = document.getElementById('backdrop-div-create-search')
@@ -183,15 +182,15 @@ render(){
                 </div>
 
                 <div className="search-bar-section-1">
-                    <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime}></input>
-                    {/* <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchOver}></input> */}
+                    <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchingTime}></input>
+                    {/* <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchOver}></input> */ }
                     <div className="drop-down-holder-nav-bar">
                         <img className="search-bar-icon" src={window.magnaURL} alt="search icon" />
                         <div className="the-dropdown-on-nav-bar-search" id="the-dropdown-on-nav-bar-search">
                             { ready ? 
                                 theUsers.map(user => 
                                     // <Link to={`/profile/${user.id}`} >
-                                    <div key={user.id} className="list-search-user" onClick={this.redirectProfile} data-user_id={user.id}>
+                                    <div key={user.id} className="list-search-user" onMouseDown={this.redirectProfile} data-user_id={user.id}>
                                         <div className="div-for-search-user-img">
                                             <img className="search-user-img" src={user.photoUrl} alt="user avatar" />
                                         </div>

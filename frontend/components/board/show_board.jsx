@@ -198,7 +198,7 @@ class BoardShow extends React.Component {
                                             <img className="pin-photo" src={pin.photoUrl} alt="pin photo" />
 
                                             <div data-div_id={pin.id} className="the-shade-over-pin" id={`the-shade-over-pin${pin.id}`}>
-                                                <div style={ pin.websiteURL.length < 3 ? {display: 'none'} : {display: 'block'}} className="website-url-div-hoverthing" id={pin.websiteURL} onClick={this.openTheLink}> <img className="arr-in-website" src={window.upRightArrowURL} alt="up arrow" /> {`${pin.websiteURL}`.slice(8, 16)+ "...."}</div>
+                                                <div style={ pin.websiteURL.length < 3 ? {display: 'none'} : {display: 'flex'}} className="website-url-div-hoverthing" id={pin.websiteURL} onClick={this.openTheLink}> <img className="arr-in-website" src={window.upRightArrowURL} alt="up arrow" /> {`${pin.websiteURL}`.slice(8, 16)+ "...."}</div>
                                                 
                                                 <div id={pin.id} className="edit-pen-div-show-board" onClick={this.modalFunction}>
                                                     <img src={window.editPenURL} alt="edit pen" />
