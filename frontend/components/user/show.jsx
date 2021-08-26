@@ -154,7 +154,9 @@ class UserShow extends React.Component {
         window.editingBoard = e.currentTarget.id;
         // e.stopPropagation();
         e.preventDefault();
-        this.props.openModal('editBoard');
+
+        this.props.openModal('editBoard')
+            
     }
 
     toggleBox(e){

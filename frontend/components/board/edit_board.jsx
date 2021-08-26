@@ -46,8 +46,14 @@ class EditBoardShow extends React.Component {
     handelSubmit(e){
         e.preventDefault();
         const updatedBoard = this.state.board
-        this.props.updateBoard(updatedBoard);
+        this.props.updateBoard(updatedBoard).then(
+            () => {
+            this.props.fetchBoards(window.currentUser.id) 
+            // window.location.reload();
+        }
+        )
         this.props.closeModal();
+        // window.location.reload();
     }
 
     render(){
