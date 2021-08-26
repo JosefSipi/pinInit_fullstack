@@ -49,11 +49,8 @@ class EditBoardShow extends React.Component {
         this.props.updateBoard(updatedBoard).then(
             () => {
             this.props.fetchBoards(window.currentUser.id) 
-            // window.location.reload();
-        }
-        )
+        })
         this.props.closeModal();
-        // window.location.reload();
     }
 
     render(){
