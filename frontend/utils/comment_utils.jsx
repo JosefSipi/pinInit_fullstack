@@ -29,7 +29,7 @@ export const editComment = commentIds => {
     return $.ajax({
         method: 'PATCH',
         url: `/api/pins/${commentIds.pinId}/comments/${commentIds.commentId}`,
-        data: {commentForm: commentIds.commentForm}
+        data: {comment: commentIds.commentForm}
 
     })
 }

@@ -35,6 +35,16 @@ class Api::CommentsController < ApplicationController
     def edit
     end
 
+    def update
+
+        @comment = Comment.find(params[:id])
+
+        if @comment && @comment.update_attributes(comment_params)
+            render json: ['edit was completed'] 
+        end
+
+    end
+
     def show
     end
 

@@ -169,6 +169,14 @@
     }
 }
 
+.save-123{
+    background-color: #e60023;
+    color: white;
+    &:hover{
+        background-color: #ad081b;
+        cursor: pointer;
+    }
+}
 .done-123{
     color: gray;
 }
@@ -179,6 +187,14 @@
     &:hover{
         background-color: #ad081b;
         cursor: pointer;
+    }
+}
+
+.cancel-124{
+    &:hover{
+        background-color: #d5d5d5;
+        cursor: pointer;
+
     }
 }
 
@@ -319,7 +335,7 @@
     overflow: visible;
     font-family: 'Questrial', sans-serif;
     padding: 14px;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 100;
 }
 

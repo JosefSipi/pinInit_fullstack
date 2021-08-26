@@ -13,7 +13,8 @@ class PinShow extends React.Component {
             comments: null,
             commentDDActive: false,
             ddStat: null,
-            editComment: null
+            editComment: '',
+            editingCommentId: null
         }
 
         this.editPin = this.editPin.bind(this);
@@ -26,7 +27,26 @@ class PinShow extends React.Component {
         this.deleteComment = this.deleteComment.bind(this);
         this.backdropClick = this.backdropClick.bind(this);
         this.handelEditChange = this.handelEditChange.bind(this);
-        // this.handelSubmitCommentEdit = this.handelSubmitCommentEdit.bind(this);
+        this.handelSubmitCommentEdit = this.handelSubmitCommentEdit.bind(this);
+    }
+
+    handelSubmitCommentEdit(e){
+        e.preventDefault();
+        let commentIds = {
+            commentId: this.state.editingCommentId,
+            pinId: Number(this.props.match.params.id),
+            commentForm: {body: this.state.editComment}
+        }
+
+        this.props.editComment(commentIds)
+        
+        document.getElementById('edit-form-div' + commentIds.commentId).style.display = 'none'
+        document.getElementById('right-txt-pin-show' + commentIds.commentId).style.display = 'flex'
+        document.getElementById('bottom-section-comment-pin-show' + commentIds.commentId).style.display = 'flex'
+            
+        this.setState({editingCommentId: null}),
+        this.props.fetchPin(Number(this.props.match.params.id))
+            
     }
 
     handelEditChange(e){
@@ -40,21 +60,18 @@ class PinShow extends React.Component {
         let commentShow = document.getElementById('right-txt-pin-show' + e.currentTarget.id)
         let optionsDiv = document.getElementById('bottom-section-comment-pin-show' + e.currentTarget.id)
         let backdrop = document.getElementById('backdrop-div-create-pin')
+        let editDropDownMenue = document.getElementById('edit-dropdown-menue-124-id' + e.currentTarget.id)
   
         editForm.style.display = 'flex'
         commentShow.style.display = 'none'
         optionsDiv.style.display = 'none'
         backdrop.style.display = 'none'
-        debugger
+        editDropDownMenue.style.display = 'none'
+
         this.setState({editComment: e.currentTarget.getAttribute('data-div_val')})
 
-        let commentIds = {
-            commentId: e.currentTarget.id,
-            pinId: Number(this.props.match.params.id),
-            commentForm: this.state.editComment
-        }
+        this.setState({editingCommentId: e.currentTarget.id})
 
-        this.props.editComment(commentIds)
     }
 
     deleteComment(e){
@@ -94,6 +111,8 @@ class PinShow extends React.Component {
     }
 
     isFieldEmpty(e){
+
+        debugger
         e.preventDefault();
         debugger
 
@@ -102,12 +121,11 @@ class PinShow extends React.Component {
         this.setState({comment: prevState})
 
         debugger
+        let doneBtn = document.getElementById('done-btn-show-pin')
 
         if(e.currentTarget.value.trim().length === 0){
-            let doneBtn = document.getElementById('done-btn-show-pin')
             doneBtn.classList.remove('done-red-btn')
         } else {
-            let doneBtn = document.getElementById('done-btn-show-pin')
             doneBtn.classList.add('done-red-btn')
         }
     }
@@ -275,8 +293,8 @@ class PinShow extends React.Component {
                                             <div className='edit-form-div-outter' id={'edit-form-div' + comment.id} >
                                                 <textarea placeholder='Add a comment' className='blank-input-style' type="text" value={this.state.editComment} onChange={this.handelEditChange} />
                                                 <div className='edit-comment-btns'>
-                                                    <div id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin" >Cancel</div>
-                                                    <div id='done-btn-show-pin' className="button-show-pin-comment done-123" onClick={this.handelSubmitCommentEdit}>Save</div>
+                                                    <div id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin cancel-124" >Cancel</div>
+                                                    <div id='save-btn-show-pin' className="button-show-pin-comment save-123" onClick={this.handelSubmitCommentEdit}>Save</div>
                                                 </div>
                                             </div>
                                         </div>

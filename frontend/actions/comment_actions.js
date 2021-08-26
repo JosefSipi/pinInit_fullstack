@@ -50,6 +50,6 @@ export const deleteComment = commentIds => {
 export const editComment = commentIds => {
     return dispatch => {
         return APIUtil.editComment(commentIds)
-            .then(comment => dispatch(receiveComment(comment)))
+            .then(comment => dispatch(receiveMessage(comment)))
     }
 }
