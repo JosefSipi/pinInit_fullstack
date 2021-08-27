@@ -93,11 +93,11 @@ class PinShow extends React.Component {
 
     handelSubmitComment(e){
         e.preventDefault();
-        debugger
+        
         let input = document.getElementById('comment-input-pin-show');
 
         if(e.currentTarget.classList.length === 3){
-            debugger
+            
             this.props.newComment(this.state.comment)
             this.props.fetchPin(Number(this.props.match.params.id)).then(
                 input.value = '',
@@ -105,7 +105,7 @@ class PinShow extends React.Component {
                 () => {this.props.fetchPin(Number(this.props.match.params.id))}
             )
         }
-        debugger
+        
     }
 
     classAddInput(e){
@@ -117,15 +117,15 @@ class PinShow extends React.Component {
 
     isFieldEmpty(e){
 
-        debugger
+        
         e.preventDefault();
-        debugger
+        
 
         let prevState = this.state.comment
         prevState.body = e.currentTarget.value
         this.setState({comment: prevState})
 
-        debugger
+        
         let doneBtn = document.getElementById('done-btn-show-pin')
 
         if(e.currentTarget.value.trim().length === 0){
@@ -159,10 +159,10 @@ class PinShow extends React.Component {
 
     moreClickedDDComment(e){
         e.preventDefault();
-        debugger
+        
         let dropDown = document.getElementById(`edit-dropdown-menue-124-id` + e.currentTarget.id);
         let backdrop = document.getElementById('backdrop-div-create-pin')
-        debugger
+        
         if(dropDown.style.display === "none" || dropDown.style.display === "" ){
             this.setState({ddStat: `edit-dropdown-menue-124-id` + e.currentTarget.id})
             this.setState({commentDDActive: true})
@@ -177,7 +177,7 @@ class PinShow extends React.Component {
 
      backdropClick(e){
         let dropDownClass = document.getElementById(this.state.ddStat);
-        debugger
+        
         let dropDown = document.getElementById("edit-dropdown-menue-123-id");
         let backdrop = document.getElementById('backdrop-div-create-pin')
         if(dropDown.style.display === "none"){
@@ -203,9 +203,9 @@ class PinShow extends React.Component {
 
 
     componentDidUpdate(prevProps){
-        debugger
+        
         if(this.props.pin !== prevProps.pin){
-            debugger
+            
             this.setState({pin: this.props.pin.pin})
 
             if (!!this.props.pin.pin.comments){
@@ -217,12 +217,12 @@ class PinShow extends React.Component {
     render(){
 
         if(!this.state.pin){
-            debugger
+            
             return null
         }
 
         const comments = this.state.comments
-        debugger
+        
 
         let pinShow
 

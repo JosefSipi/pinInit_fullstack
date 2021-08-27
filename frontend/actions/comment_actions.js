@@ -26,7 +26,6 @@ export const receiveMessage = message => {
 }
 
 export const newComment = comment => {
-    debugger
     return (dispatch) => {
         return APIUtil.newComment(comment)
             .then(message => dispatch(receiveMessage(message)))

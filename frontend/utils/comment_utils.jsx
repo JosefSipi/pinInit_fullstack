@@ -1,5 +1,5 @@
 export const newComment = comment => {
-    debugger
+    
     return $.ajax({
         method: 'POST',
         url: '/api/comments',
@@ -8,7 +8,7 @@ export const newComment = comment => {
 }
 
 export const fetchComments = pinId => {
-    debugger
+    
     return $.ajax({
         method: 'GET',
         url: `/api/pins/${pinId}/comments`
@@ -16,7 +16,7 @@ export const fetchComments = pinId => {
 }
 
 export const deleteComment = commentIds => {
-    debugger
+    
     return $.ajax({
         method: 'DELETE',
         url: `/api/pins/${commentIds.pinId}/comments/${commentIds.commentId}`
@@ -25,7 +25,7 @@ export const deleteComment = commentIds => {
 
 
 export const editComment = commentIds => {
-    debugger
+    
     return $.ajax({
         method: 'PATCH',
         url: `/api/pins/${commentIds.pinId}/comments/${commentIds.commentId}`,

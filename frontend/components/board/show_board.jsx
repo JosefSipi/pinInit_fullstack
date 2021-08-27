@@ -18,8 +18,6 @@ class BoardShow extends React.Component {
     }
 
     showPin(num){
-        // e.preventDefault();
-        debugger
 
         console.log(`hit pin click ${num}`)
     }

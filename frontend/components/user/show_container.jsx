@@ -9,7 +9,7 @@ import { isFollowing, fetchUserFollowing, createFollow, deleteFollow } from '../
 import { openModal, closeModal } from '../../actions/modal';
 
 const mSTP = state => {
-    debugger
+    
     return {
         user: state.user,
         userProfile: state.user.profileUser,
