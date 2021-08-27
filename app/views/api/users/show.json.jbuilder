@@ -2,6 +2,9 @@ json.extract! @user,  :id, :email, :age, :f_name, :l_name, :username, :profile_p
 if (@user.profile_pic.attached?)
 
     json.photoUrl url_for(@user.profile_pic)
+
+else
+    json.photoUrl false
 end
 
 # json.partial! 'api/users/profile', profile: @user

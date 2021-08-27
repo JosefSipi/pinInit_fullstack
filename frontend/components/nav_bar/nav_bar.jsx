@@ -222,13 +222,14 @@ render(){
                     </div>
                     
 
-                    <Link to={`/profile/${this.props.currentUser.id}`} >
+                    <Link className='nav-bar-prof-icon' to={`/profile/${this.props.currentUser.id}`} >
                     {/* <Link to={`/profile/${window.currentUser.id}`} > */}
                         <div className="logo-on-logged-in-header">
 
                             <div className="profile-div-small">
-
-                                <img className="profile-photo-icon" src={window.currentUser.photoUrl} alt="profile photo" />
+                                {console.log(`${!!window.currentUser.photoUrl} + this is the nav bar image small icon result`)}
+                                {console.log(`${window.currentUser.photoUrl} + this is the url result`)}
+                                { !!window.currentUser.photoUrl ? <img className="profile-photo-icon" src={window.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{window.currentUser.f_name[0]}</p>}
                                 {/* <img className="profile-photo-icon" src={this.props.user.photoUrl} alt="profile photo" /> */}
                                 {/* <img className="profile-photo-header-bar" src={window.currentUser.profile_pic} alt="profile photo" /> */}
                             </div>

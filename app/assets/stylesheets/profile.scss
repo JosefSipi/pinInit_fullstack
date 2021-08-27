@@ -12,6 +12,21 @@ div.profile-div {
     border-radius: 100px;
     height: 120px;
     width: 120px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #efefef;
+
+    p{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        font-size: 3.5em;
+    }
 }
 
 .profile-header {

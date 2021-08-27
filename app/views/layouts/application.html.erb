@@ -11,8 +11,10 @@
 
   <body>
 
+  <%= debugger %>
 
     <% if current_user %>
+
       <script>
         window.currentUser= {
           "id": <%= current_user.id %>,
@@ -22,7 +24,9 @@
           "f_name": "<%= current_user.f_name  %>",
           "l_name": "<%= current_user.l_name  %>",
           "username": "<%= current_user.username  %>",
-          "photoUrl": "<%= url_for(current_user.profile_pic) %>"
+
+          "photoUrl": "<%= current_user.profile_pic.attached? ? url_for(current_user.profile_pic) : false %>"
+
         };
 
       </script>

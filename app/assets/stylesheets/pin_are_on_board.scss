@@ -216,11 +216,21 @@ div.over-lay{
     border-radius: 50%;
     overflow: hidden;
     margin: 6px;
+
+    background-color: #efefef;
+    color: black;
     img{
         height: 51px;
         width: auto;
     }
 }
+
+.the-link-on-profilepic-on-board{
+    text-decoration: none;
+    color: black;
+}
+
+
 
 div.div-22-1{
     display: flex;

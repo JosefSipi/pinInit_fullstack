@@ -324,7 +324,8 @@ class PinShow extends React.Component {
                             : null }
                             <div className="comments-in-section" >
                                 <div className="image-div-show-pin-page" >
-                                    <img className="profile-icon-photo-pinshow" src={window.currentUser.photoUrl} alt="profile" />
+                                    { !!window.currentUser.photoUrl ? <img className="profile-photo-icon" src={window.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{window.currentUser.f_name[0]}</p>}
+                                    {/* <img className="profile-icon-photo-pinshow" src={window.currentUser.photoUrl} alt="profile" /> */}
                                 </div>
                                 <input id='comment-input-pin-show' className="input-pin-show" type="text" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
                             </div>
@@ -433,6 +434,7 @@ class PinShow extends React.Component {
                             : null }
                             <div className="comments-in-section" >
                                 <div className="image-div-show-pin-page" >
+                                    { !!window.currentUser.photoUrl ? <img className="profile-photo-icon" src={window.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{window.currentUser.f_name[0]}</p>}
                                     <img className="profile-icon-photo-pinshow" src={window.currentUser.photoUrl} alt="profile" />
                                 </div>
                                 <input id='comment-input-pin-show' className="input-pin-show" type="text" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
