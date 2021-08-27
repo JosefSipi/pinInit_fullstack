@@ -91,10 +91,6 @@ class SignUp extends React.Component {
                 </div>
                 
 
-
-
-
-
                 <div className="session-form-signUp">
 
                     <h1 className="welcome-pin-login-signUp">Welcome to Pininit</h1>

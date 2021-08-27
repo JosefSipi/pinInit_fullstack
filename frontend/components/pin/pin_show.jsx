@@ -171,9 +171,6 @@ class PinShow extends React.Component {
     }
 
      backdropClick(e){
-        // e.preventDefault();
-        debugger
-
         let dropDownClass = document.getElementById(this.state.ddStat);
         debugger
         let dropDown = document.getElementById("edit-dropdown-menue-123-id");
@@ -210,10 +207,6 @@ class PinShow extends React.Component {
                 this.setState({ comments: Object.values(this.props.pin.pin.comments)})
             }
         }
-        // } else if (this.props.comments !== prevProps.comments) {
-        //     debugger
-        //     this.setState({comments: this.props.pin})
-        // }
     }
 
     render(){
@@ -396,18 +389,19 @@ class PinShow extends React.Component {
                                 { comments.map( comment => 
                                     <div className='outside-comment-main' key={comment.id + "outside"}>
                                         <div className='one-comment-pin-show' key={comment.id}>
-                                        
-                                            <div className="image-div-show-pin-page comment-list-2">
-                                                <img className='profile-icon-photo-pinshow' src={comment.photoUrl} alt="pic" />
+                                            <div>
+                                                <div className="image-div-show-pin-page comment-list-2">
+                                                    <img className='profile-icon-photo-pinshow' src={comment.photoUrl} alt="pic" />
+                                                </div>
                                             </div>
 
-                                            <div className='right-txt-pin-show'>
+                                            <div className='right-txt-pin-show' id={`right-txt-pin-show`+ comment.id}>
                                                 <div className='name-list-pin-show' >{comment.name}</div>
                                                 <div className='body-list-pin-show'>{comment.body}</div>
                                             </div>
                                         </div>
 
-                                        <div className='bottom-section-comment-pin-show'>
+                                        <div className='bottom-section-comment-pin-show' id={'bottom-section-comment-pin-show' + comment.id}>
                                             
                                             <h1 className="header-title-boards-show-123">
                                             
@@ -416,7 +410,7 @@ class PinShow extends React.Component {
                                             </div> : null}
                                                 <div className="div-holder-helper-123-pin-show">
                                                     <div className="edit-dropdown-menue-123-pin-show" id={`edit-dropdown-menue-124-id` + comment.id}>
-                                                        <div >Edit</div>
+                                                        <div data-div_val={comment.body} id={comment.id} onClick={this.editComment}>Edit</div>
                                                         <div id={comment.id} onClick={this.deleteComment}>Delete</div>
                                                     </div>
                                                 </div>
@@ -454,7 +448,6 @@ class PinShow extends React.Component {
             </div> 
             )
         }
-
         return(
             <div>
                 {pinShow}
