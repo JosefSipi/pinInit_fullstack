@@ -5,7 +5,7 @@ import React from 'react';
 const CreatePinLink = () => {
     return (
         <div className="logo-on-logged-in-header-plus-allpage">
-            <Link to='/pin-create'> + </Link>
+            <Link className='link-thing-plus' to='/pin-create'> <img className='the-big-plus-in-corner' src={window.plusSignURL} alt="+" /> </Link>
         </div>
     )
 }

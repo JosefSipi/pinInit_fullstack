@@ -309,9 +309,6 @@ class UserShow extends React.Component {
                                     </div>
                                 </div>
 
-
-
-
                                 <div className="other-two-images">
 
                                     <div className="top-box-123">
@@ -413,20 +410,23 @@ class UserShow extends React.Component {
                         </div>
                             <div className="image-section-board" id="image-section-board">
                                 <div className="large-image-onboard">
-                                <img className="image-board-1" src={window.photo1} alt="logo" />
+                                    <div className='inner-large-image1'>
+                                        {!!board.pinPhotos.one ? <img className="image-board-1" src={board.pinPhotos.one} alt="" /> : <img src='' alt='' />}
+                                    </div>
                                 </div>
-
-
-
 
                                 <div className="other-two-images">
 
                                     <div className="top-box-123">
-                                        <img className="image-board-2" src={window.photo2} alt="logo" />
+                                        <div className="smaller-image-show-board-tiles1">
+                                            {!!board.pinPhotos.two ? <img className="image-board-1" src={board.pinPhotos.two} alt="" /> : <img src='' alt='' />}
+                                        </div>
                                     </div>
                                     
                                     <div className="bottom-box">
-                                        <img className="image-board-3" src={window.photo3} alt="logo" />
+                                        <div className="smaller-image-show-board-tiles1">
+                                            {!!board.pinPhotos.three ? <img className="image-board-1" src={board.pinPhotos.three} alt="" /> : <img src='' alt='' />}
+                                        </div>
                                     </div>
                                 </div>
                                 
