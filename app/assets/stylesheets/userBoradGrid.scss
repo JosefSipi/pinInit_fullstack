@@ -102,55 +102,44 @@
 .large-image-onboard{
     height: 100%;
     width: 165px;
-                                        // border-style: solid;
-                                        // border-width: 1px;
-                                        // border-right-color: white;
     overflow-y: hidden;
     overflow-x: hidden;
-                                        // border-radius: 0px 0px 0px 20px;
+    background-color: #d8d8d8;
 }
 
 
 .image-board-1{
-    width: auto;
-    height: inherit;
-                                            // border-right-color: white;
-                                            // border-right: solid;
-                                            // border-right: 1px;
+    // object-fit: cover;
+    // width: -webkit-fill-available;
+    // height: -webkit-fill-available;
+
+    // height: 100%;
+    // width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
 }
 
 .other-two-images{
-    // position: relative;
-    // top: 0px;
-    // left: 0px;
     height: 100%;
     width: 80px;
     border-left-style: solid;
     border-left-width: 1px;
     border-left-color: white;
-                                            // border-style: solid;
-                                            // border-width: 1px;
-                                            // border-color: white;
     background-color:  rgb(216, 216, 216);
-                                                // border-radius: 0px 0px 20px 0px;
-    // overflow-y: hidden;
-    // overflow-x: hidden;
+    flex-grow: 1;
 }
 
 
 .top-box-123{
-    // position: relative;
     border: none;
-    // left: 20px;
-    // display: flex;
-    // align-self: flex-end;
     width: auto;
     height: 50%;
-    // border-style: solid;
-    // border-width: 1px;
-    // border-bottom-color: white;
-    // overflow-y: hidden;
-    // overflow-x: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 
@@ -243,3 +232,20 @@ div.dont-show-me{
     top: 7px;
 }
 // ------------------- lock icon ---------------------
+
+.inner-large-image1{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.smaller-image-show-board-tiles1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}

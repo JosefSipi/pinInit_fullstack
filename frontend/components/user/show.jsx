@@ -125,20 +125,11 @@ class UserShow extends React.Component {
         } else if (prevProps.follow !== this.props.follow) {
             this.setState(
                 {following: this.props.follow.amFollowing, followers_count: this.props.follow.followers.count, following_count: this.props.follow.following.count})
-                // {following: this.props.follow.amFollowing, followers_count: this.props.follow.followers.count, following_count: this.props.follow.following.count})
         } else if (prevProps.userProfile !== this.props.userProfile){
             this.setState(
                 {userProfile: this.props.userProfile}
             )
         }
-
-        // if(prevProps.followers !== this.props.followers || prevProps.following !== this.props.following || prevProps.isFollowing !== this.props.isFollowing) {
-        //     this.setState(
-        //         {following: this.props.isFollowing},
-        //         {followers_count: this.props.followers.count},
-        //         {following_count: this.props.following.count}
-        //         )
-        // }
     }
 
     toggleClass(e) {
@@ -201,15 +192,6 @@ class UserShow extends React.Component {
             
             return null
         }
-
-
-        // if (!this.state.following){
-        //     this.setState(
-        //         {following: this.props.isFollowing},
-        //         {followers_count: this.props.followers.count},
-        //         {following_count: this.props.following.count}
-        //         )
-        // }
 
         const handelDate = (updatedTime) => {
             let currentTime = new Date();
@@ -317,12 +299,14 @@ class UserShow extends React.Component {
                             {/* Place a lock icon if the board is private */}
                         <div className="outer-div-tile-edit" id="outer-div-tile-edit">
                             <div className="logo-on-logged-in-header-board-lock" style={board.is_private ? {display: "flex" } : { display: "none" }}>
-                                    <img id="logo-lock-icon" src={window.lockURL} alt="lock-icon" />
+                                <img id="logo-lock-icon" src={window.lockURL} alt="lock-icon" />
                             </div> 
                         </div>
                             <div className="image-section-board" id="image-section-board">
                                 <div className="large-image-onboard">
-                                <img className="image-board-1" src={window.photo1} alt="logo" />
+                                    <div className='inner-large-image1'>
+                                        {!!board.pinPhotos.one ? <img className="image-board-1" src={board.pinPhotos.one} alt="" /> : <img src='' alt='' />}
+                                    </div>
                                 </div>
 
 
@@ -331,11 +315,15 @@ class UserShow extends React.Component {
                                 <div className="other-two-images">
 
                                     <div className="top-box-123">
-                                        <img className="image-board-2" src={window.photo2} alt="logo" />
+                                        <div className="smaller-image-show-board-tiles1">
+                                            {!!board.pinPhotos.two ? <img className="image-board-1" src={board.pinPhotos.two} alt="" /> : <img src='' alt='' />}
+                                        </div>
                                     </div>
                                     
                                     <div className="bottom-box">
-                                        <img className="image-board-3" src={window.photo3} alt="logo" />
+                                        <div className="smaller-image-show-board-tiles1">
+                                            {!!board.pinPhotos.three ? <img className="image-board-1" src={board.pinPhotos.three} alt="" /> : <img src='' alt='' />}
+                                        </div>
                                     </div>
                                 </div>
                                 

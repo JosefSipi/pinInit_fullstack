@@ -29,6 +29,7 @@ class Api::BoardsController < ApplicationController
         user = User.find(params[:user_id])
         #
         @boards = user.boards
+        
         # @boards = Board.all
         #
         # @boards.each do |board|

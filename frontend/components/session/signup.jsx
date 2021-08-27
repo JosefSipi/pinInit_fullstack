@@ -25,26 +25,6 @@ class SignUp extends React.Component {
         };
     }
 
-
-// - using formData format --
-    // handelSubmit(e) {
-    //     e.preventDefault();
-
-    //     //-------------------------------------
-    //     const formData = new FormData();
-    //     formData.append('user[profile_pic]', this.state.profile_pic);
-    //     formData.append('user[email]', this.state.email);
-    //     formData.append('user[password]', this.state.password);
-    //     formData.append('user[age]', this.state.age);
-        
-    //     //-------------------------------------
-    //     this.props.createNewUser(formData)
-    //         .then(() => {
-    //             this.props.history.push('/feed'),
-    //             this.props.closeModal();
-    //         });
-    // }
-
 // -- using form data format--
 
     handelSubmit(e) {
