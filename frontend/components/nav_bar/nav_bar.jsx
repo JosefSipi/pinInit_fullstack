@@ -249,6 +249,7 @@ render(){
                             </div>
 
                             <div className={`${showDropdown ? "ul-logged-dropdown-active-background" : "ul-logged-dropdown-background"}`} onClick={this.toggleContent}> 
+                            </div>
 
                                 <ul className={`${showDropdown ? "ul-logged-dropdown-active" : "ul-logged-dropdown"}`}>
                                     <Link className="link-settings" to="/edit-profile"><li className="the-li-dropdown"> Settings</li></Link>
@@ -256,7 +257,6 @@ render(){
                                     {/* <li className="the-li-dropdown" ><div className="logout-dropdown-btn" onClick={this.props.logout}>Log out</div></li> */}
                                 </ul>
 
-                            </div>
 
                         </div>
 

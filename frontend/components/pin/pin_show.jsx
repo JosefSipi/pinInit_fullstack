@@ -38,14 +38,16 @@ class PinShow extends React.Component {
             commentForm: {body: this.state.editComment}
         }
 
-        this.props.editComment(commentIds)
+        this.props.editComment(commentIds).then(
+            () => {this.props.fetchPin(Number(this.props.match.params.id))}
+        )
         
         document.getElementById('edit-form-div' + commentIds.commentId).style.display = 'none'
         document.getElementById('right-txt-pin-show' + commentIds.commentId).style.display = 'flex'
         document.getElementById('bottom-section-comment-pin-show' + commentIds.commentId).style.display = 'flex'
             
-        this.setState({editingCommentId: null}),
-        this.props.fetchPin(Number(this.props.match.params.id))
+        this.setState({editingCommentId: null})
+        // this.props.fetchPin(Number(this.props.match.params.id))
             
     }
 
@@ -72,6 +74,8 @@ class PinShow extends React.Component {
 
         this.setState({editingCommentId: e.currentTarget.id})
 
+
+
     }
 
     deleteComment(e){
@@ -83,7 +87,7 @@ class PinShow extends React.Component {
         }
         this.props.deleteComment(commentIds).then(
             this.backdropClick(),
-            this.props.fetchPin(Number(this.props.match.params.id))
+           () => { this.props.fetchPin(Number(this.props.match.params.id))}
         )
     }
 
@@ -97,7 +101,8 @@ class PinShow extends React.Component {
             this.props.newComment(this.state.comment)
             this.props.fetchPin(Number(this.props.match.params.id)).then(
                 input.value = '',
-                e.currentTarget.classList.remove('done-red-btn')
+                e.currentTarget.classList.remove('done-red-btn'),
+                () => {this.props.fetchPin(Number(this.props.match.params.id))}
             )
         }
         debugger
