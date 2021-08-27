@@ -30,52 +30,47 @@ class UserShow extends React.Component {
         this.toggleBox = this.toggleBox.bind(this);
         this.editPen = this.editPen.bind(this);
         this.directToCreatePin = this.directToCreatePin.bind(this);
-        this.isUserFollowing = this.isUserFollowing.bind(this);
         this.unfollowUser = this.unfollowUser.bind(this);
         this.followUser = this.followUser.bind(this);
     }
-
-    isUserFollowing(e){
-        e.preventDefault();
-
-    }
-
+    
     unfollowUser(e){
         e.preventDefault();
-        // 
+
         let delteIds = {
             follower_id: window.currentUser.id,
             followed_user_id: Number(this.props.match.params.id),
             id: window.currentUser.id
         }
+
+        let followData = {
+            id: Number(this.props.match.params.id),
+            current_user_id: window.currentUser.id,
+            profile_users_id: Number(this.props.match.params.id)
+        }
         
-
-        this.props.unfollowUser(delteIds)
-        // 
-        let buttonRed = document.getElementById('following-btn-22-1')
-        let buttonBlack = document.getElementById('following-btn-22-2')
-
-        buttonRed.style.display = 'flex';
-        buttonBlack.style.display = 'none';
+        this.props.unfollowUser(delteIds).then(
+            () => this.props.fetchUserFollowing(followData)
+        )
     }
 
     followUser(e){
         e.preventDefault();
-        // 
 
         let followForm = {
             follower_id: window.currentUser.id,
             followed_user_id: Number(this.props.match.params.id)
         }
 
-        // 
+        let followData = {
+            id: Number(this.props.match.params.id),
+            current_user_id: window.currentUser.id,
+            profile_users_id: Number(this.props.match.params.id)
+        }
 
-        this.props.createFollow(followForm)
-        let buttonRed = document.getElementById('following-btn-22-1')
-        let buttonBlack = document.getElementById('following-btn-22-2')
-
-        buttonRed.style.display = 'none';
-        buttonBlack.style.display = 'flex';
+        this.props.createFollow(followForm).then(
+            () => { this.props.fetchUserFollowing(followData)}
+        )
     }
 
     directToCreatePin(e){
@@ -130,6 +125,7 @@ class UserShow extends React.Component {
         } else if (prevProps.follow !== this.props.follow) {
             this.setState(
                 {following: this.props.follow.amFollowing, followers_count: this.props.follow.followers.count, following_count: this.props.follow.following.count})
+                // {following: this.props.follow.amFollowing, followers_count: this.props.follow.followers.count, following_count: this.props.follow.following.count})
         } else if (prevProps.userProfile !== this.props.userProfile){
             this.setState(
                 {userProfile: this.props.userProfile}
