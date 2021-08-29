@@ -6,9 +6,10 @@ import { openModal } from '../../actions/modal';
 import { newComment, fetchComments, deleteComment, editComment } from '../../actions/comment_actions';
 
 const mSTP = (state) => {
-    
+        debugger
     return {
         pin: state.pin,
+        comments: state.comment
         // ViewingUser: 
     }
 }

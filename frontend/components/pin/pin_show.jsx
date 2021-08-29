@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class PinShow extends React.Component {
     constructor(props){
@@ -87,7 +88,9 @@ class PinShow extends React.Component {
         }
         this.props.deleteComment(commentIds).then(
             this.backdropClick(),
-           () => { this.props.fetchPin(Number(this.props.match.params.id))}
+
+            this.props.fetchPin(Number(this.props.match.params.id)),
+            this.setState({comments: this.props.pin.pin.comments})
         )
     }
 
@@ -96,13 +99,17 @@ class PinShow extends React.Component {
         
         let input = document.getElementById('comment-input-pin-show');
 
+        debugger
         if(e.currentTarget.classList.length === 3){
+            debugger
             
             this.props.newComment(this.state.comment)
             this.props.fetchPin(Number(this.props.match.params.id)).then(
                 input.value = '',
                 e.currentTarget.classList.remove('done-red-btn'),
-                () => {this.props.fetchPin(Number(this.props.match.params.id))}
+
+                this.props.fetchPin(Number(this.props.match.params.id)),
+                this.setState({comments: this.props.pin.pin.comments})
             )
         }
         
@@ -198,30 +205,46 @@ class PinShow extends React.Component {
      }
 
     componentDidMount(){
+        debugger
         this.props.fetchPin(Number(this.props.match.params.id))
+        // .then(
+        //     this.setState({comments: this.props.comments})
+        // )
     }
 
 
     componentDidUpdate(prevProps){
+        debugger
         
         if(this.props.pin !== prevProps.pin){
             
             this.setState({pin: this.props.pin.pin})
+            this.setState({comments: this.props.pin.pin.comments})
 
-            if (!!this.props.pin.pin.comments){
-                this.setState({ comments: Object.values(this.props.pin.pin.comments)})
-            }
         }
     }
 
     render(){
 
         if(!this.state.pin){
-            
             return null
         }
+        debugger
 
-        const comments = this.state.comments
+        let comments
+
+        if(!!this.state.comments){
+            comments = Object.values(this.state.comments)
+        } else {
+            comments = null
+        }
+
+
+        // if( this.state.comments.length === 0 ){
+        //     comments = null
+        // } else {
+        //     comments = this.state.comments
+        // }
         
 
         let pinShow
@@ -271,7 +294,7 @@ class PinShow extends React.Component {
                             <div className="describing-comments">Share feedback, ask a question or give a high five</div>
                         <div className="outer-comment-pin-show-1">
 
-                        { !!this.state.comments ?
+                        { !!comments ?
                         <div className='comment-array-holding-div'>
                              <div className='comment-array-pin-show'>
                                 { comments.map( comment => 
@@ -284,7 +307,7 @@ class PinShow extends React.Component {
                                             </div>
 
                                             <div className='right-txt-pin-show' id={`right-txt-pin-show`+ comment.id} >
-                                                <div className='name-list-pin-show' >{comment.name}</div>
+                                                <Link to={`/profile/${comment.commenter_id}`}><div className='name-list-pin-show' >{comment.name}</div></Link>
                                                 <div className='body-list-pin-show'>{comment.body}</div>
                                             </div>
 
@@ -389,7 +412,7 @@ class PinShow extends React.Component {
                             <div className="describing-comments">Share feedback, ask a question or give a high five</div>
                         <div className="outer-comment-pin-show-1">
 
-                        { !!this.state.comments ?
+                        { !!comments ?
                         <div className='comment-array-holding-div'>
                              <div className='comment-array-pin-show'>
                                 { comments.map( comment => 
@@ -402,7 +425,7 @@ class PinShow extends React.Component {
                                             </div>
 
                                             <div className='right-txt-pin-show' id={`right-txt-pin-show`+ comment.id}>
-                                                <div className='name-list-pin-show' >{comment.name}</div>
+                                                 <Link to={`/profile/${comment.commenter_id}`}><div className='name-list-pin-show' >{comment.name}</div></Link>
                                                 <div className='body-list-pin-show'>{comment.body}</div>
                                             </div>
                                         </div>
