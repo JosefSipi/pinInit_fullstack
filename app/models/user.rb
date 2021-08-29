@@ -57,9 +57,10 @@ class User < ApplicationRecord
         foreign_key: :commenter_id,
         class_name: :Comment
 
-    # has_many :comments,
-    #     as: :commentable
-    # polymorphic association
+    has_many :likes,
+        primary_key: :id,
+        foreign_key: :liker_id,
+        class_name: :User
   
     def self.find_by_cridentialsEmail(email, password)
         user = User.find_by(email: email)

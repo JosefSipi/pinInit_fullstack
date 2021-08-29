@@ -45,7 +45,7 @@ export default () => (
             <ProtectedRoute path='/pin-create' component={CreatePin}/>
             <ProtectedRoute path="/edit-profile" component={EditContainer}/>
             <ProtectedRoute path="/feed" component={Feed}/>
-            <Route path="/profile/:id" component={UserProfileContainer}/>
+            <ProtectedRoute path="/profile/:id" component={UserProfileContainer}/>
         </div>
 
 
