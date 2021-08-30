@@ -1,6 +1,7 @@
 class Like < ApplicationRecord
 
     validates :liker_id, :comment_liked_id, presence: true
+    validates :liker_id, uniqueness: { scope: :comment_liked_id}
 
 
     belongs_to :liker,

@@ -15,7 +15,8 @@ class PinShow extends React.Component {
             commentDDActive: false,
             ddStat: null,
             editComment: '',
-            editingCommentId: null
+            editingCommentId: null,
+
         }
 
         this.editPin = this.editPin.bind(this);
@@ -29,6 +30,58 @@ class PinShow extends React.Component {
         this.backdropClick = this.backdropClick.bind(this);
         this.handelEditChange = this.handelEditChange.bind(this);
         this.handelSubmitCommentEdit = this.handelSubmitCommentEdit.bind(this);
+        this.createLike = this.createLike.bind(this);
+        this.removeLike = this.removeLike.bind(this);
+        this.elapsedTime = this.elapsedTime.bind(this);
+    }
+
+    elapsedTime(time){
+        debugger
+
+        let retTime = null
+
+        
+        while(retTime === null){
+            debugger
+            if(time.year > 0){
+                retTime = `${time.year}y`
+            } else if (time.month > 0 ){
+                retTime = `${time.month}M`
+            } else if (time.day > 0){
+                retTime = `${time.day}d`
+            } else if(time.hours > 0){
+                retTime = `${time.hours}h`
+            } else if (time.min > 0) {
+                retTime = `${time.min}m`
+            } else {
+                retTime = 'now'
+            }
+            
+        }
+
+        return retTime
+
+    }
+
+    removeLike(e){
+
+        let id = e.currentTarget.getAttribute('data-like_id')
+        this.props.deleteLike(id).then(
+            () => {this.props.fetchPin(Number(this.props.match.params.id))}
+        )
+        
+
+    }
+
+    createLike(e){
+        console.log('clicked gray heart')
+        let liker_id = e.currentTarget.getAttribute('data-img_liker_id')
+        let comment = e.currentTarget.getAttribute('data-img_comment')
+
+        let info = {liker_id, comment_liked_id: comment}
+        this.props.createLike(info).then(
+            () => {this.props.fetchPin(Number(this.props.match.params.id))}
+        )
     }
 
     handelSubmitCommentEdit(e){
@@ -300,17 +353,21 @@ class PinShow extends React.Component {
                                 { comments.map( comment => 
                                     <div className='outside-comment-main' key={comment.id + "outside"}>
                                         <div className='one-comment-pin-show' key={comment.id}>
-                                            <div>
+
+                                            <div className='outside-of-image-div'>
                                                 <div className="image-div-show-pin-page comment-list-2">
                                                     <img className='profile-icon-photo-pinshow' src={comment.photoUrl} alt="pic" />
                                                 </div>
                                             </div>
 
                                             <div className='right-txt-pin-show' id={`right-txt-pin-show`+ comment.id} >
-                                                <Link to={`/profile/${comment.commenter_id}`}><div className='name-list-pin-show' >{comment.name}</div></Link>
+                                                <div className='outer-div-time-elapsed-comment'>
+                                                    <Link to={`/profile/${comment.commenter_id}`}><div className='name-list-pin-show' >{comment.name}</div></Link>
+                                                    <div className='time-elapsed-comment' >{this.elapsedTime(comment.timeElapsed)}</div>
+                                                </div>
                                                 <div className='body-list-pin-show'>{comment.body}</div>
                                             </div>
-
+                                                
                                             <div className='edit-form-div-outter' id={'edit-form-div' + comment.id} >
                                                 <textarea placeholder='Add a comment' className='blank-input-style' type="text" value={this.state.editComment} onChange={this.handelEditChange} />
                                                 <div className='edit-comment-btns'>
@@ -323,6 +380,14 @@ class PinShow extends React.Component {
                                         <div className='bottom-section-comment-pin-show' id={'bottom-section-comment-pin-show' + comment.id}>
                                             
                                             <h1 className="header-title-boards-show-123">
+
+                                            <div className='like-icon-div'>
+                                                {comment.like.liked ? 
+                                                <img data-img_liker_id={window.currentUser.id} data-img_comment={comment.id} data-like_id={comment.like.like.id} onClick={this.removeLike} src={window.redHeartURL} alt="red heart" /> : 
+                                                <img data-img_liker_id={window.currentUser.id} data-img_comment={comment.id} onClick={this.createLike} src={window.grayHeartURL} alt="gray heart" /> }
+
+                                               {comment.like.like_count > 0 ? <div className='like-count'>{comment.like.like_count}</div> : null} 
+                                            </div>
                                             
                                             { comment.commenter_id === window.currentUser.id ? <div className="pin-duplicate-button-dd comment-edition-div" id={comment.id} onClick={this.moreClickedDDComment}>
                                                 <img className="pin-123-1 comment-edition-dot" src={window.dotsBlackURL} alt="more icon"/>
@@ -425,7 +490,10 @@ class PinShow extends React.Component {
                                             </div>
 
                                             <div className='right-txt-pin-show' id={`right-txt-pin-show`+ comment.id}>
-                                                 <Link to={`/profile/${comment.commenter_id}`}><div className='name-list-pin-show' >{comment.name}</div></Link>
+                                                 <div className='outer-div-time-elapsed-comment'>
+                                                    <Link to={`/profile/${comment.commenter_id}`}><div className='name-list-pin-show' >{comment.name}</div></Link>
+                                                    <div className='time-elapsed-comment' >{this.elapsedTime(comment.timeElapsed)}</div>
+                                                </div>
                                                 <div className='body-list-pin-show'>{comment.body}</div>
                                             </div>
                                         </div>
@@ -433,6 +501,14 @@ class PinShow extends React.Component {
                                         <div className='bottom-section-comment-pin-show' id={'bottom-section-comment-pin-show' + comment.id}>
                                             
                                             <h1 className="header-title-boards-show-123">
+
+                                            <div className='like-icon-div'>
+                                                {comment.like.liked ? 
+                                                <img data-img_liker_id={window.currentUser.id} data-img_comment={comment.id} data-like_id={comment.like.like.id} onClick={this.removeLike} src={window.redHeartURL} alt="red heart" /> : 
+                                                <img data-img_liker_id={window.currentUser.id} data-img_comment={comment.id} onClick={this.createLike} src={window.grayHeartURL} alt="gray heart" /> }
+
+                                                {comment.like.like_count > 0 ? <div className='like-count'>{comment.like.like_count}</div> : null} 
+                                            </div>
                                             
                                             { comment.commenter_id === window.currentUser.id ? <div className="pin-duplicate-button-dd comment-edition-div" id={comment.id} onClick={this.moreClickedDDComment}>
                                                 <img className="pin-123-1 comment-edition-dot" src={window.dotsBlackURL} alt="more icon"/>

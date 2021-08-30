@@ -258,6 +258,9 @@
     flex-direction: column;
     width: 100%;
     height: fit-content;
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 .bottom-section-comment-pin-show{

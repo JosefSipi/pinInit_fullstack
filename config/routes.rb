@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :boards_pin_joins, only: [:new, :create, :edit, :destroy, :update, :show, :index]
     resources :follows, only: [:create, :destroy, :show, :new]
     resources :comments, only: [:create]
+    resources :likes, only: [:create, :destroy, :index, :new, :show]
   end
 
 
