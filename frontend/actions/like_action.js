@@ -19,7 +19,6 @@ export const receiveMessage = message => {
 // }
 
 export const deleteLike = id => {
-    debugger
     return dispatch => {
         return APIUtil.deleteLike(id)
             .then(message => dispatch(receiveMessage(message)))
@@ -27,7 +26,6 @@ export const deleteLike = id => {
 }
 
 export const createLike = info => {
-    debugger
     return dispatch => {
         return APIUtil.createLike(info)
            .then(message => dispatch(receiveMessage(message)))

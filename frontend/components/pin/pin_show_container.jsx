@@ -7,11 +7,9 @@ import { newComment, fetchComments, deleteComment, editComment } from '../../act
 import { deleteLike, createLike } from '../../actions/like_action';
 
 const mSTP = (state) => {
-        debugger
     return {
         pin: state.pin,
         comments: state.comment
-        // ViewingUser: 
     }
 }
 

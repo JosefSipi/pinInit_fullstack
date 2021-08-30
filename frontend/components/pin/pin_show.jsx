@@ -36,13 +36,13 @@ class PinShow extends React.Component {
     }
 
     elapsedTime(time){
-        debugger
+        
 
         let retTime = null
 
         
         while(retTime === null){
-            debugger
+            
             if(time.year > 0){
                 retTime = `${time.year}y`
             } else if (time.month > 0 ){
@@ -152,9 +152,9 @@ class PinShow extends React.Component {
         
         let input = document.getElementById('comment-input-pin-show');
 
-        debugger
+        
         if(e.currentTarget.classList.length === 3){
-            debugger
+            
             
             this.props.newComment(this.state.comment)
             this.props.fetchPin(Number(this.props.match.params.id)).then(
@@ -258,7 +258,7 @@ class PinShow extends React.Component {
      }
 
     componentDidMount(){
-        debugger
+        
         this.props.fetchPin(Number(this.props.match.params.id))
         // .then(
         //     this.setState({comments: this.props.comments})
@@ -267,7 +267,7 @@ class PinShow extends React.Component {
 
 
     componentDidUpdate(prevProps){
-        debugger
+        
         
         if(this.props.pin !== prevProps.pin){
             
@@ -282,7 +282,7 @@ class PinShow extends React.Component {
         if(!this.state.pin){
             return null
         }
-        debugger
+        
 
         let comments
 
