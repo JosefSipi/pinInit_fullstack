@@ -33,6 +33,21 @@ class PinShow extends React.Component {
         this.createLike = this.createLike.bind(this);
         this.removeLike = this.removeLike.bind(this);
         this.elapsedTime = this.elapsedTime.bind(this);
+        this.cancelEditComment = this.cancelEditComment.bind(this);
+    }
+
+
+    cancelEditComment(e){
+        e.preventDefault();
+        debugger
+
+        document.getElementById('edit-form-div' + e.currentTarget.getAttribute('data-comment_id')).style.display = 'none'
+        document.getElementById('right-txt-pin-show' + e.currentTarget.getAttribute('data-comment_id')).style.display = 'flex'
+        document.getElementById('bottom-section-comment-pin-show' + e.currentTarget.getAttribute('data-comment_id')).style.display = 'flex'
+
+
+        this.setState({editComment: ''})
+
     }
 
     elapsedTime(time){
@@ -126,7 +141,7 @@ class PinShow extends React.Component {
 
         this.setState({editComment: e.currentTarget.getAttribute('data-div_val')})
 
-        this.setState({editingCommentId: e.currentTarget.id})
+        this.setState({editingCommentId: e.currentTarget.id}) //this is a potential problem
 
 
 
@@ -371,7 +386,7 @@ class PinShow extends React.Component {
                                             <div className='edit-form-div-outter' id={'edit-form-div' + comment.id} >
                                                 <textarea placeholder='Add a comment' className='blank-input-style' type="text" value={this.state.editComment} onChange={this.handelEditChange} />
                                                 <div className='edit-comment-btns'>
-                                                    <div id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin cancel-124" >Cancel</div>
+                                                    <div data-comment_id={comment.id} onClick={this.cancelEditComment} id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin cancel-124" >Cancel</div>
                                                     <div id='save-btn-show-pin' className="button-show-pin-comment save-123" onClick={this.handelSubmitCommentEdit}>Save</div>
                                                 </div>
                                             </div>
