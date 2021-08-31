@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { saveAs } from 'file-saver';
 
 class PinShow extends React.Component {
     constructor(props){
@@ -34,8 +35,21 @@ class PinShow extends React.Component {
         this.removeLike = this.removeLike.bind(this);
         this.elapsedTime = this.elapsedTime.bind(this);
         this.cancelEditComment = this.cancelEditComment.bind(this);
+        this.saveImage = this.saveImage.bind(this);
     }
 
+    saveImage(e){
+        e.preventDefault();
+        debugger
+        console.log('click save image')
+        
+        let url = e.currentTarget.getAttribute('data-img_url')
+        
+        // saveAs(url, 'image.jpg')
+
+        this.backdropClick(e)
+        
+    }
 
     cancelEditComment(e){
         e.preventDefault();
@@ -323,6 +337,7 @@ class PinShow extends React.Component {
 
                 <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
                 <div className='main-div-pin-show'>
+{/* <div> */}
 
                     <div className="image-show-pin-1">
                         <img className='image-show-pin' src={this.state.pin.photoUrl} alt="photo?" />
@@ -442,8 +457,8 @@ class PinShow extends React.Component {
                         </div>
                     </div>
 
+{/* </div> */}
                 </div>
-            
             
             </div> 
             )
@@ -453,6 +468,7 @@ class PinShow extends React.Component {
 
                 <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
                 <div className='main-div-pin-show'>
+{/* <div> */}
 
                     <div className="image-show-pin-1">
                         <img className='image-show-pin' src={this.state.pin.photoUrl} alt="photo?" />
@@ -469,7 +485,7 @@ class PinShow extends React.Component {
                                 </div>
                                     <div className="div-holder-helper-123">
                                         <div className="edit-dropdown-menue-123 pin-show" id="edit-dropdown-menue-123-id">
-                                            <div onClick={this.editPin} >Edit Pin</div>
+                                            <div data-img_url={this.state.pin.photoUrl} onClick={this.saveImage} >Save Image</div>
                                         </div>
                                     </div>
                                 </h1>
@@ -563,8 +579,8 @@ class PinShow extends React.Component {
                         </div>
                     </div>
 
+{/* </div> */}
                 </div>
-            
             
             </div> 
             )

@@ -23,8 +23,14 @@ class NavBar extends React.Component {
         this.redirectProfile = this.redirectProfile.bind(this);
         this.logoutFunction = this.logoutFunction.bind(this);
         this.reloadIng = this.reloadIng.bind(this);
+        this.directToProfile = this.directToProfile.bind(this);
         // this.redirectProfileCurrentUser = this.redirectProfileCurrentUser.bind(this);
     }
+
+directToProfile = debounce((e) => {
+    debugger
+    window.location.reload();
+}, 1)
 
 
 prepSearch = debounce(() => {
@@ -222,7 +228,8 @@ render(){
                     </div>
                     
 
-                    <Link className='nav-bar-prof-icon' to={`/profile/${this.props.currentUser.id}`} >
+                    <Link className='nav-bar-prof-icon' to={`/profile/${window.currentUser.id}`} onClick={this.directToProfile}>
+                    {/* <Link className='nav-bar-prof-icon' to={`/profile/${this.props.currentUser.id}`} > */}
                     {/* <Link to={`/profile/${window.currentUser.id}`} > */}
                         <div className="logo-on-logged-in-header">
 

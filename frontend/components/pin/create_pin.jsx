@@ -69,10 +69,17 @@ class CreatePin extends React.Component {
         formData.append('pin[websiteURL]', this.state.pin.websiteURL);
         formData.append('pin[board_id]', this.state.pin.board_id);
         formData.append('pin[heightof]', heightOfValue);
-        this.props.createNewPin(formData)
-            .then(() => {
-               this.props.history.push(`/board/${theBoardDest}`)
-            })
+
+        this.props.createNewPin(formData).then(
+            // this.props.history.push(`/board/${theBoardDest}`)
+            // put a set state to display a loading icon here
+            (data) => {
+                this.props.history.push(`/board/${data.pin.board_id}`)
+            } 
+        )
+
+        
+        
     }
 
 
