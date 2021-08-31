@@ -348,7 +348,7 @@ class PinShow extends React.Component {
 
                         </div>
 
-                        <a className='url-link-tag' href={this.state.pin.websiteURL} target='_blank' >{this.state.pin.websiteURL}</a>
+                        <a className='url-link-tag' href={this.state.pin.websiteURL} target='_blank' >{this.state.pin.websiteURL.slice(0, 27) + '...'}</a>
                         <div className='title-pin-show'>{this.state.pin.title}</div>
                         <p className='description-pin-show' >{this.state.pin.description}</p>
 
@@ -478,7 +478,7 @@ class PinShow extends React.Component {
 
                         </div>
 
-                        <a className='url-link-tag' href={this.state.pin.websiteURL} target='_blank' >{this.state.pin.websiteURL}</a>
+                        <a className='url-link-tag' href={this.state.pin.websiteURL} target='_blank' >{this.state.pin.websiteURL.slice(0, 27) + '...'}</a>
                         <div className='title-pin-show'>{this.state.pin.title}</div>
                         <p className='description-pin-show' >{this.state.pin.description}</p>
 
