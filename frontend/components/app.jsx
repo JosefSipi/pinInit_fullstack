@@ -5,7 +5,7 @@ import NavBarContainer from './nav_bar/nav_bar_container';
 import Home from '../components/home/home';
 import { AuthRoute, ProtectedRoute } from '../utils/route_utils';
 // import LogInContainer from '../components/session/login_container';
-import Feed from './feed/feed';
+// import FeedContainer from './feed/feed_container';
 import Modal from './modal/modal';
 import ModalUpload from './modal/uploadModal';
 import EditModal from './modal/editBoard';
@@ -44,7 +44,7 @@ export default () => (
             <Route path="/pin/:id" component={PinShow} />
             <ProtectedRoute path='/pin-create' component={CreatePin}/>
             <ProtectedRoute path="/edit-profile" component={EditContainer}/>
-            <ProtectedRoute path="/feed" component={Feed}/>
+            {/* <ProtectedRoute path="/feed" component={FeedContainer}/> */}
             <ProtectedRoute path="/profile/:id" component={UserProfileContainer}/>
         </div>
 

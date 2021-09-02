@@ -19,7 +19,14 @@ export const createNewPin = (pinForm ) => {
 export const fetchPins = boardId => {
     return $.ajax({
         method: 'GET',
-        url: `api/boards/${boardId}/pins`
+        url: `/api/boards/${boardId}/pins`
+    })
+}
+
+export const fetchFeedPins = userId => {
+    return $.ajax({
+        method: 'GET',
+        url: `/api/users/${userId}/pins`
     })
 }
 

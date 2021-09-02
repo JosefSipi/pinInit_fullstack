@@ -33,13 +33,32 @@ class Api::PinsController < ApplicationController
 
     def index
 
-        board = Board.find(params[:board_id]) # not sure where :board_id in this situation is coming from
+        # debugger
 
-        # @pins = Pin.all
+        if (!!params[:board_id])
+            # debugger
+            board = Board.find(params[:board_id]) # not sure where :board_id in this situation is coming from
+    
+            # @pins = Pin.all
+    
+            @pins = board.pins
+    
+            render 'api/pins/index'
+        else
+            # debugger
 
-        @pins = board.pins
+            users = User.find(params[:user_id]).followings
 
-        render 'api/pins/index'
+            @pins = []
+
+            users.each do |user|
+                @pins.push(*user.pins)
+            end
+
+            render 'api/pins/feed'
+
+        end
+
     end
 
     def show
