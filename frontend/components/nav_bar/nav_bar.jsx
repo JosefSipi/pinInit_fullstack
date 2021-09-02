@@ -14,8 +14,14 @@ class NavBar extends React.Component {
         this.toggleContent = this.toggleContent.bind(this);
         this.state = {
             showDropdown: false,
-            searchInput: ''
+            searchInput: '',
+            update: null
         };
+
+        this.state = {
+            logedInUser: this.props.logedInUser
+        }
+
         this.prepSearch = this.prepSearch.bind(this);
         this.updateState = this.updateState.bind(this);
         this.searchingTime = this.searchingTime.bind(this);
@@ -23,14 +29,14 @@ class NavBar extends React.Component {
         this.redirectProfile = this.redirectProfile.bind(this);
         this.logoutFunction = this.logoutFunction.bind(this);
         this.reloadIng = this.reloadIng.bind(this);
-        this.directToProfile = this.directToProfile.bind(this);
+        // this.directToProfile = this.directToProfile.bind(this);
         // this.redirectProfileCurrentUser = this.redirectProfileCurrentUser.bind(this);
     }
 
-directToProfile = debounce((e) => {
-    debugger
-    window.location.reload();
-}, 1)
+// directToProfile = debounce((e) => {
+//     debugger
+//     // window.location.reload();
+// }, 1)
 
 
 prepSearch = debounce(() => {
@@ -119,7 +125,6 @@ updateState(e){
 componentDidMount(){
 
     
-    
     if (!!window.currentUser || !!this.props.currentUser) {
 
         this.props.fetchUser(this.props.currentUser.id || window.currentUser.id);
@@ -140,10 +145,11 @@ componentDidMount(){
 toggleContent (e){
     e.preventDefault();
     this.setState({showDropdown: !this.state.showDropdown});
-
 }
 
 render(){
+
+    debugger
 
     // if(!this.props.users){
     //     return null
@@ -228,7 +234,7 @@ render(){
                     </div>
                     
 
-                    <Link className='nav-bar-prof-icon' to={`/profile/${window.currentUser.id}`} onClick={this.directToProfile}>
+                    <Link className='nav-bar-prof-icon' to={`/profile/${window.currentUser.id}`}>
                     {/* <Link className='nav-bar-prof-icon' to={`/profile/${this.props.currentUser.id}`} > */}
                     {/* <Link to={`/profile/${window.currentUser.id}`} > */}
                         <div className="logo-on-logged-in-header">

@@ -10,7 +10,8 @@ import { updateSearch } from '../../actions/user_actions';
 const mSTP = state => ({
     currentUser: state.session.currentUser,
     user: state.user,
-    users: state.user.searchUsers
+    users: state.user.searchUsers,
+    logedInUser: state.session.currentUSer
 });
 
 const mDTP = dispatch => ({

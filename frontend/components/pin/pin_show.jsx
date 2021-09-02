@@ -35,21 +35,21 @@ class PinShow extends React.Component {
         this.removeLike = this.removeLike.bind(this);
         this.elapsedTime = this.elapsedTime.bind(this);
         this.cancelEditComment = this.cancelEditComment.bind(this);
-        this.saveImage = this.saveImage.bind(this);
+        // this.saveImage = this.saveImage.bind(this);
     }
 
-    saveImage(e){
-        e.preventDefault();
-        debugger
-        console.log('click save image')
+    // saveImage(e){
+    //     e.preventDefault();
+    //     debugger
+    //     console.log('click save image')
         
-        let url = e.currentTarget.getAttribute('data-img_url')
+    //     let url = e.currentTarget.getAttribute('data-img_url')
         
-        // saveAs(url, 'image.jpg')
+    //     // saveAs(url, 'image.jpg')
 
-        this.backdropClick(e)
+    //     this.backdropClick(e)
         
-    }
+    // }
 
     cancelEditComment(e){
         e.preventDefault();
@@ -485,7 +485,8 @@ class PinShow extends React.Component {
                                 </div>
                                     <div className="div-holder-helper-123">
                                         <div className="edit-dropdown-menue-123 pin-show" id="edit-dropdown-menue-123-id">
-                                            <div data-img_url={this.state.pin.photoUrl} onClick={this.saveImage} >Save Image</div>
+                                            <div data-img_url={this.state.pin.photoUrl}>Save Image</div>
+                                            {/* <div data-img_url={this.state.pin.photoUrl} onClick={this.saveImage} >Save Image</div> */}
                                         </div>
                                     </div>
                                 </h1>

@@ -25,6 +25,10 @@ class UserShow extends React.Component {
             currentUserProfile: false,
         };
 
+        this.state = {
+            profileBeingViewed: Number(this.props.match.params.id)
+        }
+
         this.state.display_name = props.f_name;
         this.toggleClass = this.toggleClass.bind(this);
         this.toggleBox = this.toggleBox.bind(this);
@@ -50,7 +54,7 @@ class UserShow extends React.Component {
         }
         
         this.props.unfollowUser(delteIds).then(
-            () => this.props.fetchUserFollowing(followData)
+            () => this.props.fetchUserFollowing(followData) // take a look at
         )
     }
 
@@ -69,7 +73,7 @@ class UserShow extends React.Component {
         }
 
         this.props.createFollow(followForm).then(
-            () => { this.props.fetchUserFollowing(followData)}
+            () => { this.props.fetchUserFollowing(followData)} // take a look at
         )
     }
 
@@ -99,6 +103,7 @@ class UserShow extends React.Component {
     // }
 
     componentDidMount(){
+        debugger
         
         if(Number(window.currentUser.id) === Number(this.props.match.params.id)){
             this.setState({currentUserProfile: true})
@@ -119,6 +124,7 @@ class UserShow extends React.Component {
     }
 
     componentDidUpdate(prevProps){
+        debugger
         
         if(prevProps.boards !== this.props.boards){
             this.setState({boards: Object.values(this.props.boards.boards)});
@@ -186,12 +192,13 @@ class UserShow extends React.Component {
 
     render() {
 
+        debugger
+
         if (!this.state.boards || !this.state.userProfile){
-        // if (!this.state.boards || !this.state.following){
-        // if (!this.state.boards || !this.state.following || !this.state.following_count || !this.state.followers_count){
-            
+            debugger
             return null
         }
+        debugger
 
         const handelDate = (updatedTime) => {
             let currentTime = new Date();
@@ -201,13 +208,9 @@ class UserShow extends React.Component {
             return (Math.floor(days));
         };
 
-        // let lock = document.getElementById('outer-div-tile-edit');
-
         let boards = Object.values(this.props.boards.boards)
 
         let profilePage
-
-        
 
         if(this.state.currentUserProfile){profilePage = (
             <div>
