@@ -18,7 +18,6 @@ class BoardShow extends React.Component {
     }
 
     showPin(num){
-
         console.log(`hit pin click ${num}`)
     }
 
@@ -105,16 +104,11 @@ class BoardShow extends React.Component {
 
     photoLoaded(e){
         e.preventDefault();
-        // 
         let imageHeight = e.currentTarget.children[1].clientHeight;
         let spanVal = Math.trunc((imageHeight/10) + 7)
-        // 
 
         let card = document.getElementById(`${e.currentTarget.id}`)
-
         card.style.gridRowEnd = `span ${spanVal}`
-        
-        // 
         e.currentTarget.style.visibility = "";
 
     }

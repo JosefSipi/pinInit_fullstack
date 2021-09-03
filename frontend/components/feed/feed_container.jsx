@@ -4,8 +4,7 @@ import Feed from './feed'
 import { fetchFeedPins } from '../../actions/pin_action'
 
 const mSTP = state => ({
-    feed: state.feed
-
+    feed: state.feed.feed
 })
 
 const mDTP = dispatch => {
