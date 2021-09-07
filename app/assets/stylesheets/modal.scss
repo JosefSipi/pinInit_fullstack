@@ -31,7 +31,7 @@
         position: absolute;
         // top: 34%;
         width: 435px;
-        height: 517px;
+        // height: 517px;
         border-radius: 8px;
         // margin: center auto;
 
@@ -51,18 +51,6 @@
 
 }
 
-.the-outer-box-modal{
-    display: flex;
-    align-content: space-between;
-    justify-content: space-between;
-    align-items: center;
-    height: inherit;
-    width: inherit;
-    flex-direction: column;
-}
-
-
-
 .session-form {
     display: flex;
     align-items: center;
@@ -71,12 +59,13 @@
     height: 450px;
     width: inherit;
     padding: 20px, 10px, 24px;
+    padding-bottom: 10px;
     // align-self: flex-end;
 }
 
 
 .sign-up-small-btn {
-    padding-bottom: 20px;
+    padding-bottom: 31px;
     color: black;
     font-size: 13px;
     text-decoration: none;
@@ -118,7 +107,6 @@
             color: gray;
             justify-content: center;
             padding-top: 20px;
-            height: 80px;
             width: inherit;
             align-items: center;
             flex-direction: column;
@@ -141,31 +129,31 @@
         // -- below is the background over gray effect on modal x --
         .logo-on-logged-in-header-x{
             position: relative;
+            position: relative;
             left: 184px;
             bottom: 30px;
-
-            overflow-y: hidden;
-            overflow-x: hidden;
             border-radius: 100px;
-            height: 37px;
-            width: 37px;
+            height: 39px;
+            width: 39px;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            
+            overflow: hidden;
+            padding: 10px;
             &:hover{
+                cursor: pointer;
                 background-color: #f1f1f1;
             }
         }
 
         .logo-modal-x{
             background-color: none;
-            height: 20px;
+            height: 16px;
             width: auto;
-            &:hover{
-                cursor: pointer;
-            }
+            // &:hover{
+            //     cursor: pointer;
+            // }
         }
         
         .welcome-pin-login{

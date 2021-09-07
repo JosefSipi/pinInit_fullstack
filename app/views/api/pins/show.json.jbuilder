@@ -5,7 +5,7 @@ if (@pin.photo.attached?)
     json.photoUrl url_for(@pin.photo)
 end
 
-debugger
+# debugger
 
 if !@from_pin_create 
     json.comments do

@@ -21,17 +21,16 @@
     // border-color: red;
     .modal-child-signUp {
 
-        background-color: rgb(255, 255, 255);
+        background-color: white;
         display: flex;
         justify-content: center;
         align-items: flex-end;
         position: absolute;
-        // top: 34%;
         width: 487px;
-        height: 521px;
+        // height: fit-content;
         border-radius: 8px;
-        // margin: center auto;
         z-index: 11;
+        display: flex;
 
     }
 
@@ -54,7 +53,7 @@
     align-content: space-between;
     justify-content: space-between;
     align-items: center;
-    height: inherit;
+    // height: 100%;
     width: inherit;
     flex-direction: column;
 }
@@ -64,7 +63,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
-    height: 620px;
+    // height: 620px;
     width: inherit;
     padding: 20px, 10px, 24px;
     // align-self: flex-end;
