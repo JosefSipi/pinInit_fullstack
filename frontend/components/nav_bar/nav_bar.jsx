@@ -201,9 +201,9 @@ render(){
                     <Link className="home-btn-loggedin" to="/feed">Home</Link>
                 </div>
 
-                <div className="header-left-home-btn-loggedin">
+                {/* <div className="header-left-home-btn-loggedin">
                     <Link className="home-btn-loggedin" to="/feed">Today</Link>
-                </div>
+                </div> */}
 
                 <div className="search-bar-section-1">
                     <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchingTime}></input>
@@ -216,7 +216,8 @@ render(){
                                     // <Link to={`/profile/${user.id}`} >
                                     <div key={user.id} className="list-search-user" onMouseDown={this.redirectProfile} data-user_id={user.id}>
                                         <div className="div-for-search-user-img">
-                                            <img className="search-user-img" src={user.photoUrl} alt="user avatar" />
+                                            {/* <img className="search-user-img" src={user.photoUrl} alt="user avatar" /> */}
+                                            { !!user.photoUrl ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <img className="search-user-img" src={window.picLogoURL} alt="profile photo" />}
                                         </div>
                                         <div className="last-div-1">{user.username}</div>
                                     </div>
@@ -232,12 +233,12 @@ render(){
 
                 <div className="header-right-logged-in">
                     
-                    <div className="logo-on-logged-in-header" >
+                    {/* <div className="logo-on-logged-in-header" >
                         <img id="logo-bell-icon" src={window.bellURL} alt="bell" />
                     </div>
                     <div className="logo-on-logged-in-header" >
                         <img id="logo-message-icon" src={window.messageIconURL} alt="message Icon" />
-                    </div>
+                    </div> */}
 
 
                     <div className="link-logo-div">

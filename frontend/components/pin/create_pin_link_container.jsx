@@ -3,6 +3,7 @@ import React from 'react';
 
 
 const CreatePinLink = () => {
+    debugger
     return (
         <div className="logo-on-logged-in-header-plus-allpage">
             <Link className='link-thing-plus' to='/pin-create'> <img className='the-big-plus-in-corner' src={window.plusSignURL} alt="+" /> </Link>
