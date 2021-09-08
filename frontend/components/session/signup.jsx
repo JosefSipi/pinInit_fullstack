@@ -11,12 +11,12 @@ class SignUp extends React.Component {
             age: '',
             // profile_pic: null          //--form Data format -'refactor'
         };
+        this.state = {
+            errors: null
+        }
         this.handelSubmit = this.handelSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
-        //-------------------------------------
-        // this.handelSubmitPhoto = this.handelSubmitPhoto.bind(this);
         this.handelFile = this.handelFile.bind(this);
-        //-------------------------------------
     }
 
     onChange(field){

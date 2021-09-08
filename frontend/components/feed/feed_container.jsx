@@ -11,7 +11,6 @@ const mDTP = dispatch => {
     return {
 
         fetchFeedPins: (userId) => {
-            debugger
             return dispatch(fetchFeedPins(userId));
         }
     }

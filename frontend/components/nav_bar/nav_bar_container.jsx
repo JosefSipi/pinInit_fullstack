@@ -6,13 +6,17 @@ import { openModal, closeModal } from '../../actions/modal';
 import { logout } from '../../actions/session';
 import { fetchUser } from '../../actions/user_actions';
 import { updateSearch } from '../../actions/user_actions';
-    // 
-const mSTP = state => ({
-    currentUser: state.session.currentUser,
-    user: state.user,
-    users: state.user.searchUsers,
-    logedInUser: state.session.currentUSer
-});
+
+
+const mSTP = state => {
+    debugger
+    return {
+        currentUser: state.session.currentUser,
+        user: state.user,
+        users: state.user.searchUsers,
+        logedInUser: state.session.currentUSer
+    }
+};
 
 const mDTP = dispatch => ({
     logout: () => dispatch(logout()),

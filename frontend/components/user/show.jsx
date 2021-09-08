@@ -103,7 +103,7 @@ class UserShow extends React.Component {
     // }
 
     componentDidMount(){
-        debugger
+
         
         if(Number(window.currentUser.id) === Number(this.props.match.params.id)){
             this.setState({currentUserProfile: true})
@@ -124,7 +124,7 @@ class UserShow extends React.Component {
     }
 
     componentDidUpdate(prevProps){
-        debugger
+
         
         if(prevProps.boards !== this.props.boards){
             this.setState({boards: Object.values(this.props.boards.boards)});
@@ -192,13 +192,13 @@ class UserShow extends React.Component {
 
     render() {
 
-        debugger
+
 
         if (!this.state.boards || !this.state.userProfile){
-            debugger
+
             return null
         }
-        debugger
+
 
         const handelDate = (updatedTime) => {
             let currentTime = new Date();

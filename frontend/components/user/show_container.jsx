@@ -28,14 +28,14 @@ const mDTP = dispatch => ({
     closeModal: () => dispatch(closeModal()),
     // return {
     fetchUserProfile: (userId) => {
-        debugger
+
         return dispatch(fetchUserProfile(userId));
     },
     // fetchUser: (userId) => {
     //     return dispatch(fetchUser(userId));
     // },
     fetchBoards: (userId) => {
-        debugger
+
         return dispatch(fetchBoards(userId));
     },
     isFollowing: (info) => {
@@ -43,7 +43,7 @@ const mDTP = dispatch => ({
         return dispatch(isFollowing(info))
     },
     fetchUserFollowing: (userId) => {
-        debugger
+
         return dispatch(fetchUserFollowing(userId))
     },
     createFollow: followForm => dispatch(createFollow(followForm)),

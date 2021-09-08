@@ -10,7 +10,7 @@ class NavBar extends React.Component {
 
     constructor(props) {
         super(props);
-
+        debugger
         this.toggleContent = this.toggleContent.bind(this);
         this.state = {
             showDropdown: false,
@@ -19,7 +19,7 @@ class NavBar extends React.Component {
         };
 
         this.state = {
-            logedInUser: this.props.logedInUser
+            logedInUser: this.props.currentUser
         }
 
         this.prepSearch = this.prepSearch.bind(this);
@@ -123,7 +123,9 @@ updateState(e){
 }
 
 componentDidMount(){
+    debugger
 
+    this.setState({logedInUser: this.props.currentUser})
     
     if (!!window.currentUser || !!this.props.currentUser) {
 
@@ -136,10 +138,11 @@ componentDidMount(){
 }
 
 // componentDidUpdate(prevProps){
-//     
-    // if(this.props.users !== prevProps.users && this.props.users !== undefined){
-    //     this.setState({searchUsers: this.props.users})
-    // }
+//     debugger
+    
+//     if(prevProps.currentUser !== this.props.currentUser){
+//         this.setState({logedInUser: this.props.currentUser})
+//     }
 // }
 
 toggleContent (e){
@@ -151,7 +154,10 @@ render(){
 
     debugger
 
-    // if(!this.props.users){
+
+
+    // if(!this.props.currentUser){
+    //     debugger
     //     return null
     // }
 
@@ -167,8 +173,14 @@ render(){
             ready = true
         }
 
+        // if (!this.state.logedInUser){
+        //     return null
+        // }
+
         
-        if (!!this.props.currentUser) {this.bar = (
+        if (!!this.props.currentUser) {
+            debugger
+            this.bar = (
             
             <div className="header" >
                 <div className="backdrop-div-create-search"  id="backdrop-div-create-search" onClick={this.searchOver}></div>
@@ -240,7 +252,10 @@ render(){
                         <div className="logo-on-logged-in-header">
 
                             <div className="profile-div-small">
-                                { !!window.currentUser.photoUrl ? <img className="profile-photo-icon" src={window.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{window.currentUser.f_name[0]}</p>}
+                                
+                                {/* { !!window.currentUser.photoUrl ? <img className="profile-photo-icon" src={window.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{window.currentUser.f_name[0]}</p>} */}
+                                {/* { !!this.props.currentUser.photoUrl ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>} */}
+                                { !!this.state.logedInUser.photoUrl ? <img className="profile-photo-icon" src={this.state.logedInUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.state.logedInUser.f_name[0]}</p>}
                             </div>
 
                         </div>

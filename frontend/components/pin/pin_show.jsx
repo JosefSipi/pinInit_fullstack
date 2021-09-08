@@ -53,7 +53,6 @@ class PinShow extends React.Component {
 
     cancelEditComment(e){
         e.preventDefault();
-        debugger
 
         document.getElementById('edit-form-div' + e.currentTarget.getAttribute('data-comment_id')).style.display = 'none'
         document.getElementById('right-txt-pin-show' + e.currentTarget.getAttribute('data-comment_id')).style.display = 'flex'
