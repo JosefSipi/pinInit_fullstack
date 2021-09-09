@@ -35,6 +35,7 @@ class PinShow extends React.Component {
         this.removeLike = this.removeLike.bind(this);
         this.elapsedTime = this.elapsedTime.bind(this);
         this.cancelEditComment = this.cancelEditComment.bind(this);
+        this.goBackBtn = this.goBackBtn.bind(this);
         // this.saveImage = this.saveImage.bind(this);
     }
 
@@ -74,7 +75,7 @@ class PinShow extends React.Component {
             if(time.year > 0){
                 retTime = `${time.year}y`
             } else if (time.month > 0 ){
-                retTime = `${time.month}M`
+                retTime = `${time.month}M` // need to look at
             } else if (time.day > 0){
                 retTime = `${time.day}d`
             } else if(time.hours > 0){
@@ -305,6 +306,11 @@ class PinShow extends React.Component {
         }
     }
 
+    goBackBtn(){
+        debugger
+        this.props.history.goBack()
+    }
+
     render(){
 
         if(!this.state.pin){
@@ -326,9 +332,11 @@ class PinShow extends React.Component {
         // } else {
         //     comments = this.state.comments
         // }
-        
+
 
         let pinShow
+
+        debugger
 
         if(window.currentUser.id === this.props.pin.pin.creator_id){
             pinShow = (
@@ -450,6 +458,20 @@ class PinShow extends React.Component {
                             <div id="pin-show-btn" className='outer-comment-pin-show-2'>
                                 <div id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin" >Cancel</div>
                                 <div id='done-btn-show-pin' className="button-show-pin-comment done-123" onClick={this.handelSubmitComment}>Done</div>
+                            </div>
+
+                            <div className='bottom-info-outter-div' >
+                                <div className="image-div-show-pin-page bottom-info-links" >
+                                    { !!window.currentUser.photoUrl ? <img className="profile-photo-icon" src={window.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{window.currentUser.f_name[0]}</p>}
+                                </div>
+
+                                <div className='bottom-section-pin-show-links' >
+                                    {this.state.pin.creator_id === window.currentUser.id ? 
+                                        <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>You</Link> : 
+                                        <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>{this.state.pin.pinUser.f_name} + {this.state.pin.pinUser.l_name} </Link>
+                                    } saved to {' '}
+                                        <Link className='pin-show-link' to={`/board/${this.state.pin.board_id}`} >{this.state.pin.board.title}</Link>
+                                </div>
                             </div>
                         </div> 
 
@@ -574,6 +596,21 @@ class PinShow extends React.Component {
                                 <div id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin" >Cancel</div>
                                 <div id='done-btn-show-pin' className="button-show-pin-comment done-123" onClick={this.handelSubmitComment}>Done</div>
                             </div>
+
+                            <div className='bottom-info-outter-div' >
+                                <div className="image-div-show-pin-page bottom-info-links" >
+                                    { !!window.currentUser.photoUrl ? <img className="profile-photo-icon" src={window.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{window.currentUser.f_name[0]}</p>}
+                                </div>
+
+                                <div className='bottom-section-pin-show-links' >
+                                    {this.state.pin.creator_id === window.currentUser.id ? 
+                                        <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>You</Link> : 
+                                        <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>{this.state.pin.pinUser.f_name} + {this.state.pin.pinUser.l_name} </Link>
+                                    } saved to {' '}
+                                        <Link className='pin-show-link' to={`/board/${this.state.pin.board_id}`} >{this.state.pin.board.title}</Link>
+                                </div>
+                            </div>
+
                         </div> 
 
                         </div>
@@ -587,6 +624,7 @@ class PinShow extends React.Component {
         }
         return(
             <div>
+                <div className='back-arrow-pin-show' onClick={this.goBackBtn} >back arrow</div>
                 {pinShow}
             </div>
         )

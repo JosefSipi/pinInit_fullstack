@@ -9,7 +9,7 @@ import { updateSearch } from '../../actions/user_actions';
 
 
 const mSTP = state => {
-    debugger
+    
     return {
         currentUser: state.session.currentUser,
         user: state.user,

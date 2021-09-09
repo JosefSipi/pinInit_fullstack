@@ -36,10 +36,10 @@ class Api::PinsController < ApplicationController
 
     def index
 
-        # debugger
+        # 
 
         if (!!params[:board_id])
-            # debugger
+            # 
             board = Board.find(params[:board_id]) # not sure where :board_id in this situation is coming from
     
             # @pins = Pin.all
@@ -48,7 +48,7 @@ class Api::PinsController < ApplicationController
     
             render 'api/pins/index'
         else
-            # debugger
+            # 
 
             users = User.find(params[:user_id]).followings
 
@@ -65,10 +65,16 @@ class Api::PinsController < ApplicationController
     end
 
     def show
+        
 
         @comments = Comment.where(pin_id: params[:id])
 
         @pin = Pin.find(params[:id])
+
+        @userPin = User.find(@pin.creator_id)
+        @board = Board.find(@pin.board_id)
+
+        
         render :show
     end
 

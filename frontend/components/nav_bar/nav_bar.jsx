@@ -10,7 +10,7 @@ class NavBar extends React.Component {
 
     constructor(props) {
         super(props);
-        debugger
+        
         this.toggleContent = this.toggleContent.bind(this);
         this.state = {
             showDropdown: false,
@@ -34,7 +34,7 @@ class NavBar extends React.Component {
     }
 
 // directToProfile = debounce((e) => {
-//     debugger
+//     
 //     // window.location.reload();
 // }, 1)
 
@@ -123,7 +123,7 @@ updateState(e){
 }
 
 componentDidMount(){
-    debugger
+    
 
     this.setState({logedInUser: this.props.currentUser})
     
@@ -138,7 +138,7 @@ componentDidMount(){
 }
 
 // componentDidUpdate(prevProps){
-//     debugger
+//     
     
 //     if(prevProps.currentUser !== this.props.currentUser){
 //         this.setState({logedInUser: this.props.currentUser})
@@ -152,12 +152,12 @@ toggleContent (e){
 
 render(){
 
-    debugger
+    
 
 
 
     // if(!this.props.currentUser){
-    //     debugger
+    //     
     //     return null
     // }
 
@@ -179,7 +179,7 @@ render(){
 
         
         if (!!this.props.currentUser) {
-            debugger
+            
             this.bar = (
             
             <div className="header" >

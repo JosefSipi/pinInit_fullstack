@@ -6,8 +6,7 @@ class Feed extends React.Component {
     constructor(props) {
         super(props);
 
-        
-
+        debugger
         this.state = {
             feed: null
         }
@@ -17,6 +16,7 @@ class Feed extends React.Component {
         this.onMouseEnterCall = this.onMouseEnterCall.bind(this);
         this.openTheLink = this.openTheLink.bind(this);
 
+        debugger
     }
 
     openTheLink(e){
@@ -53,7 +53,9 @@ class Feed extends React.Component {
 
     componentDidMount(){
         
-        this.props.fetchFeedPins(window.currentUser.id)
+        this.props.fetchFeedPins(window.currentUser.id).then(
+            this.setState({feed: this.props.feed})
+        )
     }
 
     componentDidUpdate(prevProps){
@@ -65,7 +67,7 @@ class Feed extends React.Component {
 
     render(){
 
-        
+        debugger
         
         if(!this.state.feed){
             
@@ -76,10 +78,9 @@ class Feed extends React.Component {
 
         let pins = Object.values(this.state.feed)
 
-        
+        debugger
 
         return (
-
             <div>
                 <div className="pin-area-on-board-show" >
                     <div className="pin_container" id="pin_container">
