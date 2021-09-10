@@ -357,10 +357,24 @@
 }
 
 .back-arrow-pin-show{
-    position: relative;
-    left: 10px;
-    top: 10px;
-    border: red 2px solid;
+    position: absolute;
+    left: 1vw;
+    top: 135px;
+    height: 48px;
+    width: 48px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    &:hover{
+        background-color: #dadada;
+        cursor: pointer;
+    }
+}
+.img-back-arrow{
+    width: 20px;
+    height: auto;
 }
 
 .bottom-info-links{

@@ -340,7 +340,7 @@ class PinShow extends React.Component {
 
         if(window.currentUser.id === this.props.pin.pin.creator_id){
             pinShow = (
-                <div className='background-div-pin-show'>
+                <div onClick={this.goBackBtn} className='background-div-pin-show'>
 
                 <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
                 <div className='main-div-pin-show'>
@@ -485,7 +485,7 @@ class PinShow extends React.Component {
             )
         } else {
             pinShow = (
-                <div className='background-div-pin-show'>
+                <div onClick={this.goBackBtn} className='background-div-pin-show'>
 
                 <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
                 <div className='main-div-pin-show'>
@@ -624,7 +624,9 @@ class PinShow extends React.Component {
         }
         return(
             <div>
-                <div className='back-arrow-pin-show' onClick={this.goBackBtn} >back arrow</div>
+                <div className='back-arrow-pin-show' onClick={this.goBackBtn} >
+                    <img className='img-back-arrow' src={window.backArrowFile} alt="back" />
+                </div>
                 {pinShow}
             </div>
         )
