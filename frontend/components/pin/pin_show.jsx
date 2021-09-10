@@ -340,7 +340,7 @@ class PinShow extends React.Component {
 
         if(window.currentUser.id === this.props.pin.pin.creator_id){
             pinShow = (
-                <div onClick={this.goBackBtn} className='background-div-pin-show'>
+                <div className='background-div-pin-show'>
 
                 <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
                 <div className='main-div-pin-show'>
@@ -468,7 +468,7 @@ class PinShow extends React.Component {
                                 <div className='bottom-section-pin-show-links' >
                                     {this.state.pin.creator_id === window.currentUser.id ? 
                                         <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>You</Link> : 
-                                        <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>{this.state.pin.pinUser.f_name} + {this.state.pin.pinUser.l_name} </Link>
+                                        <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>{this.state.pin.pinUser.f_name} {this.state.pin.pinUser.l_name} </Link>
                                     } saved to {' '}
                                         <Link className='pin-show-link' to={`/board/${this.state.pin.board_id}`} >{this.state.pin.board.title}</Link>
                                 </div>
@@ -485,7 +485,7 @@ class PinShow extends React.Component {
             )
         } else {
             pinShow = (
-                <div onClick={this.goBackBtn} className='background-div-pin-show'>
+                <div className='background-div-pin-show'>
 
                 <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
                 <div className='main-div-pin-show'>
@@ -498,7 +498,7 @@ class PinShow extends React.Component {
                     <div className='right-half-pin-show'>
                         <div className='top-bar-right-show-pin'>
 
-                            <div>
+                            {/* <div>
                                 <h1 className="header-title-boards-show-123">
                                 
                                 <div className="pin-duplicate-button-dd" onClick={this.moreClickedDD}>
@@ -507,11 +507,10 @@ class PinShow extends React.Component {
                                     <div className="div-holder-helper-123">
                                         <div className="edit-dropdown-menue-123 pin-show" id="edit-dropdown-menue-123-id">
                                             <div data-img_url={this.state.pin.photoUrl}>Save Image</div>
-                                            {/* <div data-img_url={this.state.pin.photoUrl} onClick={this.saveImage} >Save Image</div> */}
                                         </div>
                                     </div>
                                 </h1>
-                            </div>
+                            </div> */}
 
 
                         </div>
@@ -605,7 +604,7 @@ class PinShow extends React.Component {
                                 <div className='bottom-section-pin-show-links' >
                                     {this.state.pin.creator_id === window.currentUser.id ? 
                                         <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>You</Link> : 
-                                        <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>{this.state.pin.pinUser.f_name} + {this.state.pin.pinUser.l_name} </Link>
+                                        <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>{this.state.pin.pinUser.f_name} {this.state.pin.pinUser.l_name} </Link>
                                     } saved to {' '}
                                         <Link className='pin-show-link' to={`/board/${this.state.pin.board_id}`} >{this.state.pin.board.title}</Link>
                                 </div>

@@ -5,23 +5,24 @@ if (@pin.photo.attached?)
     json.photoUrl url_for(@pin.photo)
 end
 
-json.pinUser do
-    json.extract! @userPin, :f_name, :l_name
-
-    if (@userPin.profile_pic.attached?)
-        json.photoUrl url_for(@userPin.profile_pic)
-    else
-        json.photoUrl false
-    end
-end
-
-json.board do
-    json.extract! @board, :title
-end
 
 # debugger
 
 if !@from_pin_create 
+    json.pinUser do
+        json.extract! @userPin, :f_name, :l_name
+    
+        if (@userPin.profile_pic.attached?)
+            json.photoUrl url_for(@userPin.profile_pic)
+        else
+            json.photoUrl false
+        end
+    end
+    
+    json.board do
+        json.extract! @board, :title
+    end
+    
     json.comments do
         @comments.each do |comment|
             

@@ -1,6 +1,7 @@
 import React from 'react';
 // import { Redirect } from 'react-router';
 import { browserHistory } from 'react-router';
+import LoadingIcon from './loading';
 
 class CreatePin extends React.Component {
     constructor(props) {
@@ -18,7 +19,8 @@ class CreatePin extends React.Component {
                 heightof: null,
             },
             isTrue: false,
-            thePhotoURL: ""
+            thePhotoURL: "",
+            loading: false
         }
 
         this.handelAddText = this.handelAddText.bind(this);
@@ -70,10 +72,13 @@ class CreatePin extends React.Component {
         formData.append('pin[board_id]', this.state.pin.board_id);
         formData.append('pin[heightof]', heightOfValue);
 
+        this.setState({loading: true})
         this.props.createNewPin(formData).then(
             // put a set state to display a loading icon here
             (data) => {
-                this.props.history.push(`/board/${data.pin.board_id}`)
+                console.log(data)
+                this.props.history.goBack()
+                // this.props.history.push(`/board/${data.pin.board_id}`)
             } 
         )
 
@@ -297,12 +302,17 @@ class CreatePin extends React.Component {
             <div className="create-pin-main-div">
             <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
 
+           
             <div className="delete-dropdown-menue" id="delete-dropdown-menue-id">
                 <div onClick={this.deleteDropDownClick}>Delete</div>
                 {/* <div >Duplicate</div> */}
             </div>
 
-                <div className="primary-createpin-card">
+            <div className="primary-createpin-card">
+                
+                 {this.state.loading ? <LoadingIcon/> : null } 
+                
+                <div className={this.state.loading ? 'deactivate' : ''} >
 
                     <div className="top-bar-create-pin">
                         <div className="delete-duplicate-button-dd" onClick={this.moreClicked}>
@@ -416,7 +426,7 @@ class CreatePin extends React.Component {
                     </div>
 
                 </div>
-
+              </div>                  
             </div>
         )
     }
