@@ -18,8 +18,9 @@ class Api::UsersController < ApplicationController
             login!(@user)
             render 'api/users/create'
         else
-            render json: ["Your password is too short! You need 6+ characters.", "invalid email", "or age wasn't provided"], status: 401
-            # @user.errors.full_messages, status: 401
+            debugger
+            # render json: ["Your password is too short! You need 6+ characters.", "invalid email", "or age wasn't provided"], status: 401
+            render json: @user.errors.full_messages, status: 401
         end
 
     end
@@ -40,6 +41,7 @@ class Api::UsersController < ApplicationController
             render :show
         else
             render jason: @user.errors.full_messages, status: 401
+            # render json: @user.errors.full_messages, status: 401
         end
     end
 

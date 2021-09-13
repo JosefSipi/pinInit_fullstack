@@ -44,10 +44,18 @@ class LogIn extends React.Component {
     }
 
     renderErrors() {
+
+
+        let theError
+
+        if (this.props.errors === 'The password you entered is incorrect.'){
+            <div>{this.props.errors}</div>
+        }
+
         return (
             <ul>
                 {this.props.errors.map((error, i) => (
-                    <div key={i}>{error} </div>
+                    <div key={i}>{error === 'The password you entered is incorrect.' ? error : null} </div>
                 )
                 )}
             </ul>
@@ -56,6 +64,33 @@ class LogIn extends React.Component {
 
 
     render() {
+
+
+        let emailError
+        let pwError
+
+        debugger
+
+        if (!!this.props.errors){
+            let inputEmail = document.getElementById('input-box-email')
+            let inputPW = document.getElementById('input-box-pw')
+
+
+            if (this.props.errors[0] === 'The email you entered does not belong to any account.'){
+                emailError = 'The email you entered does not belong to any account.'
+                pwError = false
+                inputEmail.classList.add('input-error')
+                inputPW.classList.remove('input-error')
+
+            } else if ( this.props.errors[0] === 'The password you entered is incorrect.'){
+                pwError = 'The password you entered is incorrect.'
+                emailError = false
+                inputEmail.classList.remove('input-error')
+                inputPW.classList.add('input-error')
+            }
+        }
+            
+        debugger
         return (
 
         <div className="the-outer-box-modal">
@@ -89,24 +124,26 @@ class LogIn extends React.Component {
                 <form className="main-login-form" onSubmit={this.handelSubmit}>
 
                     <input
-                        className="input-box"
+                        id='input-box-email'
+                        className={`input-box ${emailError ? 'input-error' : null}`}
                         type="text"
                         placeholder="Email"
                         value={this.state.email}
                         onChange={this.onChange("email")}
                     />
-
+                    {emailError ? <div className='pwError-div' >{emailError}</div> : null}
                     <input
-                        className="input-box"
+                        id='input-box-pw'
+                        className={`input-box ${pwError ? 'input-error' : null}`}
                         type="password"
                         placeholder="password"
                         value={this.state.password}
                         onChange={this.onChange("password")}
                     />
+                    {pwError ? <div className='pwError-div'>{pwError}</div> : null}
+                    {/* <h2 className="forgot-pw">Forgot your password?</h2> */}
 
-                    <h2 className="forgot-pw">Forgot your password?</h2>
-
-                    <input className="login-button" type="submit" value="Log in" />
+                    <input className="top-margin-login-button" type="submit" value="Log in" />
 
                     <h1 className="or-login-page">OR</h1>
                     
@@ -117,9 +154,9 @@ class LogIn extends React.Component {
                     <input className="login-button" type="submit" onClick={this.handelDemo} value="DemoUser" />
 
                 </form>
-                    <form className="page-form" onSubmit={this.handelSubmit}>
+                    {/* <form className="page-form" onSubmit={this.handelSubmit}>
                         <div className="errors">{this.renderErrors()}</div> 
-                    </form>
+                    </form> */}
 
                 <h3 className="policy-text">By continuing, you agree to Pininit's </h3><h3 className="dark-text">Terms of Service, Privacy policy.</h3>
 

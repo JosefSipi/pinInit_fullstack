@@ -14,6 +14,8 @@ class SignUp extends React.Component {
         this.state = {
             errors: null
         }
+
+        
         this.handelSubmit = this.handelSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
         this.handelFile = this.handelFile.bind(this);
@@ -54,6 +56,15 @@ class SignUp extends React.Component {
     }
 //-------------------------------------
     render(){
+        debugger
+
+
+        if (this.state.errors){
+            
+        }
+
+
+
         return (
 
             <div className="the-outer-box-modal">
