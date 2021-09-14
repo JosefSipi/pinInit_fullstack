@@ -13,13 +13,9 @@ const mSTP = state => {
     return {
         user: state.user,
         userProfile: state.user.profileUser,
-        // user: state.user,
         photo: state.photoUrl,
-        // boards: Object.values(state.boards)
         boards: state.boards,
         follow: state.follow.usersFollowing,
-        // following: state.follow.usersFollowing,
-        // isFollowing: state.follow.usersFollowing
     };
 };
 
@@ -28,7 +24,7 @@ const mDTP = dispatch => ({
     closeModal: () => dispatch(closeModal()),
     // return {
     fetchUserProfile: (userId) => {
-
+        debugger
         return dispatch(fetchUserProfile(userId));
     },
     // fetchUser: (userId) => {

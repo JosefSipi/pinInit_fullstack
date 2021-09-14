@@ -5,7 +5,7 @@ import NavBar from './nav_bar';
 import { openModal, closeModal } from '../../actions/modal';
 import { logout } from '../../actions/session';
 import { fetchUser } from '../../actions/user_actions';
-import { updateSearch } from '../../actions/user_actions';
+import { updateSearch, fetchUserProfile } from '../../actions/user_actions';
 
 
 const mSTP = state => {
@@ -28,6 +28,10 @@ const mDTP = dispatch => ({
     updateSearch: (input) => {
         // 
         return dispatch(updateSearch(input))
+    },
+    fetchUserProfile: (userId) => {
+        debugger
+        return dispatch(fetchUserProfile(userId));
     }
     
 

@@ -40,6 +40,7 @@ class SignUp extends React.Component {
     }
 
     renderErrors() {
+        debugger
         return (
             <ul>
                 {this.props.errors.map((error, i) => (
@@ -59,12 +60,22 @@ class SignUp extends React.Component {
         debugger
 
 
-        if (this.state.errors){
-            
+        let emailError
+        let pwError
+        let ageError
+
+        this.props.errors.map((error) => {
+            if(error === "Age can't be blank") {
+                ageError = "Age can't be blank"
+            } else if (error === "Password is too short (minimum is 6 characters)"){
+                pwError = "Your password is too short! You need 6+ characters."
+            } else if (error === "Email has already been taken" || error === "Username has already been taken") {
+                emailError = 'Email has already been taken'
+            }
         }
 
-
-
+        )
+debugger
         return (
 
             <div className="the-outer-box-modal">
@@ -92,29 +103,29 @@ class SignUp extends React.Component {
 
                 <form className="main-login-form" onSubmit={this.handelSubmit}>
                         <input
-                            className="input-box-signUp"
+                            className={`${emailError ? 'input-box-signUp-error' : 'input-box-signUp'}`}
                             type="text"
                             placeholder="Email"
                             value={this.state.email}
                             onChange={this.onChange("email")}
                         />
-
+                        {emailError ? <div className='pwError-div' >{emailError}</div> : null}
                         <input
-                            className="input-box-signUp"
+                            className={`${pwError ? 'input-box-signUp-error' : 'input-box-signUp'}`}
                             type="password"
                             placeholder="Create a passowrd"
                             value={this.state.password}
                             onChange={this.onChange("password")}
                         />
-
+                        {pwError ? <div className='pwError-div' >{pwError}</div> : null}
                         <input
-                            className="input-box-signUp"
+                            className={`${ageError ? 'input-box-signUp-error' : 'input-box-signUp'}`}
                             type="number"
                             placeholder="Age"
                             value={this.state.age}
                             onChange={this.onChange("age")}
                         />
-
+                        {ageError ? <div className='pwError-div' >{ageError}</div> : null}
                        
                         <input className="login-button-signUp-Modal" type="submit" value="Continue" />
 

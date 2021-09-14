@@ -26,7 +26,8 @@ class UserShow extends React.Component {
         };
 
         this.state = {
-            profileBeingViewed: Number(this.props.match.params.id)
+            profileBeingViewed: Number(this.props.match.params.id),
+            userProfiles: {}
         }
 
         this.state.display_name = props.f_name;
@@ -36,7 +37,14 @@ class UserShow extends React.Component {
         this.directToCreatePin = this.directToCreatePin.bind(this);
         this.unfollowUser = this.unfollowUser.bind(this);
         this.followUser = this.followUser.bind(this);
+        // this.callTheFunction = this.callTheFunction.bind(this);
     }
+
+    // callTheFunction(){
+    //     debugger
+        
+
+    // }
     
     unfollowUser(e){
         e.preventDefault();
@@ -82,33 +90,10 @@ class UserShow extends React.Component {
 
         this.props.history.push('/pin-create')
     }
-    // clickBoardDD(e){
-    //     e.preventDefault();
-    //     (e) => this.props.openModal('createBoard')
-
-        // let dropDiv = document.getElementById('hidden-plus-opt')
-        // let backgroundDiv = document.getElementById('background-plus-modal')
-        // // let logoHeader = document.body.getElementsById('logo-on-logged-in-header-plus-id')
-
-        // if (dropDiv.className === "hidden-plus-opt-h"){
-        //     dropDiv.className = "hidden-plus-opt";
-        //     backgroundDiv.className="ul-logged-dropdown-active-background-plus"
-        //     // logoHeader.style.backgroundColor = "red";
-        // } else if (backgroundDiv.className === "ul-logged-dropdown-active-background-plus") {
-        //     backgroundDiv.className = "ul-logged-dropdown-background-plus"
-        //     dropDiv.className = "hidden-plus-opt-h"
-        // }
-
-
-    // }
 
     componentDidMount(){
+        debugger
 
-        
-        if(Number(window.currentUser.id) === Number(this.props.match.params.id)){
-            this.setState({currentUserProfile: true})
-        }
-        
         let followData = {
 
             id: Number(this.props.match.params.id),
@@ -116,15 +101,41 @@ class UserShow extends React.Component {
             profile_users_id: Number(this.props.match.params.id)
         }
         
-        this.props.fetchUserFollowing(followData);
+        if(Number(window.currentUser.id) === Number(this.props.match.params.id)){
+            this.setState({currentUserProfile: true})
+        }
+        
+        this.props.fetchUserFollowing(followData)
+        // .then(
+        //     (data) => {
+        //         let prevState = this.state.userProfiles
+        //         prevState[Number(this.props.match.params.id)][followData] = data
+        //         this.setState({userProfile: prevState})
+        //     }
+        // );
 
-        this.props.fetchUserProfile(this.props.match.params.id);
+        this.props.fetchUserProfile(this.props.match.params.id).then(
+            (data) => {
+                let prevState = this.state.userProfiles
+                prevState[data.userProfile.id] = {user: data.userProfile}
+                this.setState({userProfile: prevState})
+            }
+        );
+
         this.props.fetchBoards(this.props.match.params.id);
+        // .then(
+        //     (data) => {
+        //         let prevState = this.state.userProfiles
+        //         prevState[Number(this.props.match.params.id)][boards] = data
+        //         this.setState({userProfile: prevState})
+        //     }
+        // );
 
     }
 
     componentDidUpdate(prevProps){
 
+        debugger
         
         if(prevProps.boards !== this.props.boards){
             this.setState({boards: Object.values(this.props.boards.boards)});
@@ -132,10 +143,46 @@ class UserShow extends React.Component {
             this.setState(
                 {following: this.props.follow.amFollowing, followers_count: this.props.follow.followers.count, following_count: this.props.follow.following.count})
         } else if (prevProps.userProfile !== this.props.userProfile){
+            debugger
+            let prevState = this.state.userProfiles
+            prevState[this.props.userProfile.id] = this.props.userProfile
+            this.setState({userProfile: prevState})
+
+            this.props.fetchBoards(this.props.match.params.id);
+
+            let followData = {
+                id: Number(this.props.match.params.id),
+                current_user_id: window.currentUser.id,
+                profile_users_id: Number(this.props.match.params.id)
+            }
+        
+            if(Number(window.currentUser.id) === Number(this.props.match.params.id)){
+                this.setState({currentUserProfile: true})
+            }
+            this.props.fetchUserFollowing(followData)
+
             this.setState(
                 {userProfile: this.props.userProfile}
             )
         }
+        // else if (prevProps.userProfile !== Number(this.props.match.params.id)) {
+        //     debugger
+        //     let followData = {
+        //         id: Number(this.props.match.params.id),
+        //         current_user_id: window.currentUser.id,
+        //         profile_users_id: Number(this.props.match.params.id)
+        //     }
+
+        //     this.props.fetchUserProfile(this.props.match.params.id);
+
+        //     if(Number(window.currentUser.id) === Number(this.props.match.params.id)){
+        //     this.setState({currentUserProfile: true})
+
+        //     this.props.fetchBoards(this.props.match.params.id);
+        //     this.props.fetchUserFollowing(followData);
+
+        // }
+        // }
     }
 
     toggleClass(e) {
@@ -192,13 +239,10 @@ class UserShow extends React.Component {
 
     render() {
 
-
-
         if (!this.state.boards || !this.state.userProfile){
 
             return null
         }
-
 
         const handelDate = (updatedTime) => {
             let currentTime = new Date();
@@ -211,6 +255,28 @@ class UserShow extends React.Component {
         let boards = Object.values(this.props.boards.boards)
 
         let profilePage
+
+        let displayUser
+
+        debugger
+        
+        if(this.state.userProfile.id !== (Number(this.props.match.params.id))){
+            this.props.fetchUserProfile(Number(this.props.match.params.id))
+        // if(this.state.userProfiles.hasOwnProperty(Number(this.props.match.params.id))){
+            // debugger
+
+            // displayUser = this.state.userProfiles[Number(this.props.match.params.id)]
+        } else {
+            // debugger
+
+        }
+
+
+        // if(this.props.match.params.id !== this.props.userProfile.id){
+        //     this.callTheFunction()
+        // }
+
+        debugger
 
         if(this.state.currentUserProfile){profilePage = (
             <div>

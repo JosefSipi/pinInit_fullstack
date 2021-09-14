@@ -28,7 +28,7 @@ class LogIn extends React.Component {
             .then(() => {
                 this.props.history.push('/feed');
                 this.props.closeModal();
-                window.location.reload();
+                // window.location.reload();
             }); // here we will want to redirect the user to their home feed
     }
 

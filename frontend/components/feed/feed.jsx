@@ -8,7 +8,8 @@ class Feed extends React.Component {
 
         debugger
         this.state = {
-            feed: null
+            feed: null,
+            currentUser: null
         }
         
         this.photoLoaded = this.photoLoaded.bind(this);
@@ -52,9 +53,15 @@ class Feed extends React.Component {
     }
 
     componentDidMount(){
-        
-        this.props.fetchFeedPins(window.currentUser.id).then(
-            this.setState({feed: this.props.feed})
+        debugger
+        let user = this.props.currentUSer
+        this.setState({currentUser: this.props.currentUser})
+        debugger
+        this.props.fetchFeedPins(this.props.currentUser.id).then(
+            (data) => {
+                console.log(data)
+                this.setState({feed: this.props.feed})
+            }
         )
     }
 

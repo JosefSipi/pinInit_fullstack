@@ -29,6 +29,7 @@ class NavBar extends React.Component {
         this.redirectProfile = this.redirectProfile.bind(this);
         this.logoutFunction = this.logoutFunction.bind(this);
         this.reloadIng = this.reloadIng.bind(this);
+        // this.redirecHomeProfile = this.redirecHomeProfile.bind(this);
         // this.directToProfile = this.directToProfile.bind(this);
         // this.redirectProfileCurrentUser = this.redirectProfileCurrentUser.bind(this);
     }
@@ -38,6 +39,10 @@ class NavBar extends React.Component {
 //     // window.location.reload();
 // }, 1)
 
+// redirecHomeProfile(){
+//     this.props.history.push(`/profile/${this.props.currentUser.id}`)
+//     // this.props.fetchUserProfile(this.props.currentUser.id)
+// }
 
 prepSearch = debounce(() => {
     // 
@@ -64,7 +69,7 @@ reloadIng(){
 
 redirectProfile(e){
     this.props.history.push(`/profile/${e.currentTarget.getAttribute('data-user_id')}`)
-    window.location.reload();
+    // window.location.reload();
 }
 
 searchingTime(e){
@@ -247,7 +252,9 @@ render(){
                     </div>
                     
 
-                    <Link className='nav-bar-prof-icon' to={`/profile/${window.currentUser.id}`}>
+                    <Link className='nav-bar-prof-icon' to={`/profile/${this.props.currentUser.id}` }>
+                        {/* <div className='nav-bar-prof-icon' onClick={this.redirecHomeProfile}> */}
+                    {/* <Link className='nav-bar-prof-icon' to={`/profile/${window.currentUser.id}`}> */}
                     {/* <Link className='nav-bar-prof-icon' to={`/profile/${this.props.currentUser.id}`} > */}
                     {/* <Link to={`/profile/${window.currentUser.id}`} > */}
                         <div className="logo-on-logged-in-header">
@@ -255,12 +262,12 @@ render(){
                             <div className="profile-div-small">
                                 
                                 {/* { !!window.currentUser.photoUrl ? <img className="profile-photo-icon" src={window.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{window.currentUser.f_name[0]}</p>} */}
-                                {/* { !!this.props.currentUser.photoUrl ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>} */}
-                                { !!this.state.logedInUser.photoUrl ? <img className="profile-photo-icon" src={this.state.logedInUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.state.logedInUser.f_name[0]}</p>}
+                                { !!this.props.currentUser.photoUrl ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>}
+                                {/* { !!this.state.logedInUser.photoUrl ? <img className="profile-photo-icon" src={this.state.logedInUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.state.logedInUser.f_name[0]}</p>} */}
                             </div>
 
                         </div>
-
+                        {/* </div> */}
                     </Link>
 
                        

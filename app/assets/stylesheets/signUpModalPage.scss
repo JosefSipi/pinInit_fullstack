@@ -99,6 +99,23 @@
     border-color: rgb(136, 182, 250);
 }
 
+.input-box-signUp-error {
+    all: unset;
+    display: flex;
+    align-items: stretch;
+    border-radius: 14px;
+    border-style: solid;
+    border-width: 2px;
+    height: 40px;
+    text-indent: 15px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border-color: red;
+    background-color: white;
+}:focus-within{
+    border-width: 4px;
+}
+
 
 .login-button-signUp-Modal{
     all: unset;
