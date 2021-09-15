@@ -38,6 +38,11 @@
     // border: solid 2px red;
     margin-top: 28px;
     margin-bottom: 60px;
+    input{
+        padding-right: 21px;
+        font-size: 15px;
+        font-weight: 100;
+    }
 }
 
 h1.large-txt-edit-profile{
@@ -70,6 +75,9 @@ h1.large-txt-edit-profile{
     margin-bottom: 8px;
     height: 44px;
 
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .f-name-l-name-edit{

@@ -274,12 +274,12 @@ class UserShow extends React.Component {
                         </div>
 
                         <h2 className="username-on-profile">{this.props.userProfile.f_name}{(this.props.userProfile.l_name ? this.props.userProfile.l_name : "").charAt(0)}</h2>
-                    <div>
-                        <h1 className="email-on-profile">{"@"}{this.props.userProfile.username}</h1>
-                        {!!this.props.userProfile ? <div> {" "}·{" "} { this.props.userProfile.bio}</div> : null}
+                    <div className='bio-on-profile'>
+                        <h1 className="email-on-profile">{"@"}{this.props.userProfile.username}{!!this.props.userProfile ? " · " + this.props.userProfile.bio : '' }</h1>
+                        
                     </div>
 
-                        <h1 className="email-on-profile"> {this.state.followers_count} followers • {this.state.following_count} following</h1>
+                        <h1 className="email-on-profile follow-following-show"> {this.state.followers_count} followers • {this.state.following_count} following</h1>
     
                     </header>
                </div>
@@ -414,9 +414,11 @@ class UserShow extends React.Component {
 
                         <h2 className="username-on-profile">{this.props.userProfile.f_name}{(this.props.userProfile.l_name ? this.props.userProfile.l_name : "").charAt(0)}</h2>
                         
-                        <h1 className="email-on-profile">{"@"}{this.props.userProfile.username}</h1>
+                        <div className='bio-on-profile'>
+                            <h1 className="email-on-profile">{"@"}{this.props.userProfile.username}{!!this.props.userProfile ? " · " + this.props.userProfile.bio : '' }</h1>
+                        </div>
 
-                        <h1 className="email-on-profile"> {this.state.followers_count} followers • {this.state.following_count} following</h1>
+                        <h1 className="email-on-profile follow-following-show"> {this.state.followers_count} followers • {this.state.following_count} following</h1>
 
                         <div className="following-btn-22-1" id="following-btn-22-1" onClick={this.followUser} style={this.state.following ? {display: 'none'} : {display: 'flex'}} >Follow</div>
 

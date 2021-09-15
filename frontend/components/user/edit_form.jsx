@@ -14,6 +14,19 @@ class EditForm extends React.Component {
         this.resetData = this.resetData.bind(this);
         this.saveChanges = this.saveChanges.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
+        this.makeReadOnly = this.makeReadOnly.bind(this);
+        this.removeReadOnly = this.removeReadOnly.bind(this);
+    }
+
+    makeReadOnly(e){
+        debugger
+        e.currentTarget.readOnly = true;
+    }
+
+    removeReadOnly(e){
+        debugger
+        e.currentTarget.readOnly = false;
+
     }
 
     saveChanges(e){
@@ -136,6 +149,8 @@ class EditForm extends React.Component {
                                 placeholder="Ex. Jo"
                                 onChange={this.handleChange('f_name')}
                                 type="text"
+                                onBlur={this.makeReadOnly}
+                                onFocus={this.removeReadOnly}
                                 // value={this.state.editUser.f_name}
                                 value={!!this.state.editUser.f_name ? this.state.editUser.f_name : ''}
                             />
@@ -149,6 +164,8 @@ class EditForm extends React.Component {
                                 placeholder="Ex. Smith"
                                 onChange={this.handleChange('l_name')}
                                 type="text"
+                                onBlur={this.makeReadOnly}
+                                onFocus={this.removeReadOnly}
                                 // value={this.state.l_name}
                                 value={!!this.state.editUser.l_name ? this.state.editUser.l_name : ''}
                             />
@@ -164,8 +181,11 @@ class EditForm extends React.Component {
                             placeholder="Write a little bit about yourself here"
                             onChange={this.handleChange('bio')}
                             type="textare"
+                            onBlur={this.makeReadOnly}
+                            onFocus={this.removeReadOnly}
                             // value={this.state.bio}
                             value={!!this.state.editUser.bio ? this.state.editUser.bio : ''}
+                            readOnly
                         />
                     </div>
 
@@ -196,6 +216,8 @@ class EditForm extends React.Component {
                             className='input-txt-edit-profile'
                             onChange={this.handleChange('username')}
                             type="text"
+                            onBlur={this.makeReadOnly}
+                            onFocus={this.removeReadOnly}
                             // value={this.state.username}
                             value={!!this.state.editUser.username ? this.state.editUser.username : ''}
                         />

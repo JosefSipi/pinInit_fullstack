@@ -31,12 +31,14 @@ div.profile-div {
 
 .profile-header {
     height: fit-content;
-    width: 488;
+    width: 488px;
+    max-width: 488px;
     display: flex;
     align-items: center;
     flex-direction: column;
     font-size: 13px;
     font-family: 'Questrial', sans-serif;
+    word-wrap: break-word;
 }
 
 .show-page-box-1 {
@@ -58,15 +60,26 @@ div.profile-div {
     height: 42px;
     font-size: 26px;
     
-    padding-block: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 .email-on-profile {
-    padding-bottom: 10px;
-    font-weight: 100;
+    line-height: 1.3;
+    text-align: center;
 }
 
-
+.bio-on-profile{
+    display: flex;
+    font-size: 15px;
+    font-weight: 100;
+}
+.follow-following-show{
+    font-weight: bold;
+    letter-spacing: .5px;
+    font-size: 15.5px;
+    padding-top: 10px;
+}
 
 // -- main edit bar container --
 
