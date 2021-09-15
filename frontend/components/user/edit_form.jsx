@@ -10,36 +10,59 @@ class EditForm extends React.Component {
             editUser: undefined,
             ogEditUser: undefined
         }
+
+        this.resetData = this.resetData.bind(this);
+        this.saveChanges = this.saveChanges.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
+    }
+
+    saveChanges(e){
+        e.preventDefault();
+        debugger
+        let submitData = {...this.state.editUser}
+        submitData.id = this.props.currentUser.id
+        debugger
+        this.props.updateUserInfo(submitData).then(
+            (data) => {
+                debugger
+
+                console.log(data.user)
+                this.componentDidMount()
+                debugger
+            }
+        )
+    }
+
+    resetData(e){
+        debugger
+        e.preventDefault();
+        this.setState({editUser: this.state.ogEditUser})
     }
 
 
     componentDidMount(){
+        debugger
 
         this.props.fetchUser(this.props.currentUser.id).then(
             (data) => {
                 let firstEditUser = {}
 
-                debugger
                 firstEditUser.f_name = (data.user.f_name === null ? '' : data.user.f_name)
                 firstEditUser.l_name = (data.user.l_name === null ? '' : data.user.l_name)
                 firstEditUser.bio = (data.user.bio === null ? '' : data.user.bio)
                 firstEditUser.username = (data.user.username === null ? '' : data.user.username)
                 this.setState({editUser: firstEditUser})
-                debugger
                 this.setState({ogEditUser: firstEditUser})
             }
         )
     }
 
     handleChange(field){
-        debugger
         let prevEditUser = {...this.state.editUser}
         
         return e => {
             prevEditUser[field] = e.currentTarget.value
-            // prevEditUser.field = e.currentTarget.value
             this.setState({ editUser: prevEditUser});
-            debugger
         };
     }
 
@@ -191,12 +214,8 @@ class EditForm extends React.Component {
             </div>
 
                 <div className="footer-bar">
-                    <button className={btnStat ? 'normal-btn-edit-prof' : 'normal-btn-edit-prof buttons-edit-active-reset'}>Reset</button>
-                    {/* <button className={{...this.state.editUser} === {...this.state.ogEditUser} ? 'normal-btn-edit-prof' : 'normal-btn-edit-prof buttons-edit-active-reset'}>Reset</button> */}
-                    {/* <button className={'normal-btn-edit-prof buttons-edit-active-reset'}>Reset</button> */}
-                    <button className={btnStat ? 'normal-btn-edit-prof' : 'normal-btn-edit-prof buttons-edit-active-save'}>Save</button>
-                    {/* <button className={{...this.state.editUser} === {...this.state.ogEditUser} ? 'normal-btn-edit-prof' : 'normal-btn-edit-prof buttons-edit-active-save'}>Save</button> */}
-                    {/* <button className={ 'normal-btn-edit-prof buttons-edit-active-save'}>Save</button> */}
+                    <button className={btnStat ? 'normal-btn-edit-prof' : 'normal-btn-edit-prof buttons-edit-active-reset'} onClick={!btnStat ? this.resetData : null} >Reset</button>
+                    <button className={btnStat ? 'normal-btn-edit-prof' : 'normal-btn-edit-prof buttons-edit-active-save'} onClick={!btnStat ? this.saveChanges : null} >Save</button>
                 </div>
         </div>
 

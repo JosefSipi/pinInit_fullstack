@@ -55,6 +55,14 @@ export const updateUser = user => {
     };
 };
 
+export const updateUserInfo = user => {
+    debugger
+    return (dispatch) => {
+        return APIUtil.updateUserInfo(user)
+            .then(user => dispatch(receiveUser(user)))
+    }
+}
+
 export const updateSearch = input => {
     return(dispatch) => {
         return APIUtil.updateSearch(input)

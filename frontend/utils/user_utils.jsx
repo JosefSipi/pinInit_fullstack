@@ -18,6 +18,15 @@ export const updateUser = (user) => {
     });
 };
 
+export const updateUserInfo = (user) => {
+    debugger
+    return $.ajax({
+        method: 'PATCH',
+        url: `api/users/${'user.user[id]'}`,
+        data: {user}
+    })
+}
+
 export const updateSearch = input => {
     return $.ajax({
         method: 'GET',
