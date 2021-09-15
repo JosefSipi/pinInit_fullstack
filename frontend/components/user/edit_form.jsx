@@ -118,7 +118,8 @@ class EditForm extends React.Component {
                 </div> */}
             <div>
                            
-                <form className="main-edit-form" onSubmit={this.handleSubmit}>
+                <div className="main-edit-form">
+                {/* <form className="main-edit-form" onSubmit={this.handleSubmit}> */}
 
                     <div className="edit-profile-box1">
                         <h1 className='large-txt-edit-profile' >Public Profile</h1>
@@ -226,7 +227,7 @@ class EditForm extends React.Component {
 
                     </div>
 
-                </form>
+                </div>
 
             </div> 
 

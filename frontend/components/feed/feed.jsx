@@ -6,6 +6,7 @@ class Feed extends React.Component {
     constructor(props) {
         super(props);
 
+
         debugger
         this.state = {
             feed: null,
@@ -54,7 +55,8 @@ class Feed extends React.Component {
 
     componentDidMount(){
         debugger
-        let user = this.props.currentUSer
+        
+        let user = this.props.currentUser
         this.setState({currentUser: this.props.currentUser})
         debugger
         this.props.fetchFeedPins(this.props.currentUser.id).then(

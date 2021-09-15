@@ -48,10 +48,39 @@
     flex-direction: column;
 }
 
-.Change-pic-edit-modal{
+#input-image-profile-pic-uploader{
+    display: none;
+}
+
+.button-profile-script{
+    background-color: #e60022;
+    border-radius: 30px;
+    width: 132px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    padding: 12px;
+    color: white;
+    font-weight: 550;
+    font-size: 16px;
+    &:hover{
+        background-color: #ad081b;
+    }
+}
+
+#label-profile-pic-upload{
+    cursor: pointer;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.change-pic-edit-modal{
     font-size: 25px;
     font-weight: bold;
-    padding-top: 25px;
+    padding-top: 5px;
 }
 
 .login-btn-upload-modal {
@@ -82,37 +111,13 @@
 
 
 .input-box-modal-file-div{
-    all: unset;
-    height: 40px;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 5px;
-    width: fit-content;
-    border-radius: 20px;
-    // font-size: 13px;
-    // font-weight: 600;
-    color: rgb(255, 255, 255);
-    background-color: #cb2127;
-    border: 0px;
-    font-weight: bold;
-    font-size: 16px;
-    padding-top: 5px;
-    &:hover {
-      background-color: #bd001c;
-    }
-
+    width: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-// .input-box-modal-file {
-//   display: inline-block;
-//   width: 100%;
-//   padding: 120px 0 0 0;
-//   height: 100px;
-//   overflow: hidden;
-//   -webkit-box-sizing: border-box;
-//   -moz-box-sizing: border-box;
-//   box-sizing: border-box;
-//   border-radius: 20px;
-//   background-size: 60px 60px;
-  
-// }
+.form-uploader-pic{
+    margin-bottom: 4px;
+}

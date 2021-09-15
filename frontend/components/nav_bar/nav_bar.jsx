@@ -128,7 +128,6 @@ updateState(e){
 }
 
 componentDidMount(){
-    
 
     this.setState({logedInUser: this.props.currentUser})
     
@@ -184,7 +183,7 @@ render(){
 
         
         if (!!this.props.currentUser) {
-            
+
             this.bar = (
             
             <div className="header" >
