@@ -50,14 +50,14 @@ class UserShow extends React.Component {
         e.preventDefault();
 
         let delteIds = {
-            follower_id: window.currentUser.id,
+            follower_id: this.props.currentUser.id,
             followed_user_id: Number(this.props.match.params.id),
-            id: window.currentUser.id
+            id: this.props.currentUser.id
         }
 
         let followData = {
             id: Number(this.props.match.params.id),
-            current_user_id: window.currentUser.id,
+            current_user_id: this.props.currentUser.id,
             profile_users_id: Number(this.props.match.params.id)
         }
         
@@ -70,13 +70,13 @@ class UserShow extends React.Component {
         e.preventDefault();
 
         let followForm = {
-            follower_id: window.currentUser.id,
+            follower_id: this.props.currentUser.id,
             followed_user_id: Number(this.props.match.params.id)
         }
 
         let followData = {
             id: Number(this.props.match.params.id),
-            current_user_id: window.currentUser.id,
+            current_user_id: this.props.currentUser.id,
             profile_users_id: Number(this.props.match.params.id)
         }
 
@@ -97,11 +97,11 @@ class UserShow extends React.Component {
         let followData = {
 
             id: Number(this.props.match.params.id),
-            current_user_id: window.currentUser.id,
+            current_user_id: this.props.currentUser,
             profile_users_id: Number(this.props.match.params.id)
         }
         
-        if(Number(window.currentUser.id) === Number(this.props.match.params.id)){
+        if(this.props.currentUser.id === Number(this.props.match.params.id)){
             this.setState({currentUserProfile: true})
         }
         
@@ -152,11 +152,11 @@ class UserShow extends React.Component {
 
             let followData = {
                 id: Number(this.props.match.params.id),
-                current_user_id: window.currentUser.id,
+                current_user_id: this.props.currentUser.id,
                 profile_users_id: Number(this.props.match.params.id)
             }
         
-            if(Number(window.currentUser.id) === Number(this.props.match.params.id)){
+            if(Number(this.props.currentUser.id) === Number(this.props.match.params.id)){
                 this.setState({currentUserProfile: true})
             }
             this.props.fetchUserFollowing(followData)
@@ -255,30 +255,15 @@ class UserShow extends React.Component {
         let boards = Object.values(this.props.boards.boards)
 
         let profilePage
-
-        let displayUser
-
-        debugger
         
         if(this.state.userProfile.id !== (Number(this.props.match.params.id))){
             this.props.fetchUserProfile(Number(this.props.match.params.id))
-        // if(this.state.userProfiles.hasOwnProperty(Number(this.props.match.params.id))){
-            // debugger
-
-            // displayUser = this.state.userProfiles[Number(this.props.match.params.id)]
-        } else {
-            // debugger
-
         }
-
-
-        // if(this.props.match.params.id !== this.props.userProfile.id){
-        //     this.callTheFunction()
-        // }
 
         debugger
 
-        if(this.state.currentUserProfile){profilePage = (
+        if(this.state.userProfile.id === this.props.currentUser.id){profilePage = (
+        // if(this.state.currentUserProfile){profilePage = (
             <div>
 
                 <div className="show-page-box-1">

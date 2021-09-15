@@ -8,7 +8,8 @@ import EditForm from './edit_form';
 const mSTP = state => {
     return {
         user: state.user,
-        photo: state.photoUrl
+        photo: state.photoUrl,
+        currentUser: state.session.currentUser
     };
 };
 

@@ -16,6 +16,7 @@ const mSTP = state => {
         photo: state.photoUrl,
         boards: state.boards,
         follow: state.follow.usersFollowing,
+        currentUser: state.session.currentUser
     };
 };
 
