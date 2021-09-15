@@ -85,7 +85,7 @@ class Uploader extends React.Component {
             <div className="the-outer-box-modal-editModal">
                 <h1 className="change-pic-edit-modal">Change your picture</h1>
 
-                    {this.state.loading ? <LoadingIcon/> : <div className='form-uploader-pic' >
+                    {this.state.loading ? <div className='outside-div-loading-on-profile-edit'> <LoadingIcon/> </div> : <div className='form-uploader-pic' >
                     <div className="input-box-modal-file-div">
                             {/* <label htmlFor="input-profile-pic" id='label-profile-pic-upload'>
                                 <input id='input-profile-pic' name='input-profile-pic' type="file" className="input-box-modal-file" onChange={this.handelFile}/>

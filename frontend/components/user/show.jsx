@@ -296,18 +296,18 @@ class UserShow extends React.Component {
                         </Link>
 
                         
-                        <div className="logo-on-logged-in-header">
+                        {/* <div className="logo-on-logged-in-header">
                             <img id="logo-share-icon" src={window.shareLogoURL} alt="share-icon" />
-                        </div>
+                        </div> */}
 
 
                     </div>
 
                     <div className="righ-box-edit-bar">
 
-                        <div className="logo-on-logged-in-header">
+                        {/* <div className="logo-on-logged-in-header">
                             <img id="logo" src={window.settingsIconURL} alt="settings-icon" />
-                        </div>
+                        </div> */}
 
                         <div className="show-dropdown">
 
