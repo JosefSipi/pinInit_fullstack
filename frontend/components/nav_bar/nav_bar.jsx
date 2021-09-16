@@ -257,7 +257,8 @@ render(){
                         <div className="logo-on-logged-in-header">
 
                             <div className="profile-div-small">
-                                { !this.props.currentUser.photoUrl ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>}
+                                {console.log(!!this.props.currentUser.photoUrl)}
+                                { !!this.props.currentUser.photoUrl ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>}
                             </div>
 
                         </div>
