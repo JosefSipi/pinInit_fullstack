@@ -47,12 +47,8 @@ prepSearch = debounce(() => {
 }, 100);
 
 logoutFunction(e){
-    debugger
     this.props.logout().then(
-        console.log('then'),
         (data) => {
-            console.log('inside with data')
-            debugger
             this.toggleContent(e)
             this.props.history.push('/home')
         }
