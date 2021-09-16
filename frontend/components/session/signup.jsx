@@ -97,7 +97,7 @@ class SignUp extends React.Component {
 
                     <h1 className="welcome-pin-login-signUp">Welcome to Pininit</h1>
                     <h3 className="findNew-signUp">Find new ideas to try</h3>
-                    <div className="errors">{this.renderErrors()}</div>
+                    {/* <div className="errors">{this.renderErrors()}</div> */}
 
 
 
