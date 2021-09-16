@@ -12,7 +12,6 @@ class EditPinShow extends React.Component {
 
         this.handelBoardSelect = this.handelBoardSelect.bind(this);
         this.deletePinFunction = this.deletePinFunction.bind(this);
-        // this.showHideDD = this.showHideDD.bind(this);
         this.backdropClick = this.backdropClick.bind(this);
         this.testingClick = this.testingClick.bind(this);
         this.handeSave = this.handeSave.bind(this);
@@ -23,10 +22,7 @@ class EditPinShow extends React.Component {
         
         let theboardId = this.state.pin.board_id
         this.props.updatePin(this.state.pin).then(
-
             this.props.closeModal(),
-            // this.props.history.push(`/board/${theboardId}`),
-            // window.location.reload(),
             this.props.fetchPin(window.editPin)
         )
 
@@ -50,27 +46,10 @@ class EditPinShow extends React.Component {
         e.preventDefault();
         let backdrop = document.getElementById('backdrop-div-edit-pin');
         let pinDD = document.getElementById('outer-of-edit-dropdown');
-        // if(pinDD.style.display === "none"){
-        //     backdrop.style.display = "none"
-        // } else {
-        // }
         pinDD.style.display = 'none'
         backdrop.style.display = "none"
     }
-
-    // showHideDD(e){
-    //     e.preventDefault();
-    //     let pinDD = document.getElementById('dd-list-edit-p');
-    //     let backdrop = document.getElementById('backdrop-div-edit-pin');
-    //     if(pinDD.style.display === 'none'){
-    //         backdrop.style.display = "block"
-    //         pinDD.style.display = 'flex'
-    //     } else if (pinDD.style.display === 'flex'){
-    //         backdrop.style.display = "none"
-    //         pinDD.style.display = 'none'
-    //     }
-    // }
-
+    
     handelBoardSelect(e){
 
         let prevState = this.state.pin

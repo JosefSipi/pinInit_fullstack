@@ -27,7 +27,6 @@ class CreatePin extends React.Component {
         this.handelUlClick = this.handelUlClick.bind(this);
         this.boardClickSelect = this.boardClickSelect.bind(this);
         this.handelSubmit = this.handelSubmit.bind(this);
-        // this.mouseHoverBoard = this.mouseHoverBoard.bind(this);
         this.handelPhotoSelect = this.handelPhotoSelect.bind(this);
         this.deletePreview = this.deletePreview.bind(this);
         this.deleteDropDownClick = this.deleteDropDownClick.bind(this);
@@ -35,7 +34,6 @@ class CreatePin extends React.Component {
         this.backdropClick = this.backdropClick.bind(this);
         this.supTextShow = this.supTextShow.bind(this);
         this.toggleDesTxt = this.toggleDesTxt.bind(this);
-        // this.togleClass = this.togleClass.bind(this);
     }
 
     toggleDesTxt(e){
@@ -74,11 +72,9 @@ class CreatePin extends React.Component {
 
         this.setState({loading: true})
         this.props.createNewPin(formData).then(
-            // put a set state to display a loading icon here
             (data) => {
                 console.log(data)
                 this.props.history.goBack()
-                // this.props.history.push(`/board/${data.pin.board_id}`)
             } 
         )
 
@@ -95,12 +91,6 @@ class CreatePin extends React.Component {
             this.props.fetchUser(window.currentUser.id);
         }
     }
-
-    // componentDidUpdate(prevProps){
-    //     if(prevProps.boards !== this.props.boards || this.props.boards === undefined){
-    //         this.props.fetchBoards(window.currentUser.id)
-    //     }
-    // }
 
     handelAddText(e){
         e.preventDefault();
@@ -160,8 +150,6 @@ class CreatePin extends React.Component {
 
         let backdrop = document.getElementById('backdrop-div-create-pin')
         if(backdrop.style.display === "none"){
-            // dropDown.style.display = "flex"
-            // backdrop.style.display = "block"
             backdrop.style.display = "none"
         } else {
             backdrop.style.display = "none"
@@ -176,15 +164,6 @@ class CreatePin extends React.Component {
        let uploadImageStateEl = document.getElementById('modals_pin-display')
        uploadImageStateEl.style.display = 'none';
     }
-    // mouseHoverBoard(e){
-    //     e.preventDefault();
-    //     let elementHovered = document.getElementById(e.currentTarget.id + "save-button")
-    //     if(elementHovered.style.display === 'relative'){
-    //         elementHovered.style.display = 'none';
-    //     } else {
-    //         elementHovered.style.display = 'relative';
-    //     }
-    // }
 
     handelPhotoSelect(e){
         const prevState = this.state.pin
@@ -237,21 +216,15 @@ class CreatePin extends React.Component {
        let dropDown = document.getElementById("delete-dropdown-menue-id");
         let backdrop = document.getElementById('backdrop-div-create-pin')
         if(dropDown.style.display === "none"){
-            // dropDown.style.display = "flex"
-            // backdrop.style.display = "block"
-
             backdrop.style.display = "none"
         } else {
             dropDown.style.display = "none"
             backdrop.style.display = "none"
         }
 
-
         let ul = document.getElementById('board-dropdown-create-pin')
         if (ul.style.display === "block") {
             ul.style.display = "none"
-        } else {
-            // ul.style.display = "block"
         }
     }
 
@@ -268,36 +241,17 @@ class CreatePin extends React.Component {
         }
     }
 
-    // togleClass(e){
-    //     e.preventDefault();
-    //     let theElement = document.getElementById("text-area-pin-create")
-    //     if(theElement.className === 'text-area-pin-create'){
-    //         theElement.className = 'text-area-pin-create2'
-    //     } else {
-
-    //     }
-    // }
-
     render() {
         
         if (!this.props.boards.boards || this.props.boards.boards === undefined || this.props.boards.boards.length === 0){
-        // if (!this.props.boards || this.props.boards === undefined || this.props.boards.length === 0){
             return null
         }
         
-        // const boards = this.props.boards
         const boards = Object.values(this.props.boards.boards)
         const firstBoard = boards[0].title
 
-
         let description1 = 500 - this.state.pin.description.length
 
-        // if (this.state.isTrue){
-           
-        // }
-
-
-        // const dropDDisplayB = this.state.pin.board_id;
         return (
             <div className="create-pin-main-div">
             <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
