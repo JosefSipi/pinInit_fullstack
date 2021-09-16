@@ -40,7 +40,7 @@ class SignUp extends React.Component {
     }
 
     renderErrors() {
-        debugger
+        
         return (
             <ul>
                 {this.props.errors.map((error, i) => (
@@ -57,7 +57,7 @@ class SignUp extends React.Component {
     }
 //-------------------------------------
     render(){
-        debugger
+        
 
 
         let emailError
@@ -75,7 +75,7 @@ class SignUp extends React.Component {
         }
 
         )
-debugger
+
         return (
 
             <div className="the-outer-box-modal">

@@ -24,7 +24,6 @@
     padding-left: 10px;
     font-weight: 600;
     border-radius: 8px;
-    /* background-color: #eaeaea; */
     padding-top: 8px;
     padding-bottom: 8px;
     &:hover{
@@ -37,7 +36,6 @@
     width: 363px;
     height: 240px;
     max-height: 343px;
-    // display: flex;
     display: none;
     align-items: center;
     justify-content: center;
@@ -76,21 +74,12 @@
     background-color: rgba(0, 0, 0, 0.454);
     margin: 0;
     .modal-child-edit-pin {
-        // background-color: rgb(255, 255, 255);
-        // display: flex;
-        // justify-content: center;
-        // align-items: flex-end;
-        // position: absolute;
-        // width: 540px;
-        // border-radius: 35px;
-background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: absolute;
-    // max-width: 900px;
-    border-radius: 35px;
-    // max-height: 560px;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        position: absolute;
+        border-radius: 35px;
     }
 
 }
@@ -141,26 +130,6 @@ background-color: white;
     left: 0;
     top: 0;
     z-index: 150;
-}
-
-.board-word-edit-p{
-   
-}
-
-.board-section-edit-p{
-
-}
-
-.title-edit-pin{
-   
-}
-
-.description-section-edit-p{
-
-}
-
-.url-link-edit-p{
-  
 }
 
 .alt-txt-edit-p{

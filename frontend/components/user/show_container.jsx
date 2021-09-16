@@ -23,20 +23,15 @@ const mSTP = state => {
 const mDTP = dispatch => ({
     openModal: (modal) => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal()),
-    // return {
     fetchUserProfile: (userId) => {
-        debugger
+        
         return dispatch(fetchUserProfile(userId));
     },
-    // fetchUser: (userId) => {
-    //     return dispatch(fetchUser(userId));
-    // },
     fetchBoards: (userId) => {
 
         return dispatch(fetchBoards(userId));
     },
     isFollowing: (info) => {
-        // 
         return dispatch(isFollowing(info))
     },
     fetchUserFollowing: (userId) => {
@@ -45,7 +40,6 @@ const mDTP = dispatch => ({
     },
     createFollow: followForm => dispatch(createFollow(followForm)),
     unfollowUser: deleteIds => dispatch(deleteFollow(deleteIds))
-    // };
 });
 
 

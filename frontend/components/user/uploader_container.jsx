@@ -7,7 +7,7 @@ import { fetchUser } from '../../actions/user_actions';
 
 
 const mSTP = state => {
-    debugger
+    
     return {
         errors: state.errors,
         currentUser: state.session.currentUser

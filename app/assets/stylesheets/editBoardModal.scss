@@ -1,5 +1,4 @@
 div.delete-action-div{
-    
     &:hover{
         cursor: pointer;
     }
@@ -73,15 +72,9 @@ img.x-on-edit-board{
     width: 22px;
 }
 
-
-
 .check-box-label-edingboard{
     display: flex;
     align-items: center;
-}
-
-.theediningkeep-board{
-
 }
 
 div.div-word-1{
@@ -90,15 +83,14 @@ div.div-word-1{
     color: gray;
     top: -4px;
 }
+
 div.div-word-3{
     position: relative;
-
     color: gray;
     top: 5px;
 }
-.div-word-2{
 
+.div-word-2{
     font-weight: 600;
     font-size: 21px;
-   
 }

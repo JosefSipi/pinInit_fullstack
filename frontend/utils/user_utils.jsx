@@ -8,7 +8,6 @@ export const fetchUser = (userId) => {
 };
 
 export const updateUser = (user) => {
-
     return $.ajax({
         method: 'PATCH',
         url: `/api/users/${'user.user[id]'}`,
@@ -19,7 +18,6 @@ export const updateUser = (user) => {
 };
 
 export const updateUserInfo = (user) => {
-    debugger
     return $.ajax({
         method: 'PATCH',
         url: `api/users/${'user.user[id]'}`,

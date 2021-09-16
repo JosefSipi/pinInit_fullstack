@@ -41,7 +41,7 @@ class PinShow extends React.Component {
 
     // saveImage(e){
     //     e.preventDefault();
-    //     debugger
+    //     
     //     console.log('click save image')
         
     //     let url = e.currentTarget.getAttribute('data-img_url')
@@ -307,7 +307,7 @@ class PinShow extends React.Component {
     }
 
     goBackBtn(){
-        debugger
+        
         this.props.history.goBack()
     }
 
@@ -336,7 +336,7 @@ class PinShow extends React.Component {
 
         let pinShow
 
-        debugger
+        
 
         if(window.currentUser.id === this.props.pin.pin.creator_id){
             pinShow = (

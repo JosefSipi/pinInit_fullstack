@@ -6,7 +6,7 @@ class Uploader extends React.Component {
     constructor(props) {
         super(props);
 
-        debugger
+        
         this.state = {
             profile_pic: null,
             id: window.currentUser.id,
@@ -19,14 +19,14 @@ class Uploader extends React.Component {
     }
 
     // handelFileUploaded(e){
-    //     debugger
+    //     
     //     console.log(e.currentTarget.value)
     // }
     
    
     handelSubmit(theStateStuff) {
         // e.preventDefault();
-        debugger
+        
         console.log('hit handelSubmit')
         const formData = new FormData();
         formData.append('user[profile_pic]', theStateStuff.profile_pic);
@@ -43,7 +43,7 @@ class Uploader extends React.Component {
     
 
     // componentDidUpdate(prevProp){
-    //     debugger
+    //     
     //     if(prevProp.currentUser !== this.props.currentUser){
     //         this.setState({id: this.props.currentUser.id})
     //     }
@@ -57,7 +57,7 @@ class Uploader extends React.Component {
 
 
         console.log(e.currentTarget.files[0])
-        debugger
+        
         console.log(e.currentTarget.files[0])
         console.log('hit handelFile')
         
@@ -74,13 +74,13 @@ class Uploader extends React.Component {
 
     render() {
 
-        debugger
+        
         // if(!this.state.id){
-        //     debugger
+        //     
         //     return null
         // }
 
-        // debugger
+        // 
         return(            
             <div className="the-outer-box-modal-editModal">
                 <h1 className="change-pic-edit-modal">Change your picture</h1>

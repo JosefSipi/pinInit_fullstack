@@ -33,7 +33,7 @@ function Modal({ modal, closeModal }) {
 
 
 const mSTP = state => {
-    debugger
+    
     // window.currentUser = state.session.currentUser
 
     return {

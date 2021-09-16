@@ -19,7 +19,7 @@ const mDTP = dispatch => {
             return dispatch(updateUser(user));
         },
         updateUserInfo: (user) => {
-            debugger
+            
             return dispatch(updateUserInfo(user));
         },
         fetchUser: (userId) => {

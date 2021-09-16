@@ -30,7 +30,7 @@ const mDTP = dispatch => ({
         return dispatch(updateSearch(input))
     },
     fetchUserProfile: (userId) => {
-        debugger
+        
         return dispatch(fetchUserProfile(userId));
     }
     

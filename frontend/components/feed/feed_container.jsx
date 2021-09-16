@@ -4,7 +4,6 @@ import Feed from './feed'
 import { fetchFeedPins } from '../../actions/pin_action'
 
 const mSTP = state => {
-    debugger
     return {
         feed: state.feed.feed,
         currentUser: state.session.currentUser
@@ -12,7 +11,7 @@ const mSTP = state => {
 }
 
 const mDTP = dispatch => {
-        debugger
+
     return {
 
         fetchFeedPins: (userId) => {

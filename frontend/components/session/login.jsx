@@ -69,7 +69,7 @@ class LogIn extends React.Component {
         let emailError
         let pwError
 
-        debugger
+        
 
         if (!!this.props.errors){
             let inputEmail = document.getElementById('input-box-email')
@@ -90,7 +90,7 @@ class LogIn extends React.Component {
             }
         }
             
-        debugger
+        
         return (
 
         <div className="the-outer-box-modal">

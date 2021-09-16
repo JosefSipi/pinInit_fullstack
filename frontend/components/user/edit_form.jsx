@@ -19,42 +19,42 @@ class EditForm extends React.Component {
     }
 
     makeReadOnly(e){
-        debugger
+        
         e.currentTarget.readOnly = true;
     }
 
     removeReadOnly(e){
-        debugger
+        
         e.currentTarget.readOnly = false;
 
     }
 
     saveChanges(e){
         e.preventDefault();
-        debugger
+        
         let submitData = {...this.state.editUser}
         submitData.id = this.props.currentUser.id
-        debugger
+        
         this.props.updateUserInfo(submitData).then(
             (data) => {
-                debugger
+                
 
                 console.log(data.user)
                 this.componentDidMount()
-                debugger
+                
             }
         )
     }
 
     resetData(e){
-        debugger
+        
         e.preventDefault();
         this.setState({editUser: this.state.ogEditUser})
     }
 
 
     componentDidMount(){
-        debugger
+        
 
         this.props.fetchUser(this.props.currentUser.id).then(
             (data) => {
@@ -82,13 +82,13 @@ class EditForm extends React.Component {
 
 
     render(){
-        debugger
+        
 
         if(!!!this.state.editUser){
            return null
         }
 
-        debugger
+        
 
         let btnStat = false
 

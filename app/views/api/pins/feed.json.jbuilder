@@ -1,6 +1,6 @@
-# debugger
+
 @pins.each_with_index do |pin, i|
-    # debugger
+    
 
 
 

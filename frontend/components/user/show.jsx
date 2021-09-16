@@ -41,7 +41,7 @@ class UserShow extends React.Component {
     }
 
     // callTheFunction(){
-    //     debugger
+    //     
         
 
     // }
@@ -92,7 +92,7 @@ class UserShow extends React.Component {
     }
 
     componentDidMount(){
-        debugger
+        
 
         let followData = {
 
@@ -135,7 +135,7 @@ class UserShow extends React.Component {
 
     componentDidUpdate(prevProps){
 
-        debugger
+        
         
         if(prevProps.boards !== this.props.boards){
             this.setState({boards: Object.values(this.props.boards.boards)});
@@ -143,7 +143,7 @@ class UserShow extends React.Component {
             this.setState(
                 {following: this.props.follow.amFollowing, followers_count: this.props.follow.followers.count, following_count: this.props.follow.following.count})
         } else if (prevProps.userProfile !== this.props.userProfile){
-            debugger
+            
             let prevState = this.state.userProfiles
             prevState[this.props.userProfile.id] = this.props.userProfile
             this.setState({userProfile: prevState})
@@ -166,7 +166,7 @@ class UserShow extends React.Component {
             )
         }
         // else if (prevProps.userProfile !== Number(this.props.match.params.id)) {
-        //     debugger
+        //     
         //     let followData = {
         //         id: Number(this.props.match.params.id),
         //         current_user_id: window.currentUser.id,
@@ -260,7 +260,7 @@ class UserShow extends React.Component {
             this.props.fetchUserProfile(Number(this.props.match.params.id))
         }
 
-        debugger
+        
 
         if(this.state.userProfile.id === this.props.currentUser.id){profilePage = (
         // if(this.state.currentUserProfile){profilePage = (
