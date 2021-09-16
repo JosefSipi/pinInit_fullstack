@@ -221,11 +221,9 @@ class UserShow extends React.Component {
     //     // e.preventDefault();
     //   
     //     if(condition){
-    //         console.log('condition true')
     //       
     //     } else {
     //       
-    //         console.log('condition false')
     //     }
     //   
     //     // let imageSection = document.getElementById('image-section-board');

@@ -14,31 +14,20 @@ class BoardShow extends React.Component {
         this.openTheLink = this.openTheLink.bind(this);
         this.onMouseLeaveCall = this.onMouseLeaveCall.bind(this);
         this.onMouseEnterCall = this.onMouseEnterCall.bind(this);
-        this.showPin = this.showPin.bind(this);
-    }
-
-    showPin(num){
-        console.log(`hit pin click ${num}`)
     }
 
     onMouseLeaveCall(e){
         e.preventDefault();
-        // 
         let theId = Number(e.currentTarget.children[1].children[1].getAttribute('data-div_id'))
-        // 
         let shadowCover = document.getElementById(`the-shade-over-pin${theId}`)
         shadowCover.style.display = 'none'
-        // 
     }
     
     onMouseEnterCall(e){
         e.preventDefault();
-        // 
         let theId = Number(e.currentTarget.children[1].children[1].getAttribute('data-div_id'))
-        // 
         let shadowCover = document.getElementById(`the-shade-over-pin${theId}`)
         shadowCover.style.display = 'block'
-        // 
     }
 
     openTheLink(e){
@@ -180,7 +169,7 @@ class BoardShow extends React.Component {
                         <div className="pin_container" id="pin_container">
                             {pins.map(pin => 
                             //    <Link className="link-pin-on-board-pins" to={`/pin/${pin.id}`} key={pin.id + 'pin-key'}> 
-                                    <Link to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall} onClick={() => this.showPin(pin.id)}>
+                                    <Link to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
 
                                         <div className="outside-edit-pin-board-show">
 
@@ -235,7 +224,6 @@ class BoardShow extends React.Component {
                 </div>
 
                 <Link to={`/profile/${this.props.userProfile.id}`} className="link-surrounding-profile-image">
-                    {console.log('this image hasnt been adjusted for default profile image')}
                     <img className="profile-photo-icon-22-22" src={this.props.userProfile.photoUrl} alt="profile photo" />
                 </Link>
 
@@ -257,7 +245,7 @@ class BoardShow extends React.Component {
          <div className="pin-area-on-board-show" >
             <div className="pin_container" id="pin_container">
                 {pins.map(pin => 
-                <Link to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall} onClick={() => this.showPin(pin.id)}>
+                <Link to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
 
                     <div className="outside-edit-pin-board-show">
 

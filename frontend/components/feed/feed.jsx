@@ -62,7 +62,7 @@ class Feed extends React.Component {
         
         this.props.fetchFeedPins(this.props.currentUser.id).then(
             (data) => {
-                console.log(data)
+                data
                 this.setState({feed: this.props.feed})
             }
         )

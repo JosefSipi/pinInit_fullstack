@@ -19,15 +19,11 @@ class Uploader extends React.Component {
     }
 
     // handelFileUploaded(e){
-    //     
-    //     console.log(e.currentTarget.value)
     // }
     
    
     handelSubmit(theStateStuff) {
         // e.preventDefault();
-        
-        console.log('hit handelSubmit')
         const formData = new FormData();
         formData.append('user[profile_pic]', theStateStuff.profile_pic);
         formData.append('user[id]', theStateStuff.id);
@@ -54,19 +50,11 @@ class Uploader extends React.Component {
         e.preventDefault();
         this.setState({loading: true})
         this.setState({ profile_pic: e.currentTarget.files[0] })
-
-
-        console.log(e.currentTarget.files[0])
-        
-        console.log(e.currentTarget.files[0])
-        console.log('hit handelFile')
         
         let theStateStuff = {}
         theStateStuff.profile_pic = e.currentTarget.files[0]
         theStateStuff.id = this.state.id
 
-
-            
         this.handelSubmit(theStateStuff)
     }
 

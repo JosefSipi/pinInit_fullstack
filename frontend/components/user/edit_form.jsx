@@ -37,11 +37,8 @@ class EditForm extends React.Component {
         
         this.props.updateUserInfo(submitData).then(
             (data) => {
-                
-
-                console.log(data.user)
+                data
                 this.componentDidMount()
-                
             }
         )
     }

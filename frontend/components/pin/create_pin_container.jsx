@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import CreatePin from './create_pin';
 import { createNewPin } from '../../actions/pin_action';
 import { fetchUser } from '../../actions/user_actions';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { fetchBoards } from '../../actions/board_actions';
 
 const mSTP = state => {

@@ -3,7 +3,7 @@ import CreateBoard from './create_board';
 import { openModal, closeModal } from '../../actions/modal';
 import { createNewBoard, fetchBoards } from '../../actions/board_actions';
 import { fetchUser } from '../../actions/user_actions';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
 
 const mSTP = state => ({

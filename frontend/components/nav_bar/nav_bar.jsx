@@ -28,10 +28,6 @@ class NavBar extends React.Component {
         this.searchOver = this.searchOver.bind(this);
         this.redirectProfile = this.redirectProfile.bind(this);
         this.logoutFunction = this.logoutFunction.bind(this);
-        this.reloadIng = this.reloadIng.bind(this);
-        // this.redirecHomeProfile = this.redirecHomeProfile.bind(this);
-        // this.directToProfile = this.directToProfile.bind(this);
-        // this.redirectProfileCurrentUser = this.redirectProfileCurrentUser.bind(this);
     }
 
 // directToProfile = debounce((e) => {
@@ -50,16 +46,18 @@ prepSearch = debounce(() => {
 
 }, 100);
 
-logoutFunction(){
+logoutFunction(e){
+    debugger
     this.props.logout().then(
-        this.props.history.push('/home')
+        console.log('then'),
+        (data) => {
+            console.log('inside with data')
+            debugger
+            this.toggleContent(e)
+            this.props.history.push('/home')
+        }
     )
 
-}
-
-reloadIng(){
-
-    window.location.reload();
 }
 
 // redirectProfileCurrentUser(){
@@ -129,27 +127,13 @@ updateState(e){
 
 componentDidMount(){
 
-    debugger
-
     this.setState({logedInUser: this.props.currentUser})
     
     if (!!window.currentUser || !!this.props.currentUser) {
 
         this.props.fetchUser(this.props.currentUser.id || window.currentUser.id);
     }
-    // if (!window.currentUser) {
-    // } else {
-    //     this.props.fetchUser(window.currentUser.id);
-    // }
 }
-
-// componentDidUpdate(prevProps){
-//     
-    
-//     if(prevProps.currentUser !== this.props.currentUser){
-//         this.setState({logedInUser: this.props.currentUser})
-//     }
-// }
 
 toggleContent (e){
     e.preventDefault();
@@ -157,175 +141,158 @@ toggleContent (e){
 }
 
 render(){
+    let {showDropdown} = this.state;
 
+    let ready = false
+
+    let theUsers
+
+    if(!!this.props.users){
+        theUsers = Object.values(this.props.users)
+        ready = true
+    }
     
+    if (!!this.props.currentUser) {
 
-
-
-    // if(!this.props.currentUser){
-    //     
-    //     return null
-    // }
-
-        let {showDropdown} = this.state;
-
-        let ready = false
-
-        let theUsers
-
-        if(!!this.props.users){
-            // 
-            theUsers = Object.values(this.props.users)
-            ready = true
-        }
-
-        // if (!this.state.logedInUser){
-        //     return null
-        // }
-
+        this.bar = (
         
-        if (!!this.props.currentUser) {
-
-            this.bar = (
-            
-            <div className="header" >
-                <div className="backdrop-div-create-search"  id="backdrop-div-create-search" onClick={this.searchOver}></div>
-                {/* <div className="backdrop-div-create-search" onClick={this.searchOver} id="backdrop-div-create-search"></div> */}
-               {/* <h1 className="very-hidden">
-                   {this.grabUser}
-                </h1>  */}
-                <div className="header-logged-in-1">
-                    <div className="logo-on-logged-in-header">
-                        <Link id="logo-logged-in" to="/feed" >
-                            {/* src={require('../images/logo.png')} */}
-                            <img id="logo-header-loggedin" src={window.logoURL} alt="logo" />
-                        </Link>
-                    </div>
+        <div className="header" >
+            <div className="backdrop-div-create-search"  id="backdrop-div-create-search" onClick={this.searchOver}></div>
+            {/* <div className="backdrop-div-create-search" onClick={this.searchOver} id="backdrop-div-create-search"></div> */}
+            {/* <h1 className="very-hidden">
+                {this.grabUser}
+            </h1>  */}
+            <div className="header-logged-in-1">
+                <div className="logo-on-logged-in-header">
+                    <Link id="logo-logged-in" to="/feed" >
+                        {/* src={require('../images/logo.png')} */}
+                        <img id="logo-header-loggedin" src={window.logoURL} alt="logo" />
+                    </Link>
                 </div>
+            </div>
 
-                <div className="header-left-home-btn-loggedin">
-                    <Link className="home-btn-loggedin" to="/feed">Home</Link>
-                </div>
+            <div className="header-left-home-btn-loggedin">
+                <Link className="home-btn-loggedin" to="/feed">Home</Link>
+            </div>
 
-                {/* <div className="header-left-home-btn-loggedin">
-                    <Link className="home-btn-loggedin" to="/feed">Today</Link>
-                </div> */}
+            {/* <div className="header-left-home-btn-loggedin">
+                <Link className="home-btn-loggedin" to="/feed">Today</Link>
+            </div> */}
 
-                <div className="search-bar-section-1">
-                    <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchingTime}></input>
-                    {/* <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchOver}></input> */ }
-                    <div className="drop-down-holder-nav-bar">
-                        <img className="search-bar-icon" src={window.magnaURL} alt="search icon" />
-                        <div className="the-dropdown-on-nav-bar-search" id="the-dropdown-on-nav-bar-search">
-                            { ready ? 
-                                theUsers.map(user => 
-                                    // <Link to={`/profile/${user.id}`} >
-                                    <div key={user.id} className="list-search-user" onMouseDown={this.redirectProfile} data-user_id={user.id}>
-                                        <div className="div-for-search-user-img">
-                                            {/* <img className="search-user-img" src={user.photoUrl} alt="user avatar" /> */}
-                                            { !!user.photoUrl ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <img className="search-user-img" src={window.picLogoURL} alt="profile photo" />}
-                                        </div>
-                                        <div className="last-div-1">{user.username}</div>
+            <div className="search-bar-section-1">
+                <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchingTime}></input>
+                {/* <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchOver}></input> */ }
+                <div className="drop-down-holder-nav-bar">
+                    <img className="search-bar-icon" src={window.magnaURL} alt="search icon" />
+                    <div className="the-dropdown-on-nav-bar-search" id="the-dropdown-on-nav-bar-search">
+                        { ready ? 
+                            theUsers.map(user => 
+                                // <Link to={`/profile/${user.id}`} >
+                                <div key={user.id} className="list-search-user" onMouseDown={this.redirectProfile} data-user_id={user.id}>
+                                    <div className="div-for-search-user-img">
+                                        {/* <img className="search-user-img" src={user.photoUrl} alt="user avatar" /> */}
+                                        { !!user.photoUrl ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <img className="search-user-img" src={window.picLogoURL} alt="profile photo" />}
                                     </div>
-                                    // </Link>
+                                    <div className="last-div-1">{user.username}</div>
+                                </div>
+                                // </Link>
 
-                                ) : <div></div>
-                            }
-                        </div>
+                            ) : <div></div>
+                        }
                     </div>
                 </div>
-                
+            </div>
+            
 {/* <button onClick={this.props.logout}>Log out</button> */}
 
-                <div className="header-right-logged-in">
-                    
-                    {/* <div className="logo-on-logged-in-header" >
-                        <img id="logo-bell-icon" src={window.bellURL} alt="bell" />
-                    </div>
-                    <div className="logo-on-logged-in-header" >
-                        <img id="logo-message-icon" src={window.messageIconURL} alt="message Icon" />
-                    </div> */}
-
-
-                    <div className="link-logo-div">
-                        {/* src={require('../images/logo.png')} */}
-                        <img id="logo-dropdown" src={window.logoURL}  alt="logo" />
-                    </div>
-                    
-
-                    <Link className='nav-bar-prof-icon' to={`/profile/${this.props.currentUser.id}` }>
-                        <div className="logo-on-logged-in-header">
-
-                            <div className="profile-div-small">
-                                {console.log(!!this.props.currentUser.photoUrl)}
-                                { !!this.props.currentUser.photoUrl ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>}
-                            </div>
-
-                        </div>
-                    </Link>
-
-                       
-                    {/* <Link className="P-avatar" to="/feed"> */}
-
-
-
-
-                        <div className="the-outer-dropdown">
-                            <div className="logo-on-logged-in-header-dropdown" onClick={this.toggleContent}>
-                                    <img id="logo-arrow" src={window.dropdownIcon} alt="dropdown-icon" />
-                            </div>
-
-                            <div className={`${showDropdown ? "ul-logged-dropdown-active-background" : "ul-logged-dropdown-background"}`} onClick={this.toggleContent}> 
-                            </div>
-
-                                <ul className={`${showDropdown ? "ul-logged-dropdown-active" : "ul-logged-dropdown"}`}>
-                                    <Link className="link-settings" to="/edit-profile"><li className="the-li-dropdown"> Settings</li></Link>
-                                    <li className="the-li-dropdown" ><div className="logout-dropdown-btn" onClick={this.logoutFunction}>Log out</div></li>
-                                    {/* <li className="the-li-dropdown" ><div className="logout-dropdown-btn" onClick={this.props.logout}>Log out</div></li> */}
-                                </ul>
-
-
-                        </div>
-
-
-                    {/* </Link> */}
-
-
+            <div className="header-right-logged-in">
+                
+                {/* <div className="logo-on-logged-in-header" >
+                    <img id="logo-bell-icon" src={window.bellURL} alt="bell" />
                 </div>
+                <div className="logo-on-logged-in-header" >
+                    <img id="logo-message-icon" src={window.messageIconURL} alt="message Icon" />
+                </div> */}
+
+
+                <div className="link-logo-div">
+                    {/* src={require('../images/logo.png')} */}
+                    <img id="logo-dropdown" src={window.logoURL}  alt="logo" />
+                </div>
+                
+
+                <Link className='nav-bar-prof-icon' to={`/profile/${this.props.currentUser.id}` }>
+                    <div className="logo-on-logged-in-header">
+
+                        <div className="profile-div-small">
+                            { !!this.props.currentUser.photoUrl ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>}
+                        </div>
+
+                    </div>
+                </Link>
+
                     
-                    
+                {/* <Link className="P-avatar" to="/feed"> */}
+
+
+
+
+                    <div className="the-outer-dropdown">
+                        <div className="logo-on-logged-in-header-dropdown" onClick={this.toggleContent}>
+                                <img id="logo-arrow" src={window.dropdownIcon} alt="dropdown-icon" />
+                        </div>
+
+                        <div className={`${showDropdown ? "ul-logged-dropdown-active-background" : "ul-logged-dropdown-background"}`} onClick={this.toggleContent}> 
+                        </div>
+
+                            <ul className={`${showDropdown ? "ul-logged-dropdown-active" : "ul-logged-dropdown"}`}>
+                                <Link className="link-settings" to="/edit-profile"><li className="the-li-dropdown"> Settings</li></Link>
+                                <li className="the-li-dropdown" ><div className="logout-dropdown-btn" onClick={this.logoutFunction}>Log out</div></li>
+                                {/* <li className="the-li-dropdown" ><div className="logout-dropdown-btn" onClick={this.props.logout}>Log out</div></li> */}
+                            </ul>
+
+
+                    </div>
+
+
+                {/* </Link> */}
+
 
             </div>
-        ) } else {
-            
-            this.bar = (
-                <div className="header">
-                    <div className="header-left" >
-                    {/* require('../images/logo.png') */}
-                    <img id="logo-header-loggedout" src={window.logoURL} alt="logo" />
-                        <h4 className="pinlabel" >Pininit</h4>
-                    </div>
+                
+                
 
-                    <div className="header-right">
-                        <a className="other-url" href="https://www.linkedin.com/in/joseph-sipiorski-590452195/" target="_blank" >linkedIn</a>
-                        <a className="other-url" href="https://github.com/JosefSipi" target="_blank" >github</a>
-                        <button className="login-btn" onClick={() => this.props.openModal('login')}>Log in</button>
-                        <button className="signup-btn" onClick={() => this.props.openModal('signup')}>Sign up</button>
-                    </div>
-
-                </div>
-            )
+        </div>
+    ) } else {
         
-        }
-
-        return (
-            <header className="nav-bar">
-                <div className="nav-bar-sub-div-1">
-                    {this.bar}
+        this.bar = (
+            <div className="header">
+                <div className="header-left" >
+                {/* require('../images/logo.png') */}
+                <img id="logo-header-loggedout" src={window.logoURL} alt="logo" />
+                    <h4 className="pinlabel" >Pininit</h4>
                 </div>
-            </header>
+
+                <div className="header-right">
+                    <a className="other-url" href="https://www.linkedin.com/in/joseph-sipiorski-590452195/" target="_blank" >linkedIn</a>
+                    <a className="other-url" href="https://github.com/JosefSipi" target="_blank" >github</a>
+                    <button className="login-btn" onClick={() => this.props.openModal('login')}>Log in</button>
+                    <button className="signup-btn" onClick={() => this.props.openModal('signup')}>Sign up</button>
+                </div>
+
+            </div>
         )
+    
     }
+
+    return (
+        <header className="nav-bar">
+            <div className="nav-bar-sub-div-1">
+                {this.bar}
+            </div>
+        </header>
+    )
+}
            
 }
 

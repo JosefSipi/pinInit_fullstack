@@ -41,8 +41,6 @@ class PinShow extends React.Component {
 
     // saveImage(e){
     //     e.preventDefault();
-    //     
-    //     console.log('click save image')
         
     //     let url = e.currentTarget.getAttribute('data-img_url')
         
@@ -103,7 +101,6 @@ class PinShow extends React.Component {
     }
 
     createLike(e){
-        console.log('clicked gray heart')
         let liker_id = e.currentTarget.getAttribute('data-img_liker_id')
         let comment = e.currentTarget.getAttribute('data-img_comment')
 

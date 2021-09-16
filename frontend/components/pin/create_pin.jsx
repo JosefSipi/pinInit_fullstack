@@ -1,6 +1,5 @@
 import React from 'react';
-// import { Redirect } from 'react-router';
-import { browserHistory } from 'react-router';
+// import { Redirect } from 'react-router-dom';
 import LoadingIcon from './loading';
 
 class CreatePin extends React.Component {
@@ -73,7 +72,7 @@ class CreatePin extends React.Component {
         this.setState({loading: true})
         this.props.createNewPin(formData).then(
             (data) => {
-                console.log(data)
+                data
                 this.props.history.goBack()
             } 
         )
