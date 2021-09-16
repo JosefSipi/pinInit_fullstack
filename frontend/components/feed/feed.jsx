@@ -56,7 +56,8 @@ class Feed extends React.Component {
     componentDidMount(){
         
 
-        let user = this.props.currentUser
+        window.currentUser = this.props.currentUser
+
         this.setState({currentUser: this.props.currentUser})
         
         this.props.fetchFeedPins(this.props.currentUser.id).then(
@@ -86,13 +87,11 @@ class Feed extends React.Component {
         
 
         let pins = Object.values(this.state.feed)
-
         
-
         return (
             <div>
                 <div className="pin-area-on-board-show" >
-                    <div className="pin_container" id="pin_container">
+                    {pins.length > 0 ? <div className="pin_container" id="pin_container">
                         {pins.map(pin => 
                                 <Link to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
 
@@ -117,7 +116,10 @@ class Feed extends React.Component {
 
                                 </Link>
                         )}
-                    </div>
+                    </div> : <div className='it-looks-like'> 
+                        It looks like no one has posted anything ¯\_(ツ)_/¯
+                    </div> }
+                    
                 </div>
             </div>
             )

@@ -41,12 +41,21 @@ div.card-title-pin{
     padding-top: 8px;
 }
 
-// div.over-lay{
-//     width: 100%;
-//     height: 100%;
-//     background-color: opacify($color: #000000, $amount: .5);
-//     border: 3px red solid;
-// }
+.it-looks-like{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 33vh;
+    font-size: 30px;
+    font-weight: 100;
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    line-height: 1.5;
+}
+
 div.over-lay{
     width: 100%;
     height: 100%;
