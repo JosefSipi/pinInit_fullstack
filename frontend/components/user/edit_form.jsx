@@ -129,8 +129,9 @@ class EditForm extends React.Component {
 
                     <div className="profile-pic-edit">
 
-                        <div className="profile-div-edi-form">
-                            <img className="profile-photo-edit-form" src={this.props.user.photoUrl} alt="profile photo" />
+                        <div className="profile-div-edi-form mod-on-div-edit-profile">
+                            {/* <img className="profile-photo-edit-form" src={this.props.user.photoUrl} alt="profile photo" /> */}
+                            { this.props.currentUser.photoUrl ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter' >{this.props.currentUser.f_name[0].toUpperCase()}</p>}
                         </div>
 
                         <button className="signup-btn edit-board-btn" onClick={() => this.props.openModal('uploadPhoto')}>
