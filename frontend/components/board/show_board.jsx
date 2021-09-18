@@ -132,15 +132,23 @@ class BoardShow extends React.Component {
 
                             <div>
 
-                                <h1 className="header-title-boards-show-123">{this.props.boardProfile.title}<div className="board-duplicate-button-dd" onClick={this.moreClickedDD}>
-                                    <img className="boards-123-1" src={window.dotsBlackURL} alt="more icon"/>
-                                </div>
+                                <h1 className="header-title-boards-show-123">
+                                    
+                                    {this.props.boardProfile.title }
+                                
+                                <div>
+                                    <div className="board-duplicate-button-dd" onClick={this.moreClickedDD}>
+                                        <img className="boards-123-1" src={window.dotsBlackURL} alt="more icon"/>
+                                    </div>
+
                                     <div className="div-holder-helper-123">
                                         <div className="edit-dropdown-menue-123" id="edit-dropdown-menue-123-id">
                                             <h1 className="title-dd">Board options</h1>
                                             <div onClick={this.editPen} id={this.props.boardProfile.id}>Edit board</div>
                                         </div>
                                     </div>
+                                </div>
+
                                 </h1>
 
                                 
@@ -209,7 +217,6 @@ class BoardShow extends React.Component {
                 <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>
 
                 <div className="div-22-1">
-
                     <h1 className="header-title-boards-show-123">{this.props.boardProfile.title}
                     {/* <div className="board-duplicate-button-dd" onClick={this.moreClickedDD}>
                         <img className="boards-123-1" src={window.dotsBlackURL} alt="more icon"/>

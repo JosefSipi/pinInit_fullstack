@@ -17,6 +17,10 @@ class EditBoardShow extends React.Component {
         this.props.fetchBoard(window.editingBoard)
     }
 
+    componentWillUnmount(){
+        this.props.fetchBoards(this.props.currentUser.id)
+    }
+
     componentDidUpdate(prevProps){
         if(this.props.boards !== prevProps.boards){
             this.setState({ board: this.props.boards.displayBoard })

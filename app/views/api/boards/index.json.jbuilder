@@ -11,6 +11,8 @@
 
         pins = board.pins
 
+        json.pinsCount pins.count
+
         json.pinPhotos do 
             if (!!pins[0])
                 json.one url_for(pins[0].photo)

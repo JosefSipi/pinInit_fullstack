@@ -36,14 +36,19 @@ class CreatePin extends React.Component {
         this.toggleDesTxt = this.toggleDesTxt.bind(this);
         this.populateBoardField = this.populateBoardField.bind(this);
         this.populateBoardTitle = this.populateBoardTitle.bind(this);
+        this.createABoard = this.createABoard.bind(this);
+    }
+
+    createABoard(){
+
+        this.props.openModal('createBoard')
+
     }
 
     populateBoardTitle(id){
-        debugger
 
         const boards = Object.values(this.props.boards.boards)
         const objBoards = {...this.props.boards.boards}
-        debugger
 
         // let boardsObj = {}
         // debugger
@@ -54,23 +59,18 @@ class CreatePin extends React.Component {
         // })
         // debugger
 
-        debugger
         if(id === null && boards.length === 0){
-            debugger
             return (
                 <div className='select-a-board'>Select</div>
             )
         } else if (id === null && boards.length > 0) {
-            debugger
             let prevState = this.state.pin
             prevState["board_id"] = id
             this.setState({ pin: prevState })
-            debugger
             return (
                 objBoards[Object.keys(objBoards)[0]].title
             )
         } else {
-            debugger
             return (
                 objBoards[id].title
             )
@@ -93,7 +93,6 @@ class CreatePin extends React.Component {
         // let theBoardDest = Number(this.state.pin.board_id);
         // let displayTitle = document.getElementById('board-dd-create-pin').value
 
-        debugger
         let boards = Object.values(this.props.boards.boards)
         const objBoards = {...this.props.boards.boards}
 
@@ -115,7 +114,6 @@ class CreatePin extends React.Component {
             var heightOfValue = ((imageHeightFor43 / thePinHeightFinder) * 100)
         }
 
-        debugger
         const formData = new FormData();
         formData.append('pin[photo]', this.state.pin.photo);
         formData.append('pin[creator_id]', this.state.pin.creator_id);
@@ -139,8 +137,6 @@ class CreatePin extends React.Component {
     }
 
     populateBoardField(){
-        debugger
-
         let prevState = this.state.pin
         prevState["board_id"] = firstBoard
         this.setState({ pin: prevState })
@@ -392,10 +388,19 @@ class CreatePin extends React.Component {
                         
                             {/* <div className="middle-box-thing" id="middle-box-thing"> */}
                                 <div className="board-dropdown-create-pin" id="board-dropdown-create-pin">
-                                    <ul className="board-dropdown-ol" id="board-dropdown-ol">
-                                    {boards.map(board => 
-                                        <div className="this-list-children-pin" key={board.id} onClick={this.boardClickSelect} id={board.id} onMouseEnter={this.mouseHoverBoard} onMouseLeave={this.mouseHoverBoard}>
-                                                {board.title.length > 20 ? board.title.slice(0, 20).trim() + "..." : board.title}
+                                    <div className='arround-ul-dd'>                                   
+                                        <ul className="board-dropdown-ol" id="board-dropdown-ol">
+                                        {boards.map(board => 
+                                            <div className="this-list-children-pin" key={board.id} onClick={this.boardClickSelect} id={board.id} onMouseEnter={this.mouseHoverBoard} onMouseLeave={this.mouseHoverBoard}>
+                                                <div className='around-dd-board-pin-display'>
+                                                    <div className='rounded-border-for-img'>
+                                                        {board.pinPhotos.one ? <img className='photo-pin-in-board-opt' src={board.pinPhotos.one} alt="" /> : null}
+                                                    </div>
+                                                </div> 
+                                                
+                                                <div>
+                                                    {board.title.length > 20 ? board.title.slice(0, 20).trim() + "..." : board.title}
+                                                </div>
 
                                                 <div className="logo-on-logged-in-header-board-lock-pin" style={board.is_private ? {display: "flex" } : { display: "none" }}>
                                                     <img id="logo-lock-icon-pin-page" src={window.lockURL} alt="lock-icon" />
@@ -403,9 +408,16 @@ class CreatePin extends React.Component {
 
                                                 {/* <div className="save-button-create-pin" id={board.id + "save-button"}>Save</div> */}
                                             </div>
-                                        //    <li>{"Photo"}{board.title}</li>
-                                    )}
-                                    </ul>
+                                            //    <li>{"Photo"}{board.title}</li>
+                                        )}
+                                        </ul> 
+                                    </div>
+                                    <div className='bottom-section-in-dd-pin' onClick={this.createABoard}>
+                                        <div className='red-plus-icon-div'>
+                                            <img className='red-plus-icon' src={window.redPlusIcon} alt="red +" />
+                                        </div>
+                                        <div className='d334'>Create Board</div>
+                                    </div>
                                 </div>
                             {/* </div> */}
                         </div>

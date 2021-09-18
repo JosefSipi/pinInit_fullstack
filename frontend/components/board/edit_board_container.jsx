@@ -7,7 +7,8 @@ import EditBoardShow from './edit_board';
 
 const mSTP = (state) => {
     return{
-        boards: state.boards
+        boards: state.boards,
+        currentUser: state.session.currentUser
     }
 }
 

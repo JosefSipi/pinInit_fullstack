@@ -37,6 +37,7 @@ class UserShow extends React.Component {
         this.directToCreatePin = this.directToCreatePin.bind(this);
         this.unfollowUser = this.unfollowUser.bind(this);
         this.followUser = this.followUser.bind(this);
+        this.newBoardClick = this.newBoardClick.bind(this);
         // this.callTheFunction = this.callTheFunction.bind(this);
     }
 
@@ -45,6 +46,23 @@ class UserShow extends React.Component {
         
 
     // }
+
+    newBoardClick(){
+
+
+        this.props.openModal('createBoard')
+        
+        let dropDiv = document.getElementById('hidden-plus-opt')
+        let backgroundDiv = document.getElementById('background-plus-modal')
+
+        if (dropDiv.className === "hidden-plus-opt-h"){
+            dropDiv.className = "hidden-plus-opt";
+            backgroundDiv.className="ul-logged-dropdown-active-background-plus"
+        } else if (backgroundDiv.className === "ul-logged-dropdown-active-background-plus") {
+            backgroundDiv.className = "ul-logged-dropdown-background-plus"
+            dropDiv.className = "hidden-plus-opt-h"
+        }
+    }
     
     unfollowUser(e){
         e.preventDefault();
@@ -253,6 +271,8 @@ class UserShow extends React.Component {
         let boards = Object.values(this.props.boards.boards)
 
         let profilePage
+
+        debugger
         
         if(this.state.userProfile.id !== (Number(this.props.match.params.id))){
             this.props.fetchUserProfile(Number(this.props.match.params.id))
@@ -318,7 +338,7 @@ class UserShow extends React.Component {
                                     <p className="create-p-tag">Create</p>
                                     <ul className="list-plus-men">
                                         <li className="pin-link-bton-mid-bar" onClick={this.directToCreatePin}>Pin</li>
-                                        <li className="pin-link-bton-mid-bar" onClick={() => this.props.openModal('createBoard')} >Board</li> 
+                                        <li className="pin-link-bton-mid-bar" onClick={this.newBoardClick} >Board</li> 
                                     </ul>
 
                                 </div>
@@ -386,7 +406,7 @@ class UserShow extends React.Component {
                                 <h2 className="board-title">{ board.title.charAt(0).toUpperCase() + board.title.slice(1)}</h2>
                                 {/* <h2 className="board-title">{ board.title.charAt(1).toUpperCase() + board.title.slice(2, -1)}</h2> */}
                                 <div className="pins-days"> 
-                                    <h2 className="pin-num-board"> 3 Pins </h2>   
+                                    <h2 className="pin-num-board">{board.pinsCount === 1 ? '1 Pin' : `${board.pinsCount} Pins`}</h2> 
                                     <h2 className="days-number">{handelDate(board.updated_at)} d</h2> 
                                 </div>
 
@@ -494,7 +514,7 @@ class UserShow extends React.Component {
                                 <h2 className="board-title">{ board.title.charAt(0).toUpperCase() + board.title.slice(1)}</h2>
                                 {/* <h2 className="board-title">{ board.title.charAt(1).toUpperCase() + board.title.slice(2, -1)}</h2> */}
                                 <div className="pins-days"> 
-                                    <h2 className="pin-num-board"> 3 Pins </h2>   
+                                    <h2 className="pin-num-board">{board.pinsCount === 1 ? '1 Pin' : `${board.pinsCount} Pins`}</h2>  
                                     <h2 className="days-number">{handelDate(board.updated_at)} d</h2> 
                                 </div>
 
