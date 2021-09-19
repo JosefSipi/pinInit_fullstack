@@ -136,7 +136,7 @@ class BoardShow extends React.Component {
                                     
                                     {this.props.boardProfile.title }
                                 
-                                <div>
+                                <span>
                                     <div className="board-duplicate-button-dd" onClick={this.moreClickedDD}>
                                         <img className="boards-123-1" src={window.dotsBlackURL} alt="more icon"/>
                                     </div>
@@ -147,7 +147,7 @@ class BoardShow extends React.Component {
                                             <div onClick={this.editPen} id={this.props.boardProfile.id}>Edit board</div>
                                         </div>
                                     </div>
-                                </div>
+                                </span>
 
                                 </h1>
 

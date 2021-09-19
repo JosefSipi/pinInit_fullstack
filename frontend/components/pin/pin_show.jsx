@@ -356,9 +356,9 @@ class PinShow extends React.Component {
                                 <div className="pin-duplicate-button-dd" onClick={this.moreClickedDD}>
                                     <img className="pin-123-1" src={window.dotsBlackURL} alt="more icon"/>
                                 </div>
-                                    <div className="div-holder-helper-123">
+                                    <div className="div-holder-helper-123 outside-pin-show" >
                                         <div className="edit-dropdown-menue-123 pin-show" id="edit-dropdown-menue-123-id">
-                                            <div onClick={this.editPin} >Edit Pin</div>
+                                            <div className='edition-pin-show-div' onClick={this.editPin} >Edit Pin</div>
                                         </div>
                                     </div>
                                 </h1>
