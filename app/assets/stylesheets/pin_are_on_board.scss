@@ -275,12 +275,14 @@ div.div-22-1{
 }
 
 .h2-non-user-board-show{
+    text-align: center;
     font-size: 17px;
     font-weight: 100;
+    padding-bottom: 4px;
 }
 
 .header-title-boards-show-123{
-    display: inline;
+    text-align: center;
     span{
         display: inline-block;
     }
@@ -371,4 +373,11 @@ div.board-duplicate-button-dd{
     text-decoration: none;
     color: black;
 
+}
+
+.no-pins-txt{
+
+    text-align: center;
+    padding-top: 47px;
+    font-weight: 100;
 }

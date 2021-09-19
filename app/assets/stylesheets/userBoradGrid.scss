@@ -253,3 +253,17 @@ div.dont-show-me{
     height: 100%;
     width: 100%;
 }
+
+.number-pins-bar-board-show{
+    width: 100%;
+    height: fit-content;
+    padding-top: 10px;
+    display: flex;
+}
+
+.num-pins-show-board{
+    font-size: 20px;
+    font-weight: 550;
+    margin-left: 24px;
+
+}

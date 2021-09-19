@@ -51,13 +51,13 @@ class CreatePin extends React.Component {
         const objBoards = {...this.props.boards.boards}
 
         // let boardsObj = {}
-        // debugger
+        // 
 
         // boards.forEach(board => {
-        //     debugger
+        //     
         //     boardsObj.board.id = board
         // })
-        // debugger
+        // 
 
         if(id === null && boards.length === 0){
             return (
@@ -309,7 +309,7 @@ class CreatePin extends React.Component {
             return null
         }
 
-        debugger
+        
         
         const boards = Object.values(this.props.boards.boards)
         const objBoards = {...this.props.boards.boards}
@@ -339,10 +339,10 @@ class CreatePin extends React.Component {
         // if(this.state.pin.board_id === null){
         //     this.populateBoardField()
         // }
-        // debugger
+        // 
         // let firstBoard
         // boards.forEach(board => {
-        //     debugger
+        //     
         //     if(board.id === this.state.pin.board_id){
         //         firstBoard = board.title
         //     }
@@ -350,7 +350,7 @@ class CreatePin extends React.Component {
 
         let description1 = 500 - this.state.pin.description.length
 
-        debugger
+        
         return (
             <div className="create-pin-main-div">
             <div className="backdrop-div-create-pin" onClick={this.backdropClick} id="backdrop-div-create-pin"></div>

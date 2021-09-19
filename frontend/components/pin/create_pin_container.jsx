@@ -7,7 +7,6 @@ import { fetchBoards } from '../../actions/board_actions';
 import { openModal, closeModal } from '../../actions/modal';
 
 const mSTP = state => {
-    debugger
     return {
         user: state.user,
         // boards: Object.values(state.boards)

@@ -19,7 +19,8 @@ class NavBar extends React.Component {
         };
 
         this.state = {
-            logedInUser: this.props.currentUser
+            logedInUser: this.props.currentUser,
+            readyToCheck: false
         }
 
         this.prepSearch = this.prepSearch.bind(this);
@@ -28,8 +29,19 @@ class NavBar extends React.Component {
         this.searchOver = this.searchOver.bind(this);
         this.redirectProfile = this.redirectProfile.bind(this);
         this.logoutFunction = this.logoutFunction.bind(this);
+        // this.checkInput = this.checkInput.bind(this);
     }
 
+    // checkInput(){
+    //     debugger
+
+    //     let dropDownSearchStuff = document.getElementById('the-dropdown-on-nav-bar-search')
+        
+    //     if(dropDownSearchStuff.style.display === 'none' || dropDownSearchStuff.style.display === ''){
+    //         debugger
+    //         document.getElementById('search-bar-input').value = ''
+    //     }
+    // }
 // directToProfile = debounce((e) => {
 //     
 //     // window.location.reload();
@@ -70,6 +82,7 @@ searchingTime(e){
     e.preventDefault();
     let ddSearch = document.getElementById('the-dropdown-on-nav-bar-search')
     let backdrop = document.getElementById('backdrop-div-create-search')
+
 
     if(ddSearch.style.display === 'none' || ddSearch.style.display === ''){
         ddSearch.style.display = 'flex'
@@ -123,6 +136,11 @@ updateState(e){
 
 componentDidMount(){
 
+    // window.addEventListener('DOMContentLoaded', () => {
+    //     debugger
+    //     this.setState({readyToCheck: true})
+    // })
+
     this.setState({logedInUser: this.props.currentUser})
     
     if (!!window.currentUser || !!this.props.currentUser) {
@@ -147,8 +165,16 @@ render(){
         theUsers = Object.values(this.props.users)
         ready = true
     }
+
+    
+    
     
     if (!!this.props.currentUser) {
+
+        // if(this.state.readyToCheck){
+        //     this.checkInput()
+        // }
+        
 
         this.bar = (
         
@@ -176,7 +202,7 @@ render(){
             </div> */}
 
             <div className="search-bar-section-1">
-                <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchingTime}></input>
+                <input className="searchBar" id='search-bar-input' type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchingTime}></input>
                 {/* <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchOver}></input> */ }
                 <div className="drop-down-holder-nav-bar">
                     <img className="search-bar-icon" src={window.magnaURL} alt="search icon" />

@@ -19,13 +19,14 @@ import BoardShow from './board/show_board_container';
 import CreatePin from './pin/create_pin_container';
 import CreatePinLink from './pin/create_pin_link_container';
 import PinShow from './pin/pin_show_container';
+import ScrollToTop from '../components/nav_bar/scroll_to_top';
 
 
 export default () => (
     <div>
         {/* <AuthRoute path="/signup" component={SignUpContainer}/>
         <AuthRoute exact path="/login" component={LogInContainer}/> */}
-        
+        <ScrollToTop />
         <Modal />
         <ModalUpload/>
         <SignUpModal/>

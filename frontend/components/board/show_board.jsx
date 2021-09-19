@@ -173,8 +173,12 @@ class BoardShow extends React.Component {
                         </div>
                     </div>
 
+                    <div className='number-pins-bar-board-show'>
+                        <div className='num-pins-show-board' >{Object.keys(this.props.pins.pins).length === 1 ? '1 Pin' : `${Object.keys(this.props.pins.pins).length} Pins`}</div>
+                    </div>
+
                     <div className="pin-area-on-board-show" >
-                        <div className="pin_container" id="pin_container">
+                        {pins.length === 0 ? <div className='no-pins-txt'>There aren't any Pins on this board yet</div> : <div className="pin_container" id="pin_container">
                             {pins.map(pin => 
                             //    <Link className="link-pin-on-board-pins" to={`/pin/${pin.id}`} key={pin.id + 'pin-key'}> 
                                     <Link to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
@@ -201,7 +205,7 @@ class BoardShow extends React.Component {
                                     </Link>
                                 // </Link>
                             )}
-                        </div>
+                        </div>}
                     </div>
                 </div>
             )
@@ -250,7 +254,8 @@ class BoardShow extends React.Component {
         </div>
 
          <div className="pin-area-on-board-show" >
-            <div className="pin_container" id="pin_container">
+            
+            {pins.length === 0 ? <div className='no-pins-txt'>There aren't any Pins on this board yet</div> : <div className="pin_container" id="pin_container">
                 {pins.map(pin => 
                 <Link to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
 
@@ -272,7 +277,7 @@ class BoardShow extends React.Component {
 
                 </Link>
                 )}
-            </div>
+            </div>}
         </div>
     </div>
 )}
@@ -290,7 +295,6 @@ class BoardShow extends React.Component {
         const pins = Object.values(this.props.pins.pins)
         
         // const theHeight = 45;
-
 
         return (
             <div>

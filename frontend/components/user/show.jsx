@@ -271,8 +271,6 @@ class UserShow extends React.Component {
         let boards = Object.values(this.props.boards.boards)
 
         let profilePage
-
-        debugger
         
         if(this.state.userProfile.id !== (Number(this.props.match.params.id))){
             this.props.fetchUserProfile(Number(this.props.match.params.id))
@@ -450,9 +448,9 @@ class UserShow extends React.Component {
                     <div className="left-box-edit-bar">
 
                         
-                        <div className="logo-on-logged-in-header">
+                        {/* <div className="logo-on-logged-in-header">
                             <img id="logo-share-icon" src={window.shareLogoURL} alt="share-icon" />
-                        </div>
+                        </div> */}
 
 
                     </div>
