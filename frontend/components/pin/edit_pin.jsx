@@ -21,10 +21,17 @@ class EditPinShow extends React.Component {
     handeSave(e){
         
         let theboardId = this.state.pin.board_id
+        let pinId = this.state.pin.id
+
+        
+        // 
+        
         
         this.props.updatePin(this.state.pin).then(
+            
             this.props.closeModal(),
             this.props.fetchPin(window.editPin)
+
         )
 
     }
@@ -59,7 +66,12 @@ class EditPinShow extends React.Component {
     }
 
     componentDidMount(){
-        this.props.fetchPin(window.editPin)
+        
+        this.props.fetchPin(window.editPin).then(
+            (data) => {
+                this.setState({pin: data.pin})
+            }
+        )
         this.props.fetchBoards(window.currentUser.id)
     }
     
@@ -71,6 +83,7 @@ class EditPinShow extends React.Component {
             this.setState({boards: this.props.boards.boards})
         }
     }
+
 
     deletePinFunction(e){
         this.props.deletePin(Number(window.editPin)).then(
@@ -104,6 +117,9 @@ class EditPinShow extends React.Component {
 
         const boards = Object.values(this.props.boards.boards)
         const stateBoard = boards.filter(board => board.id === Number(this.state.pin.board_id))
+
+        
+
         return(
             <div className="outer-div-edit-pin-modalthing">
                 <div className="top-section-edit-pin">Edit this Pin</div>
@@ -143,7 +159,7 @@ class EditPinShow extends React.Component {
 
                         <div className="title-edit-pin all-left-section-edit-p">
                             <div className="title-word the-edit-labels">Title</div>
-                            <input type="text" className="edit-pin-input input-section-edit-pin-123" value={this.state.pin.title} onChange={this.handelChange('title')}/>
+                            <input type="text" className="edit-pin-input input-section-edit-pin-123" value={this.state.pin.title === null ? '' : this.state.pin.title} onChange={this.handelChange('title')}/>
                         </div>
 
                         <div className="description-section-edit-p all-left-section-edit-p">
