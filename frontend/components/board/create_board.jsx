@@ -32,7 +32,6 @@ class CreateBoard extends React.Component {
     }
 
     // componentWillUnmount(){
-    //     debugger
     // }
     
 

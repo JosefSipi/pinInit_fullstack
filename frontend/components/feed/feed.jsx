@@ -45,8 +45,6 @@ class Feed extends React.Component {
     photoLoaded(e){
         e.preventDefault();
 
-        debugger
-
         let titleCondition = !!e.currentTarget.getAttribute('data-link_title')
 
         let imageHeight = e.currentTarget.children[1].clientHeight;

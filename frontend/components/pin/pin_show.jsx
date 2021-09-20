@@ -332,8 +332,6 @@ class PinShow extends React.Component {
 
 
         let pinShow
-
-        debugger
         
 
         if(window.currentUser.id === this.props.pin.pin.creator_id){

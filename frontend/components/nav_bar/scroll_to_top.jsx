@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 
 function ScrollToTop({ history }) {
   useEffect(() => {
-      debugger
     const unlisten = history.listen(() => {
       window.scrollTo(0, 0);
     });

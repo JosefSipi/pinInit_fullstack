@@ -33,12 +33,12 @@ class NavBar extends React.Component {
     }
 
     // checkInput(){
-    //     debugger
+    //     
 
     //     let dropDownSearchStuff = document.getElementById('the-dropdown-on-nav-bar-search')
         
     //     if(dropDownSearchStuff.style.display === 'none' || dropDownSearchStuff.style.display === ''){
-    //         debugger
+    //         
     //         document.getElementById('search-bar-input').value = ''
     //     }
     // }
@@ -137,7 +137,7 @@ updateState(e){
 componentDidMount(){
 
     // window.addEventListener('DOMContentLoaded', () => {
-    //     debugger
+    //     
     //     this.setState({readyToCheck: true})
     // })
 
