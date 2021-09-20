@@ -68,7 +68,7 @@ class Api::PinsController < ApplicationController
         
 
         @comments = Comment.where(pin_id: params[:id])
-
+        
         @pin = Pin.find(params[:id])
 
         @userPin = User.find(@pin.creator_id)
@@ -79,9 +79,14 @@ class Api::PinsController < ApplicationController
     end
 
     def update
-        
+
+        @comments = Comment.where(pin_id: params[:id])
+       
         @pin = Pin.find(params[:id])
 
+        @userPin = User.find(@pin.creator_id)
+        @board = Board.find(@pin.board_id)
+        
         if @pin && @pin.update_attributes(pin_params)
             render :show
         else

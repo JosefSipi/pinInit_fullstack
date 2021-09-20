@@ -93,8 +93,12 @@ class BoardShow extends React.Component {
 
     photoLoaded(e){
         e.preventDefault();
+
+        let titleCondition = !!e.currentTarget.getAttribute('data-link_title')
+
         let imageHeight = e.currentTarget.children[1].clientHeight;
-        let spanVal = Math.trunc((imageHeight/10) + 7)
+        let spanVal
+        {titleCondition ? spanVal = Math.trunc((imageHeight/10) + 5) : spanVal = Math.trunc((imageHeight/10) + 2)  }
 
         let card = document.getElementById(`${e.currentTarget.id}`)
         card.style.gridRowEnd = `span ${spanVal}`
@@ -181,7 +185,7 @@ class BoardShow extends React.Component {
                         {pins.length === 0 ? <div className='no-pins-txt'>There aren't any Pins on this board yet</div> : <div className="pin_container" id="pin_container">
                             {pins.map(pin => 
                             //    <Link className="link-pin-on-board-pins" to={`/pin/${pin.id}`} key={pin.id + 'pin-key'}> 
-                                    <Link to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
+                                    <Link data-link_title={pin.title} to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
 
                                         <div className="outside-edit-pin-board-show">
 
@@ -257,7 +261,7 @@ class BoardShow extends React.Component {
             
             {pins.length === 0 ? <div className='no-pins-txt'>There aren't any Pins on this board yet</div> : <div className="pin_container" id="pin_container">
                 {pins.map(pin => 
-                <Link to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
+                <Link data-link_title={pin.title} to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
 
                     <div className="outside-edit-pin-board-show">
 

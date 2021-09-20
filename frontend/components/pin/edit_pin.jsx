@@ -21,6 +21,7 @@ class EditPinShow extends React.Component {
     handeSave(e){
         
         let theboardId = this.state.pin.board_id
+        
         this.props.updatePin(this.state.pin).then(
             this.props.closeModal(),
             this.props.fetchPin(window.editPin)

@@ -53,9 +53,9 @@ export const fetchPin = pinId => {
     }
 }
 
-export const updatePin = (pinId) => {
+export const updatePin = (pinUpdate) => {
     return (dispatch) => {
-        return APIUtil.updatePin(pinId)
+        return APIUtil.updatePin(pinUpdate)
             .then(pin => dispatch(receivePin(pin)));
     }
 }

@@ -333,6 +333,7 @@ class PinShow extends React.Component {
 
         let pinShow
 
+        debugger
         
 
         if(window.currentUser.id === this.props.pin.pin.creator_id){
@@ -459,7 +460,7 @@ class PinShow extends React.Component {
 
                             <div className='bottom-info-outter-div' >
                                 <div className="image-div-show-pin-page bottom-info-links" >
-                                    { !!window.currentUser.photoUrl ? <img className="profile-photo-icon" src={window.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{window.currentUser.f_name[0]}</p>}
+                                    { !!this.props.pin.pin.pinUser.photoUrl ? <img className="profile-photo-icon" src={this.props.pin.pin.pinUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.pin.pin.pinUser.f_name[0]}</p>}
                                 </div>
 
                                 <div className='bottom-section-pin-show-links' >
@@ -595,7 +596,7 @@ class PinShow extends React.Component {
 
                             <div className='bottom-info-outter-div' >
                                 <div className="image-div-show-pin-page bottom-info-links" >
-                                    { !!window.currentUser.photoUrl ? <img className="profile-photo-icon" src={window.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{window.currentUser.f_name[0]}</p>}
+                                    { !!this.props.pin.pin.pinUser.photoUrl ? <img className="profile-photo-icon" src={this.props.pin.pin.pinUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.pin.pin.pinUser.f_name[0]}</p>}
                                 </div>
 
                                 <div className='bottom-section-pin-show-links' >
