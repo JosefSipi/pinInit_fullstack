@@ -66,11 +66,11 @@ div.board-dropdown-create-pin{
     z-index: 250;
 }
 
-div.board-dd-create-pin{
-    &:hover{
-        cursor: pointer;
-    }
-}
+// div.board-dd-create-pin{
+//     &:hover{
+//         cursor: pointer;
+//     }
+// }
 
 
  div.this-list-children-pin{
@@ -219,7 +219,7 @@ img#more-logo-icon{
     }
 }
 
-.board-dd-create-pin{
+div.board-dd-create-pin{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -227,7 +227,20 @@ img#more-logo-icon{
     width: 136px;
     background: transparent;
     text-align: center;
+    div{
+        display: block;
+        width: 140px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: start;
+    }
+    &:hover{
+        cursor: pointer;
+    }
 }
+
+
 
 .bottom-create-pin{
     width: 800px;

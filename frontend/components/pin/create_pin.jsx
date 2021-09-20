@@ -375,7 +375,7 @@ class CreatePin extends React.Component {
                         <div className="left-top-bar-createpindiv">
                             
                             <div placeholder="Select" id="board-dd-create-pin" className="board-dd-create-pin" onClick={this.handelUlClick}>
-                                {displayTitle}
+                                <div>{displayTitle}</div>
                                 {/* {this.state.boardTitle ? : <div></div>} */}
                                 
                             </div>
