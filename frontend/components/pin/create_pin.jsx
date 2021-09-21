@@ -150,8 +150,6 @@ class CreatePin extends React.Component {
         
         this.props.fetchBoards(this.props.currentUser.id).then(
             (data) => {
-                console.log(data)
-                
                 this.setState({boards: data.boards})
             }
         )

@@ -211,9 +211,9 @@ render(){
                             theUsers.map(user => 
                                 // <Link to={`/profile/${user.id}`} >
                                 <div key={user.id} className="list-search-user" onMouseDown={this.redirectProfile} data-user_id={user.id}>
-                                    <div className="div-for-search-user-img">
+                                    <div id='123 E' className="div-for-search-user-img">
                                         {/* <img className="search-user-img" src={user.photoUrl} alt="user avatar" /> */}
-                                        { !!user.photoUrl ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <img className="search-user-img" src={window.picLogoURL} alt="profile photo" />}
+                                        { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <img className="search-user-img" src={window.picLogoURL} alt="profile photo" />}
                                     </div>
                                     <div className="last-div-1">{user.username}</div>
                                 </div>
@@ -246,8 +246,8 @@ render(){
                 <Link className='nav-bar-prof-icon' to={`/profile/${this.props.currentUser.id}` }>
                     <div className="logo-on-logged-in-header">
 
-                        <div className="profile-div-small">
-                            { this.props.currentUser.photoUrl ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0].toUpperCase()}</p>}
+                        <div id='123 F' className="profile-div-small">
+                            { !(this.props.currentUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0].toUpperCase()}</p>}
                         </div>
 
                     </div>

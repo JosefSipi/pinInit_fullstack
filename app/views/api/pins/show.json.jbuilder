@@ -12,7 +12,7 @@ if !@from_pin_create
         if (@userPin.profile_pic.attached?)
             json.photoUrl url_for(@userPin.profile_pic)
         else
-            json.photoUrl false
+            json.photoUrl 'false'
         end
     end
     
@@ -44,6 +44,10 @@ if !@from_pin_create
                 if(commenter.profile_pic.attached?)
                     json.photoUrl url_for(commenter.profile_pic)
                     json.name commenter.f_name 
+
+                else
+                    json.photoUrl 'false'
+                    json.name commenter.f_name
                 end
     
                 json.like do

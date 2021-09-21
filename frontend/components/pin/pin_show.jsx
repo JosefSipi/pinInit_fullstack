@@ -8,7 +8,7 @@ class PinShow extends React.Component {
         this.state = {
             pin: null,
             comment: {
-                commenter_id: window.currentUser.id,
+                commenter_id: this.props.currentUser.id,
                 pin_id: Number(this.props.match.params.id),
                 body: null
             },
@@ -329,12 +329,10 @@ class PinShow extends React.Component {
         // } else {
         //     comments = this.state.comments
         // }
-
-
         let pinShow
         
 
-        if(window.currentUser.id === this.props.pin.pin.creator_id){
+        if(this.props.currentUser.id === this.props.pin.pin.creator_id){
             pinShow = (
                 <div className='background-div-pin-show'>
 
@@ -388,9 +386,10 @@ class PinShow extends React.Component {
                                         <div className='one-comment-pin-show' key={comment.id}>
 
                                             <div className='outside-of-image-div'>
-                                                <div className="image-div-show-pin-page comment-list-2">
-                                                    <img className='profile-icon-photo-pinshow' src={comment.photoUrl} alt="pic" />
+                                                <div id='123 D' className="image-div-show-pin-page comment-list-2 C">
+                                                    { !(comment.photoUrl === 'false') ? <img className="profile-photo-icon" src={comment.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{comment.name[0]}</p>}
                                                 </div>
+
                                             </div>
 
                                             <div className='right-txt-pin-show' id={`right-txt-pin-show`+ comment.id} >
@@ -416,13 +415,13 @@ class PinShow extends React.Component {
 
                                             <div className='like-icon-div'>
                                                 {comment.like.liked ? 
-                                                <img data-img_liker_id={window.currentUser.id} data-img_comment={comment.id} data-like_id={comment.like.like.id} onClick={this.removeLike} src={window.redHeartURL} alt="red heart" /> : 
-                                                <img data-img_liker_id={window.currentUser.id} data-img_comment={comment.id} onClick={this.createLike} src={window.grayHeartURL} alt="gray heart" /> }
+                                                <img data-img_liker_id={this.props.currentUser.id} data-img_comment={comment.id} data-like_id={comment.like.like.id} onClick={this.removeLike} src={window.redHeartURL} alt="red heart" /> : 
+                                                <img data-img_liker_id={this.props.currentUser.id} data-img_comment={comment.id} onClick={this.createLike} src={window.grayHeartURL} alt="gray heart" /> }
 
                                                {comment.like.like_count > 0 ? <div className='like-count'>{comment.like.like_count}</div> : null} 
                                             </div>
                                             
-                                            { comment.commenter_id === window.currentUser.id ? <div className="pin-duplicate-button-dd comment-edition-div" id={comment.id} onClick={this.moreClickedDDComment}>
+                                            { comment.commenter_id === this.props.currentUser.id ? <div className="pin-duplicate-button-dd comment-edition-div" id={comment.id} onClick={this.moreClickedDDComment}>
                                                 <img className="pin-123-1 comment-edition-dot" src={window.dotsBlackURL} alt="more icon"/>
                                             </div> : null}
                                                 <div className="div-holder-helper-123-pin-show">
@@ -444,9 +443,8 @@ class PinShow extends React.Component {
                             </div>
                             : null }
                             <div className="comments-in-section" >
-                                <div className="image-div-show-pin-page" >
-                                    { !!window.currentUser.photoUrl ? <img className="profile-photo-icon" src={window.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{window.currentUser.f_name[0]}</p>}
-                                    {/* <img className="profile-icon-photo-pinshow" src={window.currentUser.photoUrl} alt="profile" /> */}
+                                <div id='847428 A' className="image-div-show-pin-page C" >
+                                    { !(this.props.currentUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>}
                                 </div>
                                 <input id='comment-input-pin-show' className="input-pin-show" type="text" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
                             </div>
@@ -457,12 +455,12 @@ class PinShow extends React.Component {
                             </div>
 
                             <div className='bottom-info-outter-div' >
-                                <div className="image-div-show-pin-page bottom-info-links" >
-                                    { !!this.props.pin.pin.pinUser.photoUrl ? <img className="profile-photo-icon" src={this.props.pin.pin.pinUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.pin.pin.pinUser.f_name[0]}</p>}
+                                <div id='847428 B' className="image-div-show-pin-page bottom-info-links C" >
+                                    { !(this.props.pin.pin.pinUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.pin.pin.pinUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.pin.pin.pinUser.f_name[0]}</p>}
                                 </div>
 
                                 <div className='bottom-section-pin-show-links' >
-                                    {this.state.pin.creator_id === window.currentUser.id ? 
+                                    {this.state.pin.creator_id === this.props.currentUser.id ? 
                                         <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>You</Link> : 
                                         <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>{this.state.pin.pinUser.f_name} {this.state.pin.pinUser.l_name} </Link>
                                     } saved to {' '}
@@ -532,8 +530,8 @@ class PinShow extends React.Component {
                                     <div className='outside-comment-main' key={comment.id + "outside"}>
                                         <div className='one-comment-pin-show' key={comment.id}>
                                             <div>
-                                                <div className="image-div-show-pin-page comment-list-2">
-                                                    <img className='profile-icon-photo-pinshow' src={comment.photoUrl} alt="pic" />
+                                                <div id='123 G' className="image-div-show-pin-page comment-list-2 C">
+                                                    { !(comment.photoUrl === 'false') ? <img className="profile-icon-photo-pinshow" src={comment.photoUrl} alt="pic" /> : <p className='profile-letter-default' >{comment.name[0]}</p>}
                                                 </div>
                                             </div>
 
@@ -552,13 +550,13 @@ class PinShow extends React.Component {
 
                                             <div className='like-icon-div'>
                                                 {comment.like.liked ? 
-                                                <img data-img_liker_id={window.currentUser.id} data-img_comment={comment.id} data-like_id={comment.like.like.id} onClick={this.removeLike} src={window.redHeartURL} alt="red heart" /> : 
-                                                <img data-img_liker_id={window.currentUser.id} data-img_comment={comment.id} onClick={this.createLike} src={window.grayHeartURL} alt="gray heart" /> }
+                                                <img data-img_liker_id={this.props.currentUser.id} data-img_comment={comment.id} data-like_id={comment.like.like.id} onClick={this.removeLike} src={window.redHeartURL} alt="red heart" /> : 
+                                                <img data-img_liker_id={this.props.currentUser.id} data-img_comment={comment.id} onClick={this.createLike} src={window.grayHeartURL} alt="gray heart" /> }
 
                                                 {comment.like.like_count > 0 ? <div className='like-count'>{comment.like.like_count}</div> : null} 
                                             </div>
                                             
-                                            { comment.commenter_id === window.currentUser.id ? <div className="pin-duplicate-button-dd comment-edition-div" id={comment.id} onClick={this.moreClickedDDComment}>
+                                            { comment.commenter_id === this.props.currentUser.id ? <div className="pin-duplicate-button-dd comment-edition-div" id={comment.id} onClick={this.moreClickedDDComment}>
                                                 <img className="pin-123-1 comment-edition-dot" src={window.dotsBlackURL} alt="more icon"/>
                                             </div> : null}
                                                 <div className="div-holder-helper-123-pin-show">
@@ -580,9 +578,8 @@ class PinShow extends React.Component {
                             </div>
                             : null }
                             <div className="comments-in-section" >
-                                <div className="image-div-show-pin-page" >
-                                    { !!window.currentUser.photoUrl ? <img className="profile-photo-icon" src={window.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{window.currentUser.f_name[0]}</p>}
-                                    <img className="profile-icon-photo-pinshow" src={window.currentUser.photoUrl} alt="profile" />
+                                <div id='847428 C' className="image-div-show-pin-page C" >
+                                    { !(this.props.currentUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>}
                                 </div>
                                 <input id='comment-input-pin-show' className="input-pin-show" type="text" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
                             </div>
@@ -594,11 +591,11 @@ class PinShow extends React.Component {
 
                             <div className='bottom-info-outter-div' >
                                 <div className="image-div-show-pin-page bottom-info-links" >
-                                    { !!this.props.pin.pin.pinUser.photoUrl ? <img className="profile-photo-icon" src={this.props.pin.pin.pinUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.pin.pin.pinUser.f_name[0]}</p>}
+                                    { !(this.props.pin.pin.pinUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.pin.pin.pinUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.pin.pin.pinUser.f_name[0]}</p>}
                                 </div>
 
                                 <div className='bottom-section-pin-show-links' >
-                                    {this.state.pin.creator_id === window.currentUser.id ? 
+                                    {this.state.pin.creator_id === this.props.currentUser.id ? 
                                         <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>You</Link> : 
                                         <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>{this.state.pin.pinUser.f_name} {this.state.pin.pinUser.l_name} </Link>
                                     } saved to {' '}

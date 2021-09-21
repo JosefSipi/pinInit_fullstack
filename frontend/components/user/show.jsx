@@ -286,7 +286,7 @@ class UserShow extends React.Component {
                     <header className="profile-header">
 
                         <div className="profile-div">
-                            {!!this.props.userProfile.photoUrl ? <img className="profile-photo" src={this.props.userProfile.photoUrl} alt="profile photo"/> : <p>{this.props.userProfile.f_name[0]}</p>}
+                            {!(this.props.userProfile.photoUrl === 'false') ? <img className="profile-photo" src={this.props.userProfile.photoUrl} alt="profile photo"/> : <p>{this.props.userProfile.f_name[0]}</p>}
                         </div>
 
                         <h2 className="username-on-profile">{this.props.userProfile.f_name}{(this.props.userProfile.l_name ? this.props.userProfile.l_name : "").charAt(0)}</h2>
@@ -425,7 +425,7 @@ class UserShow extends React.Component {
                     <header className="profile-header">
 
                         <div className="profile-div">
-                            {!!this.props.userProfile.photoUrl ? <img className="profile-photo" src={this.props.userProfile.photoUrl} alt="profile photo"/> : <p>{this.props.userProfile.f_name[0]}</p>} 
+                            {!(this.props.userProfile.photoUrl === 'false') ? <img className="profile-photo" src={this.props.userProfile.photoUrl} alt="profile photo"/> : <p>{this.props.userProfile.f_name[0]}</p>} 
                         </div>
 
                         <h2 className="username-on-profile">{this.props.userProfile.f_name}{(this.props.userProfile.l_name ? this.props.userProfile.l_name : "").charAt(0)}</h2>

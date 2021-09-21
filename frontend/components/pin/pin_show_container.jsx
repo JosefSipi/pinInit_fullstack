@@ -5,11 +5,13 @@ import PinShow from './pin_show';
 import { openModal } from '../../actions/modal';
 import { newComment, fetchComments, deleteComment, editComment } from '../../actions/comment_actions';
 import { deleteLike, createLike } from '../../actions/like_action';
+import session from '../../reducers/session';
 
 const mSTP = (state) => {
     return {
         pin: state.pin,
-        comments: state.comment
+        comments: state.comment,
+        currentUser: state.session.currentUser
     }
 }
 
