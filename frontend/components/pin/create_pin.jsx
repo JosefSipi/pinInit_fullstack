@@ -20,7 +20,8 @@ class CreatePin extends React.Component {
             isTrue: false,
             thePhotoURL: "",
             loading: false,
-            boardTitle: false
+            boardTitle: false,
+            boards: null
         }
 
         this.handelAddText = this.handelAddText.bind(this);
@@ -146,12 +147,27 @@ class CreatePin extends React.Component {
 
     componentDidMount(){
         // this.populateBoardField()
-        this.props.fetchBoards(window.currentUser.id)
+        debugger
+        this.props.fetchBoards(this.props.currentUser.id).then(
+            (data) => {
+                console.log(data)
+                debugger
+                this.setState({boards: data.boards})
+            }
+        )
 
         if (!window.currentUser) {
         } else {
             this.props.fetchUser(window.currentUser.id);
         }
+    }
+
+    componentDidUpdate(prevProps){
+        debugger
+    if(prevProps.boards !== this.props.boards){
+        debugger
+        this.setState({boards: this.props.boards.boards})
+    }
     }
 
     handelAddText(e){
@@ -350,6 +366,7 @@ class CreatePin extends React.Component {
 
         let description1 = 500 - this.state.pin.description.length
 
+        debugger
         
         return (
             <div className="create-pin-main-div">

@@ -10,7 +10,8 @@ const mSTP = state => {
     return {
         user: state.user,
         // boards: Object.values(state.boards)
-        boards: state.boards
+        boards: state.boards,
+        currentUser: state.session.currentUser
     }
 }
 

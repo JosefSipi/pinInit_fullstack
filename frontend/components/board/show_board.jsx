@@ -5,6 +5,10 @@ class BoardShow extends React.Component {
     constructor(props){
         super(props);
 
+        this.state = {
+            userProfile: null
+        }
+
         this.modalFunction = this.modalFunction.bind(this);
         this.photoLoaded = this.photoLoaded.bind(this);
         this.isProfileUser = this.isProfileUser.bind(this);
@@ -113,19 +117,30 @@ class BoardShow extends React.Component {
     }
 
     componentDidMount(){
-        this.props.fetchBoard(Number(this.props.match.params.id))
+        debugger
+        this.props.fetchBoard(Number(this.props.match.params.id)).then(
+            (data) => {
+                debugger
+                this.props.fetchUserProfile(data.board.owner_id)
+            }
+        )
         this.props.fetchPins(Number(this.props.match.params.id))
 
     }
 
 
     componentDidUpdate(prevProps){
-        if(prevProps.boardProfile !== this.props.boardProfile){
-            this.props.fetchUser(this.props.boardProfile.owner_id)
-        } 
+        if(prevProps.userProfile !== this.props.userProfile){
+            this.setState({userProfile: this.props.userProfile})
+        }
+        // if(prevProps.boardProfile !== this.props.boardProfile){
+        //     this.props.fetchUser(this.props.boardProfile.owner_id)
+        // } 
     }
 
     isProfileUser(pins){
+
+        debugger
 
         if(window.currentUser.id === this.props.boardProfile.owner_id){
             return (
@@ -290,10 +305,14 @@ class BoardShow extends React.Component {
 
     render(){
         
-        if (!this.props.boardProfile || !this.props.pins.pins){
+        if (!this.props.userProfile){
             return null
         }
+        // if (!this.props.boardProfile || !this.props.pins.pins || !this.props.userProfile){
+        //     return null
+        // }
         
+        debugger
 
         
         const pins = Object.values(this.props.pins.pins)
