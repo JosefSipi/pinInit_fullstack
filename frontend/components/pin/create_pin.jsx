@@ -147,11 +147,11 @@ class CreatePin extends React.Component {
 
     componentDidMount(){
         // this.populateBoardField()
-        debugger
+        
         this.props.fetchBoards(this.props.currentUser.id).then(
             (data) => {
                 console.log(data)
-                debugger
+                
                 this.setState({boards: data.boards})
             }
         )
@@ -163,9 +163,9 @@ class CreatePin extends React.Component {
     }
 
     componentDidUpdate(prevProps){
-        debugger
+        
     if(prevProps.boards !== this.props.boards){
-        debugger
+        
         this.setState({boards: this.props.boards.boards})
     }
     }
@@ -366,7 +366,7 @@ class CreatePin extends React.Component {
 
         let description1 = 500 - this.state.pin.description.length
 
-        debugger
+        
         
         return (
             <div className="create-pin-main-div">

@@ -9,7 +9,7 @@ export default (state = {}, action) => {
         case RECEIVE_USERS:
             return Object.assign({}, state, {searchUsers: action.users})
         case RECEIVE_USER_PROFILE:
-            debugger
+            
             return Object.assign({}, state, {profileUser: action.userProfile})
         default:
             return state;

@@ -8,7 +8,7 @@ import BoardShow from './show_board';
 import { openModal, closeModal } from '../../actions/modal';
 
 const mSTP = (state) => {
-    debugger
+    
     return {
         boards: state.boards,
         boardProfile: state.boards.displayBoard,

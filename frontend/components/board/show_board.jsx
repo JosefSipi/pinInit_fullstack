@@ -117,10 +117,10 @@ class BoardShow extends React.Component {
     }
 
     componentDidMount(){
-        debugger
+        
         this.props.fetchBoard(Number(this.props.match.params.id)).then(
             (data) => {
-                debugger
+                
                 this.props.fetchUserProfile(data.board.owner_id)
             }
         )
@@ -140,7 +140,7 @@ class BoardShow extends React.Component {
 
     isProfileUser(pins){
 
-        debugger
+        
 
         if(window.currentUser.id === this.props.boardProfile.owner_id){
             return (
@@ -305,14 +305,14 @@ class BoardShow extends React.Component {
 
     render(){
         
-        if (!this.props.userProfile){
+        if (!this.props.pins.pins || !this.props.userProfile){
             return null
         }
         // if (!this.props.boardProfile || !this.props.pins.pins || !this.props.userProfile){
         //     return null
         // }
         
-        debugger
+        
 
         
         const pins = Object.values(this.props.pins.pins)
