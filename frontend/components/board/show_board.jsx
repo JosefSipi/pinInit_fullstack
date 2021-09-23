@@ -161,7 +161,7 @@ class BoardShow extends React.Component {
                                     </div>
 
                                     <div className="div-holder-helper-123">
-                                        <div className="edit-dropdown-menue-123" id="edit-dropdown-menue-123-id">
+                                        <div className="edit-dropdown-menue-1235" id="edit-dropdown-menue-123-id">
                                             <h1 className="title-dd">Board options</h1>
                                             <div onClick={this.editPen} id={this.props.boardProfile.id}>Edit board</div>
                                         </div>
@@ -245,7 +245,7 @@ class BoardShow extends React.Component {
                         <img className="boards-123-1" src={window.dotsBlackURL} alt="more icon"/>
                     </div>
                         <div className="div-holder-helper-123">
-                            <div className="edit-dropdown-menue-123" id="edit-dropdown-menue-123-id">
+                            <div className="edit-dropdown-menue-1235" id="edit-dropdown-menue-123-id">
                                 <h1 className="title-dd">Board options</h1>
                                 <div id={this.props.boardProfile.id}>Follow</div>
                             </div>

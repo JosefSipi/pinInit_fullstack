@@ -15,8 +15,13 @@ class EditPinShow extends React.Component {
         this.backdropClick = this.backdropClick.bind(this);
         this.testingClick = this.testingClick.bind(this);
         this.handeSave = this.handeSave.bind(this);
+        // this.closingModal = this.closingModal.bind(this);
 
     }
+
+    // closingModal(){
+    //     this.props.closeModal()
+    // }
 
     handeSave(e){
         

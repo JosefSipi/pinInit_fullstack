@@ -316,6 +316,45 @@ div.board-duplicate-button-dd{
     z-index: 210;
     border-radius: 16px;
     width: 200px;
+    // display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.20);
+    div{
+
+    width: 89%;
+    height: 35px;
+    color: black;
+    margin-left: 14px;
+    margin-right: 14px;
+    text-align: start;
+    display: flex;
+    align-items: center;
+    text-indent: 6px;
+    justify-content: flex-start;
+    font-weight: 550;
+    border-left: solid 1px white;
+    border-right: solid 1px white;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    font-size: 18px;
+    border-radius: 8px;
+        &:hover{
+            background-color: rgb(231, 231, 231);
+            cursor: pointer;
+
+        }
+    }
+}
+.edit-dropdown-menue-1235{
+    position: relative;
+    top: 5px;
+    right: 67px;
+    z-index: 210;
+    border-radius: 16px;
+    width: 200px;
     display: none;
     flex-direction: column;
     align-items: center;
