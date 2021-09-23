@@ -69,7 +69,7 @@ class PinShow extends React.Component {
     // }
 
     cancelEditComment(e){
-        debugger
+        
         e.preventDefault();
 
         document.getElementById('edit-form-div' + e.currentTarget.getAttribute('data-comment_id')).style.display = 'none'
@@ -88,7 +88,7 @@ class PinShow extends React.Component {
 
         let retTime = null
 
-        debugger
+        
         while(retTime === null){
             
             if(time.year > 0){
@@ -259,12 +259,12 @@ class PinShow extends React.Component {
     }
 
     dd_display_tog(e){
-        debugger
+        
         let id = e.currentTarget.id
         let oldState = {...this.state.dd_s}
         let newState = {}
 
-        debugger
+        
         newState[id] = !(oldState[id])
         this.setState({dd_s: newState})
     }
