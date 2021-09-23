@@ -138,6 +138,8 @@ class PinShow extends React.Component {
 
     editComment(e){
 
+        debugger
+
         let editForm = document.getElementById(`edit-form-div` + e.currentTarget.id)
         let commentShow = document.getElementById('right-txt-pin-show' + e.currentTarget.id)
         let optionsDiv = document.getElementById('bottom-section-comment-pin-show' + e.currentTarget.id)
@@ -425,7 +427,7 @@ class PinShow extends React.Component {
                                                 <img className="pin-123-1 comment-edition-dot" src={window.dotsBlackURL} alt="more icon"/>
                                             </div> : null}
                                                 <div className="div-holder-helper-123-pin-show">
-                                                    <div className="edit-dropdown-menue-123-pin-show" id={`edit-dropdown-menue-124-id` + comment.id}>
+                                                    <div className="edit-dropdown-menue-123-pin-show move-edit-delete-div" id={`edit-dropdown-menue-124-id` + comment.id}>
                                                         <div data-div_val={comment.body} id={comment.id} onClick={this.editComment}>Edit</div>
                                                         <div id={comment.id} onClick={this.deleteComment}>Delete</div>
                                                     </div>
@@ -560,7 +562,7 @@ class PinShow extends React.Component {
                                                 <img className="pin-123-1 comment-edition-dot" src={window.dotsBlackURL} alt="more icon"/>
                                             </div> : null}
                                                 <div className="div-holder-helper-123-pin-show">
-                                                    <div className="edit-dropdown-menue-123-pin-show" id={`edit-dropdown-menue-124-id` + comment.id}>
+                                                    <div className="edit-dropdown-menue-123-pin-show move-edit-delete-div" id={`edit-dropdown-menue-124-id` + comment.id}>
                                                         <div data-div_val={comment.body} id={comment.id} onClick={this.editComment}>Edit</div>
                                                         <div id={comment.id} onClick={this.deleteComment}>Delete</div>
                                                     </div>
