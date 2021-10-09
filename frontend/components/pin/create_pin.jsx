@@ -51,15 +51,6 @@ class CreatePin extends React.Component {
         const boards = Object.values(this.props.boards.boards)
         const objBoards = {...this.props.boards.boards}
 
-        // let boardsObj = {}
-        // 
-
-        // boards.forEach(board => {
-        //     
-        //     boardsObj.board.id = board
-        // })
-        // 
-
         if(id === null && boards.length === 0){
             return (
                 <div className='select-a-board'>Select</div>
@@ -91,8 +82,6 @@ class CreatePin extends React.Component {
 
     handelSubmit(e) {
         e.preventDefault();
-        // let theBoardDest = Number(this.state.pin.board_id);
-        // let displayTitle = document.getElementById('board-dd-create-pin').value
 
         let boards = Object.values(this.props.boards.boards)
         const objBoards = {...this.props.boards.boards}
@@ -100,7 +89,6 @@ class CreatePin extends React.Component {
         let the_board_id
 
         if(this.state.pin.board_id === null && boards.length === 0){
-            // open dropdown menue to select a board with a craete board option at the bottom
         } else if (this.state.pin.board_id === null && boards.length > 0){
             the_board_id = objBoards[Object.keys(objBoards)[0]].id
         } else {
@@ -216,14 +204,6 @@ class CreatePin extends React.Component {
         let ul = document.getElementById('board-dropdown-create-pin')
         ul.style.display = "none"
 
-        // let displayTitle = document.getElementById('board-dd-create-pin');
-        // let titleWorkingOn = e.currentTarget.innerText;
-        // if(titleWorkingOn.length > 13){
-        //     displayTitle.innerText = titleWorkingOn.slice(0, 13).trim() + "..."
-        // } else {
-        //     displayTitle.innerText = titleWorkingOn
-        // }
-
         let backdrop = document.getElementById('backdrop-div-create-pin')
         if(backdrop.style.display === "none"){
             backdrop.style.display = "none"
@@ -338,30 +318,6 @@ class CreatePin extends React.Component {
             displayTitle = objBoards[this.state.pin.board_id].title
         }
 
-        // const firstBoard = boards[this.state.pin.board_id] ||= false
-
-        // let titleWorkingOn = firstBoard
-
-        // let displayTitle
-
-        // if(titleWorkingOn.length > 13){
-        //     displayTitle = titleWorkingOn.slice(0, 13).trim() + "..."
-        // } else {
-        //     displayTitle = titleWorkingOn
-        // }
-
-        // if(this.state.pin.board_id === null){
-        //     this.populateBoardField()
-        // }
-        // 
-        // let firstBoard
-        // boards.forEach(board => {
-        //     
-        //     if(board.id === this.state.pin.board_id){
-        //         firstBoard = board.title
-        //     }
-        // })
-
         let description1 = 500 - this.state.pin.description.length
 
         
@@ -373,7 +329,6 @@ class CreatePin extends React.Component {
            
             <div className="delete-dropdown-menue" id="delete-dropdown-menue-id">
                 <div onClick={this.deleteDropDownClick}>Delete</div>
-                {/* <div >Duplicate</div> */}
             </div>
 
             <div className="primary-createpin-card">
@@ -384,15 +339,13 @@ class CreatePin extends React.Component {
 
                     <div className="top-bar-create-pin">
                         <div className="delete-duplicate-button-dd" onClick={this.moreClicked}>
-                                <img src={window.moreURL} alt="more icon" id="more-logo-icon"/>
+                            <img src={window.moreURL} alt="more icon" id="more-logo-icon"/>
                         </div>
 
                         <div className="left-top-bar-createpindiv">
                             
                             <div placeholder="Select" id="board-dd-create-pin" className="board-dd-create-pin" onClick={this.handelUlClick}>
                                 <div>{displayTitle}</div>
-                                {/* {this.state.boardTitle ? : <div></div>} */}
-                                
                             </div>
 
                             <div className="down-arrow-div" onClick={this.handelUlClick} >
@@ -401,7 +354,6 @@ class CreatePin extends React.Component {
 
                             <div className="save-button-create-pin" onClick={this.handelSubmit}>Save</div>
                         
-                            {/* <div className="middle-box-thing" id="middle-box-thing"> */}
                                 <div className="board-dropdown-create-pin" id="board-dropdown-create-pin">
                                     <div className='arround-ul-dd'>                                   
                                         <ul className="board-dropdown-ol" id="board-dropdown-ol">
@@ -421,9 +373,7 @@ class CreatePin extends React.Component {
                                                     <img id="logo-lock-icon-pin-page" src={window.lockURL} alt="lock-icon" />
                                                 </div>
 
-                                                {/* <div className="save-button-create-pin" id={board.id + "save-button"}>Save</div> */}
                                             </div>
-                                            //    <li>{"Photo"}{board.title}</li>
                                         )}
                                         </ul> 
                                     </div>
@@ -434,14 +384,10 @@ class CreatePin extends React.Component {
                                         <div className='d334'>Create Board</div>
                                     </div>
                                 </div>
-                            {/* </div> */}
                         </div>
 
                             {/* ------------------ drop down part --------------- */}
                     </div>
-
-
-
 
                     <div className="bottom-create-pin">
 
@@ -499,11 +445,6 @@ class CreatePin extends React.Component {
 
                             <textarea className="text-area-pin-create txt-area-create-p-moveup" onChange={this.inputChange('description2')} name="" id="alt-text-area" cols="40" rows="1" placeholder="Explain what people can see in the Pin" style={{display: 'none'}}>
                             </textarea>
-                            
-                            {/* <div>
-                                <div>This text will be read aloud by screen readers</div>
-                                <div>{description2}</div>
-                            </div> */}
 
                             <div className="footer-create-pin-gray-button" onClick={this.handelAddText} id="alt-text-area-button">Add alt text</div>
 
