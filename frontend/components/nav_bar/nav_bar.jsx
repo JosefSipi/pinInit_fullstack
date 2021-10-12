@@ -62,7 +62,8 @@ logoutFunction(e){
     this.props.logout().then(
         (data) => {
             this.toggleContent(e)
-            this.props.history.push('/home')
+            debugger
+            this.props.history.push('/')
         }
     )
 
@@ -166,15 +167,8 @@ render(){
         ready = true
     }
 
-    
-    
-    
     if (!!this.props.currentUser) {
 
-        // if(this.state.readyToCheck){
-        //     this.checkInput()
-        // }
-        
 
         this.bar = (
         
@@ -209,11 +203,13 @@ render(){
                     <div className="the-dropdown-on-nav-bar-search" id="the-dropdown-on-nav-bar-search">
                         { ready ? 
                             theUsers.map(user => 
+                                
                                 // <Link to={`/profile/${user.id}`} >
                                 <div key={user.id} className="list-search-user" onMouseDown={this.redirectProfile} data-user_id={user.id}>
                                     <div id='123 E' className="div-for-search-user-img">
                                         {/* <img className="search-user-img" src={user.photoUrl} alt="user avatar" /> */}
-                                        { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <img className="search-user-img" src={window.picLogoURL} alt="profile photo" />}
+                                        {/* { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <img className="search-user-img" src={window.picLogoURL} alt="profile photo" />} */}
+                                        { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <p className='profile-letter-default-search' >{user.username[0].toUpperCase()}</p>}
                                     </div>
                                     <div className="last-div-1">{user.username}</div>
                                 </div>

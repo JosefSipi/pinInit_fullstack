@@ -20,6 +20,7 @@ import CreatePin from './pin/create_pin_container';
 import CreatePinLink from './pin/create_pin_link_container';
 import PinShow from './pin/pin_show_container';
 import ScrollToTop from '../components/nav_bar/scroll_to_top';
+import LandingComponent from '../components/home/landing_container'
 
 
 export default () => (
@@ -41,6 +42,7 @@ export default () => (
             <div className="space-provider"></div>
                 <Route path="/home" component={Home}/>
             {/* <Route path={`/profile/`} */}
+            <Route exact path="/" component={LandingComponent}/>
             <Route path="/board/:id" component={BoardShow}/>
             <Route path="/pin/:id" component={PinShow} />
             <ProtectedRoute path='/pin-create' component={CreatePin}/>
