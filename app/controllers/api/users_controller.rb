@@ -63,9 +63,13 @@ class Api::UsersController < ApplicationController
     end
 
     def index
-        @users = User.limit(3).where("username LIKE '%#{params['input']}%'")
-
-        render :index
+        if params['controller'] == "api/users"
+            @users = User.all.limit(20)
+            render 'api/users/indexAll'
+        else
+            @users = User.limit(3).where("username LIKE '%#{params['input']}%'")
+            render :index
+        end
     end
 
     private

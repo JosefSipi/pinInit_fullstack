@@ -6,17 +6,18 @@ class Feed extends React.Component {
     constructor(props) {
         super(props);
 
-
-        
         this.state = {
             feed: null,
-            currentUser: null
+            currentUser: null,
+            usersFollowed: [],
+            numFollowers: null
         }
         
         this.photoLoaded = this.photoLoaded.bind(this);
         this.onMouseLeaveCall = this.onMouseLeaveCall.bind(this);
         this.onMouseEnterCall = this.onMouseEnterCall.bind(this);
         this.openTheLink = this.openTheLink.bind(this);
+        this.assembleFollowSugestion = this.assembleFollowSugestion.bind(this);
 
         
     }
@@ -58,11 +59,13 @@ class Feed extends React.Component {
     }
 
     componentDidMount(){
-        
 
         window.currentUser = this.props.currentUser
 
         this.setState({currentUser: this.props.currentUser})
+        this.setState({numFollowers: this.props.numFollowers})
+
+        this.assembleFollowSugestion()
         
         this.props.fetchFeedPins(this.props.currentUser.id).then(
             (data) => {
@@ -76,26 +79,32 @@ class Feed extends React.Component {
         
         if(this.props.feed !== prevProps.feed){
             this.setState({feed: this.props.feed})
-        }
+        } 
+    }
+
+    assembleFollowSugestion(){
+        this.props.fetchUsers().then(
+            data => {
+                this.setState({usersFollowed: Object.values(data.users.usersList)})
+                this.setState({ numFollowers: data.users.curUserFollCount})
+            }
+        )
     }
 
     render(){
-
-        
         
         if(!this.state.feed){
-            
             return null
         }
 
-        
-
+        let users = this.state.usersFollowed
         let pins = Object.values(this.state.feed)
-        
+        debugger
+
         return (
             <div>
                 <div className="pin-area-on-board-show" >
-                    {pins.length > 0 ? <div className="pin_container" id="pin_container">
+                    {this.state.numFollowers >= 3 ? <div className="pin_container" id="pin_container">
                         {pins.map(pin => 
                                 <Link data-link_title={pin.title} to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
 
@@ -120,8 +129,28 @@ class Feed extends React.Component {
 
                                 </Link>
                         )}
-                    </div> : <div className='it-looks-like'> 
-                        It looks like no one has posted anything ¯\_(ツ)_/¯
+                    </div> : 
+                    
+                    <div className='it-looks-like'>
+                        <div className='it_looks_main_div'>
+                            Follow some users with content you are interested in
+                            <ul className='ul-feed-for-follow'>
+                                {users.map(user => 
+                                <li key={user.id}>
+                                    <div>
+                                        <div id='123 E' className="div-for-search-user-img" >
+                                            { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <p className='profile-letter-default-search' >{user.username[0].toUpperCase()}</p>}
+                                        </div>
+                                        <div >{user.username}</div>
+                                        <div>
+                                            
+                                        </div>
+                                    </div>
+                                </li>
+                            )
+                                }
+                            </ul>
+                        </div>
                     </div> }
                     
                 </div>

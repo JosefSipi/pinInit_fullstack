@@ -3,6 +3,7 @@ import * as APIUtil from "../utils/user_utils";
 
 export const RECEIVE_USER = "RECEIVE_USER";
 export const RECEIVE_USERS = "RECEIVE_USERS";
+export const RECEIVE_USERS_INDEX = "RECEIVE_USERS_INDEX";
 export const RECEIVE_USER_PROFILE = "RECEIVE_USER_PROFILE";
 
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
@@ -32,6 +33,12 @@ export const receiveUsers = users => {
     }
 }
 
+export const receiveUsersIndex = users => {
+    return {
+        type: RECEIVE_USERS_INDEX,
+        users
+    }
+}
 
 export const fetchUser = userId => {
     return (dispatch) => {
@@ -39,6 +46,13 @@ export const fetchUser = userId => {
             .then((userinfo) => dispatch(receiveUser(userinfo)));
     };
 };
+
+export const fetchUsers = () => {
+    return (dispatch) => {
+        return APIUtil.fetchUsers()
+            .then(users => dispatch(receiveUsersIndex(users)));
+    }
+}
 
 export const fetchUserProfile = userId => {
     return (dispatch) => {
