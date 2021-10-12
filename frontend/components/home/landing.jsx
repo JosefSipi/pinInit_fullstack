@@ -19,6 +19,11 @@ class Landing extends React.Component{
 
     arrowClick(e){
         e.preventDefault();
+
+        let arrows = document.getElementsByClassName('arrow-landing')
+        arrows[0].classList.remove('pulse-animation')
+        arrows[1].classList.remove('pulse-animation')
+
         let pNum = this.state.displayPhoto
         
         if(e.currentTarget.id === 'landing-left'){
@@ -39,16 +44,16 @@ class Landing extends React.Component{
 
     render(){
 
-        debugger
         return (
 
             <div className='main-splash'>
-                <div onClick={this.arrowClick} className='arrow-landing' id='landing-left'><img src={window.left_arrow} alt="" /></div>
+                <div className='exp-pro'>Explore Pininit</div>
+                <div onClick={this.arrowClick} className='arrow-landing pulse-animation' id='landing-left'><img src={window.left_arrow} alt="" /></div>
                 <div className='list-div-splash'>
             
                     <img src={this.state.images[this.state.displayPhoto]} alt="gif 1" />
                 </div>
-                <div onClick={this.arrowClick} id='landing-right' className='arrow-landing' ><img src={window.right_arrow} alt="" /></div>
+                <div onClick={this.arrowClick} id='landing-right' className='arrow-landing pulse-animation' ><img src={window.right_arrow} alt="" /></div>
             </div>
         )
     }

@@ -62,7 +62,6 @@ logoutFunction(e){
     this.props.logout().then(
         (data) => {
             this.toggleContent(e)
-            debugger
             this.props.history.push('/')
         }
     )

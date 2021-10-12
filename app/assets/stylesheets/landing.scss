@@ -41,9 +41,34 @@
     font-size: 34px;
     text-align: center;
     margin: 20px;
+    &:hover{
+        cursor: pointer;
+    }
+
     img{
         height: inherit;
         width: auto;
         padding: 16px;
+    }
+}
+
+.exp-pro{
+    position: absolute;
+    top: 18vh;
+    font-size: 34px;
+}
+
+
+.pulse-animation{
+    animation: pulse 1500ms infinite;
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.15);
     }
 }
