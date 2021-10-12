@@ -23,13 +23,13 @@ class Landing extends React.Component{
         
         if(e.currentTarget.id === 'landing-left'){
             if(pNum === 0){
-                this.setState({displayPhoto: 5})
+                this.setState({displayPhoto: 4})
             } else {
                 this.setState({displayPhoto: pNum - 1})
             }
         } else {
             
-            if(pNum === 5){
+            if(pNum === 4){
                 this.setState({displayPhoto: 0})
             } else {
                 this.setState({displayPhoto: pNum + 1})
