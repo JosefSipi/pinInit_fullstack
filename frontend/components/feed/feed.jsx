@@ -18,6 +18,7 @@ class Feed extends React.Component {
         this.onMouseEnterCall = this.onMouseEnterCall.bind(this);
         this.openTheLink = this.openTheLink.bind(this);
         this.assembleFollowSugestion = this.assembleFollowSugestion.bind(this);
+        this.selectFollow = this.selectFollow.bind(this);
 
         
     }
@@ -91,6 +92,12 @@ class Feed extends React.Component {
         )
     }
 
+    selectFollow(e){
+        e.preventDefault();
+        e.currentTarget.classList.add('selected-follow-feed')
+        console.log('follow this user')
+    }
+
     render(){
         
         if(!this.state.feed){
@@ -140,7 +147,7 @@ class Feed extends React.Component {
                             <ul className='ul-feed-for-follow'>
                                 {users.map(user => Object.values(users[0].boards).length >= 1 ?
                                 <li key={user.id}>
-                                    <div>
+                                    <div className='list-div-feed' id={user.id} onClick={this.selectFollow}> 
                                         <div id='123 E' className="div-for-search-user-img" >
                                             { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <p className='profile-letter-default-search' >{user.username[0].toUpperCase()}</p>}
                                         </div>

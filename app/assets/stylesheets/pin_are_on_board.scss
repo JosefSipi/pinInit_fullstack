@@ -104,6 +104,27 @@ div.card-title-pin{
     margin-right: 27px;
 }
 
+.list-div-feed{
+
+    border-radius: 15px;
+    padding: 30px;
+    margin: 10px;
+    background-color: white;
+    border: gray 2px dashed;
+    &:hover{
+        border: black 2px dashed;
+        cursor: pointer;
+    }
+}
+
+.selected-follow-feed{
+    border: 2px black solid;
+    &:hover{
+        border: rgb(97, 97, 97) 4px solid;
+         padding: 28px;
+        cursor: pointer;
+    }
+}
 // ---------- initial log in -------------
 
 div.over-lay{
