@@ -63,8 +63,11 @@ class Api::UsersController < ApplicationController
     end
 
     def index
+
+        # Books.order("RAND()").first(5)
+
         if params['controller'] == "api/users"
-            @users = User.all.limit(20)
+            @users = User.all.where.not(id: current_user.id).sample(20)
             render 'api/users/indexAll'
         else
             @users = User.limit(3).where("username LIKE '%#{params['input']}%'")

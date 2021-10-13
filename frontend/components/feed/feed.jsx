@@ -98,6 +98,7 @@ class Feed extends React.Component {
         }
 
         let users = this.state.usersFollowed
+
         let pins = Object.values(this.state.feed)
         debugger
 
@@ -133,9 +134,11 @@ class Feed extends React.Component {
                     
                     <div className='it-looks-like'>
                         <div className='it_looks_main_div'>
-                            Follow some users with content you are interested in
+                            <div className='feed-div-top'>
+                                Follow some users you're interested in
+                            </div>
                             <ul className='ul-feed-for-follow'>
-                                {users.map(user => 
+                                {users.map(user => Object.values(users[0].boards).length >= 1 ?
                                 <li key={user.id}>
                                     <div>
                                         <div id='123 E' className="div-for-search-user-img" >
@@ -146,10 +149,14 @@ class Feed extends React.Component {
                                             
                                         </div>
                                     </div>
-                                </li>
+                                </li> : null
                             )
                                 }
                             </ul>
+                            <div className={this.state.numFollowers < 3 ? `feed-div-btm` : `make-it-red`}>
+                                {this.state.numFollowers < 3 ? <div className='btn-feed'>Pick {3 - this.state.numFollowers} more</div>  :
+                                <div className='btn-feed'>Done</div>}  
+                            </div>
                         </div>
                     </div> }
                     
