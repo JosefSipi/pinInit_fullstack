@@ -47,9 +47,9 @@ export const fetchUser = userId => {
     };
 };
 
-export const fetchUsers = () => {
+export const fetchUsers = dataStuff => {
     return (dispatch) => {
-        return APIUtil.fetchUsers()
+        return APIUtil.fetchUsers(dataStuff)
             .then(users => dispatch(receiveUsersIndex(users)));
     }
 }

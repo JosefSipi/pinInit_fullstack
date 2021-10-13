@@ -9,16 +9,17 @@ class Feed extends React.Component {
         this.state = {
             feed: null,
             currentUser: null,
-            usersFollowed: [],
-            numFollowers: null
+            usersFollowed: null,
+            numFollowers: null,
+            showFollowOpt: null
         }
         
         this.photoLoaded = this.photoLoaded.bind(this);
         this.onMouseLeaveCall = this.onMouseLeaveCall.bind(this);
         this.onMouseEnterCall = this.onMouseEnterCall.bind(this);
         this.openTheLink = this.openTheLink.bind(this);
-        this.assembleFollowSugestion = this.assembleFollowSugestion.bind(this);
         this.selectFollow = this.selectFollow.bind(this);
+        this.updateNumFollowers = this.updateNumFollowers.bind(this);
 
         
     }
@@ -64,9 +65,20 @@ class Feed extends React.Component {
         window.currentUser = this.props.currentUser
 
         this.setState({currentUser: this.props.currentUser})
-        this.setState({numFollowers: this.props.numFollowers})
 
-        this.assembleFollowSugestion()
+        this.props.fetchUsers('fetch for index').then(
+            data => {
+                this.setState({usersFollowed: Object.values(this.props.usersFollowed.usersList)})
+            }
+        )
+
+        this.props.numFollowing(this.props.currentUser.id).then(
+            (data) => {
+                // debugger
+                // console.log(data)
+                this.setState({showFollowOpt: this.props.numFollowers})
+            }
+        )
         
         this.props.fetchFeedPins(this.props.currentUser.id).then(
             (data) => {
@@ -76,43 +88,71 @@ class Feed extends React.Component {
         )
     }
 
+    updateNumFollowers(){
+        
+        this.props.numFollowing(this.props.currentUser.id)
+    }
+
     componentDidUpdate(prevProps){
         
         if(this.props.feed !== prevProps.feed){
             this.setState({feed: this.props.feed})
-        } 
-    }
-
-    assembleFollowSugestion(){
-        this.props.fetchUsers().then(
-            data => {
-                this.setState({usersFollowed: Object.values(data.users.usersList)})
-                this.setState({ numFollowers: data.users.curUserFollCount})
-            }
-        )
+        } else if(this.props.usersFollowed !== prevProps.usersFollowed){
+            this.setState({usersFollowed: Object.values(this.props.usersFollowed.usersList)})
+        } else if (this.props.numFollowers !== prevProps.numFollowers){
+            this.setState({numFollowers: this.props.numFollowers})
+        }
     }
 
     selectFollow(e){
         e.preventDefault();
-        e.currentTarget.classList.add('selected-follow-feed')
-        console.log('follow this user')
+
+        let userBox = e.currentTarget
+
+        // -------  toggle the class -----
+            if(userBox.classList.length >= 2){
+                let delteIds = {
+                    follower_id: this.props.currentUser.id,
+                    followed_user_id: Number(userBox.id),
+                    id: this.props.currentUser.id
+                }
+                this.props.unfollowUser(delteIds).then(
+                    data => {
+                        userBox.classList.remove('selected-follow-feed')
+                        this.updateNumFollowers()
+                    }
+                )
+            } else {
+                let followForm = {
+                    follower_id: this.props.currentUser.id,
+                    followed_user_id: Number(userBox.id)
+                }
+                this.props.createFollow(followForm).then(
+                    (data) => {
+                        userBox.classList.add('selected-follow-feed')
+                        this.updateNumFollowers()
+                        }
+                    )
+            }
+        // -------  toggle the class -----
     }
 
     render(){
         
         if(!this.state.feed){
             return null
+        }  else if (!this.state.usersFollowed){
+            return null
         }
-
+       
         let users = this.state.usersFollowed
-
         let pins = Object.values(this.state.feed)
+        
         debugger
-
         return (
             <div>
                 <div className="pin-area-on-board-show" >
-                    {this.state.numFollowers >= 3 ? <div className="pin_container" id="pin_container">
+                    {this.state.showFollowOpt >= 5 ? <div className="pin_container" id="pin_container">
                         {pins.map(pin => 
                                 <Link data-link_title={pin.title} to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
 
@@ -145,9 +185,9 @@ class Feed extends React.Component {
                                 Follow some users you're interested in
                             </div>
                             <ul className='ul-feed-for-follow'>
-                                {users.map(user => Object.values(users[0].boards).length >= 1 ?
+                                {users.map(user => 
                                 <li key={user.id}>
-                                    <div className='list-div-feed' id={user.id} onClick={this.selectFollow}> 
+                                    <div className={user.followThisUser ? 'list-div-feed selected-follow-feed' : 'list-div-feed'} id={user.id} onClick={this.selectFollow}> 
                                         <div id='123 E' className="div-for-search-user-img" >
                                             { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <p className='profile-letter-default-search' >{user.username[0].toUpperCase()}</p>}
                                         </div>
@@ -156,14 +196,14 @@ class Feed extends React.Component {
                                             
                                         </div>
                                     </div>
-                                </li> : null
+                                </li> 
                             )
                                 }
                             </ul>
-                            <div className={this.state.numFollowers < 3 ? `feed-div-btm` : `make-it-red`}>
-                                {this.state.numFollowers < 3 ? <div className='btn-feed'>Pick {3 - this.state.numFollowers} more</div>  :
-                                <div className='btn-feed'>Done</div>}  
-                            </div>
+                                <div className='feed-div-btm'>
+                                    {this.state.numFollowers < 5 ? <div className='btn-feed'>Pick {5 - this.state.numFollowers} more</div>  :
+                                    <div className='btn-feed done-btn'>Done</div>}  
+                                </div>
                         </div>
                     </div> }
                     

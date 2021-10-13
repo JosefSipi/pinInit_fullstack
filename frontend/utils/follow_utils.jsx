@@ -8,8 +8,15 @@ export const isFollowing = follows => {
     })
 }
 
-export const fetchUserFollowing = (userId) => {
+export const numFollowing = id => {
+    return $.ajax({
+        method: 'GET',
+        data: {id, fromNum: true},
+        url: `/api/users/${id}/follows`,
+    })
+}
 
+export const fetchUserFollowing = (userId) => {
     return $.ajax({
         method: 'GET',
         url: `/api/users/${userId.id}/follows`,

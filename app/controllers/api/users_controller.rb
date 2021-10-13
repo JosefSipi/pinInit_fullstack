@@ -37,8 +37,6 @@ class Api::UsersController < ApplicationController
 
     def update
 
-
-
         @user = User.find(params[:user][:id])
 
 
@@ -47,8 +45,8 @@ class Api::UsersController < ApplicationController
             render :show
         else
     
-            render jason: @user.errors.full_messages, status: 401
-            # render json: @user.errors.full_messages, status: 401
+            # render jason: @user.errors.full_messages, status: 401
+            render json: @user.errors.full_messages, status: 401
         end
     end
 
@@ -64,9 +62,7 @@ class Api::UsersController < ApplicationController
 
     def index
 
-        # Books.order("RAND()").first(5)
-
-        if params['controller'] == "api/users"
+        if params[:dataStuff] == "fetch for index"
             @users = User.all.where.not(id: current_user.id).sample(20)
             render 'api/users/indexAll'
         else

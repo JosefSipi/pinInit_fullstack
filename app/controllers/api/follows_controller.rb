@@ -49,23 +49,31 @@ class Api::FollowsController < ApplicationController
 
     def index
 
-        dataPar = params[:userId]
+        if(params[:fromNum] == "true")
 
-        follow = Follow.find_by(followed_user_id: dataPar[:profile_users_id], follower_id: dataPar[:current_user_id])
-
-        if follow 
-            @amFollowingStat = true
-        else
-            @amFollowingStat = false
+            numFollowing = User.find(params[:id]).followings.count
+            render json: numFollowing
+            
+        else  
+            dataPar = params[:userId]
+    
+            follow = Follow.find_by(followed_user_id: dataPar[:profile_users_id], follower_id: dataPar[:current_user_id])
+    
+            if follow 
+                @amFollowingStat = true
+            else
+                @amFollowingStat = false
+            end
+    
+            @user_id = params[:user_id]
+    
+            @followers = User.find(params[:user_id]).followers
+    
+            @following = User.find(params[:user_id]).followings
+    
+            render :index
         end
 
-        @user_id = params[:user_id]
-
-        @followers = User.find(params[:user_id]).followers
-
-        @following = User.find(params[:user_id]).followings
-
-        render :index
 
 
     end

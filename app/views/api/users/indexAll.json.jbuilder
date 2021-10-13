@@ -8,6 +8,9 @@ json.usersList do
         json.set! user.id do 
             json.extract! user, :id, :username
 
+            json.followThisUser !user.followers.where(id: current_user.id).empty?
+
+
             if (user.profile_pic.attached?)
                 json.photoUrl url_for(user.profile_pic)
             else

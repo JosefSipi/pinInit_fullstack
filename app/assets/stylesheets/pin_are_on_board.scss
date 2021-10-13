@@ -59,7 +59,7 @@ div.card-title-pin{
     border-radius: 30px;
     border: 1px red solid;
     height: 70vh;
-    max-width: 60vw;
+    max-width: 86vw;
     min-width: 50vw;
     overflow: hidden;
     position: absolute;
@@ -81,6 +81,9 @@ div.card-title-pin{
     font-size: 26px;
     font-weight: 550;
     overflow: hidden;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 3px;
 }
 
 .feed-div-btm{
@@ -104,6 +107,16 @@ div.card-title-pin{
     margin-right: 27px;
 }
 
+.done-btn{
+    background-color: #e60023;
+    color: white;
+    font-weight: 500;
+    &:hover{
+        cursor: pointer;
+        background-color: #ad081b;
+    }
+}
+
 .list-div-feed{
 
     border-radius: 15px;
@@ -124,6 +137,11 @@ div.card-title-pin{
          padding: 28px;
         cursor: pointer;
     }
+}
+
+.back-drop-initial-login{
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.208);
 }
 // ---------- initial log in -------------
 
