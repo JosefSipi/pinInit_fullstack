@@ -466,7 +466,9 @@ class UserShow extends React.Component {
                     
                     {if(!board.is_private){
                     
-                    return (<div className='dont-show-me' key={board.id} >
+                    return (
+                    
+                    <div className='dont-show-me' key={board.id} >
 
                         {/* <div className="logo-on-logged-in-header-board-tile" onClick={this.editPen} id={board.id}>
                                 <img id="logo-edit-board" src={window.penURL} alt="edit-pen-icon" />

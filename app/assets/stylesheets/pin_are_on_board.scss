@@ -22,7 +22,7 @@
     padding: 0;
     height: fit-content;
     width: 100vw;
-    height: 100vh;
+    // height: 100vh;
     overflow-y: scroll;
 }
 // ------------------------------------
@@ -44,26 +44,29 @@ div.card-title-pin{
 // ---------- initial log in -------------
 
 .it-looks-like{
+    display: flex;
     position: absolute;
     width: 100%;
-    height: 100%;
-    display: flex;
+    height: 100vh;
     align-items: center;
     justify-content: center;
-    
+
+    background: #00000094;
+    z-index: 300;
+    top: 0px;
 }
 
 .it_looks_main_div{
     display: flex;
     flex-direction: column;
     border-radius: 30px;
-    border: 1px red solid;
+    background: white;
     height: 70vh;
     max-width: 86vw;
     min-width: 50vw;
     overflow: hidden;
     position: absolute;
-    top: 6vh;
+    top: 15%;
 
 }
 
@@ -76,6 +79,7 @@ div.card-title-pin{
 .feed-div-top{
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: center;
     height: 60vh;
     font-size: 26px;
@@ -83,7 +87,8 @@ div.card-title-pin{
     overflow: hidden;
     padding-left: 32px;
     padding-right: 32px;
-    padding-top: 3px;
+    padding-top: 20px;
+    padding-bottom: 13px;
 }
 
 .feed-div-btm{
@@ -91,6 +96,7 @@ div.card-title-pin{
     align-items: center;
     justify-content: center;
     height: 60vh;
+    padding: 19px;
 }
 
 .btn-feed{
@@ -118,12 +124,13 @@ div.card-title-pin{
 }
 
 .list-div-feed{
-
+    display: flex;
     border-radius: 15px;
-    padding: 30px;
+    padding: 16px;
     margin: 10px;
     background-color: white;
     border: gray 2px dashed;
+    align-items: center;
     &:hover{
         border: black 2px dashed;
         cursor: pointer;
@@ -131,10 +138,10 @@ div.card-title-pin{
 }
 
 .selected-follow-feed{
-    border: 2px black solid;
+    border: 4px black solid;
+    padding: 14px;
     &:hover{
         border: rgb(97, 97, 97) 4px solid;
-         padding: 28px;
         cursor: pointer;
     }
 }
@@ -142,6 +149,39 @@ div.card-title-pin{
 .back-drop-initial-login{
     position: absolute;
     background-color: rgba(255, 0, 0, 0.208);
+}
+
+.div-pin-boards{
+    display: flex;
+    max-height: 116px;
+    overflow: hidden;
+    width: 100%;
+    align-items: center;
+    overflow: scroll;
+
+    border-radius: 6px;
+    justify-content: flex-end;
+    background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(85, 85, 85, 0.1));
+}
+
+.user-feed{
+    width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mod-feed-card{
+    height: 95px;
+    width: 153px;
+    justify-content: space-between;
+}
+
+.mod-feed-title-section{
+    flex-grow: 0;
+}
+
+.mod-feed-board-title{
+    width: 155px;
 }
 // ---------- initial log in -------------
 

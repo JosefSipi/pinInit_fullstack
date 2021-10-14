@@ -20,9 +20,56 @@ class Feed extends React.Component {
         this.openTheLink = this.openTheLink.bind(this);
         this.selectFollow = this.selectFollow.bind(this);
         this.updateNumFollowers = this.updateNumFollowers.bind(this);
+        this.displayTheseBoards = this.displayTheseBoards.bind(this);
 
         
     }
+
+    displayTheseBoards(boards){
+    return(
+        boards.map(board => 
+            {if(!board.is_private){
+                return (
+                    <div className='dont-show-me' key={board.id} >
+                        <div key={board.id} id="board-show-link">
+                            <div className="board-display-card mod-feed-card">
+
+                                <div className="image-section-board" id="image-section-board">
+                                    <div className="large-image-onboard">
+                                        <div className='inner-large-image1'>
+                                            {!!board.pinPhotos.one ? <img className="image-board-1" src={board.pinPhotos.one} alt="" /> : <img src='' alt='' />}
+                                        </div>
+                                    </div>
+
+                                    <div className="other-two-images">
+
+                                        <div className="top-box-123">
+                                            <div className="smaller-image-show-board-tiles1">
+                                                {!!board.pinPhotos.two ? <img className="image-board-1" src={board.pinPhotos.two} alt="" /> : <img src='' alt='' />}
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="bottom-box">
+                                            <div className="smaller-image-show-board-tiles1">
+                                                {!!board.pinPhotos.three ? <img className="image-board-1" src={board.pinPhotos.three} alt="" /> : <img src='' alt='' />}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            
+                            
+                                <div className="title-pin-section mod-feed-title-section">
+                                    <h2 className="board-title mod-feed-board-title">{ board.title.charAt(0).toUpperCase() + board.title.slice(1)}</h2>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> 
+                )
+            }}
+        )
+    )}
 
     openTheLink(e){
         e.preventDefault();
@@ -74,8 +121,6 @@ class Feed extends React.Component {
 
         this.props.numFollowing(this.props.currentUser.id).then(
             (data) => {
-                // debugger
-                // console.log(data)
                 this.setState({showFollowOpt: this.props.numFollowers})
             }
         )
@@ -152,7 +197,8 @@ class Feed extends React.Component {
         return (
             <div>
                 <div className="pin-area-on-board-show" >
-                    {this.state.showFollowOpt >= 5 ? <div className="pin_container" id="pin_container">
+                    {false ? <div className="pin_container" id="pin_container">
+                    {/* {this.state.showFollowOpt >= 5 ? <div className="pin_container" id="pin_container"> */}
                         {pins.map(pin => 
                                 <Link data-link_title={pin.title} to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
 
@@ -188,12 +234,15 @@ class Feed extends React.Component {
                                 {users.map(user => 
                                 <li key={user.id}>
                                     <div className={user.followThisUser ? 'list-div-feed selected-follow-feed' : 'list-div-feed'} id={user.id} onClick={this.selectFollow}> 
-                                        <div id='123 E' className="div-for-search-user-img" >
-                                            { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <p className='profile-letter-default-search' >{user.username[0].toUpperCase()}</p>}
-                                        </div>
-                                        <div >{user.username}</div>
                                         <div>
-                                            
+                                            <div id='123 E' className="div-for-search-user-img" >
+                                                { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <p className='profile-letter-default-search' >{user.username[0].toUpperCase()}</p>}
+                                            </div>
+                                            <div className='user-feed' >{user.username}</div>
+                                        </div>
+
+                                        <div className='div-pin-boards'>
+                                            {!!user.boards ? this.displayTheseBoards(Object.values(user.boards)) : 'no boards'}
                                         </div>
                                     </div>
                                 </li> 
