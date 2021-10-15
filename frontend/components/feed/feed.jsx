@@ -157,7 +157,7 @@ class Feed extends React.Component {
     selectFollow(e){
         e.preventDefault();
 
-        debugger
+        
 
         let userBox = e.currentTarget
 
@@ -202,7 +202,7 @@ class Feed extends React.Component {
         let users = this.state.usersFollowed
         let pins = Object.values(this.state.feed)
         
-        debugger
+        
         return (
             <div>
                 <div className="pin-area-on-board-show" >
