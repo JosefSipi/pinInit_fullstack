@@ -21,10 +21,15 @@ class Feed extends React.Component {
         this.selectFollow = this.selectFollow.bind(this);
         this.updateNumFollowers = this.updateNumFollowers.bind(this);
         this.displayTheseBoards = this.displayTheseBoards.bind(this);
+        this.reloadFunc = this.reloadFunc.bind(this);
 
         
     }
 
+    reloadFunc(e){
+        e.preventDefault();
+        window.location.reload();
+    }
     displayTheseBoards(boards){
     return(
         boards.map(board => 
@@ -152,6 +157,8 @@ class Feed extends React.Component {
     selectFollow(e){
         e.preventDefault();
 
+        debugger
+
         let userBox = e.currentTarget
 
         // -------  toggle the class -----
@@ -164,6 +171,7 @@ class Feed extends React.Component {
                 this.props.unfollowUser(delteIds).then(
                     data => {
                         userBox.classList.remove('selected-follow-feed')
+                        userBox.parentElement.classList.remove('toggle-border')
                         this.updateNumFollowers()
                     }
                 )
@@ -175,6 +183,7 @@ class Feed extends React.Component {
                 this.props.createFollow(followForm).then(
                     (data) => {
                         userBox.classList.add('selected-follow-feed')
+                        userBox.parentElement.classList.add('toggle-border')
                         this.updateNumFollowers()
                         }
                     )
@@ -197,8 +206,7 @@ class Feed extends React.Component {
         return (
             <div>
                 <div className="pin-area-on-board-show" >
-                    {false ? <div className="pin_container" id="pin_container">
-                    {/* {this.state.showFollowOpt >= 5 ? <div className="pin_container" id="pin_container"> */}
+                    {this.state.showFollowOpt >= 5 ? <div className="pin_container" id="pin_container">
                         {pins.map(pin => 
                                 <Link data-link_title={pin.title} to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
 
@@ -233,25 +241,27 @@ class Feed extends React.Component {
                             <ul className='ul-feed-for-follow'>
                                 {users.map(user => 
                                 <li key={user.id}>
-                                    <div className={user.followThisUser ? 'list-div-feed selected-follow-feed' : 'list-div-feed'} id={user.id} onClick={this.selectFollow}> 
-                                        <div>
-                                            <div id='123 E' className="div-for-search-user-img" >
-                                                { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <p className='profile-letter-default-search' >{user.username[0].toUpperCase()}</p>}
+                                    <div className={user.followThisUser ? 'outside-border-layer toggle-border' : 'outside-border-layer'}>
+                                        <div className={user.followThisUser ? 'list-div-feed selected-follow-feed' : 'list-div-feed'} id={user.id} onClick={this.selectFollow}> 
+                                            <div className='profile-icon-feed'>
+                                                <div id='123 E' className="div-for-search-user-img mod-feed-img" >
+                                                    { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <p className='profile-letter-default-search' >{user.username[0].toUpperCase()}</p>}
+                                                </div>
+                                                <div className='user-feed' >{(user.username).trim()}</div>
                                             </div>
-                                            <div className='user-feed' >{user.username}</div>
-                                        </div>
 
-                                        <div className='div-pin-boards'>
-                                            {!!user.boards ? this.displayTheseBoards(Object.values(user.boards)) : 'no boards'}
+                                            <div className='div-pin-boards'>
+                                                {!!user.boards ? this.displayTheseBoards(Object.values(user.boards)) : <div className='no-board-yet-feed'>This user hasn't created a board yet :/</div>  }
+                                            </div>
                                         </div>
-                                    </div>
+                                    </div>    
                                 </li> 
                             )
                                 }
                             </ul>
                                 <div className='feed-div-btm'>
                                     {this.state.numFollowers < 5 ? <div className='btn-feed'>Pick {5 - this.state.numFollowers} more</div>  :
-                                    <div className='btn-feed done-btn'>Done</div>}  
+                                    <div className='btn-feed done-btn' onClick={this.reloadFunc}>Done</div>}  
                                 </div>
                         </div>
                     </div> }

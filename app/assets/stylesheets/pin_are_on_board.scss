@@ -127,21 +127,22 @@ div.card-title-pin{
     display: flex;
     border-radius: 15px;
     padding: 16px;
-    margin: 10px;
+    margin: 4px;
     background-color: white;
-    border: gray 2px dashed;
+    border: #6d6d6d 1px solid;
     align-items: center;
     &:hover{
-        border: black 2px dashed;
+        background-color: rgb(249, 249, 249);
+        border: black 1px solid;
         cursor: pointer;
     }
 }
 
 .selected-follow-feed{
-    border: 4px black solid;
-    padding: 14px;
+    border: 1px black solid;
     &:hover{
-        border: rgb(97, 97, 97) 4px solid;
+        background-color: rgb(249, 249, 249);
+        border: rgb(203, 203, 203) 1px solid;
         cursor: pointer;
     }
 }
@@ -161,7 +162,7 @@ div.card-title-pin{
 
     border-radius: 6px;
     justify-content: flex-end;
-    background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(85, 85, 85, 0.1));
+    // background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(85, 85, 85, 0.1));
 }
 
 .user-feed{
@@ -178,10 +179,45 @@ div.card-title-pin{
 
 .mod-feed-title-section{
     flex-grow: 0;
+    width: inherit;
+    text-align: center;
 }
 
 .mod-feed-board-title{
     width: 155px;
+    padding-left: 0;
+}
+
+.outside-border-layer{
+    border: transparent 2px solid;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.toggle-border{
+    border: black 2px solid;
+}
+
+.profile-icon-feed{
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.mod-feed-img{
+    margin-right: 0;
+}
+.no-board-yet-feed{
+    font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 // ---------- initial log in -------------
 
