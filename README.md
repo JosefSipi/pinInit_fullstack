@@ -2,7 +2,6 @@
 
 
 ### *By Joseph Sipiorski* 
-___
 <br>
 
 # Overview of Pininit
