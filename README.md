@@ -1,7 +1,8 @@
 # **Pininit** - [Live Link](https://pininit.herokuapp.com/#/)
 
 
-## *By Joseph Sipiorski* 
+### *By Joseph Sipiorski* 
+___
 <br>
 
 # Overview of Pininit
