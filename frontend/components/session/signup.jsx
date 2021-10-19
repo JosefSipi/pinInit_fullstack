@@ -6,20 +6,24 @@ class SignUp extends React.Component {
         super(props);
 
         this.state = {
-            email: "",
+            email: '',
             password: "",
             age: '',
             // profile_pic: null          //--form Data format -'refactor'
         };
         this.state = {
-            errors: null
+            errors: null,
+            emailErrorCheck: null
         }
 
         
         this.handelSubmit = this.handelSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
         this.handelFile = this.handelFile.bind(this);
+        this.validateEmail = this.validateEmail.bind(this);
     }
+
+
 
     onChange(field){
         return (e) => {
@@ -27,16 +31,48 @@ class SignUp extends React.Component {
         };
     }
 
+    validateEmail(){
+        
+
+        let input = this.state.email;
+        const isValidTxt = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        // const otherValidTxt = /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/;
+
+        if(isValidTxt.test(input)){
+            return false
+        } else {
+            if(input.trim() === ''){
+                
+                return "You missed a spot! Don't forget to add your email."
+            } else {
+                
+                return "Hmm...that doesn't look like an email address." 
+            }
+        }
+
+        
+
+    }
+
 // -- using form data format--
 
     handelSubmit(e) {
         e.preventDefault();
 
-        this.props.createNewUser(this.state)
-            .then(() => {
-                this.props.history.push('/feed'),
-                    this.props.closeModal();
-            }); 
+        
+
+        if(!!this.validateEmail()){
+            
+            this.setState({emailErrorCheck: this.validateEmail()})
+        } else {
+            
+            this.props.createNewUser(this.state)
+                .then(() => {
+                    this.props.history.push('/feed'),
+                        this.props.closeModal();
+                }); 
+        }
+
     }
 
     renderErrors() {
@@ -60,12 +96,16 @@ class SignUp extends React.Component {
         
 
 
-        let emailError
-        let pwError
-        let ageError
+        let emailError = this.state.emailErrorCheck;
+        let pwError = null;
+        let ageError = null;
+
+        
 
         this.props.errors.map((error) => {
+            
             if(error === "Age can't be blank") {
+                
                 ageError = "Age can't be blank"
             } else if (error === "Password is too short (minimum is 6 characters)"){
                 pwError = "Your password is too short! You need 6+ characters."
@@ -73,7 +113,6 @@ class SignUp extends React.Component {
                 emailError = 'Email has already been taken'
             }
         }
-
         )
 
         return (
