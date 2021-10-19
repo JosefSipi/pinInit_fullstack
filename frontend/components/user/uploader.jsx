@@ -24,15 +24,17 @@ class Uploader extends React.Component {
    
     handelSubmit(theStateStuff) {
         // e.preventDefault();
+
         const formData = new FormData();
         formData.append('user[profile_pic]', theStateStuff.profile_pic);
         formData.append('user[id]', theStateStuff.id);
         // formData.append('user[profile_pic]', this.state.profile_pic);
         // formData.append('user[id]', this.props.currentUser.id);
 
-        this.props.updateUser(formData)
+        this.props.updateUser(formData, this.props.fetchUser)
             .then(() => {
                 this.props.closeModal();
+                window.location.reload();
             });
     }
 
