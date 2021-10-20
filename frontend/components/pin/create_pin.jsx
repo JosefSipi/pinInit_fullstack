@@ -39,8 +39,84 @@ class CreatePin extends React.Component {
         this.supTextShow = this.supTextShow.bind(this);
         this.toggleDesTxt = this.toggleDesTxt.bind(this);
         this.populateBoardField = this.populateBoardField.bind(this);
-        this.populateBoardTitle = this.populateBoardTitle.bind(this);
+        // this.populateBoardTitle = this.populateBoardTitle.bind(this);
         this.createABoard = this.createABoard.bind(this);
+        this.boardDropDownSelectCreate = this.boardDropDownSelectCreate.bind(this);
+    }
+
+    boardDropDownSelectCreate(){
+        
+        const boardsFromState = this.state.boards
+
+        const boards = Object.values(boardsFromState)
+        const objBoards = {...boardsFromState}
+        // const boards = Object.values(this.props.boards.boards)
+        // const objBoards = {...this.props.boards.boards}
+
+
+        let displayBoardId = this.state.pin.board_id
+
+        let displayTitle = boardsFromState[displayBoardId]
+        // let displayTitle = this.props.boards.boards[this.state.pin.board_id]
+
+        if(displayBoardId === null && boards.length === 0){
+            displayTitle = 'Select'
+        } else if (displayBoardId === null && boards.length > 0) {
+            
+            displayTitle = objBoards[Object.keys(objBoards)[0]].title
+        } else {
+            displayTitle = objBoards[displayBoardId].title
+        }
+
+        // let prevState = this.state.pin
+        // prevState["board_id"] = e.currentTarget.id
+        // this.setState({ pin: prevState })
+
+        return (
+            <div className="left-top-bar-createpindiv">
+                            
+                <div placeholder="Select" id="board-dd-create-pin" className="board-dd-create-pin" onClick={this.handelUlClick}>
+                    <div>{displayTitle}</div>
+                </div>
+
+                <div className="down-arrow-div" onClick={this.handelUlClick} >
+                    <img src={window.downArrowURL} alt="down arrow icon" id="down-arrow-image-create-pin" />
+                </div>
+
+                <div className="save-button-create-pin" onClick={this.handelSubmit}>Save</div>
+            
+                <div className="board-dropdown-create-pin" id="board-dropdown-create-pin">
+                    <div className='arround-ul-dd'>                                   
+                        <ul className="board-dropdown-ol" id="board-dropdown-ol">
+                        {boards.map(board => 
+                            <div className="this-list-children-pin" key={board.id} onClick={this.boardClickSelect} id={board.id} onMouseEnter={this.mouseHoverBoard} onMouseLeave={this.mouseHoverBoard}>
+                                <div className='around-dd-board-pin-display'>
+                                    <div className='rounded-border-for-img'>
+                                        {board.pinPhotos.one ? <img className='photo-pin-in-board-opt' src={board.pinPhotos.one} alt="" /> : null}
+                                    </div>
+                                </div> 
+                                
+                                <div>
+                                    {board.title.length > 20 ? board.title.slice(0, 20).trim() + "..." : board.title}
+                                </div>
+
+                                <div className="logo-on-logged-in-header-board-lock-pin" style={board.is_private ? {display: "flex" } : { display: "none" }}>
+                                    <img id="logo-lock-icon-pin-page" src={window.lockURL} alt="lock-icon" />
+                                </div>
+
+                            </div>
+                        )}
+                        </ul> 
+                    </div>
+                    <div className='bottom-section-in-dd-pin' onClick={this.createABoard}>
+                        <div className='red-plus-icon-div'>
+                            <img className='red-plus-icon' src={window.redPlusIcon} alt="red +" />
+                        </div>
+                        <div className='d334'>Create Board</div>
+                    </div>
+                </div>
+            </div>
+        )
     }
 
     createABoard(){
@@ -49,28 +125,28 @@ class CreatePin extends React.Component {
 
     }
 
-    populateBoardTitle(id){
+    // populateBoardTitle(id){
 
-        const boards = Object.values(this.props.boards.boards)
-        const objBoards = {...this.props.boards.boards}
+    //     const boards = Object.values(this.props.boards.boards)
+    //     const objBoards = {...this.props.boards.boards}
 
-        if(id === null && boards.length === 0){
-            return (
-                <div className='select-a-board'>Select</div>
-            )
-        } else if (id === null && boards.length > 0) {
-            let prevState = this.state.pin
-            prevState["board_id"] = id
-            this.setState({ pin: prevState })
-            return (
-                objBoards[Object.keys(objBoards)[0]].title
-            )
-        } else {
-            return (
-                objBoards[id].title
-            )
-        }
-    }
+    //     if(id === null && boards.length === 0){
+    //         return (
+    //             <div className='select-a-board'>Select</div>
+    //         )
+    //     } else if (id === null && boards.length > 0) {
+    //         let prevState = this.state.pin
+    //         prevState["board_id"] = id
+    //         this.setState({ pin: prevState })
+    //         return (
+    //             objBoards[Object.keys(objBoards)[0]].title
+    //         )
+    //     } else {
+    //         return (
+    //             objBoards[id].title
+    //         )
+    //     }
+    // }
 
     toggleDesTxt(e){
         e.preventDefault();
@@ -139,12 +215,15 @@ class CreatePin extends React.Component {
     componentDidMount(){
         // this.populateBoardField()
         
+        
         this.props.fetchBoards(this.props.currentUser.id).then(
             (data) => {
+                
                 this.setState({boards: data.boards})
             }
         )
 
+        
         if (!window.currentUser) {
         } else {
             this.props.fetchUser(window.currentUser.id);
@@ -153,10 +232,11 @@ class CreatePin extends React.Component {
 
     componentDidUpdate(prevProps){
         
-    if(prevProps.boards !== this.props.boards){
         
-        this.setState({boards: this.props.boards.boards})
-    }
+        if(prevProps.boards !== this.props.boards){
+            
+            this.setState({boards: this.props.boards.boards})
+        }
     }
 
     handelAddText(e){
@@ -171,6 +251,15 @@ class CreatePin extends React.Component {
         e.preventDefault();
 
         let backdrop = document.getElementById('backdrop-div-create-pin')
+        
+
+        this.setState({boards: this.props.boards.boards})
+
+        // set board props to state
+        // set dropdown display as block
+        // render an ul within dropdown display from this.state.boards
+
+        
 
         if(backdrop.style.display === "none"){
             backdrop.style.display = "block"
@@ -186,6 +275,7 @@ class CreatePin extends React.Component {
             ul.style.display = "block"
             backdrop.style.display = "block"
         }
+        
     }
 
     inputChange(field){
@@ -317,19 +407,12 @@ class CreatePin extends React.Component {
         if (!this.props.boards.boards || this.props.boards.boards === undefined || this.props.boards.boards.length === 0){
             return null
         }
+
         
-        const boards = Object.values(this.props.boards.boards)
-        const objBoards = {...this.props.boards.boards}
 
-        let displayTitle = this.props.boards.boards[this.state.pin.board_id]
-
-        if(this.state.pin.board_id === null && boards.length === 0){
-            displayTitle = 'Select'
-        } else if (this.state.pin.board_id === null && boards.length > 0) {
-            displayTitle = objBoards[Object.keys(objBoards)[0]].title
-        } else {
-            displayTitle = objBoards[this.state.pin.board_id].title
-        }
+        const boardsFromProps = this.props.boards.boards
+        const boardsFromState = this.state.boards
+        
 
         let description1 = 500 - this.state.pin.description.length
 
@@ -355,49 +438,7 @@ class CreatePin extends React.Component {
                             <img src={window.moreURL} alt="more icon" id="more-logo-icon"/>
                         </div>
 
-                        <div className="left-top-bar-createpindiv">
-                            
-                            <div placeholder="Select" id="board-dd-create-pin" className="board-dd-create-pin" onClick={this.handelUlClick}>
-                                <div>{displayTitle}</div>
-                            </div>
-
-                            <div className="down-arrow-div" onClick={this.handelUlClick} >
-                                <img src={window.downArrowURL} alt="down arrow icon" id="down-arrow-image-create-pin" />
-                            </div>
-
-                            <div className="save-button-create-pin" onClick={this.handelSubmit}>Save</div>
-                        
-                                <div className="board-dropdown-create-pin" id="board-dropdown-create-pin">
-                                    <div className='arround-ul-dd'>                                   
-                                        <ul className="board-dropdown-ol" id="board-dropdown-ol">
-                                        {boards.map(board => 
-                                            <div className="this-list-children-pin" key={board.id} onClick={this.boardClickSelect} id={board.id} onMouseEnter={this.mouseHoverBoard} onMouseLeave={this.mouseHoverBoard}>
-                                                <div className='around-dd-board-pin-display'>
-                                                    <div className='rounded-border-for-img'>
-                                                        {board.pinPhotos.one ? <img className='photo-pin-in-board-opt' src={board.pinPhotos.one} alt="" /> : null}
-                                                    </div>
-                                                </div> 
-                                                
-                                                <div>
-                                                    {board.title.length > 20 ? board.title.slice(0, 20).trim() + "..." : board.title}
-                                                </div>
-
-                                                <div className="logo-on-logged-in-header-board-lock-pin" style={board.is_private ? {display: "flex" } : { display: "none" }}>
-                                                    <img id="logo-lock-icon-pin-page" src={window.lockURL} alt="lock-icon" />
-                                                </div>
-
-                                            </div>
-                                        )}
-                                        </ul> 
-                                    </div>
-                                    <div className='bottom-section-in-dd-pin' onClick={this.createABoard}>
-                                        <div className='red-plus-icon-div'>
-                                            <img className='red-plus-icon' src={window.redPlusIcon} alt="red +" />
-                                        </div>
-                                        <div className='d334'>Create Board</div>
-                                    </div>
-                                </div>
-                        </div>
+                        { !!this.state.boards ? this.boardDropDownSelectCreate() : null}
 
                             {/* ------------------ drop down part --------------- */}
                     </div>

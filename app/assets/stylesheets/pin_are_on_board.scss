@@ -34,7 +34,9 @@ img.pin-photo {
     border-radius: 16px;
 }
 div.card-title-pin{
-    text-indent: 10px;
+    // text-indent: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     align-self: flex-start;
     font-size: 15px;
     font-weight: 600;
