@@ -1,6 +1,8 @@
 import React from 'react';
 // import { Redirect } from 'react-router-dom';
 import LoadingIcon from './loading';
+import { useForm } from "react-hook-form";
+import * as yup from 'yup';
 
 class CreatePin extends React.Component {
     constructor(props) {
@@ -21,7 +23,8 @@ class CreatePin extends React.Component {
             thePhotoURL: "",
             loading: false,
             boardTitle: false,
-            boards: null
+            boards: null,
+            img_err: false
         }
 
         this.handelAddText = this.handelAddText.bind(this);
@@ -214,6 +217,9 @@ class CreatePin extends React.Component {
 
     deletePreview(e){
         e.preventDefault();
+
+        this.setState({img_err: false})
+
        let labelElement = document.getElementById('input-image-label-pin')
        labelElement.style.display = 'flex'
 
@@ -221,27 +227,36 @@ class CreatePin extends React.Component {
        uploadImageStateEl.style.display = 'none';
     }
 
-    handelPhotoSelect(e){
-        const prevState = this.state.pin
-        prevState["photo"] = e.currentTarget.files[0]
-        
-        const file = e.currentTarget.files[0];
-        const fileReader = new FileReader();
-        fileReader.onloadend = () => {
-            
-            this.setState({ pin: prevState, thePhotoURL: fileReader.result, isTrue: true });
-        }
-        
-        if(file) {
-            fileReader.readAsDataURL(file);
-        }
     
 
-       let labelElement = document.getElementById('input-image-label-pin')
-       labelElement.style.display = 'none'
+    handelPhotoSelect(e){
 
-       let uploadImageStateEl = document.getElementById('modals_pin-display')
-       uploadImageStateEl.style.display = 'flex';
+        if(e.currentTarget.files[0].type === 'image/jpeg') {
+            const prevState = this.state.pin
+    
+            prevState["photo"] = e.currentTarget.files[0]
+            
+            const file = e.currentTarget.files[0];
+            const fileReader = new FileReader();
+            fileReader.onloadend = () => {
+                
+                this.setState({ pin: prevState, thePhotoURL: fileReader.result, isTrue: true });
+            }
+            
+            if(file) {
+                fileReader.readAsDataURL(file);
+            }
+        
+    
+           let labelElement = document.getElementById('input-image-label-pin')
+           labelElement.style.display = 'none'
+    
+           let uploadImageStateEl = document.getElementById('modals_pin-display')
+           uploadImageStateEl.style.display = 'flex';
+        } else {
+            this.setState({img_err: true}) 
+        }
+    
        
     }
 
@@ -302,8 +317,6 @@ class CreatePin extends React.Component {
         if (!this.props.boards.boards || this.props.boards.boards === undefined || this.props.boards.boards.length === 0){
             return null
         }
-
-        
         
         const boards = Object.values(this.props.boards.boards)
         const objBoards = {...this.props.boards.boards}
@@ -395,12 +408,12 @@ class CreatePin extends React.Component {
 
                             <label htmlFor="input-image-pin" id="input-image-label-pin">
                                 
-                                <div className="upload-img-container">
+                                <div className={this.state.img_err ? 'upload-img-container-err' : 'upload-img-container'}>
                                     <div className="doted-border">
-                                        <img src={window.upArrowURL} alt="up Arrow" id="up-arrow-icon" />
+                                        {this.state.img_err ?  <img src={window.redWarning} alt="Alert icon" id="up-arrow-icon" /> : <img src={window.upArrowURL} alt="up Arrow" id="up-arrow-icon" />}
 
-                                        <div className="drag-class-name">Click to upload</div>
-                                        <div className="second-blerb-pin">Recomendation: Use high-quality .jpg files less than 20MB</div>
+                                        <div className={this.state.img_err ? 'drag-class-name red-txt' : "drag-class-name" }>{this.state.img_err ? "Your upload failed because it's the wrong format." : 'Click to upload'}</div>
+                                        <div className={this.state.img_err ? 'second-blerb-pin red-txt' : "second-blerb-pin" }>Recomendation: Use high-quality .jpg files less than 20MB</div>
                                     </div>
                                 </div>
 

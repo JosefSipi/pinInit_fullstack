@@ -328,6 +328,15 @@ div.doted-border{
 
 .upload-img-container{
     background-color: rgba(239, 239, 239, 1);
+    color: #151515;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+div.upload-img-container-err{
+    border: 1px red solid;
+    background-color: #fff6f6;
+    color: red;
     border-radius: 8px;
     padding: 10px;
 }
@@ -381,7 +390,13 @@ div.doted-border{
     padding-right: 50px;
     padding-left: 50px;
     color: #151515;
+    
 }
+
+.red-txt{
+    color: red;
+}
+
 
 .delete-icon-logo{
     height: 18px;
