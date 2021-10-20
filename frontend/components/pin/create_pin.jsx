@@ -24,7 +24,8 @@ class CreatePin extends React.Component {
             loading: false,
             boardTitle: false,
             boards: null,
-            img_err: false
+            img_err: false,
+            showHelpDes: false,
         }
 
         this.handelAddText = this.handelAddText.bind(this);
@@ -39,9 +40,17 @@ class CreatePin extends React.Component {
         this.supTextShow = this.supTextShow.bind(this);
         this.toggleDesTxt = this.toggleDesTxt.bind(this);
         this.populateBoardField = this.populateBoardField.bind(this);
-        // this.populateBoardTitle = this.populateBoardTitle.bind(this);
         this.createABoard = this.createABoard.bind(this);
         this.boardDropDownSelectCreate = this.boardDropDownSelectCreate.bind(this);
+        this.helpDescription = this.helpDescription.bind(this);
+    }
+
+    helpDescription(){
+        debugger
+        let displayyYY = !Object.values(this.state.boards)[0].pinPhotos.one
+        if (displayyYY){
+            this.setState({showHelpDes: true})
+        }
     }
 
     boardDropDownSelectCreate(){
@@ -124,29 +133,6 @@ class CreatePin extends React.Component {
         this.props.openModal('createBoard')
 
     }
-
-    // populateBoardTitle(id){
-
-    //     const boards = Object.values(this.props.boards.boards)
-    //     const objBoards = {...this.props.boards.boards}
-
-    //     if(id === null && boards.length === 0){
-    //         return (
-    //             <div className='select-a-board'>Select</div>
-    //         )
-    //     } else if (id === null && boards.length > 0) {
-    //         let prevState = this.state.pin
-    //         prevState["board_id"] = id
-    //         this.setState({ pin: prevState })
-    //         return (
-    //             objBoards[Object.keys(objBoards)[0]].title
-    //         )
-    //     } else {
-    //         return (
-    //             objBoards[id].title
-    //         )
-    //     }
-    // }
 
     toggleDesTxt(e){
         e.preventDefault();
@@ -501,8 +487,15 @@ class CreatePin extends React.Component {
                             </textarea>
 
                             <div className="footer-create-pin-gray-button" onClick={this.handelAddText} id="alt-text-area-button">Add alt text</div>
-
-                            <input className="text-area-pin-create last-in-556" onChange={this.inputChange('websiteURL')} type="text" placeholder="Add a destination link"/>
+                            {
+                                <div className='blue-info'>
+                                    <div>
+                                        <img src={window.whiteX} alt="X" />
+                                    </div>
+                                    <p>The destination link is where you can add a URL to direct your followers to where on the internet you found this pin, if applicable </p>
+                                </div>
+                            }
+                            <input className="text-area-pin-create last-in-556" onFocus={this.helpDescription} onChange={this.inputChange('websiteURL')} type="text" placeholder="Add a destination link"/>
                         </div>
                     </div>
 
