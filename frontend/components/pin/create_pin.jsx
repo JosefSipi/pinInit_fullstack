@@ -1,8 +1,6 @@
 import React from 'react';
 // import { Redirect } from 'react-router-dom';
 import LoadingIcon from './loading';
-import { useForm } from "react-hook-form";
-import * as yup from 'yup';
 
 class CreatePin extends React.Component {
     constructor(props) {
@@ -26,6 +24,7 @@ class CreatePin extends React.Component {
             boards: null,
             img_err: false,
             showHelpDes: false,
+            showHelpMount: false,
         }
 
         this.handelAddText = this.handelAddText.bind(this);
@@ -45,11 +44,19 @@ class CreatePin extends React.Component {
         this.helpDescription = this.helpDescription.bind(this);
     }
 
+
+
     helpDescription(){
-        debugger
-        let displayyYY = !Object.values(this.state.boards)[0].pinPhotos.one
-        if (displayyYY){
+
+        if (this.state.showHelpMount){
+
             this.setState({showHelpDes: true})
+            
+            setTimeout(() => {
+                this.setState({showHelpDes: false})
+                this.setState({showHelpMount: false})
+            }, 10000)
+
         }
     }
 
@@ -59,14 +66,11 @@ class CreatePin extends React.Component {
 
         const boards = Object.values(boardsFromState)
         const objBoards = {...boardsFromState}
-        // const boards = Object.values(this.props.boards.boards)
-        // const objBoards = {...this.props.boards.boards}
 
 
         let displayBoardId = this.state.pin.board_id
 
         let displayTitle = boardsFromState[displayBoardId]
-        // let displayTitle = this.props.boards.boards[this.state.pin.board_id]
 
         if(displayBoardId === null && boards.length === 0){
             displayTitle = 'Select'
@@ -76,10 +80,6 @@ class CreatePin extends React.Component {
         } else {
             displayTitle = objBoards[displayBoardId].title
         }
-
-        // let prevState = this.state.pin
-        // prevState["board_id"] = e.currentTarget.id
-        // this.setState({ pin: prevState })
 
         return (
             <div className="left-top-bar-createpindiv">
@@ -199,13 +199,17 @@ class CreatePin extends React.Component {
 
 
     componentDidMount(){
-        // this.populateBoardField()
-        
+
         
         this.props.fetchBoards(this.props.currentUser.id).then(
             (data) => {
-                
                 this.setState({boards: data.boards})
+
+                if(window.currentUser.id === 5){
+                    this.setState({showHelpMount: true})
+                } else {
+                    this.setState({showHelpMount: !Object.values(this.state.boards)[0].pinPhotos.one})
+                }
             }
         )
 
@@ -214,6 +218,7 @@ class CreatePin extends React.Component {
         } else {
             this.props.fetchUser(window.currentUser.id);
         }
+
     }
 
     componentDidUpdate(prevProps){
@@ -487,14 +492,15 @@ class CreatePin extends React.Component {
                             </textarea>
 
                             <div className="footer-create-pin-gray-button" onClick={this.handelAddText} id="alt-text-area-button">Add alt text</div>
-                            {
-                                <div className='blue-info'>
+                            
+                            {this.state.showHelpDes ? <div className='blue-info'>
                                     <div>
-                                        <img src={window.whiteX} alt="X" />
+                                        <img onClick={() => {this.setState({showHelpDes: false, showHelpMount: false})}} src={window.whiteX} alt="X" />
                                     </div>
                                     <p>The destination link is where you can add a URL to direct your followers to where on the internet you found this pin, if applicable </p>
-                                </div>
+                                </div> : null
                             }
+
                             <input className="text-area-pin-create last-in-556" onFocus={this.helpDescription} onChange={this.inputChange('websiteURL')} type="text" placeholder="Add a destination link"/>
                         </div>
                     </div>

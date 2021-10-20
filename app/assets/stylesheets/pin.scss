@@ -677,6 +677,8 @@ img.red-plus-icon{
 @keyframes fadein {
   0% { opacity: 0; }
   5% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 .blue-info{
@@ -684,7 +686,7 @@ img.red-plus-icon{
 
     position: absolute;
     bottom: 94px;
-    width: 382px;
+    width: 314px;
     background: #0a79e9;
     color: white;
     display: flex;
@@ -702,12 +704,16 @@ img.red-plus-icon{
         justify-content: flex-end;
         padding-top: 1px;
         img{
-            height: inherit;
+            height: 20px;
+            &:hover{
+                cursor: pointer;
+                height: 23px;
+            }
         }
     }
 
     p{
-        margin-top: 13px;
+        margin-top: 5px;
         margin-bottom: 18px;
         text-align: center;
         font-size: 12px;
