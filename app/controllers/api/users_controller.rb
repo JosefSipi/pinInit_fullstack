@@ -68,7 +68,8 @@ class Api::UsersController < ApplicationController
             @users = User.all.where.not(id: current_user.id).sample(20)
             render 'api/users/indexAll'
         else
-            @users = User.limit(3).where("username LIKE '%#{params['input']}%'")
+            @users = User.limit(3).where("username LIKE '%#{params['input']}%' OR f_name LIKE '%#{params['input']}%' OR l_name LIKE '%#{params['input']}%' ")
+
             render :index
         end
     end
