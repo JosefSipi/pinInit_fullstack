@@ -33,7 +33,6 @@ class SignUp extends React.Component {
 
     validateEmail(){
         
-        debugger
         let input = this.state.email;
         const isValidTxt = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -42,7 +41,7 @@ class SignUp extends React.Component {
             this.setState({passowrd: ''})
             return false
         } else {
-            debugger
+            
             if(input === ''){
                 this.setState({passowrd: null})
                 return "You missed a spot! Don't forget to add your email."
@@ -61,7 +60,7 @@ class SignUp extends React.Component {
         if(!!this.validateEmail()){
             this.setState({emailErrorCheck: this.validateEmail()})
         } else {
-            debugger
+            
             this.props.createNewUser(this.state).then(() => {
                 this.props.history.push('/feed'),
                     this.props.closeModal();
@@ -77,25 +76,27 @@ class SignUp extends React.Component {
         let ageError = null;
 
         if(!this.state.emailErrorCheck){
-            this.props.errors.map((error) => {
-                if (error === "Email has already been taken" || error === "Username has already been taken") {
-                    emailError = 'Email has already been taken'
-                    pwError = null;
-                    ageError = null;
-                } else {
-                    this.props.errors.map((error) => {
-                        if(error === "Age can't be blank") {
-                            ageError = "Age can't be blank"
-                        } 
-                        if (error === "Password is too short (minimum is 6 characters)"){
-                            pwError = "Your password is too short! You need 6+ characters."
-                        }
-                        if(this.state.passowrd === '' || this.state.passowrd === null){
-                            pwError = "Password can't be blank, You need 6+ characters."
-                        }
-                    })
-                }
-            })
+            if(!!this.props.errors){
+                this.props.errors.map((error) => {
+                    if (error === "Email has already been taken" || error === "Username has already been taken") {
+                        emailError = 'Email has already been taken'
+                        pwError = null;
+                        ageError = null;
+                    } else {
+                        this.props.errors.map((error) => {
+                            if(error === "Age can't be blank") {
+                                ageError = "Age can't be blank"
+                            } 
+                            if (error === "Password is too short (minimum is 6 characters)"){
+                                pwError = "Your password is too short! You need 6+ characters."
+                            }
+                            if(this.state.passowrd === '' || this.state.passowrd === null){
+                                pwError = "Password can't be blank, You need 6+ characters."
+                            }
+                        })
+                    }
+                })
+            }
         }
 
         return (

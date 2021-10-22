@@ -9,7 +9,6 @@ class Api::UsersController < ApplicationController
     def create
 
         @user = User.new(user_params)
-        
         username = @user.email.split("@")
 
         if !!User.find_by(username: username[0])
@@ -19,13 +18,11 @@ class Api::UsersController < ApplicationController
         end
 
         @user.f_name = username[0]
-        # 12 might need additional logic to populate f_name, l_name, and username
 
         if @user.save
             login!(@user)
             render 'api/users/create'
         else
-            
             # render json: ["Your password is too short! You need 6+ characters.", "invalid email", "or age wasn't provided"], status: 401
             render json: @user.errors.full_messages, status: 401
         end

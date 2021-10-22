@@ -7,10 +7,10 @@ import { withRouter } from 'react-router-dom';
 import { fetchUser } from '../../actions/user_actions'
 
 const mSTP = state => {
-
+    
     return {
         formType: 'login',
-        errors: state.errors
+        errors: state.errors.errors_log_in
     };
 };
 

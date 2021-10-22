@@ -6,8 +6,9 @@ import { withRouter } from 'react-router-dom';
 
 
 const mSTP = state => {
+    
    return{
-       errors: state.errors
+       errors: state.errors.errors_sign_up
    };
 };
 

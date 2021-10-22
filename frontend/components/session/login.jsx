@@ -72,25 +72,19 @@ class LogIn extends React.Component {
         
 
         if (!!this.props.errors){
-            let inputEmail = document.getElementById('input-box-email')
-            let inputPW = document.getElementById('input-box-pw')
-
 
             if (this.props.errors[0] === 'The email you entered does not belong to any account.'){
                 emailError = 'The email you entered does not belong to any account.'
                 pwError = false
-                inputEmail.classList.add('input-error')
-                inputPW.classList.remove('input-error')
 
-            } else if ( this.props.errors[0] === 'The password you entered is incorrect.'){
+            } else if ( this.props.errors[0] === 'The password you entered is incorrect.' && this.state.email !== null && this.state.email !== ""){
                 pwError = 'The password you entered is incorrect.'
                 emailError = false
-                inputEmail.classList.remove('input-error')
-                inputPW.classList.add('input-error')
             }
+
+
         }
-            
-        
+
         return (
 
         <div className="the-outer-box-modal">
