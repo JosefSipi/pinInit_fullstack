@@ -8,11 +8,16 @@ class Api::UsersController < ApplicationController
 
     def create
 
-        
         @user = User.new(user_params)
         
         username = @user.email.split("@")
-        @user.username = username[0]
+
+        if !!User.find_by(username: username[0])
+            @user.username = username[0] + "2.0"
+        else
+            @user.username = username[0]
+        end
+
         @user.f_name = username[0]
         # 12 might need additional logic to populate f_name, l_name, and username
 

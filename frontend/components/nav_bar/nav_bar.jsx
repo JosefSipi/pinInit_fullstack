@@ -259,14 +259,12 @@ render(){
                                 <img id="logo-arrow" src={window.dropdownIcon} alt="dropdown-icon" />
                         </div>
 
-                        <div className={`${showDropdown ? "ul-logged-dropdown-active-background" : "ul-logged-dropdown-background"}`} onClick={this.toggleContent}> 
-                        </div>
+                        <div className={`${showDropdown ? "ul-logged-dropdown-active-background" : "ul-logged-dropdown-background"}`} onClick={this.toggleContent}> </div>
 
-                            <ul className={`${showDropdown ? "ul-logged-dropdown-active" : "ul-logged-dropdown"}`}>
-                                <Link className="link-settings" to="/edit-profile"><li className="the-li-dropdown"> Settings</li></Link>
-                                <li className="the-li-dropdown" onClick={this.logoutFunction}><div className="logout-dropdown-btn" >Log out</div></li>
-                            </ul>
-
+                        <ul className={`${showDropdown ? "ul-logged-dropdown-active" : "ul-logged-dropdown"}`}>
+                            <Link className="link-settings" to="/edit-profile"><li className="the-li-dropdown"> Settings</li></Link>
+                            <li className="the-li-dropdown" onClick={this.logoutFunction}><div className="logout-dropdown-btn" >Log out</div></li>
+                        </ul>
 
                     </div>
 
