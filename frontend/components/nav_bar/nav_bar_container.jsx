@@ -9,7 +9,6 @@ import { updateSearch, fetchUserProfile } from '../../actions/user_actions';
 
 
 const mSTP = state => {
-    
     return {
         currentUser: state.session.currentUser,
         user: state.user,

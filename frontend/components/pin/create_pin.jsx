@@ -213,7 +213,6 @@ class CreatePin extends React.Component {
             }
         )
 
-        
         if (!window.currentUser) {
         } else {
             this.props.fetchUser(window.currentUser.id);
@@ -222,8 +221,6 @@ class CreatePin extends React.Component {
     }
 
     componentDidUpdate(prevProps){
-        
-        
         if(prevProps.boards !== this.props.boards){
             
             this.setState({boards: this.props.boards.boards})

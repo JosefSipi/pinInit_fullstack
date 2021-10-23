@@ -1,10 +1,7 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { debounce } from 'lodash';
 // import { openModal } from '../../actions/modal';
-
-
 
 class NavBar extends React.Component {
 
@@ -23,38 +20,45 @@ class NavBar extends React.Component {
             readyToCheck: false
         }
 
+        this.state = {
+            searchUsers: null,
+            searchPins: null
+        }
+
         this.prepSearch = this.prepSearch.bind(this);
         this.updateState = this.updateState.bind(this);
         this.searchingTime = this.searchingTime.bind(this);
         this.searchOver = this.searchOver.bind(this);
         this.redirectProfile = this.redirectProfile.bind(this);
         this.logoutFunction = this.logoutFunction.bind(this);
-        // this.checkInput = this.checkInput.bind(this);
+        this.pinSearchDisplay = this.pinSearchDisplay.bind(this);
     }
 
-    // checkInput(){
-    //     
+pinSearchDisplay(input){
 
-    //     let dropDownSearchStuff = document.getElementById('the-dropdown-on-nav-bar-search')
-        
-    //     if(dropDownSearchStuff.style.display === 'none' || dropDownSearchStuff.style.display === ''){
-    //         
-    //         document.getElementById('search-bar-input').value = ''
-    //     }
-    // }
-// directToProfile = debounce((e) => {
-//     
-//     // window.location.reload();
-// }, 1)
 
-// redirecHomeProfile(){
-//     this.props.history.push(`/profile/${this.props.currentUser.id}`)
-//     // this.props.fetchUserProfile(this.props.currentUser.id)
-// }
+
+    return(
+        <div key={'pin' + input.id} >{input.id} and { "TITLE  " + input.title} and { "DESCRIPTION  " + input.description} </div>
+    )
+}
 
 prepSearch = debounce(() => {
-    // 
-    this.props.updateSearch(this.state.searchInput); // this should take a string which will be used to query the users
+    this.props.updateSearch(this.state.searchInput).then(
+        (data) => {
+            if(!!data.users.userSearched){
+                this.setState({searchUsers: data.users.userSearched})
+            } else {
+                this.setState({searchUsers: null})
+            }
+
+            if (!!data.users.pinSearched){
+                this.setState({searchPins: data.users.pinSearched})
+            } else {
+                this.setState({searchPins: null})
+            }
+        }
+    );
 
 }, 100);
 
@@ -68,21 +72,14 @@ logoutFunction(e){
 
 }
 
-// redirectProfileCurrentUser(){
-//     this.props.history.push(`profile/${window.currentUser.id}`);
-//     window.location.reload();
-// }
-
 redirectProfile(e){
     this.props.history.push(`/profile/${e.currentTarget.getAttribute('data-user_id')}`)
-    // window.location.reload();
 }
 
 searchingTime(e){
     e.preventDefault();
     let ddSearch = document.getElementById('the-dropdown-on-nav-bar-search')
     let backdrop = document.getElementById('backdrop-div-create-search')
-
 
     if(ddSearch.style.display === 'none' || ddSearch.style.display === ''){
         ddSearch.style.display = 'flex'
@@ -136,11 +133,6 @@ updateState(e){
 
 componentDidMount(){
 
-    // window.addEventListener('DOMContentLoaded', () => {
-    //     
-    //     this.setState({readyToCheck: true})
-    // })
-
     this.setState({logedInUser: this.props.currentUser})
     
     if (!!window.currentUser || !!this.props.currentUser) {
@@ -155,19 +147,23 @@ toggleContent (e){
 }
 
 render(){
+
     let {showDropdown} = this.state;
 
-    let ready = false
-
     let theUsers
-
-    if(!!this.props.users){
-        theUsers = Object.values(this.props.users)
-        ready = true
+    let thePins
+    let usersReady = false
+    let pinsReady = false
+    if(!!this.state.searchUsers && _.keys(this.state.searchUsers).length > 0){
+        usersReady = true
+        theUsers = Object.values(this.state.searchUsers)
+    }
+    if (!!this.state.searchPins && _.keys(this.state.searchPins).length  > 0){
+        pinsReady = true
+        thePins = Object.values(this.state.searchPins)
     }
 
     if (!!this.props.currentUser) {
-
 
         this.bar = (
         
@@ -200,22 +196,31 @@ render(){
                 <div className="drop-down-holder-nav-bar">
                     <img className="search-bar-icon" src={window.magnaURL} alt="search icon" />
                     <div className="the-dropdown-on-nav-bar-search" id="the-dropdown-on-nav-bar-search">
-                        { ready ? 
-                            theUsers.map(user => 
-                                
-                                // <Link to={`/profile/${user.id}`} >
-                                <div key={user.id} className="list-search-user" onMouseDown={this.redirectProfile} data-user_id={user.id}>
-                                    <div id='123 E' className="div-for-search-user-img">
-                                        {/* <img className="search-user-img" src={user.photoUrl} alt="user avatar" /> */}
-                                        {/* { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <img className="search-user-img" src={window.picLogoURL} alt="profile photo" />} */}
-                                        { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <p className='profile-letter-default-search' >{user.username[0].toUpperCase()}</p>}
-                                    </div>
-                                    <div className="last-div-1">{user.username}</div>
-                                </div>
-                                // </Link>
-
-                            ) : <div></div>
+                        <div >
+                            { pinsReady ? thePins.map(pin => 
+                                this.pinSearchDisplay(pin)
+                            ) : null
                         }
+                        </div>
+
+                        <div>
+                            { usersReady ? 
+                                theUsers.map(user => 
+                                    
+                                    // <Link to={`/profile/${user.id}`} >
+                                    <div key={user.id} className="list-search-user" onMouseDown={this.redirectProfile} data-user_id={user.id}>
+                                        <div id='123 E' className="div-for-search-user-img">
+                                            {/* <img className="search-user-img" src={user.photoUrl} alt="user avatar" /> */}
+                                            {/* { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <img className="search-user-img" src={window.picLogoURL} alt="profile photo" />} */}
+                                            { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <p className='profile-letter-default-search' >{user.username[0].toUpperCase()}</p>}
+                                        </div>
+                                        <div className="last-div-1">{user.username}</div>
+                                    </div>
+                                    // </Link>
+
+                                ) : <div></div>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

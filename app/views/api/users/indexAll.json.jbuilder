@@ -1,5 +1,4 @@
 
-
 json.curUserFollCount current_user.followings.count
 
 json.usersList do 
