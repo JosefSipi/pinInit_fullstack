@@ -68,8 +68,10 @@ class Api::UsersController < ApplicationController
             @users = User.all.where.not(id: current_user.id).sample(20)
             render 'api/users/indexAll'
         else
-            @pins = Pin.limit(8).where("title LIKE '%#{params['input']}%' OR description LIKE '%#{params['input']}%'")
-            @users = User.limit(3).where("username LIKE '%#{params['input']}%' OR f_name LIKE '%#{params['input']}%' OR l_name LIKE '%#{params['input']}%' ")
+            theInput = params['input'].upcase
+
+            @pins = Pin.limit(20).where("upper(title) LIKE '%#{theInput}%' OR upper(description) LIKE '%#{theInput}%'")
+            @users = User.limit(3).where("upper(username) LIKE '%#{theInput}%' OR upper(f_name) LIKE '%#{theInput}%' OR upper(l_name) LIKE '%#{theInput}%' ")
 
             render :index
         end

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { debounce } from 'lodash';
-// import { openModal } from '../../actions/modal';
 
 class NavBar extends React.Component {
 
@@ -36,12 +35,34 @@ class NavBar extends React.Component {
 
 pinSearchDisplay(input){
 
+    let userInput = this.state.searchInput.toUpperCase()
+    let displayWord = null
+    let check
 
+    if(input.title){
+        check = input.title
+    } else {
+        check = input.description
+    }
 
-    return(
-        <div key={'pin' + input.id} >{input.id} and { "TITLE  " + input.title} and { "DESCRIPTION  " + input.description} </div>
-    )
+    let retCheck = [...check.split(' ')]
+
+    for(let i = 0; i < check.split(' ').length; i++){
+        if(  (userInput.toUpperCase()) === (retCheck.slice(i).join(' ').slice(0, userInput.length).toUpperCase())    ){
+            displayWord = retCheck.slice(i).join(' ')
+            break
+        }
+    }
+
+    if(displayWord === "" || displayWord === null || displayWord === " "){
+        return null
+    } else {
+        return(
+            <div className='search_result_nav' key={'pin' + input.id} >{displayWord}</div>
+        )
+    }
 }
+
 
 prepSearch = debounce(() => {
     this.props.updateSearch(this.state.searchInput).then(
@@ -99,30 +120,6 @@ searchOver(e){
     ddSearch.style.display = 'none'
     backdrop.style.display = 'none'
 }
-
-// backdropClick(e){
-//     e.preventDefault();
-
-//     let dropDown = document.getElementById("delete-dropdown-menue-id");
-//     let backdrop = document.getElementById('backdrop-div-create-search')
-//     if(dropDown.style.display === "none"){
-//         // dropDown.style.display = "flex"
-//         // backdrop.style.display = "block"
-
-//         backdrop.style.display = "none"
-//     } else {
-//         dropDown.style.display = "none"
-//         backdrop.style.display = "none"
-//     }
-
-
-//     let ul = document.getElementById('board-dropdown-create-search')
-//     if (ul.style.display === "block") {
-//         ul.style.display = "none"
-//     } else {
-//         // ul.style.display = "block"
-//     }
-// }
 
 updateState(e){
     e.preventDefault();
@@ -252,13 +249,7 @@ render(){
 
                     </div>
                 </Link>
-
-                    
                 {/* <Link className="P-avatar" to="/feed"> */}
-
-
-
-
                     <div className="the-outer-dropdown">
                         <div className="logo-on-logged-in-header-dropdown" onClick={this.toggleContent}>
                                 <img id="logo-arrow" src={window.dropdownIcon} alt="dropdown-icon" />
@@ -270,17 +261,9 @@ render(){
                             <Link className="link-settings" to="/edit-profile"><li className="the-li-dropdown"> Settings</li></Link>
                             <li className="the-li-dropdown" onClick={this.logoutFunction}><div className="logout-dropdown-btn" >Log out</div></li>
                         </ul>
-
                     </div>
-
-
                 {/* </Link> */}
-
-
             </div>
-                
-                
-
         </div>
     ) } else {
         
