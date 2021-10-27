@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { debounce } from 'lodash';
+import SearchFeed from '../feed/search_feed_container';
 
 class NavBar extends React.Component {
 
@@ -33,6 +34,8 @@ class NavBar extends React.Component {
         this.pinSearchDisplay = this.pinSearchDisplay.bind(this);
     }
 
+
+
 pinSearchDisplay(input){
 
     let userInput = this.state.searchInput.toUpperCase()
@@ -58,7 +61,7 @@ pinSearchDisplay(input){
         return null
     } else {
         return(
-            <div className='search_result_nav' key={'pin' + input.id} >{displayWord}</div>
+            <div onMouseDown={() => this.props.history.push({pathname: '/feed-search', params: {displayWord}}) } className='search_result_nav' key={'pin' + input.id} >{displayWord}</div>
         )
     }
 }

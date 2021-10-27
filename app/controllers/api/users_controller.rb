@@ -69,12 +69,12 @@ class Api::UsersController < ApplicationController
             render 'api/users/indexAll'
         else
             theInput = params['input'].upcase
-
             @pins = Pin.limit(20).where("upper(title) LIKE '%#{theInput}%' OR upper(description) LIKE '%#{theInput}%'")
             @users = User.limit(3).where("upper(username) LIKE '%#{theInput}%' OR upper(f_name) LIKE '%#{theInput}%' OR upper(l_name) LIKE '%#{theInput}%' ")
 
             render :index
         end
+        
     end
 
     private

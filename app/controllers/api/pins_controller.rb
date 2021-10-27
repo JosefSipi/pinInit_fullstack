@@ -36,32 +36,30 @@ class Api::PinsController < ApplicationController
 
     def index
 
-        # 
+        debugger
 
-        if (!!params[:board_id])
-            # 
-            board = Board.find(params[:board_id]) # not sure where :board_id in this situation is coming from
-    
-            # @pins = Pin.all
-    
-            @pins = board.pins
-    
-            render 'api/pins/index'
+        if !!params[:word_search]
+            debugger
+            theIPS = params[:word_search][:displayWord].upcase
+            debugger
+            @pins = Pin.where("upper(title) LIKE '%#{theIPS}%' OR upper(description) LIKE '%#{theIPS}%'")
+            render 'api/users/feed'
         else
-            # 
+            if (!!params[:board_id])
+                board = Board.find(params[:board_id]) # not sure where :board_id in this situation is coming from
+                @pins = board.pins
 
-            users = User.find(params[:user_id]).followings
+                render 'api/pins/index'
+            else
+                users = User.find(params[:user_id]).followings
+                @pins = []
+                users.each do |user|
+                    @pins.push(*user.pins)
+                end
 
-            @pins = []
-
-            users.each do |user|
-                @pins.push(*user.pins)
+                render 'api/pins/feed'
             end
-
-            render 'api/pins/feed'
-
         end
-
     end
 
     def show

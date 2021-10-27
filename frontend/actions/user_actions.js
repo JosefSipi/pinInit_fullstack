@@ -57,28 +57,27 @@ export const fetchUsers = dataStuff => {
 export const fetchUserProfile = userId => {
     return (dispatch) => {
         return APIUtil.fetchUser(userId)
-            .then(user => dispatch(receiveUserProfile(user)))
+        .then(user => dispatch(receiveUserProfile(user)))
     }
 }
 
 export const updateUser = user => {
-
     return (dispatch) => {
         return APIUtil.updateUser(user)
-            .then(user => dispatch(receiveUser(user)));
+        .then(user => dispatch(receiveUser(user)));
     };
 };
 
 export const updateUserInfo = user => {
     return (dispatch) => {
         return APIUtil.updateUserInfo(user)
-            .then(user => dispatch(receiveUser(user)))
+        .then(user => dispatch(receiveUser(user)))
     }
 }
 
 export const updateSearch = input => {
     return(dispatch) => {
         return APIUtil.updateSearch(input)
-            .then(user => dispatch(receiveUsers(user)),  err => dispatch(receiveErrors(err.responseJSON)));
+        .then(user => dispatch(receiveUsers(user)),  err => dispatch(receiveErrors(err.responseJSON)));
     }
 }

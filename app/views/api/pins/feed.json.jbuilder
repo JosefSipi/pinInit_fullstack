@@ -1,9 +1,5 @@
 
 @pins.each_with_index do |pin, i|
-    
-
-
-
     json.set! pin.id do
         json.extract! pin, :id, :title, :websiteURL
 

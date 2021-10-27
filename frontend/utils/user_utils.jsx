@@ -15,8 +15,6 @@ export const fetchUsers = (dataStuff) => {
     });
 };
 
-
-
 export const updateUser = (user) => {
     return $.ajax({
         method: 'PATCH',

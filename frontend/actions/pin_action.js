@@ -66,3 +66,11 @@ export const deletePin = pinId => {
             .then(deleteInfo => dispatch(deletePin(deleteInfo)));
     }
 }
+
+export const searchFeedCall = word => {
+    debugger
+    return (dispatch) => {
+        return APIUtil.searchFeedCall(word)
+            // .then(users => dispatch(receiveUsersIndex(users)));
+    }
+}

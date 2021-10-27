@@ -259,10 +259,11 @@ class Feed extends React.Component {
                             )
                                 }
                             </ul>
-                                <div className='feed-div-btm'>
-                                    {this.state.numFollowers < 5 ? <div className='btn-feed'>Pick {5 - this.state.numFollowers} more</div>  :
-                                    <div className='btn-feed done-btn' onClick={this.reloadFunc}>Done</div>}  
-                                </div>
+                            
+                            <div className='feed-div-btm'>
+                                {this.state.numFollowers < 5 ? <div className='btn-feed'>Pick {5 - this.state.numFollowers} more</div>  :
+                                <div className='btn-feed done-btn' onClick={this.reloadFunc}>Done</div>}  
+                            </div>
                         </div>
                     </div> }
                     
