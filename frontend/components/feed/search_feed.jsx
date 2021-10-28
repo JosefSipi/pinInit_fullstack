@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class SearchFeed extends React.Component {
     constructor(props){
         super(props);
-        debugger
+        
 
         if(!props.history.location.params){
             props.history.push('/feed')
@@ -38,9 +38,9 @@ class SearchFeed extends React.Component {
 
     componentDidMount(){
         // make backend call to get data for setting feed in state
-        debugger
+        
         if(!!this.props.history.location.params){
-            debugger
+            
             this.props.searchFeedCall(this.props.history.location.params).then(
                 data => {
                     this.setState({feed: data.pins})
@@ -50,7 +50,7 @@ class SearchFeed extends React.Component {
     }
 
     componentDidUpdate(prevProps){
-        debugger
+        
         if(this.props.feed !== prevProps.feed){
             this.setState({feed: this.props.feed})
         }
@@ -74,22 +74,22 @@ class SearchFeed extends React.Component {
     }
 
     render(){
-        debugger
+        
         
         if(!this.props.history.location.params){
             return null
         }
 
-        debugger
+        
 
         if(!this.state.feed){
             return null
         }
 
-        debugger
+        
 
         let pins = Object.values(this.state.feed)
-        debugger
+        
         if(pins.length === 0){
             this.props.history.push('/feed')
         }

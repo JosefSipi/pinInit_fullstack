@@ -40,12 +40,10 @@ class NavBar extends React.Component {
 keyPressed(e) {
     let displayWord = e.currentTarget.value
     let input = ({pathname: '/feed-search', params: {displayWord}})
-    debugger
     if (e.key === "Enter" && displayWord !== '') {
         this.props.history.push(input)
         this.props.searchFeedCall(input.params).then(
             (data) => {
-                debugger
                 if (document.getElementById('this-will-hold-search-list').childElementCount !== 0){
                     this.searchOver()
                 }
