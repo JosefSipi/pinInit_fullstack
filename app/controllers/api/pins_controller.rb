@@ -36,14 +36,12 @@ class Api::PinsController < ApplicationController
 
     def index
 
-        debugger
-
         if !!params[:word_search]
-            debugger
+
             theIPS = params[:word_search][:displayWord].upcase
-            debugger
+            
             @pins = Pin.where("upper(title) LIKE '%#{theIPS}%' OR upper(description) LIKE '%#{theIPS}%'")
-            render 'api/users/feed'
+            render 'api/pins/feed'
         else
             if (!!params[:board_id])
                 board = Board.find(params[:board_id]) # not sure where :board_id in this situation is coming from

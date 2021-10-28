@@ -3,6 +3,7 @@ import * as APIUtil from '../utils/pin_utils';
 export const RECEIVE_PIN = 'RECEIVE_PIN';
 export const RECEIVE_PINS = 'RECEIVE_PINS';
 export const RECEIVE_FEED_PINS = 'RECEIVE_FEED_PINS';
+export const RECEIVE_PINS_SEARCHED = 'RECEIVE_PINS_SEARCHED';
 
 export const receivePin = pin => {
     return {
@@ -14,6 +15,13 @@ export const receivePin = pin => {
 export const receivePins = pins => {
     return {
         type: RECEIVE_PINS,
+        pins
+    }
+}
+
+export const receiveSearchFeed = pins => {
+    return {
+        type: RECEIVE_PINS_SEARCHED,
         pins
     }
 }
@@ -68,9 +76,8 @@ export const deletePin = pinId => {
 }
 
 export const searchFeedCall = word => {
-    debugger
     return (dispatch) => {
         return APIUtil.searchFeedCall(word)
-            // .then(users => dispatch(receiveUsersIndex(users)));
+            .then(pins => dispatch(receiveSearchFeed(pins)));
     }
 }

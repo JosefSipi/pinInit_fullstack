@@ -6,6 +6,7 @@ import { openModal, closeModal } from '../../actions/modal';
 import { logout } from '../../actions/session';
 import { fetchUser } from '../../actions/user_actions';
 import { updateSearch, fetchUserProfile } from '../../actions/user_actions';
+import { searchFeedCall } from '../../actions/pin_action';
 
 
 const mSTP = state => {
@@ -31,8 +32,10 @@ const mDTP = dispatch => ({
     fetchUserProfile: (userId) => {
         
         return dispatch(fetchUserProfile(userId));
+    },
+    searchFeedCall: (word) => {
+        return dispatch(searchFeedCall(word));
     }
-    
 
 });
 

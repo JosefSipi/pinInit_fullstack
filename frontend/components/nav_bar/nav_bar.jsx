@@ -22,7 +22,8 @@ class NavBar extends React.Component {
 
         this.state = {
             searchUsers: null,
-            searchPins: null
+            searchPins: null,
+            seachActive: false
         }
 
         this.prepSearch = this.prepSearch.bind(this);
@@ -32,9 +33,27 @@ class NavBar extends React.Component {
         this.redirectProfile = this.redirectProfile.bind(this);
         this.logoutFunction = this.logoutFunction.bind(this);
         this.pinSearchDisplay = this.pinSearchDisplay.bind(this);
+        this.clickSearchOpt = this.clickSearchOpt.bind(this);
+        this.keyPressed = this.keyPressed.bind(this);
     }
 
+keyPressed(e) {
+    let displayWord = e.currentTarget.value
+    let input = ({pathname: '/feed-search', params: {displayWord}})
+    debugger
+    if (e.key === "Enter" && displayWord !== '') {
+        this.props.history.push(input)
+        this.props.searchFeedCall(input.params).then(
+            (data) => {
+                debugger
+                if (document.getElementById('this-will-hold-search-list').childElementCount !== 0){
+                    this.searchOver()
+                }
+            }
+        )
 
+    }
+}
 
 pinSearchDisplay(input){
 
@@ -61,11 +80,17 @@ pinSearchDisplay(input){
         return null
     } else {
         return(
-            <div onMouseDown={() => this.props.history.push({pathname: '/feed-search', params: {displayWord}}) } className='search_result_nav' key={'pin' + input.id} >{displayWord}</div>
+            
+            <div onMouseDown={() => this.clickSearchOpt({pathname: '/feed-search', params: {displayWord}})} className='search_result_nav' key={'pin' + input.id} >{displayWord}</div>
+            
         )
     }
 }
 
+clickSearchOpt(input){
+    this.props.history.push(input)
+    this.props.searchFeedCall(input.params)
+}
 
 prepSearch = debounce(() => {
     this.props.updateSearch(this.state.searchInput).then(
@@ -93,7 +118,6 @@ logoutFunction(e){
             this.props.history.push('/')
         }
     )
-
 }
 
 redirectProfile(e){
@@ -101,7 +125,10 @@ redirectProfile(e){
 }
 
 searchingTime(e){
-    e.preventDefault();
+
+    // this.setState({seachActive: !this.state.seachActive})
+
+
     let ddSearch = document.getElementById('the-dropdown-on-nav-bar-search')
     let backdrop = document.getElementById('backdrop-div-create-search')
 
@@ -116,12 +143,14 @@ searchingTime(e){
 }
 
 searchOver(e){
-    e.preventDefault();
+    // e.preventDefault();
     let ddSearch = document.getElementById('the-dropdown-on-nav-bar-search')
     let backdrop = document.getElementById('backdrop-div-create-search')
 
     ddSearch.style.display = 'none'
     backdrop.style.display = 'none'
+
+    document.getElementById('search-bar-input').value = ''
 }
 
 updateState(e){
@@ -154,6 +183,7 @@ render(){
     let thePins
     let usersReady = false
     let pinsReady = false
+
     if(!!this.state.searchUsers && _.keys(this.state.searchUsers).length > 0){
         usersReady = true
         theUsers = Object.values(this.state.searchUsers)
@@ -162,7 +192,7 @@ render(){
         pinsReady = true
         thePins = Object.values(this.state.searchPins)
     }
-
+    
     if (!!this.props.currentUser) {
 
         this.bar = (
@@ -189,14 +219,13 @@ render(){
             {/* <div className="header-left-home-btn-loggedin">
                 <Link className="home-btn-loggedin" to="/feed">Today</Link>
             </div> */}
-
             <div className="search-bar-section-1">
-                <input className="searchBar" id='search-bar-input' type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchingTime}></input>
+                <input onClick={this.searchingTime} onKeyDown={this.keyPressed} className="searchBar" id='search-bar-input' type="text" placeholder="Search" onChange={this.updateState} onBlur={this.searchOver}></input>
                 {/* <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchOver}></input> */ }
                 <div className="drop-down-holder-nav-bar">
                     <img className="search-bar-icon" src={window.magnaURL} alt="search icon" />
                     <div className="the-dropdown-on-nav-bar-search" id="the-dropdown-on-nav-bar-search">
-                        <div >
+                        <div id='this-will-hold-search-list'>
                             { pinsReady ? thePins.map(pin => 
                                 this.pinSearchDisplay(pin)
                             ) : null

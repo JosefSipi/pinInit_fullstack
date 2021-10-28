@@ -5,6 +5,7 @@ import { searchFeedCall } from '../../actions/pin_action';
 
 const mSTP = state => {
     return {
+        feed: state.feed.searchPins
     }
 }
 

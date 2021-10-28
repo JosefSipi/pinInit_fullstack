@@ -48,7 +48,6 @@ export const deletePin = pinId => {
 }
 
 export const searchFeedCall = (word_search) => {
-    debugger
     return $.ajax({
         method: 'GET',
         url: `/api/pins`,
