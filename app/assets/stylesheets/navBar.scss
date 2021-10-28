@@ -67,6 +67,12 @@ div.last-div-1{
     background-color: white;
 }
 
+#this-will-hold-search-list{
+    max-height: 245px;
+    font-weight: 550;
+    overflow: hidden;
+}
+
 .list-search-user{
     display: flex;
     align-items: center;
@@ -96,8 +102,16 @@ div.last-div-1{
     text-align: center;
     padding: 7px;
     font-size: 16px;
-    font-weight: 500;
+    // font-weight: 500;
     padding-left: 22px; 
+
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 31px;
+    max-width: 486px;
+
     &:hover{
         cursor: pointer;
         background: #efefef;
