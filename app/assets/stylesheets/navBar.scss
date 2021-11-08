@@ -68,9 +68,7 @@ div.last-div-1{
 }
 
 #this-will-hold-search-list{
-    max-height: 245px;
     font-weight: 550;
-    overflow: hidden;
 }
 
 .list-search-user{
@@ -98,14 +96,10 @@ div.last-div-1{
 
 
 .search_result_nav{
-    display: flex;
-    text-align: center;
+    display: block;
     padding: 7px;
     font-size: 16px;
-    // font-weight: 500;
-    padding-left: 22px; 
-
-
+    padding-left: 22px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

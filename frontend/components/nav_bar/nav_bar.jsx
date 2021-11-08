@@ -65,7 +65,7 @@ pinSearchDisplay(input){
         check = input.description
     }
 
-    let retCheck = [...check.split(' ')]
+    let retCheck = [...check.split(' ')].slice(0, 9)
 
     for(let i = 0; i < check.split(' ').length; i++){
         if(  (userInput.toUpperCase()) === (retCheck.slice(i).join(' ').slice(0, userInput.length).toUpperCase())    ){
@@ -182,14 +182,20 @@ render(){
     let usersReady = false
     let pinsReady = false
 
-    if(!!this.state.searchUsers && _.keys(this.state.searchUsers).length > 0){
-        usersReady = true
-        theUsers = Object.values(this.state.searchUsers)
+    if(this.state.searchInput === ''){
+        usersReady = false
+        pinsReady = false
+    } else {
+        if(!!this.state.searchUsers && _.keys(this.state.searchUsers).length > 0){
+            usersReady = true
+            theUsers = Object.values(this.state.searchUsers)
+        }
+        if (!!this.state.searchPins && _.keys(this.state.searchPins).length  > 0){
+            pinsReady = true
+            thePins = Object.values(this.state.searchPins).slice(0, 8)
+        }
     }
-    if (!!this.state.searchPins && _.keys(this.state.searchPins).length  > 0){
-        pinsReady = true
-        thePins = Object.values(this.state.searchPins)
-    }
+
     
     if (!!this.props.currentUser) {
 
@@ -218,7 +224,18 @@ render(){
                 <Link className="home-btn-loggedin" to="/feed">Today</Link>
             </div> */}
             <div className="search-bar-section-1">
-                <input onClick={this.searchingTime} onKeyDown={this.keyPressed} className="searchBar" id='search-bar-input' type="text" placeholder="Search" onChange={this.updateState} onBlur={this.searchOver}></input>
+                <input 
+                    onClick={this.searchingTime} 
+                    onKeyDown={this.keyPressed} 
+                    className="searchBar" 
+                    id='search-bar-input' 
+                    type="text" 
+                    placeholder="Search" 
+                    onChange={this.updateState} 
+                    onBlur={this.searchOver}>
+                    
+                </input>
+
                 {/* <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchOver}></input> */ }
                 <div className="drop-down-holder-nav-bar">
                     <img className="search-bar-icon" src={window.magnaURL} alt="search icon" />
