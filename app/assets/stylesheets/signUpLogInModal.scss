@@ -1,0 +1,350 @@
+// --- the following includes styling for logIn and signUp modal ---
+
+.the-outer-box-modal{
+    display: flex;
+    // align-content: space-between;
+    // justify-content: space-between;
+    align-items: center;
+    width: inherit;
+    flex-direction: column;
+}
+
+.logo-and-X{
+    display: flex;
+    color: gray;
+    justify-content: center;
+    width: inherit;
+    align-items: center;
+    flex-direction: column
+}
+
+.image-div {
+    // height: 35px;
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-modal {
+    margin-top: 26px;
+    height: 32px;
+    width: auto;
+    display: flex;
+    align-items: stretch;
+}
+
+.logo-on-logged-in-header-x{
+    // position: relative;
+    // position: relative;
+    // left: 184px;
+    // bottom: 30px;
+    // border-radius: 100px;
+    // height: 39px;
+    // width: 39px;
+    // display: flex;
+    // flex-direction: row;
+    // align-items: center;
+    // justify-content: center;
+    // overflow: hidden;
+    // padding: 10px;
+
+    position: relative;
+    position: absolute;
+    border-radius: 100px;
+    height: 39px;
+    width: 39px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 10px;
+    &:hover{
+        cursor: pointer;
+        background-color: #f1f1f1;
+    }
+}
+
+.logo-modal-x{
+    background-color: none;
+    height: 16px;
+    width: auto;
+    // &:hover{
+    //     cursor: pointer;
+    // }
+}
+
+.session-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    width: inherit;
+    padding: 20px, 10px, 24px;
+    padding-bottom: 10px;
+}
+
+.welcome-pin-login{
+    font-size: 35px;
+    font-family: 'Questrial', sans-serif;
+    font-weight: 500;
+    color: rgb(43, 43, 43);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.policy-text{
+    display: flex;
+    text-align: center;
+    font-size: 10px;
+    color: rgb(222,222, 222);
+    align-items: center;
+    justify-content: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.dark-text{
+    display: flex;
+    text-align: center;
+    font-size: 10px;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    padding-top: none;
+}
+
+.gray-line{
+    border-bottom: 1px solid rgb(222,222, 222);
+    margin: 10px auto;
+    width: 110px;
+}
+
+.sign-up-small-btn {
+    padding-bottom: 31px;
+    color: black;
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+.input-box {
+    all: unset;
+    display: flex;
+    align-items: stretch;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(221, 221, 221);
+    background-color: rgb(227, 238, 255);
+    height: 40px;
+    text-indent: 15px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.top-margin-login-button{
+    all: unset;
+    border-radius: 18px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    text-align: center;
+    background-color: #eb0000;
+    font-weight: 750;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    height: 36px;
+    margin-top: 25px;
+        &:hover {
+        cursor: pointer;
+        background-color: #e60022;
+        }
+}
+
+.or-login-page{
+    font-size: 14px;
+    height: 17px;
+    width: inherit;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+
+// -------------------
+.main-login-form{
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+    width: 240px;
+}
+
+.modal-background {
+   position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+//     color: chartreuse;
+//     border-width: 2px;
+    // border-color: chocolate;
+//     border-style: solid;
+//     z-index: 10;
+    position: fixed;
+//     right: 50%;
+    // background: rgba(26, 26, 26, 0.146);
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    z-index: 2000;
+    background-color: rgba(0, 0, 0, 0.454);
+    margin: 0;
+    // border-style: solid;
+    // border-color: red;
+    .modal-child-signUp {
+
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        position: absolute;
+        width: 487px;
+        // height: fit-content;
+        border-radius: 35px;
+        z-index: 11;
+        display: flex;
+
+    }
+
+//       overflow-y: hidden;
+//       height: 200px;
+//       border-style: solid;
+//       border-radius: 10px;
+//       border-color: black;
+//       border-width: 10px;
+//       // transform: translate(-50%, -50%);
+//       // border-style: solid;
+//       // border-color: black;
+//       // border-radius: 10px;
+
+}
+
+.session-form-signUp {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    // height: 620px;
+    width: inherit;
+    padding: 20px, 10px, 24px;
+    // align-self: flex-end;
+}
+
+.welcome-pin-login-signUp{
+    font-size: 35px;
+    font-family: 'Questrial', sans-serif;
+    font-weight: 500;
+    color: rgb(43, 43, 43);
+    padding-bottom: 10px;
+
+}
+.findNew-signUp{
+    padding-bottom: 28px;
+}
+
+.input-box-signUp {
+    all: unset;
+    display: flex;
+    align-items: stretch;
+    border-radius: 14px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(221, 221, 221);
+    background-color: rgb(255, 255, 255);
+    height: 40px;
+    text-indent: 15px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}:focus-within{
+    border-width: 4px;
+    border-color: rgb(136, 182, 250);
+}
+
+.input-box-signUp-error {
+    all: unset;
+    display: flex;
+    align-items: stretch;
+    border-radius: 14px;
+    border-style: solid;
+    border-width: 2px;
+    height: 40px;
+    text-indent: 15px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border-color: red;
+    background-color: white;
+}:focus-within{
+    border-width: 4px;
+}
+
+
+.login-button-signUp-Modal{
+    all: unset;
+    border-radius: 18px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    text-align: center;
+    background-color: #eb0000;
+    font-weight: 750;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    height: 36px;
+        &:hover {
+        cursor: pointer;
+        }
+}
+
+// .has-continue-btn{
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     align-self: flex-end;
+    
+// }
+
+.policy-text-signUp{
+    display: flex;
+    text-align: center;
+    font-size: 12px;
+    color: rgb(165, 165, 165);
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.dark-text-signUp{
+    display: flex;
+    text-align: center;
+    font-size: 12px;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    padding-top: none;
+    margin-bottom: 20px;
+}
+
+.logo-x-out-div{
+    position: absolute;
+    border: 1px palevioletred solid;
+}

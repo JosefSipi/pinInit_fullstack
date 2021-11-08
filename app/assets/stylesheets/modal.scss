@@ -1,66 +1,26 @@
-  .modal-background {
-   position: absolute;
+.modal-background {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-//     color: chartreuse;
-//     border-width: 2px;
-    // border-color: chocolate;
-//     border-style: solid;
-//     z-index: 10;
     position: fixed;
-//     right: 50%;
-    // background: rgba(26, 26, 26, 0.146);
     height: 100%;
     width: 100%;
     overflow-y: scroll;
     z-index: 2000;
     background-color: rgba(0, 0, 0, 0.454);
     margin: 0;
-    // border-style: solid;
-    // border-color: red;
+
     .modal-child {
-
-        
-
-
         background-color: rgb(255, 255, 255);
         display: flex;
         justify-content: center;
         align-items: flex-end;
         position: absolute;
-        // top: 34%;
         width: 435px;
-        // height: 517px;
         border-radius: 35px;
-        // margin: center auto;
-
     }
-
-//       overflow-y: hidden;
-//       height: 200px;
-//       border-style: solid;
-//       border-radius: 10px;
-//       border-color: black;
-//       border-width: 10px;
-//       z-index: 11;
-//       // transform: translate(-50%, -50%);
-//       // border-style: solid;
-//       // border-color: black;
-//       // border-radius: 10px;
-
 }
-
-.session-form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
-    width: inherit;
-    padding: 20px, 10px, 24px;
-    padding-bottom: 10px;
-}
-
 
 .sign-up-small-btn {
     padding-bottom: 31px;
@@ -71,220 +31,52 @@
     text-align: center;
 }
 
+    
+.page-form {
+    display: flex;
+    justify-content: space-evenly;
+    height: 5px;
+    align-items: center;
+    flex-direction: column;
+}
+
+// -- below is the background over gray effect on modal x --
+
+.input-error {
+    background-color: white;
+    border-color: red;
+}
+
+.pwError-div{
+    color: red;
+    font-size: 12px;
+    letter-spacing: .5px;
+}
+
+h2.forgot-pw{
+    align-items: flex-start;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: 'Questrial', sans-serif;
+}
 
 
-.image-div {
-    height: 35px;
-    width: inherit;
+.login-button{
+    all: unset;
+    border-radius: 18px;
+    
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
+    text-align: center;
+    background-color: #eb0000;
+    font-weight: 750;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    height: 36px;
+        &:hover {
+        cursor: pointer;
+        }
 }
-    
-    .page-form {
-        display: flex;
-        justify-content: space-evenly;
-        height: 5px;
-        align-items: center;
-        flex-direction: column;
-    }
-    
-    // .page-form{
-        //     display: flex;
-        //     align-items: center;
-        //     flex-direction: column;
-        //     justify-content: inherit;
-        // }
-
-        
-        // ----------------------
-        // main session form 
-        
-        .logo-and-X{
-            display: flex;
-            color: gray;
-            justify-content: center;
-            padding-top: 20px;
-            width: inherit;
-            align-items: center;
-            flex-direction: column;
-            align-self: flex-start;
-
-        }
-
-
-
-
-
-
-
-        .logo-modal {
-            height: 32px;
-            width: auto;
-            display: flex;
-            align-items: stretch;
-        }
-        // -- below is the background over gray effect on modal x --
-        .logo-on-logged-in-header-x{
-            position: relative;
-            position: relative;
-            left: 184px;
-            bottom: 30px;
-            border-radius: 100px;
-            height: 39px;
-            width: 39px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding: 10px;
-            &:hover{
-                cursor: pointer;
-                background-color: #f1f1f1;
-            }
-        }
-
-        .logo-modal-x{
-            background-color: none;
-            height: 16px;
-            width: auto;
-            // &:hover{
-            //     cursor: pointer;
-            // }
-        }
-        
-        .welcome-pin-login{
-            font-size: 35px;
-            font-family: 'Questrial', sans-serif;
-            font-weight: 500;
-            color: rgb(43, 43, 43);
-            padding-top: 10px;
-            padding-bottom: 10px;
-
-        }
-
-    .main-login-form{
-        display: flex;
-        align-items: stretch;
-        justify-content: center;
-        flex-direction: column;
-        width: 240px;
-
-    }
-
-        .input-box {
-            all: unset;
-            display: flex;
-            align-items: stretch;
-            border-radius: 15px;
-            border-style: solid;
-            border-width: 2px;
-            border-color: rgb(221, 221, 221);
-            background-color: rgb(227, 238, 255);
-            height: 40px;
-            text-indent: 15px;
-            
-            // margin-left: 3px;
-            // margin-right: 3px;
-            margin-top: 8px;
-            margin-bottom: 8px;
-            // margin-block: 3px;
-        }
-
-        .input-error {
-            background-color: white;
-            border-color: red;
-        }
-
-        .pwError-div{
-            color: red;
-            font-size: 12px;
-            letter-spacing: .5px;
-        }
-
-        h2.forgot-pw{
-            align-items: flex-start;
-            padding-top: 5px;
-            padding-bottom: 10px;
-            font-size: 13px;
-            font-weight: bold;
-            font-family: 'Questrial', sans-serif;
-        }
-
-
-        .login-button{
-            all: unset;
-            border-radius: 18px;
-            
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            text-align: center;
-            background-color: #eb0000;
-            font-weight: 750;
-            font-size: 12px;
-            color: rgb(255, 255, 255);
-            height: 36px;
-                &:hover {
-                cursor: pointer;
-                }
-        }
-
-        .top-margin-login-button{
-            all: unset;
-            border-radius: 18px;
-            
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            text-align: center;
-            background-color: #eb0000;
-            font-weight: 750;
-            font-size: 12px;
-            color: rgb(255, 255, 255);
-            height: 36px;
-            margin-top: 25px;
-                &:hover {
-                cursor: pointer;
-                }
-        }
-
-        .or-login-page{
-            font-size: 14px;
-            height: 17px;
-            width: inherit;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-            text-align: center;
-            margin-block: 16px;
-            font-weight: bold;
-        }
-
-        .gray-line{
-            border-bottom: 1px solid rgb(222,222, 222);
-            margin: 10px auto;
-            width: 110px;
-        }
-
-        .policy-text{
-            display: flex;
-            text-align: center;
-            font-size: 10px;
-            color: rgb(222,222, 222);
-            align-items: center;
-            justify-content: center;
-            padding-top: 8px;
-            padding-bottom: 8px;
-        }
-        .dark-text{
-            display: flex;
-            text-align: center;
-            font-size: 10px;
-            align-items: center;
-            justify-content: center;
-            color: black;
-            padding-top: none;
-        }
-        // ----------------------
