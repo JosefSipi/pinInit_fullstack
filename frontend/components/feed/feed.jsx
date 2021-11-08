@@ -200,7 +200,7 @@ class Feed extends React.Component {
         }
        
         let users = this.state.usersFollowed
-        let pins = Object.values(this.state.feed)
+        let pins = Object.values(this.state.feed).reverse()
         
         
         return (
