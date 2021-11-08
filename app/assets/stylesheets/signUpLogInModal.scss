@@ -345,6 +345,11 @@
 }
 
 .logo-x-out-div{
+    width: 100%;
+    height: 58px;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+
     position: absolute;
-    border: 1px palevioletred solid;
 }

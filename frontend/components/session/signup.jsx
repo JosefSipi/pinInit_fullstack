@@ -106,8 +106,11 @@ class SignUp extends React.Component {
                     <div className="image-div">
                         <img className="logo-modal" src={window.logoURL} alt="logo" />
                     </div>
-                    <div className="logo-on-logged-in-header-x">
-                        <img className="logo-modal-x" src={window.theXURL} alt="X logo" onClick={this.props.closeModal} />
+                    
+                    <div className='logo-x-out-div'>
+                        <div className="logo-on-logged-in-header-x">
+                            <img className="logo-modal-x" src={window.theXURL} alt="X logo" onClick={this.props.closeModal} />
+                        </div>
                     </div>
                 </div>
                 
