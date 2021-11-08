@@ -217,7 +217,7 @@ render(){
             </div>
 
             <div className="header-left-home-btn-loggedin">
-                <Link className="home-btn-loggedin" to="/feed">Home</Link>
+                <Link className={this.props.history.location.pathname === '/feed' ? 'home-btn-loggedin onFeed-style' : "home-btn-loggedin" } to="/feed">Home</Link>
             </div>
 
             {/* <div className="header-left-home-btn-loggedin">
