@@ -154,14 +154,18 @@
 }
 
 .footer-main-splash{
+    // box-shadow: -1px 1px 6px 5px rgba(191, 191, 191, 0.11);
+    background-color: #f7f7f7;
     display: flex;
-    border: 1px solid green;
     align-items: center;
     justify-content: center;
+    margin-top: 50px;
 
 }
 
 .profile-pic{
+    // margin-top: 10px;
+    // margin-bottom: 10px;
     margin: 10px;
     height: 30px;
     width: 30px;
@@ -182,7 +186,7 @@
 .portfolio-link-footer{
 
     font-size: 11px;
-    padding: 5px;
+    padding: 8px;
     color: black;
     text-decoration: none;
     &:hover{

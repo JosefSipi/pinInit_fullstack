@@ -81,6 +81,7 @@ class Landing extends React.Component{
 
                     <a target="_blank"  href='https://josefsipi.github.io/' className="portfolio-link-footer">Joseph Sipiorski</a>
                     <a target="_blank"  href='https://github.com/JosefSipi' className="portfolio-link-footer">GitHub</a>
+                    <a target="_blank"  href='https://www.linkedin.com/in/joseph-sipiorski-590452195/' className="portfolio-link-footer">LinkedIn</a>
                 </div>
             </div>
         )
