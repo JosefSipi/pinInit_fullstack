@@ -52,29 +52,35 @@ class Landing extends React.Component{
 
         return (
 
-            <div className='main-splash' onScroll={this.scrollEvent} >
 
-                <div className='exp-pro'>Explore Pininit</div>
-                {/* <div onClick={this.arrowClick} className='arrow-landing pulse-animation' id='landing-left'><img src={window.left_arrow} alt="" /></div> */}
-                {/* <div className='list-div-splash'>
-            
-                    <img src={this.state.images[this.state.displayPhoto]} alt="gif 1" />
-                </div> */}
-                {/* <div onClick={this.arrowClick} id='landing-right' className='arrow-landing pulse-animation' ><img src={window.right_arrow} alt="" /></div> */}
+            <div>
+                <div className='main-splash' onScroll={this.scrollEvent} >
 
-                <div id='section-two-splash' className='section-two-splash'>
-                    <img src={this.state.images[0]} alt="gif 0" />
-                    <div>Create a new pin with an optional title, description, and source link</div>
+                    <div className='exp-pro'>Explore Pininit</div>
+
+                    <div id='section-two-splash' className='section-two-splash'>
+                        <img src={this.state.images[0]} alt="gif 0" />
+                        <div>Create a new pin with an optional title, description, and source link</div>
+                    </div>
+
+                    <div id='section-three-splash' className='section-three-splash'>
+                        <div>Change user avatar to your desired image</div>
+                        <img src={this.state.images[1]} alt="gif 1" />
+                    </div>
+
+                    <div id='section-four-splash' className='section-four-splash'>
+                        <img src={this.state.images[2]} alt="gif 2" />
+                        <div>Leave comments on pins from your home feed</div>
+                    </div>
                 </div>
 
-                <div id='section-three-splash' className='section-three-splash'>
-                    <div>Change user avatar to your desired image</div>
-                    <img src={this.state.images[1]} alt="gif 1" />
-                </div>
+                <div className="footer-main-splash">
+                    <a href="https://josefsipi.github.io/" className="profile-pic">
+                        <img src={window.profilePic} alt="profilepic" />
+                    </a>
 
-                <div id='section-four-splash' className='section-four-splash'>
-                    <img src={this.state.images[2]} alt="gif 2" />
-                    <div>Leave comments on pins from your home feed</div>
+                    <a target="_blank"  href='https://josefsipi.github.io/' className="portfolio-link-footer">Joseph Sipiorski</a>
+                    <a target="_blank"  href='https://github.com/JosefSipi' className="portfolio-link-footer">GitHub</a>
                 </div>
             </div>
         )

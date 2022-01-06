@@ -55,11 +55,9 @@
 }
 
 .exp-pro{
-    // position: absolute;
     top: 18vh;
     font-size: 46px;
-    padding-top: 9vh;
-    // padding-bottom: 6vh;
+    padding-top: 14vh;
 }
 
 
@@ -152,5 +150,42 @@
         text-align: center;
         line-height: 4vw;
         font-size: 3vw;
+    }
+}
+
+.footer-main-splash{
+    display: flex;
+    border: 1px solid green;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.profile-pic{
+    margin: 10px;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50px;
+    &:hover{
+        border: 1px solid black;
+        cursor: pointer;
+    }
+    img{
+        height: 36px;
+    }
+}
+
+.portfolio-link-footer{
+
+    font-size: 11px;
+    padding: 5px;
+    color: black;
+    text-decoration: none;
+    &:hover{
+        text-decoration: underline;
     }
 }
