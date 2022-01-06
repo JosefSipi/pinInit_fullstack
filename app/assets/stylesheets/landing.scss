@@ -1,10 +1,12 @@
 
 .main-splash{
+    flex-direction: column;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: scroll;
 }
 
 .list-div-splash{
@@ -53,9 +55,11 @@
 }
 
 .exp-pro{
-    position: absolute;
+    // position: absolute;
     top: 18vh;
-    font-size: 34px;
+    font-size: 46px;
+    padding-top: 9vh;
+    // padding-bottom: 6vh;
 }
 
 
@@ -70,5 +74,83 @@
     }
     100% {
         transform: scale(1.15);
+    }
+}
+
+.section-two-splash{
+    // border: 1px solid red;
+    width: 95%;
+    margin: 20px;
+
+    display: flex;
+    align-items: center;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    justify-content: flex-start;
+    img{
+        width: 39vw;
+        border-radius: 14px;
+    }
+    div{
+        color: rgb(0, 118, 211);
+        padding-left: 3vw;
+        padding-right: 3vw;
+        text-align: center;
+        line-height: 4vw;
+        font-size: 3vw;
+    }
+}
+
+.section-three-splash{
+    // border: 1px solid blue;
+    width: 95%;
+    margin: 20px;
+
+    display: flex;
+    align-items: center;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    justify-content: flex-end;
+    img{
+        width: 39vw;
+        border-radius: 14px;
+    }
+    div{
+        color: rgb(97, 140, 123);
+        padding-left: 3vw;
+        padding-right: 3vw;
+        text-align: center;
+        line-height: 4vw;
+        font-size: 3vw;
+    }
+}
+
+.section-four-splash{
+    // border: 1px solid green;
+    width: 95%;
+    margin: 20px;
+
+    display: flex;
+    align-items: center;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    justify-content: flex-start;
+    img{
+        width: 39vw;
+        border-radius: 14px;
+    }
+    div{
+        color: rgb(194, 139, 0);
+        padding-left: 3vw;
+        padding-right: 3vw;
+        text-align: center;
+        line-height: 4vw;
+        font-size: 3vw;
     }
 }

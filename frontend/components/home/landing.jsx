@@ -15,6 +15,12 @@ class Landing extends React.Component{
         }
 
         this.arrowClick = this.arrowClick.bind(this);
+        this.scrollEvent = this.scrollEvent.bind(this);
+    }
+
+    scrollEvent(e){
+        debugger
+
     }
 
     arrowClick(e){
@@ -46,14 +52,30 @@ class Landing extends React.Component{
 
         return (
 
-            <div className='main-splash'>
+            <div className='main-splash' onScroll={this.scrollEvent} >
+
                 <div className='exp-pro'>Explore Pininit</div>
-                <div onClick={this.arrowClick} className='arrow-landing pulse-animation' id='landing-left'><img src={window.left_arrow} alt="" /></div>
-                <div className='list-div-splash'>
+                {/* <div onClick={this.arrowClick} className='arrow-landing pulse-animation' id='landing-left'><img src={window.left_arrow} alt="" /></div> */}
+                {/* <div className='list-div-splash'>
             
                     <img src={this.state.images[this.state.displayPhoto]} alt="gif 1" />
+                </div> */}
+                {/* <div onClick={this.arrowClick} id='landing-right' className='arrow-landing pulse-animation' ><img src={window.right_arrow} alt="" /></div> */}
+
+                <div id='section-two-splash' className='section-two-splash'>
+                    <img src={this.state.images[0]} alt="gif 0" />
+                    <div>Create a new pin with an optional title, description, and source link</div>
                 </div>
-                <div onClick={this.arrowClick} id='landing-right' className='arrow-landing pulse-animation' ><img src={window.right_arrow} alt="" /></div>
+
+                <div id='section-three-splash' className='section-three-splash'>
+                    <div>Change user avatar to your desired image</div>
+                    <img src={this.state.images[1]} alt="gif 1" />
+                </div>
+
+                <div id='section-four-splash' className='section-four-splash'>
+                    <img src={this.state.images[2]} alt="gif 2" />
+                    <div>Leave comments on pins from your home feed</div>
+                </div>
             </div>
         )
     }

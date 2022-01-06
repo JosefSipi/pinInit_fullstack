@@ -23,7 +23,7 @@ import ScrollToTop from '../components/nav_bar/scroll_to_top';
 import LandingComponent from '../components/home/landing_container'
 import SearchFeedContainer from '../components/feed/search_feed_container';
 
-export default () => (
+export default () => ( 
     <div>
         {/* <AuthRoute path="/signup" component={SignUpContainer}/>
         <AuthRoute exact path="/login" component={LogInContainer}/> */}
