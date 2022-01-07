@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from "react-router-dom";
 // import SignUpContainer from './session/signup_container';
 import NavBarContainer from './nav_bar/nav_bar_container';
-import Home from '../components/home/home';
+// import Home from '../components/home/home';
 import { AuthRoute, ProtectedRoute } from '../utils/route_utils';
 // import LogInContainer from '../components/session/login_container';
 import FeedContainer from './feed/feed_container';
@@ -40,9 +40,9 @@ export default () => (
                 <Route path="/" component={NavBarContainer}/>
             </header>
             <div className="space-provider"></div>
-                <Route path="/home" component={Home}/>
+            {/* <Route path="/home" component={Home}/> */}
             {/* <Route path={`/profile/`} */}
-            <Route exact path="/" component={LandingComponent}/>
+            <AuthRoute exact path="/" component={LandingComponent}/>
             <Route path="/board/:id" component={BoardShow}/>
             <Route path="/pin/:id" component={PinShow} />
             <ProtectedRoute path='/pin-create' component={CreatePin}/>
