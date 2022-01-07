@@ -75,7 +75,7 @@ class Landing extends React.Component{
                 </div>
 
                 <div className="footer-main-splash">
-                    <a href="https://josefsipi.github.io/" className="profile-pic">
+                    <a target="_blank" href="https://josefsipi.github.io/" className="profile-pic">
                         <img src={window.profilePic} alt="profilepic" />
                     </a>
 
