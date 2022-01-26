@@ -369,11 +369,12 @@ class UserShow extends React.Component {
 
                         <div className="board-display-card">
                             {/* Place a lock icon if the board is private */}
-                        <div className="outer-div-tile-edit" id="outer-div-tile-edit">
-                            <div className="logo-on-logged-in-header-board-lock" style={board.is_private ? {display: "flex" } : { display: "none" }}>
-                                <img id="logo-lock-icon" src={window.lockURL} alt="lock-icon" />
-                            </div> 
-                        </div>
+                            <div className="outer-div-tile-edit" id="outer-div-tile-edit">
+                                <div className="logo-on-logged-in-header-board-lock" style={board.is_private ? {display: "flex" } : { display: "none" }}>
+                                    <img id="logo-lock-icon" src={window.lockURL} alt="lock-icon" />
+                                </div> 
+                            </div>
+
                             <div className="image-section-board" id="image-section-board">
                                 <div className="large-image-onboard">
                                     <div className='inner-large-image1'>

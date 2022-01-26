@@ -30,7 +30,9 @@ class Feed extends React.Component {
         e.preventDefault();
         window.location.reload();
     }
+
     displayTheseBoards(boards){
+        
     return(
         boards.map(board => 
             {if(!board.is_private){
@@ -156,8 +158,6 @@ class Feed extends React.Component {
 
     selectFollow(e){
         e.preventDefault();
-
-        
 
         let userBox = e.currentTarget
 

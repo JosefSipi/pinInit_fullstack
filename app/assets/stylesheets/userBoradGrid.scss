@@ -22,6 +22,9 @@
     margin: 8px;
     display: flex;
     flex-direction: column;
+    // &:hover{
+    //     background-color: red;
+    // }
 
 }
 
@@ -142,6 +145,7 @@
 // ------------------ edit icon on board tiles -----------
 
 .logo-on-logged-in-header-board-tile{
+    visibility: hidden;
     position: relative;
     overflow-y: hidden;
     overflow-x: hidden;
@@ -179,11 +183,18 @@ div.outer-div-tile-edit{
     position: absolute;
     width: inherit;
     height: inherit;
-
+  
 }
 
-div.dont-show-me{
-
+// .dont-show-me:hover > .logo-on-logged-in-header-board-tile{
+//     visibility: visible;
+// }
+.dont-show-me{
+    &:hover{
+        > .logo-on-logged-in-header-board-tile{
+            visibility: visible;
+        }
+    }
 }
 // ------------------ edit icon on board tiles -----------
 
