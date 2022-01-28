@@ -191,9 +191,11 @@ div.outer-div-tile-edit{
 // }
 .dont-show-me{
     &:hover{
+        // --- hidden edit pen logo on board ---
         > .logo-on-logged-in-header-board-tile{
             visibility: visible;
         }
+        // --- hover shade effect on board ---
         > #board-show-link{
             > .board-display-card{
                 > .image-section-board{
