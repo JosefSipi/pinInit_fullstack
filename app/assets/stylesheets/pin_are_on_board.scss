@@ -41,6 +41,15 @@ div.card-title-pin{
     font-size: 15px;
     font-weight: 600;
     padding-top: 8px;
+
+    // 
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // display: -webkit-box;
+    // display: flex;
+    // -webkit-line-clamp: 2; /* number of lines to show */
+    // line-clamp: 2; 
+    // -webkit-box-orient: vertical;
 }
 
 // ---------- initial log in -------------

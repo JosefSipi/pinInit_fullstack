@@ -194,6 +194,13 @@ div.outer-div-tile-edit{
         > .logo-on-logged-in-header-board-tile{
             visibility: visible;
         }
+        > #board-show-link{
+            > .board-display-card{
+                > .image-section-board{
+                    filter: brightness(0.9);
+                }
+            }
+        }
     }
 }
 // ------------------ edit icon on board tiles -----------
