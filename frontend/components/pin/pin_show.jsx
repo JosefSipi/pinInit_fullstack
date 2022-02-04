@@ -389,7 +389,7 @@ class PinShow extends React.Component {
 
                 {back_drop_s ? <div className="backdrop-div-create-pin pin-show-bd" onClick={this.backdropClick} id="backdrop-div-create-pin"></div> : null}
                 <div className='main-div-pin-show'>
-{/* <div> */}
+{/* <div className='sub-div-boarder-play'> */}
 
                     <div className="image-show-pin-1">
                         <img className='image-show-pin' src={this.state.pin.photoUrl} alt="photo?" />
@@ -534,137 +534,138 @@ class PinShow extends React.Component {
 
                 {back_drop_s ? <div className="backdrop-div-create-pin pin-show-bd" onClick={this.backdropClick} id="backdrop-div-create-pin"></div> : null}
                 <div className='main-div-pin-show'>
-{/* <div> */}
 
-                    <div className="image-show-pin-1">
-                        <img className='image-show-pin' src={this.state.pin.photoUrl} alt="photo?" />
-                    </div>
+{/* <div className='sub-div-boarder-play'> */}
 
-                    <div className='right-half-pin-show'>
-                        <div className='top-bar-right-show-pin'>
+                        <div className="image-show-pin-1">
+                            <img className='image-show-pin' src={this.state.pin.photoUrl} alt="photo?" />
+                        </div>
+
+                        <div className='right-half-pin-show'>
+                            <div className='top-bar-right-show-pin'>
+
+                                {/* <div>
+                                    <h1 className="header-title-boards-show-123" >
+                                    
+                                    <div className="pin-duplicate-button-dd" onClick={this.dd_display_tog} id={`dd_id_pin${this.state.pin.id}`} onBlur={this.dd_display_tog}>
+                                        <img className="pin-123-1" src={window.dotsBlackURL} alt="more icon"/>
+                                    </div>
+                                        {this.state.dd_s[`dd_id_pin${this.state.pin.id}`] ? <div className="div-holder-helper-123 outside-pin-show" id={`dd_id_pin${this.state.pin.id}`} >
+                                            <div className="edit-dropdown-menue-123 pin-show" id="edit-dropdown-menue-123-id">
+                                                <div className='edition-pin-show-div' onMouseDown={this.editPin} >Edit Pin</div>
+                                            </div>
+                                        </div> : null}
+                                    </h1>
+                                </div> */}
+
+                            </div>
+
+                            { !!this.state.pin.websiteURL ? <a className='url-link-tag' href={this.state.pin.websiteURL} target='_blank' >{this.state.pin.websiteURL.slice(0, 27) + '...'}</a> : null}
+                                <div className='title-pin-show'>{this.state.pin.title}</div>
+                            <p className='description-pin-show' >{this.state.pin.description}</p>
 
                             {/* <div>
-                                <h1 className="header-title-boards-show-123" >
-                                
-                                <div className="pin-duplicate-button-dd" onClick={this.dd_display_tog} id={`dd_id_pin${this.state.pin.id}`} onBlur={this.dd_display_tog}>
-                                    <img className="pin-123-1" src={window.dotsBlackURL} alt="more icon"/>
-                                </div>
-                                    {this.state.dd_s[`dd_id_pin${this.state.pin.id}`] ? <div className="div-holder-helper-123 outside-pin-show" id={`dd_id_pin${this.state.pin.id}`} >
-                                        <div className="edit-dropdown-menue-123 pin-show" id="edit-dropdown-menue-123-id">
-                                            <div className='edition-pin-show-div' onMouseDown={this.editPin} >Edit Pin</div>
-                                        </div>
-                                    </div> : null}
-                                </h1>
+                                <img src={} alt="" />
                             </div> */}
 
-                        </div>
+                            <div className='comments-section'>
+                                <div className="comments-lable-pin-show">Comments</div>
 
-                         { !!this.state.pin.websiteURL ? <a className='url-link-tag' href={this.state.pin.websiteURL} target='_blank' >{this.state.pin.websiteURL.slice(0, 27) + '...'}</a> : null}
-                            <div className='title-pin-show'>{this.state.pin.title}</div>
-                        <p className='description-pin-show' >{this.state.pin.description}</p>
+                                <div className="describing-comments">Share feedback, ask a question or give a high five</div>
+                            <div className="outer-comment-pin-show-1">
 
-                        {/* <div>
-                            <img src={} alt="" />
-                        </div> */}
-
-                        <div className='comments-section'>
-                            <div className="comments-lable-pin-show">Comments</div>
-
-                            <div className="describing-comments">Share feedback, ask a question or give a high five</div>
-                        <div className="outer-comment-pin-show-1">
-
-                        { !!comments ?
-                        <div className='comment-array-holding-div'>
-                             <div className='comment-array-pin-show'>
-                                { comments.map( comment => 
-                                    <div className='outside-comment-main' key={comment.id + "outside"}>
-                                        <div className='one-comment-pin-show' key={comment.id}>
-                                            <div>
-                                                <div id='123 G' className="image-div-show-pin-page comment-list-2 C">
-                                                    { !(comment.photoUrl === 'false') ? <img className="profile-icon-photo-pinshow" src={comment.photoUrl} alt="pic" /> : <p className='profile-letter-default' >{comment.name[0]}</p>}
-                                                </div>
-                                            </div>
-
-                                            <div className='right-txt-pin-show' id={`right-txt-pin-show`+ comment.id}>
-                                                 <div className='outer-div-time-elapsed-comment'>
-                                                    <Link to={`/profile/${comment.commenter_id}`}><div className='name-list-pin-show' >{comment.name}</div></Link>
-                                                    <div className='time-elapsed-comment' >{this.elapsedTime(comment.timeElapsed)}</div>
-                                                </div>
-                                                <div className='body-list-pin-show'>{comment.body}</div>
-                                            </div>
-
-                                             <div className='edit-form-div-outter' id={'edit-form-div' + comment.id} >
-                                                <textarea placeholder='Add a comment' className='blank-input-style' type="text" value={this.state.editComment} onChange={this.handelEditChange} />
-                                                <div className='edit-comment-btns'>
-                                                    <div data-comment_id={comment.id} onClick={this.cancelEditComment} id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin cancel-124" >Cancel</div>
-                                                    <div id='save-btn-show-pin' className="button-show-pin-comment save-123" onClick={this.handelSubmitCommentEdit}>Save</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className='bottom-section-comment-pin-show' id={'bottom-section-comment-pin-show' + comment.id}>
-                                            
-                                            <h1 className="header-title-boards-show-123">
-
-                                            <div className='like-icon-div'>
-                                                {comment.like.liked ? 
-                                                <img data-img_liker_id={this.props.currentUser.id} data-img_comment={comment.id} data-like_id={comment.like.like.id} onClick={this.removeLike} src={window.redHeartURL} alt="red heart" /> : 
-                                                <img data-img_liker_id={this.props.currentUser.id} data-img_comment={comment.id} onClick={this.createLike} src={window.grayHeartURL} alt="gray heart" /> }
-
-                                                {comment.like.like_count > 0 ? <div className='like-count'>{comment.like.like_count}</div> : null} 
-                                            </div>
-                                            
-                                            { comment.commenter_id === this.props.currentUser.id ? <div className="pin-duplicate-button-dd comment-edition-div" id={comment.id} onClick={this.dd_display_tog}>
-                                                <img className="pin-123-1 comment-edition-dot" src={window.dotsBlackURL} alt="more icon"/>
-                                            </div> : null}
-                                                {!!(this.state.dd_s[comment.id]) ? <div className="div-holder-helper-123-pin-show pin-modif new-mod-display">
-                                                    <div className="edit-dropdown-menue-123-pin-show move-edit-delete-div" id={`edit-dropdown-menue-124-id` + comment.id}>
-                                                        <div data-div_val={comment.body} id={comment.id} onClick={this.editComment}>Edit</div>
-                                                        <div id={comment.id} onClick={this.deleteComment}>Delete</div>
+                            { !!comments ?
+                            <div className='comment-array-holding-div'>
+                                <div className='comment-array-pin-show'>
+                                    { comments.map( comment => 
+                                        <div className='outside-comment-main' key={comment.id + "outside"}>
+                                            <div className='one-comment-pin-show' key={comment.id}>
+                                                <div>
+                                                    <div id='123 G' className="image-div-show-pin-page comment-list-2 C">
+                                                        { !(comment.photoUrl === 'false') ? <img className="profile-icon-photo-pinshow" src={comment.photoUrl} alt="pic" /> : <p className='profile-letter-default' >{comment.name[0]}</p>}
                                                     </div>
+                                                </div>
+
+                                                <div className='right-txt-pin-show' id={`right-txt-pin-show`+ comment.id}>
+                                                    <div className='outer-div-time-elapsed-comment'>
+                                                        <Link to={`/profile/${comment.commenter_id}`}><div className='name-list-pin-show' >{comment.name}</div></Link>
+                                                        <div className='time-elapsed-comment' >{this.elapsedTime(comment.timeElapsed)}</div>
+                                                    </div>
+                                                    <div className='body-list-pin-show'>{comment.body}</div>
+                                                </div>
+
+                                                <div className='edit-form-div-outter' id={'edit-form-div' + comment.id} >
+                                                    <textarea placeholder='Add a comment' className='blank-input-style' type="text" value={this.state.editComment} onChange={this.handelEditChange} />
+                                                    <div className='edit-comment-btns'>
+                                                        <div data-comment_id={comment.id} onClick={this.cancelEditComment} id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin cancel-124" >Cancel</div>
+                                                        <div id='save-btn-show-pin' className="button-show-pin-comment save-123" onClick={this.handelSubmitCommentEdit}>Save</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className='bottom-section-comment-pin-show' id={'bottom-section-comment-pin-show' + comment.id}>
+                                                
+                                                <h1 className="header-title-boards-show-123">
+
+                                                <div className='like-icon-div'>
+                                                    {comment.like.liked ? 
+                                                    <img data-img_liker_id={this.props.currentUser.id} data-img_comment={comment.id} data-like_id={comment.like.like.id} onClick={this.removeLike} src={window.redHeartURL} alt="red heart" /> : 
+                                                    <img data-img_liker_id={this.props.currentUser.id} data-img_comment={comment.id} onClick={this.createLike} src={window.grayHeartURL} alt="gray heart" /> }
+
+                                                    {comment.like.like_count > 0 ? <div className='like-count'>{comment.like.like_count}</div> : null} 
+                                                </div>
+                                                
+                                                { comment.commenter_id === this.props.currentUser.id ? <div className="pin-duplicate-button-dd comment-edition-div" id={comment.id} onClick={this.dd_display_tog}>
+                                                    <img className="pin-123-1 comment-edition-dot" src={window.dotsBlackURL} alt="more icon"/>
                                                 </div> : null}
-                                            </h1>
+                                                    {!!(this.state.dd_s[comment.id]) ? <div className="div-holder-helper-123-pin-show pin-modif new-mod-display">
+                                                        <div className="edit-dropdown-menue-123-pin-show move-edit-delete-div" id={`edit-dropdown-menue-124-id` + comment.id}>
+                                                            <div data-div_val={comment.body} id={comment.id} onClick={this.editComment}>Edit</div>
+                                                            <div id={comment.id} onClick={this.deleteComment}>Delete</div>
+                                                        </div>
+                                                    </div> : null}
+                                                </h1>
+
+                                            </div>
 
                                         </div>
+                                        )
+                                    }
+                                </div> 
 
+                                <div className="comment-count">{comments.length} comments </div>
+                                </div>
+                                : null }
+                                <div className="comments-in-section" >
+                                    <div id='847428 C' className="image-div-show-pin-page C" >
+                                        { !(this.props.currentUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>}
                                     </div>
-                                    )
-                                }
+                                    <input id='comment-input-pin-show' className="input-pin-show" type="text" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
+                                </div>
+
+                                <div id="pin-show-btn" className='outer-comment-pin-show-2'>
+                                    <div id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin" >Cancel</div>
+                                    <div id='done-btn-show-pin' className="button-show-pin-comment done-123" onClick={this.handelSubmitComment}>Done</div>
+                                </div>
+
+                                <div className='bottom-info-outter-div' >
+                                    <div className="image-div-show-pin-page bottom-info-links" >
+                                        { !(this.props.pin.pin.pinUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.pin.pin.pinUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.pin.pin.pinUser.f_name[0]}</p>}
+                                    </div>
+
+                                    <div className='bottom-section-pin-show-links' >
+                                        {this.state.pin.creator_id === this.props.currentUser.id ? 
+                                            <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>You</Link> : 
+                                            <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>{this.state.pin.pinUser.f_name} {this.state.pin.pinUser.l_name} </Link>
+                                        } saved to {' '}
+                                            <Link className='pin-show-link' to={`/board/${this.state.pin.board_id}`} >{this.state.pin.board.title}</Link>
+                                    </div>
+                                </div>
+
                             </div> 
 
-                            <div className="comment-count">{comments.length} comments </div>
                             </div>
-                            : null }
-                            <div className="comments-in-section" >
-                                <div id='847428 C' className="image-div-show-pin-page C" >
-                                    { !(this.props.currentUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>}
-                                </div>
-                                <input id='comment-input-pin-show' className="input-pin-show" type="text" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
-                            </div>
-
-                            <div id="pin-show-btn" className='outer-comment-pin-show-2'>
-                                <div id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin" >Cancel</div>
-                                <div id='done-btn-show-pin' className="button-show-pin-comment done-123" onClick={this.handelSubmitComment}>Done</div>
-                            </div>
-
-                            <div className='bottom-info-outter-div' >
-                                <div className="image-div-show-pin-page bottom-info-links" >
-                                    { !(this.props.pin.pin.pinUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.pin.pin.pinUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.pin.pin.pinUser.f_name[0]}</p>}
-                                </div>
-
-                                <div className='bottom-section-pin-show-links' >
-                                    {this.state.pin.creator_id === this.props.currentUser.id ? 
-                                        <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>You</Link> : 
-                                        <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>{this.state.pin.pinUser.f_name} {this.state.pin.pinUser.l_name} </Link>
-                                    } saved to {' '}
-                                        <Link className='pin-show-link' to={`/board/${this.state.pin.board_id}`} >{this.state.pin.board.title}</Link>
-                                </div>
-                            </div>
-
-                        </div> 
-
                         </div>
-                    </div>
 
 {/* </div> */}
                 </div>
