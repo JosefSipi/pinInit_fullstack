@@ -225,13 +225,14 @@ render(){
             </div> */}
             <div className="search-bar-section-1">
                 <input 
-                    onClick={this.searchingTime} 
-                    onKeyDown={this.keyPressed} 
-                    className="searchBar" 
-                    id='search-bar-input' 
-                    type="text" 
-                    placeholder="Search" 
-                    onChange={this.updateState} 
+                    type="text"
+                    autocomplete="off"
+                    onClick={this.searchingTime}
+                    onKeyDown={this.keyPressed}
+                    className="searchBar"
+                    id='search-bar-input'
+                    placeholder="Search"
+                    onChange={this.updateState}
                     onBlur={this.searchOver}>
                     
                 </input>
