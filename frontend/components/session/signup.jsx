@@ -119,24 +119,27 @@ class SignUp extends React.Component {
                     <h3 className="findNew-signUp">Find new ideas to try</h3>
                 <form className="main-login-form" onSubmit={this.handelSubmit}>
                     <input
-                        className={`${emailError ? 'input-box-signUp-error' : 'input-box-signUp'}`}
                         type="text"
+                        autocomplete="off"
+                        className={`${emailError ? 'input-box-signUp-error' : 'input-box-signUp'}`}
                         placeholder="Email"
                         value={this.state.email}
                         onChange={this.onChange("email")}
                     />
                     {emailError ? <div className='pwError-div' >{emailError}</div> : null}
                     <input
-                        className={`${pwError ? 'input-box-signUp-error' : 'input-box-signUp'}`}
                         type="password"
+                        autocomplete="off"
+                        className={`${pwError ? 'input-box-signUp-error' : 'input-box-signUp'}`}
                         placeholder="Create a passowrd"
                         value={this.state.password}
                         onChange={this.onChange("password")}
                     />
                     {pwError ? <div className='pwError-div' >{pwError}</div> : null}
                     <input
-                        className={`${ageError ? 'input-box-signUp-error' : 'input-box-signUp'}`}
                         type="number"
+                        autocomplete="off"
+                        className={`${ageError ? 'input-box-signUp-error' : 'input-box-signUp'}`}
                         placeholder="Age"
                         value={this.state.age}
                         onChange={this.onChange("age")}

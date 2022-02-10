@@ -164,24 +164,24 @@ class EditPinShow extends React.Component {
 
                         <div className="title-edit-pin all-left-section-edit-p">
                             <div className="title-word the-edit-labels">Title</div>
-                            <input type="text" className="edit-pin-input input-section-edit-pin-123" value={this.state.pin.title === null ? '' : this.state.pin.title} onChange={this.handelChange('title')}/>
+                            <input type="text" autocomplete="off" className="edit-pin-input input-section-edit-pin-123" value={this.state.pin.title === null ? '' : this.state.pin.title} onChange={this.handelChange('title')}/>
                         </div>
 
                         <div className="description-section-edit-p all-left-section-edit-p">
                             <div className="description-word-edit-p the-edit-labels">Description</div>
                             <textarea className="description-input-edit-p input-section-edit-pin-123" value={this.state.pin.description} onChange={this.handelChange('description')} name="" id="" cols="30" rows="3"></textarea>
-                            {/* <input type="text" className="edit-pin-input" value={this.state.pin.description} onChange={this.handelChange('description')}/> */}
+                            {/* <input type="text" autocomplete="off" className="edit-pin-input" value={this.state.pin.description} onChange={this.handelChange('description')}/> */}
                         </div>
 
                         <div className="url-link-edit-p all-left-section-edit-p">
                             <div className="url-website-edit-p-word the-edit-labels">Website</div>
-                            <input type="text" className="edit-pin-input input-section-edit-pin-123" value={this.state.pin.websiteURL} onChange={this.handelChange('websiteURL')}/>
+                            <input type="text" autocomplete="off" className="edit-pin-input input-section-edit-pin-123" value={this.state.pin.websiteURL} onChange={this.handelChange('websiteURL')}/>
                         </div>
 
                         <div className="alt-txt-edit-p all-left-section-edit-p">
                             <div className="alt-txt-word-edit-p the-edit-labels">Alt Text</div>
                             <div className="input-section-alt-txt-edit-p">
-                                <input className="edit-pin-input input-section-edit-pin-123" type="text" value={this.state.pin.description2} onChange={this.handelChange('description2')}/>
+                                <input type="text" autocomplete="off" className="edit-pin-input input-section-edit-pin-123"  value={this.state.pin.description2} onChange={this.handelChange('description2')}/>
                                 <div className="alt-txt-underinput-edit-p">
                                     This helps people using screen readers understand what your Pin is about.
                                 </div>
@@ -190,7 +190,7 @@ class EditPinShow extends React.Component {
 
                         {/* <div className="note-to-self-edit-p">
                             <div className="note-self-edit-p-word">Note to self</div>
-                            <input type="text" className="edit-pin-input-notetoself" placeholder="Add a private note to remember your ideas about this Pin" value={}/>
+                            <input type="text" autocomplete="off" className="edit-pin-input-notetoself" placeholder="Add a private note to remember your ideas about this Pin" value={}/>
                         </div> */}
 
                         {/* <div className="comments-and-photo-permis">

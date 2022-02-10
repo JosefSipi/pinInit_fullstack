@@ -119,18 +119,20 @@ class LogIn extends React.Component {
                 <form className="main-login-form" onSubmit={this.handelSubmit}>
 
                     <input
+                        type="text"
+                        autocomplete="off"
                         id='input-box-email'
                         className={`input-box ${emailError ? 'input-error' : null}`}
-                        type="text"
                         placeholder="Email"
                         value={this.state.email}
                         onChange={this.onChange("email")}
                     />
                     {emailError ? <div className='pwError-div' >{emailError}</div> : null}
                     <input
+                        type="password"
+                        autocomplete="off"
                         id='input-box-pw'
                         className={`input-box ${pwError ? 'input-error' : null}`}
-                        type="password"
                         placeholder="password"
                         value={this.state.password}
                         onChange={this.onChange("password")}

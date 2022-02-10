@@ -497,7 +497,7 @@ class PinShow extends React.Component {
                                 <div id='847428 A' className="image-div-show-pin-page C" >
                                     { !(this.props.currentUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>}
                                 </div>
-                                <input id='comment-input-pin-show' className="input-pin-show" type="text" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
+                                <input type="text" autocomplete="off" id='comment-input-pin-show' className="input-pin-show" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
                             </div>
 
                             <div id="pin-show-btn" className='outer-comment-pin-show-2'>
@@ -640,7 +640,7 @@ class PinShow extends React.Component {
                                     <div id='847428 C' className="image-div-show-pin-page C" >
                                         { !(this.props.currentUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>}
                                     </div>
-                                    <input id='comment-input-pin-show' className="input-pin-show" type="text" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
+                                    <input type="text" autocomplete="off" id='comment-input-pin-show' className="input-pin-show" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
                                 </div>
 
                                 <div id="pin-show-btn" className='outer-comment-pin-show-2'>

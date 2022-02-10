@@ -144,10 +144,11 @@ class EditForm extends React.Component {
                         <div className="edit-f-name" >
                             <h4>First name</h4>
                             <input 
+                                type="text"
+                                autocomplete="off"
                                 className='input-txt-edit-profile'
                                 placeholder="Ex. Jo"
                                 onChange={this.handleChange('f_name')}
-                                type="text"
                                 onBlur={this.makeReadOnly}
                                 onFocus={this.removeReadOnly}
                                 // value={this.state.editUser.f_name}
@@ -159,10 +160,11 @@ class EditForm extends React.Component {
                             <h4>Last name</h4>
 
                             <input
+                                type="text"
+                                autocomplete="off"
                                 className='input-txt-edit-profile'
                                 placeholder="Ex. Smith"
                                 onChange={this.handleChange('l_name')}
-                                type="text"
                                 onBlur={this.makeReadOnly}
                                 onFocus={this.removeReadOnly}
                                 // value={this.state.l_name}
@@ -176,10 +178,11 @@ class EditForm extends React.Component {
                     <div className="edit-input-edit-user">
                         <h4 className='description-txt-edit-profile' >Short Bio</h4>
                         <input 
+                            type="textare"
+                            autocomplete="off"
                             className='input-txt-edit-profile'
                             placeholder="Write a little bit about yourself here"
                             onChange={this.handleChange('bio')}
-                            type="textare"
                             onBlur={this.makeReadOnly}
                             onFocus={this.removeReadOnly}
                             // value={this.state.bio}
@@ -191,8 +194,9 @@ class EditForm extends React.Component {
                     {/* <div className="edit-input-edit-user" >
                         <h4 className='description-txt-edit-profile' >Website</h4>
                         <input
+                            type="text" 
+                            autocomplete="off"
                             className='input-txt-edit-profile'
-                            type="text"
                             // value={this.state.user_url}
                         />
                     </div> */}
@@ -200,9 +204,10 @@ class EditForm extends React.Component {
                     {/* <div className="edit-input-edit-user" >
                         <h4 className='description-txt-edit-profile' >Location</h4>
                         <input
+                            type="text"
+                            autocomplete="off"
                             className='input-txt-edit-profile'
                             placeholder="Ex. San Francisco, CA"
-                            type="text"
                             // value={this.state.location}
                         />
                     </div> */}
@@ -212,9 +217,10 @@ class EditForm extends React.Component {
                         <h4 className='description-txt-edit-profile' >Username</h4>
 
                         <input
+                            type="text"
+                            autocomplete="off"
                             className='input-txt-edit-profile'
                             onChange={this.handleChange('username')}
-                            type="text"
                             onBlur={this.makeReadOnly}
                             onFocus={this.removeReadOnly}
                             // value={this.state.username}
