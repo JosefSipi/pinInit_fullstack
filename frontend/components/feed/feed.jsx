@@ -101,17 +101,25 @@ class Feed extends React.Component {
 
     photoLoaded(e){
         e.preventDefault();
-
+        // check if pin has title
         let titleCondition = !!e.currentTarget.getAttribute('data-link_title')
 
+        // after photo loads get the height of the image for its pin tile sizing
         let imageHeight = e.currentTarget.children[1].clientHeight;
         let spanVal
+
+        // determine final height of tile based on (is there a title and imageHeight)
         {titleCondition ? spanVal = Math.trunc((imageHeight/10) + 5) : spanVal = Math.trunc((imageHeight/10) + 2)  }
 
-        let card = document.getElementById(`${e.currentTarget.id}`)
-
-        card.style.gridRowEnd = `span ${spanVal}`
+        // ------------edit Feb 15, 2022 -------------------
+        e.currentTarget.style.gridRowEnd =  `span ${spanVal}`;
         e.currentTarget.style.visibility = "";
+        // -------------------------------
+
+        // -----------original version from Feb 15, 2022 edit -------------
+        // let card = document.getElementById(`${e.currentTarget.id}`)
+        // card.style.gridRowEnd = `span ${spanVal}`
+        // e.currentTarget.style.visibility = "";
     }
 
     componentDidMount(){
