@@ -530,11 +530,15 @@ div.input-div-top{
 }
 
 div.profile-div-small-pin {
-  overflow-y: hidden;
-  overflow-x: hidden;
-  border-radius: 100px;
-  height: 50px;
-  width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow-y: hidden;
+    overflow-x: hidden;
+    border-radius: 100px;
+    height: 50px;
+    width: 50px;
 }
 
 .text-area-pin-create{
