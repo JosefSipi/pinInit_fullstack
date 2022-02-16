@@ -260,12 +260,14 @@ div.over-lay{
     left: 50%;
     transform: translateX(-50%);
     display: grid;
+    // the blow css will fill each row with cards of the with of --card_width 
+    // and when it no longer fits on that row it pushes to the next row
     grid-template-columns: repeat(auto-fill, var(--card_width));
     grid-auto-rows: var(--row_increment);
     justify-content: center;
 }
 
-
+// the height of the card is determined by the image after it's loaded
 .card {
     padding: 0;
     margin: 15px 10px;
