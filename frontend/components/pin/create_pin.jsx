@@ -1,6 +1,7 @@
 import React from 'react';
 // import { Redirect } from 'react-router-dom';
 import LoadingIcon from './loading';
+import Resizer from 'react-image-file-resizer';
 
 class CreatePin extends React.Component {
     constructor(props) {
@@ -42,9 +43,28 @@ class CreatePin extends React.Component {
         this.createABoard = this.createABoard.bind(this);
         this.boardDropDownSelectCreate = this.boardDropDownSelectCreate.bind(this);
         this.helpDescription = this.helpDescription.bind(this);
+        this.resizeFile = this.resizeFile.bind(this);
     }
 
+    resizeFile(file){
+        let image = new Promise((resolve) => {
+            Resizer.imageFileResizer(
+            file,
+            735,
+            1000,
+            "JPEG",
+            100,
+            0,
+            (uri) => {
+                resolve(uri);
+            },
+            "base64"
+            );
+        });
 
+        // debugger
+        
+    }
 
     helpDescription(){
 
@@ -446,7 +466,8 @@ class CreatePin extends React.Component {
                                     </div>
                                 </div>
 
-                                <input type="file" autocomplete="off" name="input-image-pin" id="input-image-pin" 
+                                <input type="file" accept=".jpg" autocomplete="off" name="input-image-pin" id="input-image-pin" 
+                                //  accept=".jpg, .jpeg, .png"
                                 onChange={this.handelPhotoSelect}/>
 
                             </label>
