@@ -226,7 +226,7 @@ render(){
             <div className="search-bar-section-1">
                 <input 
                     type="text"
-                    autocomplete="off"
+                    autoComplete="off"
                     onClick={this.searchingTime}
                     onKeyDown={this.keyPressed}
                     className="searchBar"

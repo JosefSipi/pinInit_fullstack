@@ -84,7 +84,7 @@ class EditBoardShow extends React.Component {
             <div className="middle-section-edit-from-board">
                 <form className="editng-board-from-board" id="the-button-edinging-board-onboard" onSubmit={this.handelSubmit}>
                     <p className="name-div-editing-1">Name</p>
-                    <input type="text" autocomplete="off" className="edit-pin-input input-section-edit-pin-123" value={this.state.board.title} onChange={this.handelChange('title')}/>
+                    <input type="text" autoComplete="off" className="edit-pin-input input-section-edit-pin-123" value={this.state.board.title} onChange={this.handelChange('title')}/>
 
                     <p className="name-div-editing-1">Description</p>
                     <textarea className="description-input-edit-p input-section-edit-pin-123" onChange={this.handelChange('description')} name="" id=""  >

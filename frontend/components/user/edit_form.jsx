@@ -145,7 +145,7 @@ class EditForm extends React.Component {
                             <h4>First name</h4>
                             <input 
                                 type="text"
-                                autocomplete="off"
+                                autoComplete="off"
                                 className='input-txt-edit-profile'
                                 placeholder="Ex. Jo"
                                 onChange={this.handleChange('f_name')}
@@ -161,7 +161,7 @@ class EditForm extends React.Component {
 
                             <input
                                 type="text"
-                                autocomplete="off"
+                                autoComplete="off"
                                 className='input-txt-edit-profile'
                                 placeholder="Ex. Smith"
                                 onChange={this.handleChange('l_name')}
@@ -179,7 +179,7 @@ class EditForm extends React.Component {
                         <h4 className='description-txt-edit-profile' >Short Bio</h4>
                         <input 
                             type="textare"
-                            autocomplete="off"
+                            autoComplete="off"
                             className='input-txt-edit-profile'
                             placeholder="Write a little bit about yourself here"
                             onChange={this.handleChange('bio')}
@@ -195,7 +195,7 @@ class EditForm extends React.Component {
                         <h4 className='description-txt-edit-profile' >Website</h4>
                         <input
                             type="text" 
-                            autocomplete="off"
+                            autoComplete="off"
                             className='input-txt-edit-profile'
                             // value={this.state.user_url}
                         />
@@ -205,7 +205,7 @@ class EditForm extends React.Component {
                         <h4 className='description-txt-edit-profile' >Location</h4>
                         <input
                             type="text"
-                            autocomplete="off"
+                            autoComplete="off"
                             className='input-txt-edit-profile'
                             placeholder="Ex. San Francisco, CA"
                             // value={this.state.location}
@@ -218,7 +218,7 @@ class EditForm extends React.Component {
 
                         <input
                             type="text"
-                            autocomplete="off"
+                            autoComplete="off"
                             className='input-txt-edit-profile'
                             onChange={this.handleChange('username')}
                             onBlur={this.makeReadOnly}

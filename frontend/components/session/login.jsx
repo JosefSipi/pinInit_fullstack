@@ -120,7 +120,7 @@ class LogIn extends React.Component {
 
                     <input
                         type="text"
-                        autocomplete="off"
+                        autoComplete="off"
                         id='input-box-email'
                         className={`input-box ${emailError ? 'input-error' : null}`}
                         placeholder="Email"
@@ -130,7 +130,7 @@ class LogIn extends React.Component {
                     {emailError ? <div className='pwError-div' >{emailError}</div> : null}
                     <input
                         type="password"
-                        autocomplete="off"
+                        autoComplete="off"
                         id='input-box-pw'
                         className={`input-box ${pwError ? 'input-error' : null}`}
                         placeholder="password"

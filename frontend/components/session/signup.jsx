@@ -120,7 +120,7 @@ class SignUp extends React.Component {
                 <form className="main-login-form" onSubmit={this.handelSubmit}>
                     <input
                         type="text"
-                        autocomplete="off"
+                        autoComplete="off"
                         className={`${emailError ? 'input-box-signUp-error' : 'input-box-signUp'}`}
                         placeholder="Email"
                         value={this.state.email}
@@ -129,7 +129,7 @@ class SignUp extends React.Component {
                     {emailError ? <div className='pwError-div' >{emailError}</div> : null}
                     <input
                         type="password"
-                        autocomplete="off"
+                        autoComplete="off"
                         className={`${pwError ? 'input-box-signUp-error' : 'input-box-signUp'}`}
                         placeholder="Create a passowrd"
                         value={this.state.password}
@@ -138,7 +138,7 @@ class SignUp extends React.Component {
                     {pwError ? <div className='pwError-div' >{pwError}</div> : null}
                     <input
                         type="number"
-                        autocomplete="off"
+                        autoComplete="off"
                         className={`${ageError ? 'input-box-signUp-error' : 'input-box-signUp'}`}
                         placeholder="Age"
                         value={this.state.age}

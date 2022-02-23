@@ -78,7 +78,7 @@ class CreateBoard extends React.Component {
 
                 <form className="create-board-form" onSubmit={this.handelSubmit}>
                     <div className="name-div-create-b">Name</div>
-                    <input className="input-box-create-b" autocomplete="off" type="text" onChange={this.updateTitle} placeholder='Like "Places to Go" or "Recipes to Make"'/>
+                    <input className="input-box-create-b" autoComplete="off" type="text" onChange={this.updateTitle} placeholder='Like "Places to Go" or "Recipes to Make"'/>
 
                     <div className="bottom-create-b">
                         <input className="create-board-checkbox" type="checkbox" onChange={this.checkboxChange}/>

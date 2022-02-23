@@ -51,7 +51,7 @@ class Uploader extends React.Component {
                     <div className="input-box-modal-file-div">
                         <label htmlFor="input-image-profile-pic-uploader" id="label-profile-pic-upload">
                             <div className="button-profile-script">Choose photo</div>
-                            <input type="file" autocomplete="off" name="input-image-profile-pic-uploader" id="input-image-profile-pic-uploader"  onChange={this.handelFile}/>
+                            <input type="file" autoComplete="off" name="input-image-profile-pic-uploader" id="input-image-profile-pic-uploader"  onChange={this.handelFile}/>
                         </label>
                     </div>
                 </div>}

@@ -328,6 +328,10 @@ class CreatePin extends React.Component {
     
 
     handelPhotoSelect(e){
+        // debugger
+
+        // if the image is too large --> this.state.pin.photo.size
+        // resize the image and use the return image as the image file to upload
 
         if(e.currentTarget.files[0].type === 'image/jpeg') {
             const prevState = this.state.pin
@@ -354,7 +358,10 @@ class CreatePin extends React.Component {
         } else {
             this.setState({img_err: true}) 
         }
+
+        
     
+        // debugger
        
     }
 
@@ -466,7 +473,7 @@ class CreatePin extends React.Component {
                                     </div>
                                 </div>
 
-                                <input type="file" accept=".jpg" autocomplete="off" name="input-image-pin" id="input-image-pin" 
+                                <input type="file" accept=".jpg" autoComplete="off" name="input-image-pin" id="input-image-pin" 
                                 //  accept=".jpg, .jpeg, .png"
                                 onChange={this.handelPhotoSelect}/>
 
@@ -485,7 +492,7 @@ class CreatePin extends React.Component {
                         <div className="right-side-create-pin">
 
                             <div className="input-div-top">
-                                <input type="text" autocomplete="off" className="input-for-title-pin" placeholder="Add your title" onChange={this.inputChange('title')} onFocus={this.supTextShow} onBlur={this.supTextShow}/>
+                                <input type="text" autoComplete="off" className="input-for-title-pin" placeholder="Add your title" onChange={this.inputChange('title')} onFocus={this.supTextShow} onBlur={this.supTextShow}/>
                                 <div className="second-div-title-pininput-outer" id="second-div-title-pininput">
                                     <div className="second-div-title-pininput-1" id="second-div-title-pininput-1">Your first 40 characters are what usually show up in feeds </div> <div id="second-div-title-pininput-2" className="second-div-title-pininput-2">{100 - this.state.pin.title.length}</div>                              
                                 </div>
@@ -519,7 +526,7 @@ class CreatePin extends React.Component {
                                 </div> : null
                             }
 
-                            <input type="text" autocomplete="off" className="text-area-pin-create last-in-556" onFocus={this.helpDescription} onChange={this.inputChange('websiteURL')} placeholder="Add a destination link"/>
+                            <input type="text" autoComplete="off" className="text-area-pin-create last-in-556" onFocus={this.helpDescription} onChange={this.inputChange('websiteURL')} placeholder="Add a destination link"/>
                         </div>
                     </div>
 
