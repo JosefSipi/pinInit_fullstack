@@ -7,6 +7,8 @@
     "@babel/preset-react": "^7.13.13",
     "antd": "^4.15.5",
     "babel-loader": "^8.2.2",
+    "browser-image-compression": "^1.0.17",
+    "compressorjs": "^1.1.1",
     "file-saver": "^2.0.5",
     "gatsby-plugin-image": "^1.13.0",
     "gatsby-plugin-sharp": "^3.13.0",
@@ -58,6 +60,7 @@
   },
   "homepage": "https://github.com/JosefSipi/pinInit_fullstack#readme",
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.17.0",
     "file-loader": "^6.2.0"
   }
 }

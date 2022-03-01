@@ -1,7 +1,8 @@
 import React from 'react';
 // import { Redirect } from 'react-router-dom';
 import LoadingIcon from './loading';
-import Resizer from 'react-image-file-resizer';
+import Compressor from 'compressorjs';
+import imageCompression from 'browser-image-compression';
 
 class CreatePin extends React.Component {
     constructor(props) {
@@ -43,28 +44,10 @@ class CreatePin extends React.Component {
         this.createABoard = this.createABoard.bind(this);
         this.boardDropDownSelectCreate = this.boardDropDownSelectCreate.bind(this);
         this.helpDescription = this.helpDescription.bind(this);
-        this.resizeFile = this.resizeFile.bind(this);
+        // this.compresionCallback = this.compresionCallback.bind(this);
+        this.handleImageUploadCompression = this.handleImageUploadCompression.bind(this);
     }
 
-    resizeFile(file){
-        let image = new Promise((resolve) => {
-            Resizer.imageFileResizer(
-            file,
-            735,
-            1000,
-            "JPEG",
-            100,
-            0,
-            (uri) => {
-                resolve(uri);
-            },
-            "base64"
-            );
-        });
-
-        // debugger
-        
-    }
 
     helpDescription(){
 
@@ -219,8 +202,6 @@ class CreatePin extends React.Component {
 
 
     componentDidMount(){
-
-        
         this.props.fetchBoards(this.props.currentUser.id).then(
             (data) => {
                 this.setState({boards: data.boards})
@@ -325,44 +306,45 @@ class CreatePin extends React.Component {
        uploadImageStateEl.style.display = 'none';
     }
 
-    
+    async handleImageUploadCompression(image){
 
-    handelPhotoSelect(e){
-        // debugger
+        const options = {
+          maxSizeMB: 0.08,
+          maxWidthOrHeight: 735,
+          useWebWorker: true
+        }
 
-        // if the image is too large --> this.state.pin.photo.size
-        // resize the image and use the return image as the image file to upload
-
-        if(e.currentTarget.files[0].type === 'image/jpeg') {
-            const prevState = this.state.pin
-    
-            prevState["photo"] = e.currentTarget.files[0]
-            
-            const file = e.currentTarget.files[0];
+        try {
+            const compressedImage = await imageCompression(image, options)
             const fileReader = new FileReader();
-            fileReader.onloadend = () => {
-                
-                this.setState({ pin: prevState, thePhotoURL: fileReader.result, isTrue: true });
-            }
+            let filePho = new File([compressedImage], compressedImage.name)
             
-            if(file) {
-                fileReader.readAsDataURL(file);
+            const prevState = this.state.pin
+            prevState["photo"] = filePho
+
+            fileReader.onloadend = () => {
+                this.setState({ pin: prevState, thePhotoURL: fileReader.result, isTrue: true})
             }
+
+            if(filePho) fileReader.readAsDataURL(filePho);
+        } catch (err){
+            console.log(err)
+        }
+    }
+    
+    handelPhotoSelect(e){
         
-    
-           let labelElement = document.getElementById('input-image-label-pin')
-           labelElement.style.display = 'none'
-    
-           let uploadImageStateEl = document.getElementById('modals_pin-display')
-           uploadImageStateEl.style.display = 'flex';
+        if(e.currentTarget.files[0].type === 'image/jpeg') {
+            // 
+            this.handleImageUploadCompression(e.currentTarget.files[0])
+
+            let labelElement = document.getElementById('input-image-label-pin')
+            labelElement.style.display = 'none'
+            let uploadImageStateEl = document.getElementById('modals_pin-display')
+            uploadImageStateEl.style.display = 'flex';
         } else {
             this.setState({img_err: true}) 
         }
-
-        
-    
-        // debugger
-       
     }
 
     deleteDropDownClick(e){
@@ -418,7 +400,7 @@ class CreatePin extends React.Component {
     }
 
     render() {
-        
+
         if (!this.props.boards.boards || this.props.boards.boards === undefined || this.props.boards.boards.length === 0){
             return null
         }

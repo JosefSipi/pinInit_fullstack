@@ -25,7 +25,7 @@ const mDTP = dispatch => {
 
         openModal: (modal) => dispatch(openModal(modal)),
 
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
     }
 }
 
