@@ -61,7 +61,10 @@ class CreatePin extends React.Component {
             }, 10000)
 
         }
+
     }
+
+    
 
     boardDropDownSelectCreate(){
         
@@ -188,16 +191,12 @@ class CreatePin extends React.Component {
                 this.props.history.goBack()
             } 
         )
-
-        
-        
     }
 
     populateBoardField(){
         let prevState = this.state.pin
         prevState["board_id"] = firstBoard
         this.setState({ pin: prevState })
-
     }
 
 
@@ -243,12 +242,6 @@ class CreatePin extends React.Component {
         
 
         this.setState({boards: this.props.boards.boards})
-
-        // set board props to state
-        // set dropdown display as block
-        // render an ul within dropdown display from this.state.boards
-
-        
 
         if(backdrop.style.display === "none"){
             backdrop.style.display = "block"
@@ -306,16 +299,23 @@ class CreatePin extends React.Component {
        uploadImageStateEl.style.display = 'none';
     }
 
+    // handleConvertedImage(url){
+    //     debugger
+
+    //     console.log(url)
+    // }
+
     async handleImageUploadCompression(image){
 
         const options = {
-          maxSizeMB: 0.08,
-          maxWidthOrHeight: 735,
+          maxSizeMB: 0.09,
+          maxWidthOrHeight: 670,
           useWebWorker: true
         }
 
         try {
             const compressedImage = await imageCompression(image, options)
+
             const fileReader = new FileReader();
             let filePho = new File([compressedImage], compressedImage.name)
             
@@ -326,7 +326,9 @@ class CreatePin extends React.Component {
                 this.setState({ pin: prevState, thePhotoURL: fileReader.result, isTrue: true})
             }
 
-            if(filePho) fileReader.readAsDataURL(filePho);
+            if(filePho) {
+                fileReader.readAsDataURL(filePho);
+            }
         } catch (err){
             console.log(err)
         }
@@ -335,7 +337,7 @@ class CreatePin extends React.Component {
     handelPhotoSelect(e){
         
         if(e.currentTarget.files[0].type === 'image/jpeg') {
-            // 
+
             this.handleImageUploadCompression(e.currentTarget.files[0])
 
             let labelElement = document.getElementById('input-image-label-pin')
