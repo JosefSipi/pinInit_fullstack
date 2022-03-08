@@ -154,17 +154,18 @@ class CreatePin extends React.Component {
 
     handelSubmit(e) {
         e.preventDefault();
-        debugger
+        
 
-        if(!e.currentTarget.files) {
-            this.errHandler(e)
-            return
-        } 
+        if(this.errHandler(e)) return
+
+        
 
         let boards = Object.values(this.props.boards.boards)
         const objBoards = {...this.props.boards.boards}
 
         let the_board_id
+
+        
 
         if(this.state.pin.board_id === null && boards.length === 0){
         } else if (this.state.pin.board_id === null && boards.length > 0){
@@ -307,7 +308,7 @@ class CreatePin extends React.Component {
     }
 
     // handleConvertedImage(url){
-    //     debugger
+    //     
 
     //     console.log(url)
     // }
@@ -343,24 +344,30 @@ class CreatePin extends React.Component {
 
     errHandler(e){
 
-        debugger
+        
         if(!e.currentTarget.files) {
             this.setState({img_err: true, err_msg: "An image is required to create a Pin."})
-            return
+            
+            return true
         }
 
         if(e.currentTarget.files[0].type !== 'image/jpeg') {
             this.setState({img_err: true, err_msg: "Your upload failed because it's the wrong format."})
-            return
+            
+            return true
         }
 
+        
+        return false
     }
     
     handelPhotoSelect(e){
 
-        debugger
+        
 
-        this.errHandler(e)
+        if(this.errHandler(e)) return
+
+        
        
         this.handleImageUploadCompression(e.currentTarget.files[0])
 
@@ -436,7 +443,7 @@ class CreatePin extends React.Component {
 
         let description1 = 500 - this.state.pin.description.length
 
-        debugger
+        
         
         
         return (
