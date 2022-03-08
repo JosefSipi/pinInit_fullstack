@@ -25,6 +25,7 @@ class CreatePin extends React.Component {
             boardTitle: false,
             boards: null,
             img_err: false,
+            err_msg: "",
             showHelpDes: false,
             showHelpMount: false,
         }
@@ -46,8 +47,8 @@ class CreatePin extends React.Component {
         this.helpDescription = this.helpDescription.bind(this);
         // this.compresionCallback = this.compresionCallback.bind(this);
         this.handleImageUploadCompression = this.handleImageUploadCompression.bind(this);
+        this.errHandler = this.errHandler.bind(this);
     }
-
 
     helpDescription(){
 
@@ -153,6 +154,12 @@ class CreatePin extends React.Component {
 
     handelSubmit(e) {
         e.preventDefault();
+        debugger
+
+        if(!e.currentTarget.files) {
+            this.errHandler(e)
+            return
+        } 
 
         let boards = Object.values(this.props.boards.boards)
         const objBoards = {...this.props.boards.boards}
@@ -333,20 +340,34 @@ class CreatePin extends React.Component {
             console.log(err)
         }
     }
+
+    errHandler(e){
+
+        debugger
+        if(!e.currentTarget.files) {
+            this.setState({img_err: true, err_msg: "An image is required to create a Pin."})
+            return
+        }
+
+        if(e.currentTarget.files[0].type !== 'image/jpeg') {
+            this.setState({img_err: true, err_msg: "Your upload failed because it's the wrong format."})
+            return
+        }
+
+    }
     
     handelPhotoSelect(e){
-        
-        if(e.currentTarget.files[0].type === 'image/jpeg') {
 
-            this.handleImageUploadCompression(e.currentTarget.files[0])
+        debugger
 
-            let labelElement = document.getElementById('input-image-label-pin')
-            labelElement.style.display = 'none'
-            let uploadImageStateEl = document.getElementById('modals_pin-display')
-            uploadImageStateEl.style.display = 'flex';
-        } else {
-            this.setState({img_err: true}) 
-        }
+        this.errHandler(e)
+       
+        this.handleImageUploadCompression(e.currentTarget.files[0])
+
+        let labelElement = document.getElementById('input-image-label-pin')
+        labelElement.style.display = 'none'
+        let uploadImageStateEl = document.getElementById('modals_pin-display')
+        uploadImageStateEl.style.display = 'flex';
     }
 
     deleteDropDownClick(e){
@@ -415,6 +436,7 @@ class CreatePin extends React.Component {
 
         let description1 = 500 - this.state.pin.description.length
 
+        debugger
         
         
         return (
@@ -452,8 +474,13 @@ class CreatePin extends React.Component {
                                     <div className="doted-border">
                                         {this.state.img_err ?  <img src={window.redWarning} alt="Alert icon" id="up-arrow-icon" /> : <img src={window.upArrowURL} alt="up Arrow" id="up-arrow-icon" />}
 
-                                        <div className={this.state.img_err ? 'drag-class-name red-txt' : "drag-class-name" }>{this.state.img_err ? "Your upload failed because it's the wrong format." : 'Click to upload'}</div>
-                                        <div className={this.state.img_err ? 'second-blerb-pin red-txt' : "second-blerb-pin" }>Recomendation: Use high-quality .jpg files less than 20MB</div>
+                                        <div className={this.state.img_err ? 'drag-class-name red-txt' : "drag-class-name" }>
+                                            {this.state.img_err ? this.state.err_msg : 'Click to upload'}
+                                        </div>
+
+                                        <div className={this.state.img_err ? 'second-blerb-pin red-txt' : "second-blerb-pin" }>
+                                            Recomendation: Use high-quality .jpg files less than 20MB
+                                        </div>
                                     </div>
                                 </div>
 
