@@ -54,38 +54,36 @@ class CreatePin extends React.Component {
 
         if (this.state.showHelpMount){
 
-            this.setState({showHelpDes: true})
+            this.setState({showHelpDes: true});
             
             setTimeout(() => {
-                this.setState({showHelpDes: false})
-                this.setState({showHelpMount: false})
-            }, 10000)
+                this.setState({showHelpDes: false});
+                this.setState({showHelpMount: false});
+            }, 10000);
 
         }
 
     }
 
-    
-
     boardDropDownSelectCreate(){
         
-        const boardsFromState = this.state.boards
+        const boardsFromState = this.state.boards;
 
-        const boards = Object.values(boardsFromState)
-        const objBoards = {...boardsFromState}
+        const boards = Object.values(boardsFromState);
+        const objBoards = {...boardsFromState};
 
 
-        let displayBoardId = this.state.pin.board_id
+        let displayBoardId = this.state.pin.board_id;
 
-        let displayTitle = boardsFromState[displayBoardId]
+        let displayTitle = boardsFromState[displayBoardId];
 
         if(displayBoardId === null && boards.length === 0){
-            displayTitle = 'Select'
+            displayTitle = 'Select';
         } else if (displayBoardId === null && boards.length > 0) {
             
-            displayTitle = objBoards[Object.keys(objBoards)[0]].title
+            displayTitle = objBoards[Object.keys(objBoards)[0]].title;
         } else {
-            displayTitle = objBoards[displayBoardId].title
+            displayTitle = objBoards[displayBoardId].title;
         }
 
         return (
