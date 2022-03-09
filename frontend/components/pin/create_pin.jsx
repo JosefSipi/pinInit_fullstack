@@ -34,7 +34,6 @@ class CreatePin extends React.Component {
         this.handelUlClick = this.handelUlClick.bind(this);
         this.boardClickSelect = this.boardClickSelect.bind(this);
         this.handelSubmit = this.handelSubmit.bind(this);
-        // this.handelPhotoSelect = this.handelPhotoSelect.bind(this);
         this.deletePreview = this.deletePreview.bind(this);
         this.deleteDropDownClick = this.deleteDropDownClick.bind(this);
         this.moreClicked = this.moreClicked.bind(this);
@@ -45,9 +44,6 @@ class CreatePin extends React.Component {
         this.createABoard = this.createABoard.bind(this);
         this.boardDropDownSelectCreate = this.boardDropDownSelectCreate.bind(this);
         this.helpDescription = this.helpDescription.bind(this);
-        // this.compresionCallback = this.compresionCallback.bind(this);
-        // this.handleImageUploadCompression = this.handleImageUploadCompression.bind(this);
-        // this.errHandler = this.errHandler.bind(this);
         this.imgConvertToWebp = this.imgConvertToWebp.bind(this);
     }
 
@@ -311,57 +307,6 @@ class CreatePin extends React.Component {
        uploadImageStateEl.style.display = 'none';
     }
 
-    // async handleImageUploadCompression(image){
-
-    //     debugger
-
-    //     const options = {
-    //       maxSizeMB: 0.09,
-    //       maxWidthOrHeight: 670,
-    //       useWebWorker: true
-    //     }
-
-    //     try {
-    //         debugger
-    //         const compressedImage = await imageCompression(image, options)
-
-    //         debugger
-    //         const fileReader = new FileReader();
-
-    //         let filePho = new File([compressedImage], compressedImage.name)
-            
-    //         const prevState = this.state.pin
-    //         debugger
-    //         prevState["photo"] = filePho
-
-    //         fileReader.onloadend = () => {
-    //             debugger
-
-    //             this.setState({ pin: prevState, thePhotoURL: fileReader.result, isTrue: true})
-    //         }
-
-    //         if(filePho) {
-    //             fileReader.readAsDataURL(filePho);
-    //         }
-    //     } catch (err){
-    //         console.log(err)
-    //     }
-    // }
-
-    // errHandler(e){
-
-    //     debugger
-
-    //     if(e.currentTarget.files[0].type !== 'image/jpeg' && e.currentTarget.files[0].type !== 'image/webp') {
-    //         this.setState({img_err: true, err_msg: "Your upload failed because it's the wrong format."})
-            
-    //         return true
-    //     }
-
-        
-    //     return false
-    // }
-
     imgConvertToWebp(e){
         let file = e.currentTarget.files[0]
 
@@ -414,13 +359,6 @@ class CreatePin extends React.Component {
             }, 'image/webp', qualityQuo);
         }
     }
-    
-    // handelPhotoSelect(e){
-    //     debugger
-
-    //     if(this.errHandler(e)) return
-    //     this.imgConvertToWebp(e.currentTarget.files[0])
-    // }
 
     deleteDropDownClick(e){
         let dropDown = document.getElementById("delete-dropdown-menue-id");
