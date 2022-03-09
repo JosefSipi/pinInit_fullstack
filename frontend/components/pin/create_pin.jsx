@@ -34,7 +34,7 @@ class CreatePin extends React.Component {
         this.handelUlClick = this.handelUlClick.bind(this);
         this.boardClickSelect = this.boardClickSelect.bind(this);
         this.handelSubmit = this.handelSubmit.bind(this);
-        this.handelPhotoSelect = this.handelPhotoSelect.bind(this);
+        // this.handelPhotoSelect = this.handelPhotoSelect.bind(this);
         this.deletePreview = this.deletePreview.bind(this);
         this.deleteDropDownClick = this.deleteDropDownClick.bind(this);
         this.moreClicked = this.moreClicked.bind(this);
@@ -46,8 +46,9 @@ class CreatePin extends React.Component {
         this.boardDropDownSelectCreate = this.boardDropDownSelectCreate.bind(this);
         this.helpDescription = this.helpDescription.bind(this);
         // this.compresionCallback = this.compresionCallback.bind(this);
-        this.handleImageUploadCompression = this.handleImageUploadCompression.bind(this);
-        this.errHandler = this.errHandler.bind(this);
+        // this.handleImageUploadCompression = this.handleImageUploadCompression.bind(this);
+        // this.errHandler = this.errHandler.bind(this);
+        this.imgConvertToWebp = this.imgConvertToWebp.bind(this);
     }
 
     helpDescription(){
@@ -154,7 +155,12 @@ class CreatePin extends React.Component {
         e.preventDefault();
         
 
-        if(this.errHandler(e)) return
+        debugger
+        if(!this.state.pin.photo) {
+            this.setState({img_err: true, err_msg: "An image is required to create a Pin."})
+            debugger
+            return
+        }
 
         
 
@@ -305,75 +311,116 @@ class CreatePin extends React.Component {
        uploadImageStateEl.style.display = 'none';
     }
 
-    // handleConvertedImage(url){
-    //     
+    // async handleImageUploadCompression(image){
 
-    //     console.log(url)
+    //     debugger
+
+    //     const options = {
+    //       maxSizeMB: 0.09,
+    //       maxWidthOrHeight: 670,
+    //       useWebWorker: true
+    //     }
+
+    //     try {
+    //         debugger
+    //         const compressedImage = await imageCompression(image, options)
+
+    //         debugger
+    //         const fileReader = new FileReader();
+
+    //         let filePho = new File([compressedImage], compressedImage.name)
+            
+    //         const prevState = this.state.pin
+    //         debugger
+    //         prevState["photo"] = filePho
+
+    //         fileReader.onloadend = () => {
+    //             debugger
+
+    //             this.setState({ pin: prevState, thePhotoURL: fileReader.result, isTrue: true})
+    //         }
+
+    //         if(filePho) {
+    //             fileReader.readAsDataURL(filePho);
+    //         }
+    //     } catch (err){
+    //         console.log(err)
+    //     }
     // }
 
-    async handleImageUploadCompression(image){
+    // errHandler(e){
 
-        const options = {
-          maxSizeMB: 0.09,
-          maxWidthOrHeight: 670,
-          useWebWorker: true
-        }
+    //     debugger
 
-        try {
-            const compressedImage = await imageCompression(image, options)
-
-            const fileReader = new FileReader();
-            let filePho = new File([compressedImage], compressedImage.name)
+    //     if(e.currentTarget.files[0].type !== 'image/jpeg' && e.currentTarget.files[0].type !== 'image/webp') {
+    //         this.setState({img_err: true, err_msg: "Your upload failed because it's the wrong format."})
             
-            const prevState = this.state.pin
-            prevState["photo"] = filePho
-
-            fileReader.onloadend = () => {
-                this.setState({ pin: prevState, thePhotoURL: fileReader.result, isTrue: true})
-            }
-
-            if(filePho) {
-                fileReader.readAsDataURL(filePho);
-            }
-        } catch (err){
-            console.log(err)
-        }
-    }
-
-    errHandler(e){
+    //         return true
+    //     }
 
         
-        if(!e.currentTarget.files) {
-            this.setState({img_err: true, err_msg: "An image is required to create a Pin."})
-            
-            return true
-        }
+    //     return false
+    // }
 
-        if(e.currentTarget.files[0].type !== 'image/jpeg') {
+    imgConvertToWebp(e){
+        let file = e.currentTarget.files[0]
+
+        // check for proper image upload format and display error if wrong and exit upload function
+        if(file.type !== 'image/jpeg' && file.type !== 'image/webp') {
             this.setState({img_err: true, err_msg: "Your upload failed because it's the wrong format."})
             
-            return true
+            return
         }
 
-        
-        return false
+        // create image file to be used in creating canvas element
+        let name = file.name.split('.').shift().concat('.webp')
+        let src = URL.createObjectURL(file);
+        let canvas = document.createElement('canvas');
+        let ctx = canvas.getContext('2d');
+        let usersImg = new Image();
+        usersImg.src = src;
+
+        let qualityQuo = 1
+        if(file.size > 40000) qualityQuo = 40000 / file.size
+
+        const prevState = this.state.pin
+
+        usersImg.onload = () => {
+            // on userImg load set properties of canvas element
+            canvas.width = usersImg.width
+            canvas.height = usersImg.height
+            ctx.drawImage(usersImg, 0, 0);
+
+            // convert the canvas element with the image to a blob
+            canvas.toBlob((blob) => {
+                // add finalFile creation with blob to async que
+                let finalFile = new File([blob], name)
+
+                // add fileReader for DataURL to async que
+                const fileReader = new FileReader();
+                fileReader.readAsDataURL(finalFile);
+
+                // after fileReader is ready finalFile will also be ready so
+                // state can be set using DataURL from filReader.result and finalFile
+                fileReader.onloadend = () => {
+
+                    prevState["photo"] = finalFile
+                    this.setState({ pin: prevState, thePhotoURL: fileReader.result, isTrue: true})
+
+                    // lastly uploaded photo is displayed to user before sumbission
+                    document.getElementById('input-image-label-pin').style.display = 'none'
+                    document.getElementById('modals_pin-display').style.display = 'flex';
+                }
+            }, 'image/webp', qualityQuo);
+        }
     }
     
-    handelPhotoSelect(e){
+    // handelPhotoSelect(e){
+    //     debugger
 
-        
-
-        if(this.errHandler(e)) return
-
-        
-       
-        this.handleImageUploadCompression(e.currentTarget.files[0])
-
-        let labelElement = document.getElementById('input-image-label-pin')
-        labelElement.style.display = 'none'
-        let uploadImageStateEl = document.getElementById('modals_pin-display')
-        uploadImageStateEl.style.display = 'flex';
-    }
+    //     if(this.errHandler(e)) return
+    //     this.imgConvertToWebp(e.currentTarget.files[0])
+    // }
 
     deleteDropDownClick(e){
         let dropDown = document.getElementById("delete-dropdown-menue-id");
@@ -491,7 +538,7 @@ class CreatePin extends React.Component {
 
                                 <input type="file" accept=".jpg" autoComplete="off" name="input-image-pin" id="input-image-pin" 
                                 //  accept=".jpg, .jpeg, .png"
-                                onChange={this.handelPhotoSelect}/>
+                                onChange={this.imgConvertToWebp}/>
 
                             </label>
 
