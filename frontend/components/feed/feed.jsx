@@ -107,9 +107,14 @@ class Feed extends React.Component {
         // after photo loads get the height of the image for its pin tile sizing
         let imageHeight = e.currentTarget.children[1].clientHeight;
         let spanVal
+        let spanNum = 5
+
+        if(e.currentTarget.getAttribute('data-link_title').length > 30){
+            spanNum = 7
+        }
 
         // determine final height of tile based on (is there a title and imageHeight)
-        {titleCondition ? spanVal = Math.trunc((imageHeight/10) + 5) : spanVal = Math.trunc((imageHeight/10) + 2)  }
+        {titleCondition ? spanVal = Math.trunc((imageHeight/10) + spanNum) : spanVal = Math.trunc((imageHeight/10) + 2)  }
 
         // ------------edit Feb 15, 2022 -------------------
         e.currentTarget.style.gridRowEnd =  `span ${spanVal}`;

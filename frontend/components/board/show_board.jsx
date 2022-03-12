@@ -102,7 +102,14 @@ class BoardShow extends React.Component {
 
         let imageHeight = e.currentTarget.children[1].clientHeight;
         let spanVal
-        {titleCondition ? spanVal = Math.trunc((imageHeight/10) + 5) : spanVal = Math.trunc((imageHeight/10) + 2)  }
+        let spanNum = 5
+
+        if(e.currentTarget.getAttribute('data-link_title').length > 30){
+            spanNum = 7
+        }
+        // debugger
+
+        {titleCondition ? spanVal = Math.trunc((imageHeight/10) + spanNum) : spanVal = Math.trunc((imageHeight/10) + 2)  }
 
         let card = document.getElementById(`${e.currentTarget.id}`)
         card.style.gridRowEnd = `span ${spanVal}`

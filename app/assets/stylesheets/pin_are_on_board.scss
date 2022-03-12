@@ -44,10 +44,10 @@ div.card-title-pin{
     padding-top: 8px;
 
 // comment this in when pin span count for titles more than two lines (increase span by 2)
-    // display: -webkit-box;
-    // -webkit-box-orient: vertical;
-    // -webkit-line-clamp: 2;
-    // overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }
 // ---------- initial log in -------------
 
