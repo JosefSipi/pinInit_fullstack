@@ -109,9 +109,9 @@ class Feed extends React.Component {
         let spanVal
         let spanNum = 5
 
-        if(e.currentTarget.getAttribute('data-link_title').length > 30){
-            spanNum = 7
-        }
+        // if(e.currentTarget.getAttribute('data-link_title').length > 30){
+        //     spanNum = 7
+        // }
 
         // determine final height of tile based on (is there a title and imageHeight)
         {titleCondition ? spanVal = Math.trunc((imageHeight/10) + spanNum) : spanVal = Math.trunc((imageHeight/10) + 2)  }
