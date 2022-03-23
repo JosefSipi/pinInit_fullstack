@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { photoIsLoaded } from '../../utils/util_functions/pin_func';
 
 
 class Feed extends React.Component {
@@ -14,7 +15,6 @@ class Feed extends React.Component {
             showFollowOpt: null
         }
         
-        this.photoLoaded = this.photoLoaded.bind(this);
         this.onMouseLeaveCall = this.onMouseLeaveCall.bind(this);
         this.onMouseEnterCall = this.onMouseEnterCall.bind(this);
         this.openTheLink = this.openTheLink.bind(this);
@@ -97,34 +97,6 @@ class Feed extends React.Component {
         let theId = Number(e.currentTarget.children[1].children[1].getAttribute('data-div_id'))
         let shadowCover = document.getElementById(`the-shade-over-pin${theId}`)
         shadowCover.style.display = 'block'
-    }
-
-    photoLoaded(e){
-        e.preventDefault();
-        // check if pin has title
-        let titleCondition = !!e.currentTarget.getAttribute('data-link_title')
-
-        // after photo loads get the height of the image for its pin tile sizing
-        let imageHeight = e.currentTarget.children[1].clientHeight;
-        let spanVal
-        let spanNum = 7
-
-        // if(e.currentTarget.getAttribute('data-link_title').length > 30){
-        //     spanNum = 7
-        // }
-
-        // determine final height of tile based on (is there a title and imageHeight)
-        {titleCondition ? spanVal = Math.trunc((imageHeight/10) + spanNum) : spanVal = Math.trunc((imageHeight/10) + 2)  }
-
-        // ------------edit Feb 15, 2022 -------------------
-        e.currentTarget.style.gridRowEnd =  `span ${spanVal}`;
-        e.currentTarget.style.visibility = "";
-        // -------------------------------
-
-        // -----------original version from Feb 15, 2022 edit -------------
-        // let card = document.getElementById(`${e.currentTarget.id}`)
-        // card.style.gridRowEnd = `span ${spanVal}`
-        // e.currentTarget.style.visibility = "";
     }
 
     componentDidMount(){
@@ -221,7 +193,7 @@ class Feed extends React.Component {
                 <div className="pin-area-on-board-show" >
                     {this.state.showFollowOpt >= 5 ? <div className="pin_container" id="pin_container">
                         {pins.map(pin => 
-                                <Link data-link_title={pin.title} to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
+                                <Link data-link_title={pin.title} to={`/pin/${pin.id}`} onLoad={photoIsLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
 
                                     <div className="outside-edit-pin-board-show">
 

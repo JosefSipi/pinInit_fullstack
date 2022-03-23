@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { photoIsLoaded } from '../../utils/util_functions/pin_func';
 
 class BoardShow extends React.Component {
     constructor(props){
@@ -10,7 +11,6 @@ class BoardShow extends React.Component {
         }
 
         this.modalFunction = this.modalFunction.bind(this);
-        this.photoLoaded = this.photoLoaded.bind(this);
         this.isProfileUser = this.isProfileUser.bind(this);
         this.moreClickedDD = this.moreClickedDD.bind(this);
         this.backdropClick = this.backdropClick.bind(this);
@@ -93,29 +93,6 @@ class BoardShow extends React.Component {
         // } else {
         //     // ul.style.display = "block"
         // }
-    }
-
-    photoLoaded(e){
-        e.preventDefault();
-
-        let titleCondition = !!e.currentTarget.getAttribute('data-link_title')
-
-        let imageHeight = e.currentTarget.children[1].clientHeight;
-        let spanVal
-        let spanNum = 7
-
-        // if(e.currentTarget.getAttribute('data-link_title').length > 30){
-        //     spanNum = 7
-        // }
-        // debugger
-
-        titleCondition ? spanVal = Math.trunc((imageHeight/10) + spanNum) : spanVal = Math.trunc((imageHeight/10) + 2)
-
-        let card = document.getElementById(`${e.currentTarget.id}`);
-        card.style.gridRowEnd = `span ${spanVal}`;
-        card.style.marginBottom = '5px';
-        e.currentTarget.style.visibility = "";
-
     }
 
     modalFunction(e){
@@ -208,7 +185,7 @@ class BoardShow extends React.Component {
                         {pins.length === 0 ? <div className='no-pins-txt'>There aren't any Pins on this board yet</div> : <div className="pin_container" id="pin_container">
                             {pins.map(pin => 
                             //    <Link className="link-pin-on-board-pins" to={`/pin/${pin.id}`} key={pin.id + 'pin-key'}> 
-                                    <Link data-link_title={pin.title} to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
+                                    <Link data-link_title={pin.title} to={`/pin/${pin.id}`} onLoad={photoIsLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
 
                                         <div className="outside-edit-pin-board-show">
 
@@ -284,7 +261,7 @@ class BoardShow extends React.Component {
             
             {pins.length === 0 ? <div className='no-pins-txt'>There aren't any Pins on this board yet</div> : <div className="pin_container" id="pin_container">
                 {pins.map(pin => 
-                <Link data-link_title={pin.title} to={`/pin/${pin.id}`} onLoad={this.photoLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
+                <Link data-link_title={pin.title} to={`/pin/${pin.id}`} onLoad={photoIsLoaded} id={`card-card-card${pin.id}`} className="card-update" style={{gridRowEnd: `span 45` }, {visibility: 'hidden'}} key={pin.id} onMouseEnter={this.onMouseEnterCall} onMouseLeave={this.onMouseLeaveCall}>
 
                     <div className="outside-edit-pin-board-show">
 
