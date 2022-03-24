@@ -64,6 +64,9 @@ div.board-dropdown-create-pin{
     background: white;
     border-radius: 16px;
     z-index: 250;
+    &:hover{
+        cursor: auto;
+    }
 }
 
 // div.board-dd-create-pin{
@@ -88,6 +91,7 @@ div.board-dropdown-create-pin{
     text-indent: 10px;
     justify-content: flex-start;
     &:hover{
+        cursor: pointer;
         background-color: rgb(225, 225, 225);
     }
 }

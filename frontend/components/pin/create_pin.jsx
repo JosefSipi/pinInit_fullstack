@@ -152,6 +152,20 @@ class CreatePin extends React.Component {
         
 
         debugger
+        // create conditionals to check if minimum nmber of peramaters are selected
+        // 1. if the user has board 
+
+
+        // check if user has selected a board which includes if user has created a board yet
+        if(!this.state.pin.board_id){
+            debugger
+            this.handelUlClick(e)
+            return
+        }
+
+        debugger
+        console.log('we hit after our handelUlClick for absent board selection')
+
         if(!this.state.pin.photo) {
             this.setState({img_err: true, err_msg: "An image is required to create a Pin."})
             debugger
@@ -216,6 +230,7 @@ class CreatePin extends React.Component {
                 if(window.currentUser.id === 5){
                     this.setState({showHelpMount: true})
                 } else {
+                    debugger
                     this.setState({showHelpMount: !Object.values(this.state.boards)[0].pinPhotos.one})
                 }
             }
@@ -248,6 +263,7 @@ class CreatePin extends React.Component {
 
         let backdrop = document.getElementById('backdrop-div-create-pin')
         
+
 
         this.setState({boards: this.props.boards.boards})
 
@@ -384,18 +400,19 @@ class CreatePin extends React.Component {
     backdropClick(e){
         e.preventDefault();
 
-       let dropDown = document.getElementById("delete-dropdown-menue-id");
-        let backdrop = document.getElementById('backdrop-div-create-pin')
+        let dropDown = document.getElementById("delete-dropdown-menue-id");
+        let backdrop = document.getElementById('backdrop-div-create-pin');
+
         if(dropDown.style.display === "none"){
-            backdrop.style.display = "none"
+            backdrop.style.display = "none";
         } else {
-            dropDown.style.display = "none"
-            backdrop.style.display = "none"
+            dropDown.style.display = "none";
+            backdrop.style.display = "none";
         }
 
         let ul = document.getElementById('board-dropdown-create-pin')
         if (ul.style.display === "block") {
-            ul.style.display = "none"
+            ul.style.display = "none";
         }
     }
 
