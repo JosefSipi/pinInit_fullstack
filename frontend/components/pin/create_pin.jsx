@@ -163,10 +163,14 @@ class CreatePin extends React.Component {
             return
         }
 
+        debugger
+        
         let boards = Object.values(this.props.boards.boards)
         const objBoards = {...this.props.boards.boards}
 
         let the_board_id
+
+        debugger
 
         if(this.state.pin.board_id === null && boards.length === 0){
         } else if (this.state.pin.board_id === null && boards.length > 0){
