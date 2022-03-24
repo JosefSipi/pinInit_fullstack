@@ -530,7 +530,7 @@ div.input-div-top{
     align-items: center;
     height: 50px;
     margin-bottom: 21px;
-        margin-left: -6px;
+    margin-left: -6px;
 }
 
 div.profile-div-small-pin {
@@ -543,6 +543,11 @@ div.profile-div-small-pin {
     border-radius: 100px;
     height: 50px;
     width: 50px;
+    background: #efefef;
+    &:hover{
+        cursor: auto;
+        background: #e8e8e8;
+    }
 }
 
 .text-area-pin-create{

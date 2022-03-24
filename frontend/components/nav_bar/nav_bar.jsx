@@ -258,6 +258,7 @@ render(){
                                             {/* <img className="search-user-img" src={user.photoUrl} alt="user avatar" /> */}
                                             {/* { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <img className="search-user-img" src={window.picLogoURL} alt="profile photo" />} */}
                                             { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <p className='profile-letter-default-search' >{user.username[0].toUpperCase()}</p>}
+                                            
                                         </div>
                                         <div className="last-div-1">{user.username}</div>
                                     </div>

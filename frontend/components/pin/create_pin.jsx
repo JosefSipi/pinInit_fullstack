@@ -3,6 +3,7 @@ import React from 'react';
 import LoadingIcon from './loading';
 import Compressor from 'compressorjs';
 import imageCompression from 'browser-image-compression';
+import { ProfileAvatar } from '../../utils/util_components/image_components';
 
 class CreatePin extends React.Component {
     constructor(props) {
@@ -516,9 +517,13 @@ class CreatePin extends React.Component {
                                 </div>
                             </div>
                             <div className="outer-div-for-profile-photo-pin">
-                                <div className="profile-div-small-pin">
-                                    <img className="profile-photo-icon" src={this.props.user.photoUrl} alt="logo" />
-                                </div>
+                                    {/* <img className="profile-photo-icon" src={this.props.user.photoUrl} alt="logo" /> */}
+                                    <ProfileAvatar 
+                                        textClass='profile-letter-default-search' 
+                                        usersName={this.props.user.f_name} 
+                                        imgClass='profile-photo-icon' 
+                                        photoUrl={this.props.user.photoUrl} 
+                                    />
 
                                 <div>{this.props.user.f_name} {this.props.user.l_name}</div>
 

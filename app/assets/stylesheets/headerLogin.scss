@@ -182,6 +182,9 @@ p.create-p-tag{
     text-align: center;
     font-size: 22px;
     font-weight: 550;
+    &:hover{
+      cursor: inherit;
+    }
 }
 
 .logo-on-logged-in-header-dropdown{
