@@ -150,13 +150,7 @@ class CreatePin extends React.Component {
 
     handelSubmit(e) {
         e.preventDefault();
-        
-
-        debugger
-        // create conditionals to check if minimum nmber of peramaters are selected
-        // 1. if the user has board 
-
-
+     
         // check if user has selected a board which includes if user has created a board yet
         if(!this.state.pin.board_id){
             debugger
@@ -164,23 +158,15 @@ class CreatePin extends React.Component {
             return
         }
 
-        debugger
-        console.log('we hit after our handelUlClick for absent board selection')
-
         if(!this.state.pin.photo) {
             this.setState({img_err: true, err_msg: "An image is required to create a Pin."})
-            debugger
             return
         }
-
-        
 
         let boards = Object.values(this.props.boards.boards)
         const objBoards = {...this.props.boards.boards}
 
         let the_board_id
-
-        
 
         if(this.state.pin.board_id === null && boards.length === 0){
         } else if (this.state.pin.board_id === null && boards.length > 0){
@@ -221,7 +207,6 @@ class CreatePin extends React.Component {
         prevState["board_id"] = firstBoard
         this.setState({ pin: prevState })
     }
-
 
     componentDidMount(){
         this.props.fetchBoards(this.props.currentUser.id).then(
@@ -292,7 +277,6 @@ class CreatePin extends React.Component {
             this.setState({ pin: prevState })
         }
     }
-
 
     boardClickSelect(e){
         e.preventDefault();
@@ -436,16 +420,10 @@ class CreatePin extends React.Component {
             return null
         }
 
-        
-
         const boardsFromProps = this.props.boards.boards
         const boardsFromState = this.state.boards
-        
 
         let description1 = 500 - this.state.pin.description.length
-
-        
-        
         
         return (
             <div className="create-pin-main-div">
