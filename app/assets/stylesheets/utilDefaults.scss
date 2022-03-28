@@ -1,0 +1,22 @@
+
+.default-img-avatar{
+    min-width: 101%;
+    min-height: 101%;
+}
+
+.default-div-avatar{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    border-radius: 100%;
+
+    &:hover{
+        cursor: auto;
+        background: #e8e8e8;
+    }
+    
+}

@@ -164,7 +164,7 @@ class CreatePin extends React.Component {
         }
 
         debugger
-        
+
         let boards = Object.values(this.props.boards.boards)
         const objBoards = {...this.props.boards.boards}
 
@@ -500,12 +500,15 @@ class CreatePin extends React.Component {
                             </div>
                             <div className="outer-div-for-profile-photo-pin">
                                     {/* <img className="profile-photo-icon" src={this.props.user.photoUrl} alt="logo" /> */}
-                                    <ProfileAvatar 
-                                        textClass='profile-letter-default-search' 
-                                        usersName={this.props.user.f_name} 
-                                        imgClass='profile-photo-icon' 
-                                        photoUrl={this.props.user.photoUrl} 
-                                    />
+                                    <div className='surrounding-avatar-on-create_pin'>
+                                        <ProfileAvatar 
+                                            // divImgClass='profile-div-small-pin'
+                                            textClass='profile-letter-default-search' 
+                                            usersName={this.props.user.f_name} 
+                                            // imgClass='profile-photo-icon' 
+                                            photoUrl={this.props.user.photoUrl} 
+                                        />
+                                    </div>
 
                                 <div>{this.props.user.f_name} {this.props.user.l_name}</div>
 

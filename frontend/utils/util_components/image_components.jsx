@@ -13,8 +13,8 @@ function ProfileAvatar(props) {
 
     let returnImgIcon = () => {
         return(
-            <div className="profile-div-small-pin">
-                <img className={props.imgClass} src={props.photoUrl} alt="profile photo" />
+            <div className={props.divImgClass || 'default-div-avatar'}>
+                <img className={props.imgClass || 'default-img-avatar'} src={props.photoUrl} alt="profile photo" />
             </div>
         )
     }
