@@ -5,8 +5,13 @@ function ProfileAvatar(props) {
 
     let returnTextIcon = () => {
         return (
-            <div className="profile-div-small-pin">
-                <p className={props.textClass} >{props.usersName[0].toUpperCase()}</p>
+            <div className={props.divTextClass || 'default-text-div-avatar'}>
+                <p 
+                    // if CSS is to be modified from default please use textId instead of textClass
+                    // the default value is set using Class so it can be overriden using textId
+                    id={props.textId || 'default-p-id'} 
+                    className={props.textClass || 'default-p-class'}
+                > {props.usersName[0].toUpperCase()}</p>
             </div>
         )
     }
@@ -18,6 +23,7 @@ function ProfileAvatar(props) {
             </div>
         )
     }
+
 
     debugger
 

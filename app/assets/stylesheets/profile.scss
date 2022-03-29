@@ -7,26 +7,41 @@ $page-hight: 100vh;
 }
 
 div.profile-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     overflow-y: hidden;
     overflow-x: hidden;
     border-radius: 100px;
     height: 120px;
     width: 120px;
 
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // background-color: #efefef;
+
+    // p{
+    //     display: flex;
+    //     text-align: center;
+    //     justify-content: center;
+    //     align-items: center;
+    //     height: 100%;
+    //     width: 100%;
+    //     font-size: 3.5em;
+    // }
+}
+
+#text-show-avatar{
     display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
-    background-color: #efefef;
-
-    p{
-        display: flex;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        width: 100%;
-        font-size: 3.5em;
-    }
+    height: 100%;
+    width: 100%;
+    // font-size: 3.5em;
+    // color: red;
 }
 
 .profile-header {
