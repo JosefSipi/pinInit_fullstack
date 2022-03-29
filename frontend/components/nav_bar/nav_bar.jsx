@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { debounce } from 'lodash';
 import SearchFeed from '../feed/search_feed_container';
+import { ProfileAvatar } from '../../utils/util_components/image_components';
 
 class NavBar extends React.Component {
 
@@ -293,7 +294,13 @@ render(){
                     <div className="logo-on-logged-in-header">
 
                         <div id='123 F' className="profile-div-small">
-                            { !(this.props.currentUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0].toUpperCase()}</p>}
+                            <ProfileAvatar
+                            
+                                usersName={this.props.currentUser.f_name}
+                                photoUrl={this.props.currentUser.photoUrl}
+                            
+                            />
+                            {/* { !(this.props.currentUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0].toUpperCase()}</p>} */}
                         </div>
 
                     </div>

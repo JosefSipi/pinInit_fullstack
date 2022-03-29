@@ -421,19 +421,17 @@ header.nav-bar {
 }
 
 div.profile-div-small {
-  overflow-y: hidden;
-  overflow-x: hidden;
-  border-radius: 100px;
   height: 33px;
   width: 33px;
+  border-radius: 100px;
   border-style: solid;
   border-width: 2px;
   border-color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  background-color: #efefef;
+  
+  &:hover{
+      cursor: pointer;
+      background: #e8e8e8;
+    }
 }
 
 .placeHolder{
