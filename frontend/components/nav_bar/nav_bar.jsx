@@ -304,7 +304,6 @@ render(){
                                 photoUrl={this.props.currentUser.photoUrl}
                             
                             />
-                            {/* { !(this.props.currentUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0].toUpperCase()}</p>} */}
                         </div>
 
                     </div>
