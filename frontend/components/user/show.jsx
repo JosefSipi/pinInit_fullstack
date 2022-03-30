@@ -435,7 +435,12 @@ class UserShow extends React.Component {
                     <header className="profile-header">
 
                         <div className="profile-div">
-                            {!(this.props.userProfile.photoUrl === 'false') ? <img className="profile-photo" src={this.props.userProfile.photoUrl} alt="profile photo"/> : <p>{this.props.userProfile.f_name[0]}</p>} 
+                            <ProfileAvatar
+                                usersName={this.props.userProfile.f_name}
+                                photoUrl={this.props.userProfile.photoUrl}
+                                // photoUrl={'false'}
+                                textId={'text-show-avatar'}
+                            />
                         </div>
 
                         <h2 className="username-on-profile">{this.props.userProfile.f_name}{(this.props.userProfile.l_name ? this.props.userProfile.l_name : "").charAt(0)}</h2>

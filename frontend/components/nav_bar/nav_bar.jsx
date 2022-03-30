@@ -256,12 +256,13 @@ render(){
                                     // <Link to={`/profile/${user.id}`} >
                                     <div key={user.id} className="list-search-user" onMouseDown={this.redirectProfile} data-user_id={user.id}>
                                         <div id='123 E' className="div-for-search-user-img">
-                                            <ProfileAvatar
+                                            {/* <ProfileAvatar
+                                                
                                                 userName={user.username}
                                                 photoUrl={user.photoUrl}
                                             
-                                            />
-                                            {/* { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <p className='profile-letter-default-search' >{user.username[0].toUpperCase()}</p>} */}
+                                            /> */}
+                                            { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <p className='profile-letter-default-search' >{user.username[0].toUpperCase()}</p>}
                                             
                                         </div>
                                         <div className="last-div-1">{user.username}</div>

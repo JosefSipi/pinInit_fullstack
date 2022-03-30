@@ -418,6 +418,14 @@ header.nav-bar {
 .nav-bar-prof-icon{
   text-decoration: none;
   color: black;
+
+  border-radius: 100px;
+  overflow: hidden;
+
+  &:hover{
+    cursor: pointer;
+    background: #e8e8e8;
+  }
 }
 
 div.profile-div-small {
@@ -428,11 +436,6 @@ div.profile-div-small {
   border-width: 2px;
   border-color: black;
   font-size: 1.9ch;
-  
-  &:hover{
-      cursor: pointer;
-      background: #e8e8e8;
-    }
 }
 
 .placeHolder{

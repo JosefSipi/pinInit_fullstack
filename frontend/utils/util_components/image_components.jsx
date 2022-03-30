@@ -2,8 +2,12 @@ import React from 'react';
 
 function ProfileAvatar(props) {
 
-
     let returnTextIcon = () => {
+        if(props === undefined){
+            debugger
+        }
+        // debugger
+
         return (
             <div className={props.divTextClass || 'default-text-div-avatar'}>
                 <p 
@@ -17,6 +21,10 @@ function ProfileAvatar(props) {
     }
 
     let returnImgIcon = () => {
+        if(props === undefined){
+            debugger
+        }
+        // debugger
         return(
             <div className={props.divImgClass || 'default-div-avatar'}>
                 <img className={props.imgClass || 'default-img-avatar'} src={props.photoUrl} alt="profile photo" />
@@ -28,8 +36,18 @@ function ProfileAvatar(props) {
     debugger
 
     if (!(props.photoUrl === 'false')) {
+        console.log('---before----')
+        console.log(props)
+        console.log('---after----')
+
+        // debugger
         return returnImgIcon();
     } else {
+        console.log('---before----')
+        console.log(props)
+        console.log('---after----')
+
+        // debugger
         return returnTextIcon();
     }
 }

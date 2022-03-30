@@ -17,20 +17,11 @@ div.profile-div {
     height: 120px;
     width: 120px;
 
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // background-color: #efefef;
+    font-size: 8ch;
 
-    // p{
-    //     display: flex;
-    //     text-align: center;
-    //     justify-content: center;
-    //     align-items: center;
-    //     height: 100%;
-    //     width: 100%;
-    //     font-size: 3.5em;
-    // }
+    &:hover{
+        cursor: default;
+    }
 }
 
 #text-show-avatar{

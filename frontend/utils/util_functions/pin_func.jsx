@@ -1,6 +1,4 @@
 export const photoIsLoaded = (e) => {
-
-    debugger
     
     e.preventDefault();
 
