@@ -4,9 +4,7 @@ function ProfileAvatar(props) {
 
     let returnTextIcon = () => {
         if(props === undefined){
-            debugger
         }
-        // debugger
 
         return (
             <div className={props.divTextClass || 'default-text-div-avatar'}>
@@ -22,7 +20,6 @@ function ProfileAvatar(props) {
 
     let returnImgIcon = () => {
         if(props === undefined){
-            debugger
         }
         // debugger
         return(
@@ -32,22 +29,17 @@ function ProfileAvatar(props) {
         )
     }
 
-
-    debugger
-
     if (!(props.photoUrl === 'false')) {
         console.log('---before----')
         console.log(props)
         console.log('---after----')
 
-        // debugger
         return returnImgIcon();
     } else {
         console.log('---before----')
         console.log(props)
         console.log('---after----')
 
-        // debugger
         return returnTextIcon();
     }
 }
