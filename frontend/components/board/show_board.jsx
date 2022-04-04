@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { photoIsLoaded } from '../../utils/util_functions/pin_func';
+import { ProfileAvatar } from '../../utils/util_components/image_components';
 
 class BoardShow extends React.Component {
     constructor(props){
@@ -160,7 +161,11 @@ class BoardShow extends React.Component {
 
                             <Link className='the-link-on-profilepic-on-board' to={`/profile/${this.props.userProfile.id}`}>
                                 <div className="profile-div-small-photo-div-123">
-                                    { this.props.userProfile.photoUrl ? <img src={this.props.userProfile.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.userProfile.f_name[0]}</p>}
+                                    <ProfileAvatar
+                                        photoUrl={this.props.userProfile.photoUrl}
+                                        usersName={this.props.userProfile.f_name}
+                                    />
+                                    {/* { this.props.userProfile.photoUrl ? <img src={this.props.userProfile.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.userProfile.f_name[0]}</p>} */}
                                     {/* <img className="profile-photo-header-bar" src={window.currentUser.profile_pic} alt="profile photo" /> */}
                                 </div>
                             </Link>
