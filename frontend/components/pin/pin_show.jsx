@@ -443,9 +443,7 @@ class PinShow extends React.Component {
                                                         photoUrl={comment.photoUrl}
                                                         usersName={comment.name}
                                                     />
-                                                    {/* { !(comment.photoUrl === 'false') ? <img className="profile-photo-icon" src={comment.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{comment.name[0]}</p>} */}
                                                 </div>
-
                                             </div>
 
                                             <div className='right-txt-pin-show' id={`right-txt-pin-show`+ comment.id} >
@@ -500,14 +498,11 @@ class PinShow extends React.Component {
                             : null }
                             <div className="comments-in-section" >
                                 <div id='847428 A' className="image-div-show-pin-page C" >
-
                                     <ProfileAvatar
                                         photoUrl={this.props.currentUser.photoUrl}
                                         usersName={this.props.currentUser.f_name}
                                     
                                     />
-
-                                    {/* { !(this.props.currentUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>} */}
                                 </div>
                                 <input type="text" autoComplete="off" id='comment-input-pin-show' className="input-pin-show" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
                             </div>
@@ -523,7 +518,6 @@ class PinShow extends React.Component {
                                         photoUrl={this.props.pin.pin.pinUser.photoUrl}
                                         usersName={this.props.pin.pin.pinUser.f_name}
                                     />
-                                    {/* { !(this.props.pin.pin.pinUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.pin.pin.pinUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.pin.pin.pinUser.f_name[0]}</p>} */}
                                 </div>
 
                                 <div className='bottom-section-pin-show-links' >
@@ -602,7 +596,6 @@ class PinShow extends React.Component {
                                                             photoUrl={comment.photoUrl}
                                                             usersName={comment.name}
                                                         />
-                                                        {/* { !(comment.photoUrl === 'false') ? <img className="profile-icon-photo-pinshow" src={comment.photoUrl} alt="pic" /> : <p className='profile-letter-default' >{comment.name[0]}</p>} */}
                                                     </div>
                                                 </div>
 
@@ -662,8 +655,6 @@ class PinShow extends React.Component {
                                             photoUrl={this.props.currentUser.photoUrl}
                                             usersName={this.props.currentUser.f_name}
                                         />
-
-                                        {/* { !(this.props.currentUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.currentUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.currentUser.f_name[0]}</p>} */}
                                     </div>
                                     <input type="text" autoComplete="off" id='comment-input-pin-show' className="input-pin-show" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
                                 </div>
@@ -679,7 +670,6 @@ class PinShow extends React.Component {
                                             photoUrl={this.props.pin.pin.pinUser.photoUrl}
                                             usersName={this.props.pin.pin.pinUser.f_name}
                                         />
-                                        {/* { !(this.props.pin.pin.pinUser.photoUrl === 'false') ? <img className="profile-photo-icon" src={this.props.pin.pin.pinUser.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.pin.pin.pinUser.f_name[0]}</p>} */}
                                     </div>
 
                                     <div className='bottom-section-pin-show-links' >
