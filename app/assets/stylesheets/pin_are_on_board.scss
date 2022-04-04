@@ -72,7 +72,7 @@ div.card-title-pin{
     background: white;
     height: 70vh;
     max-width: 86vw;
-    min-width: 50vw;
+    min-width: 330px;
     overflow: hidden;
     position: absolute;
     top: 15%;
@@ -91,6 +91,7 @@ div.card-title-pin{
     text-align: center;
     justify-content: center;
     height: 150px;
+    min-height: 7ch;
     font-size: 26px;
     font-weight: 550;
     overflow: hidden;
@@ -164,13 +165,12 @@ div.card-title-pin{
 .div-pin-boards{
     display: flex;
     max-height: 116px;
+    min-height: 8ch;
     overflow: hidden;
     width: 100%;
     align-items: center;
-    overflow: scroll;
-
+    overflow-x: scroll;
     border-radius: 6px;
-    justify-content: flex-end;
     // background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(85, 85, 85, 0.1));
 }
 
@@ -178,6 +178,7 @@ div.card-title-pin{
     width: 80px;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 2px;
 }
 
 .mod-feed-card{
@@ -195,6 +196,7 @@ div.card-title-pin{
 .mod-feed-board-title{
     width: 155px;
     padding-left: 0;
+    min-height: 2.1ch;
 }
 
 .outside-border-layer{

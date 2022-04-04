@@ -88,7 +88,7 @@ class CreatePin extends React.Component {
             <div className="left-top-bar-createpindiv">
                             
                 <div placeholder="Select" id="board-dd-create-pin" className="board-dd-create-pin" onClick={this.handelUlClick}>
-                    <div>{displayTitle}</div>
+                    <div>{displayTitle} </div>
                 </div>
 
                 <div className="down-arrow-div" onClick={this.handelUlClick} >
