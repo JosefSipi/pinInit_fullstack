@@ -153,7 +153,7 @@ class CreatePin extends React.Component {
      
         // check if user has selected a board which includes if user has created a board yet
         if(!this.state.pin.board_id){
-            debugger
+            // debugger
             this.handelUlClick(e)
             return
         }
@@ -163,14 +163,14 @@ class CreatePin extends React.Component {
             return
         }
 
-        debugger
+        // debugger
 
         let boards = Object.values(this.props.boards.boards)
         const objBoards = {...this.props.boards.boards}
 
         let the_board_id
 
-        debugger
+        // debugger
 
         if(this.state.pin.board_id === null && boards.length === 0){
         } else if (this.state.pin.board_id === null && boards.length > 0){
@@ -220,7 +220,7 @@ class CreatePin extends React.Component {
                 if(window.currentUser.id === 5){
                     this.setState({showHelpMount: true})
                 } else {
-                    debugger
+                    // debugger
                     this.setState({showHelpMount: !Object.values(this.state.boards)[0].pinPhotos.one})
                 }
             }

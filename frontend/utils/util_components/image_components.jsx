@@ -30,16 +30,8 @@ function ProfileAvatar(props) {
     }
 
     if (!(props.photoUrl === 'false')) {
-        console.log('---before----')
-        console.log(props)
-        console.log('---after----')
-
         return returnImgIcon();
     } else {
-        console.log('---before----')
-        console.log(props)
-        console.log('---after----')
-
         return returnTextIcon();
     }
 }

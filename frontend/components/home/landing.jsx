@@ -19,7 +19,7 @@ class Landing extends React.Component{
     }
 
     scrollEvent(e){
-        debugger
+        // debugger
 
     }
 

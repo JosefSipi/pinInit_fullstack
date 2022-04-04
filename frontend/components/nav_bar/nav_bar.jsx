@@ -36,6 +36,8 @@ class NavBar extends React.Component {
         this.pinSearchDisplay = this.pinSearchDisplay.bind(this);
         this.clickSearchOpt = this.clickSearchOpt.bind(this);
         this.keyPressed = this.keyPressed.bind(this);
+        this.loggedOutNavBar = this.loggedOutNavBar.bind(this);
+        this.loggedInNavBar = this.loggedInNavBar.bind(this);
     }
 
     keyPressed(e) {
@@ -174,34 +176,11 @@ class NavBar extends React.Component {
         this.setState({showDropdown: !this.state.showDropdown});
     }
 
-    render(){
+    loggedInNavBar(showDropdown, theUsers, thePins, usersReady, pinsReady){
 
-        let {showDropdown} = this.state;
-
-        let theUsers
-        let thePins
-        let usersReady = false
-        let pinsReady = false
-
-        if(this.state.searchInput === ''){
-            usersReady = false
-            pinsReady = false
-        } else {
-            if(!!this.state.searchUsers && _.keys(this.state.searchUsers).length > 0){
-                usersReady = true
-                theUsers = Object.values(this.state.searchUsers)
-            }
-            if (!!this.state.searchPins && _.keys(this.state.searchPins).length  > 0){
-                pinsReady = true
-                thePins = Object.values(this.state.searchPins).slice(0, 8)
-            }
-        }
-
+        debugger
         
-        if (!!this.props.currentUser) {
-
-            this.bar = (
-            
+        return(
             <div className="header" >
                 <div className="backdrop-div-create-search"  id="backdrop-div-create-search" onClick={this.searchOver}></div>
                 {/* <div className="backdrop-div-create-search" onClick={this.searchOver} id="backdrop-div-create-search"></div> */}
@@ -303,7 +282,7 @@ class NavBar extends React.Component {
 
                         </div>
                     </Link>
-                    
+
                     {/* <Link className="P-avatar" to="/feed"> */}
                         <div className="the-outer-dropdown">
                             <div className="logo-on-logged-in-header-dropdown" onClick={this.toggleContent}>
@@ -320,32 +299,203 @@ class NavBar extends React.Component {
                     {/* </Link> */}
                 </div>
             </div>
-        ) } else {
-            
-            this.bar = (
-                <div className="header">
-                    <div className="header-left" >
-                    {/* require('../images/logo.png') */}
-                    <img id="logo-header-loggedout" src={window.logoURL} alt="logo" />
-                        <h4 className="pinlabel" >Pininit</h4>
-                    </div>
+        )
+    }
 
-                    <div className="header-right">
-                        <a className="other-url" href="https://www.linkedin.com/in/joseph-sipiorski-590452195/" target="_blank" >linkedIn</a>
-                        <a className="other-url" href="https://github.com/JosefSipi" target="_blank" >github</a>
-                        <button className="login-btn" onClick={() => this.props.openModal('login')}>Log in</button>
-                        <button className="signup-btn" onClick={() => this.props.openModal('signup')}>Sign up</button>
-                    </div>
-
+    loggedOutNavBar(){
+        return (
+            <div className="header">
+                <div className="header-left" >
+                {/* require('../images/logo.png') */}
+                <img id="logo-header-loggedout" src={window.logoURL} alt="logo" />
+                    <h4 className="pinlabel" >Pininit</h4>
                 </div>
-            )
-        
+
+                <div className="header-right">
+                    <a className="other-url" href="https://www.linkedin.com/in/joseph-sipiorski-590452195/" target="_blank" >linkedIn</a>
+                    <a className="other-url" href="https://github.com/JosefSipi" target="_blank" >github</a>
+                    <button className="login-btn" onClick={() => this.props.openModal('login')}>Log in</button>
+                    <button className="signup-btn" onClick={() => this.props.openModal('signup')}>Sign up</button>
+                </div>
+
+            </div>
+        )
+    }
+
+    render(){
+
+        let {showDropdown} = this.state;
+
+        let theUsers
+        let thePins
+        let usersReady = false
+        let pinsReady = false
+
+        if(this.state.searchInput === ''){
+            usersReady = false
+            pinsReady = false
+        } else {
+            if(!!this.state.searchUsers && _.keys(this.state.searchUsers).length > 0){
+                usersReady = true
+                theUsers = Object.values(this.state.searchUsers)
+            }
+            if (!!this.state.searchPins && _.keys(this.state.searchPins).length  > 0){
+                pinsReady = true
+                thePins = Object.values(this.state.searchPins).slice(0, 8)
+            }
         }
+
+        debugger
+        
+        // if (!!this.props.currentUser) {
+
+        //     this.bar = (
+            
+        //     <div className="header" >
+        //         <div className="backdrop-div-create-search"  id="backdrop-div-create-search" onClick={this.searchOver}></div>
+        //         {/* <div className="backdrop-div-create-search" onClick={this.searchOver} id="backdrop-div-create-search"></div> */}
+        //         {/* <h1 className="very-hidden">
+        //             {this.grabUser}
+        //         </h1>  */}
+        //         <div className="header-logged-in-1">
+        //             <div className="logo-on-logged-in-header">
+        //                 <Link id="logo-logged-in" to="/feed" >
+        //                     {/* src={require('../images/logo.png')} */}
+        //                     <img id="logo-header-loggedin" src={window.logoURL} alt="logo" />
+        //                 </Link>
+        //             </div>
+        //         </div>
+
+        //         <div className="header-left-home-btn-loggedin">
+        //             <Link className={this.props.history.location.pathname === '/feed' ? 'home-btn-loggedin onFeed-style' : "home-btn-loggedin" } to="/feed">Home</Link>
+        //         </div>
+
+        //         <div className="search-bar-section-1">
+        //             <input 
+        //                 className="searchBar"
+        //                 id='search-bar-input'
+
+        //                 type="text"
+        //                 autoComplete="off"
+        //                 placeholder="Search"
+
+        //                 onClick={this.searchingTime}
+        //                 onKeyDown={this.keyPressed}
+        //                 onChange={this.updateState}
+        //                 onBlur={this.searchOver}>
+        //             </input>
+
+        //             {/* <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchOver}></input> */ }
+        //             <div className="drop-down-holder-nav-bar">
+        //                 <img className="search-bar-icon" src={window.magnaURL} alt="search icon" />
+        //                 <div className="the-dropdown-on-nav-bar-search" id="the-dropdown-on-nav-bar-search">
+        //                     <div id='this-will-hold-search-list'>
+        //                         { pinsReady ? thePins.map(pin => 
+        //                             this.pinSearchDisplay(pin)
+        //                             ) : null
+        //                         }
+        //                     </div>
+
+        //                     <div>
+        //                         { usersReady ? 
+        //                             theUsers.map(user => 
+                                        
+        //                                 // <Link to={`/profile/${user.id}`} >
+        //                                 <div key={user.id} className="list-search-user" onMouseDown={this.redirectProfile} data-user_id={user.id}>
+        //                                     <div id='123 E' className="div-for-search-user-img">
+        //                                         {/* <ProfileAvatar
+                                                    
+        //                                             userName={user.username}
+        //                                             photoUrl={user.photoUrl}
+                                                
+        //                                         /> */}
+        //                                         { !(user.photoUrl === 'false') ? <img className="profile-photo-icon" src={user.photoUrl} alt="profile photo" /> : <p className='profile-letter-default-search' >{user.username[0].toUpperCase()}</p>}
+                                                
+        //                                     </div>
+        //                                     <div className="last-div-1">{user.username}</div>
+        //                                 </div>
+        //                                 // </Link>
+
+        //                             ) : <div></div>
+        //                         }
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         </div>
+
+        //         <div className="header-right-logged-in">
+                    
+        //             {/* <div className="logo-on-logged-in-header" >
+        //                 <img id="logo-bell-icon" src={window.bellURL} alt="bell" />
+        //             </div>
+        //             <div className="logo-on-logged-in-header" >
+        //                 <img id="logo-message-icon" src={window.messageIconURL} alt="message Icon" />
+        //             </div> */}
+
+        //             <div className="link-logo-div">
+        //                 {/* src={require('../images/logo.png')} */}
+        //                 <img id="logo-dropdown" src={window.logoURL}  alt="logo" />
+        //             </div>
+                    
+        //             <Link className='nav-bar-prof-icon' to={`/profile/${this.props.currentUser.id}` }>
+        //                 <div className="logo-on-logged-in-header">
+
+        //                     <div id='123 F' className="profile-div-small">
+        //                         <ProfileAvatar
+                                
+        //                             usersName={this.props.currentUser.f_name}
+        //                             // photoUrl={'false'}
+        //                             photoUrl={this.props.currentUser.photoUrl}
+                                
+        //                         />
+        //                     </div>
+
+        //                 </div>
+        //             </Link>
+
+        //             {/* <Link className="P-avatar" to="/feed"> */}
+        //                 <div className="the-outer-dropdown">
+        //                     <div className="logo-on-logged-in-header-dropdown" onClick={this.toggleContent}>
+        //                             <img id="logo-arrow" src={window.dropdownIcon} alt="dropdown-icon" />
+        //                     </div>
+
+        //                     <div className={`${showDropdown ? "ul-logged-dropdown-active-background" : "ul-logged-dropdown-background"}`} onClick={this.toggleContent}> </div>
+
+        //                     <ul className={`${showDropdown ? "ul-logged-dropdown-active" : "ul-logged-dropdown"}`}>
+        //                         <Link className="link-settings" to="/edit-profile"><li className="the-li-dropdown"> Settings</li></Link>
+        //                         <li className="the-li-dropdown" onClick={this.logoutFunction}><div className="logout-dropdown-btn" >Log out</div></li>
+        //                     </ul>
+        //                 </div>
+        //             {/* </Link> */}
+        //         </div>
+        //     </div>
+        // ) } else {
+            
+        //     this.bar = (
+        //         <div className="header">
+        //             <div className="header-left" >
+        //             {/* require('../images/logo.png') */}
+        //             <img id="logo-header-loggedout" src={window.logoURL} alt="logo" />
+        //                 <h4 className="pinlabel" >Pininit</h4>
+        //             </div>
+
+        //             <div className="header-right">
+        //                 <a className="other-url" href="https://www.linkedin.com/in/joseph-sipiorski-590452195/" target="_blank" >linkedIn</a>
+        //                 <a className="other-url" href="https://github.com/JosefSipi" target="_blank" >github</a>
+        //                 <button className="login-btn" onClick={() => this.props.openModal('login')}>Log in</button>
+        //                 <button className="signup-btn" onClick={() => this.props.openModal('signup')}>Sign up</button>
+        //             </div>
+
+        //         </div>
+        //     )
+        
+        // }
 
         return (
             <header className="nav-bar">
                 <div className="nav-bar-sub-div-1">
-                    {this.bar}
+                    {/* {this.bar} */}
+                    {!!this.props.currentUser ? this.loggedInNavBar(showDropdown, theUsers, thePins, usersReady, pinsReady ) : this.loggedOutNavBar()}
                 </div>
             </header>
         )
