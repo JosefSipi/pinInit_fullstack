@@ -155,8 +155,6 @@ class UserShow extends React.Component {
 
     componentDidUpdate(prevProps){
 
-        
-        
         if(prevProps.boards !== this.props.boards){
             this.setState({boards: Object.values(this.props.boards.boards)});
         } else if (prevProps.follow !== this.props.follow) {
@@ -203,6 +201,10 @@ class UserShow extends React.Component {
 
         // }
         // }
+    }
+
+    componentWillUnmount(){
+        
     }
 
     toggleClass(e) {

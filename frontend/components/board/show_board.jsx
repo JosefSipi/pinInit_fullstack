@@ -165,8 +165,6 @@ class BoardShow extends React.Component {
                                         photoUrl={this.props.userProfile.photoUrl}
                                         usersName={this.props.userProfile.f_name}
                                     />
-                                    {/* { this.props.userProfile.photoUrl ? <img src={this.props.userProfile.photoUrl} alt="profile photo" /> : <p className='profile-letter-default' >{this.props.userProfile.f_name[0]}</p>} */}
-                                    {/* <img className="profile-photo-header-bar" src={window.currentUser.profile_pic} alt="profile photo" /> */}
                                 </div>
                             </Link>
 
