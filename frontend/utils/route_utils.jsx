@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route, withRouter } from 'react-router-dom';
 
-debugger
-
 const mSTP = state => (
     {loggedIn: Boolean(state.session.currentUser)}
 );

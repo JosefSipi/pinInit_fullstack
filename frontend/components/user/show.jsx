@@ -136,8 +136,6 @@ class UserShow extends React.Component {
 
         this.props.fetchUserProfile(this.props.match.params.id).then(
             (data) => {
-                debugger
-                
                 let prevState = this.state.userProfiles
                 prevState[data.userProfile.id] = {user: data.userProfile}
                 this.setState({userProfile: prevState})
@@ -206,7 +204,6 @@ class UserShow extends React.Component {
     }
 
     componentWillUnmount(){
-        debugger
     }
 
     toggleClass(e) {
