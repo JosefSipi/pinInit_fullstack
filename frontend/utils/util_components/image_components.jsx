@@ -21,7 +21,6 @@ function ProfileAvatar(props) {
     let returnImgIcon = () => {
         if(props === undefined){
         }
-        // debugger
         return(
             <div className={props.divImgClass || 'default-div-avatar'}>
                 <img className={props.imgClass || 'default-img-avatar'} src={props.photoUrl} alt="profile photo" />
