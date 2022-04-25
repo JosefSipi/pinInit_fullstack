@@ -1,64 +1,63 @@
 .boards-grid-area-for-pins {
-    border-color: red solid 3px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    flex-direction: row;
-    margin-left: 80px;
-    margin-right: 80px;
-    flex-grow: 0;
-    height: fit-content;
-    margin-top: 32px;
-    margin-bottom: 32px;
+  border-color: red solid 3px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  flex-direction: row;
+  margin-left: 80px;
+  margin-right: 80px;
+  flex-grow: 0;
+  height: fit-content;
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
-#board-show-link{
-    text-decoration: none;
+#board-show-link {
+  text-decoration: none;
 }
 
-.following-btn-22-1{
-    border: none;
-    border-radius: 50px;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #e60023;
-    font-weight: 550;
-    font-size: 16px;
-    color: white;
-    height: 48px;
-    width: fit-content;
-    padding-left: 18px;
-    padding-right: 18px;
-    
-    margin-top: 10px;
-    margin-bottom: 10px;
-    &:hover{
-        background-color: #ad081b;
-        cursor: pointer;
-    }
+.following-btn-22-1 {
+  border: none;
+  border-radius: 50px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #e60023;
+  font-weight: 550;
+  font-size: 16px;
+  color: white;
+  height: 48px;
+  width: fit-content;
+  padding-left: 18px;
+  padding-right: 18px;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+  &:hover {
+    background-color: #ad081b;
+    cursor: pointer;
+  }
 }
 
-.following-btn-22-2{
-    border: none;
-    border-radius: 50px;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #111111;
-    font-weight: 550;
-    font-size: 16px;
-    color: white;
-    height: 48px;
-    width: fit-content;
-    padding-left: 18px;
-    padding-right: 18px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    &:hover{
-        cursor: pointer;
-    }
-    
+.following-btn-22-2 {
+  border: none;
+  border-radius: 50px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #111111;
+  font-weight: 550;
+  font-size: 16px;
+  color: white;
+  height: 48px;
+  width: fit-content;
+  padding-left: 18px;
+  padding-right: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  &:hover {
+    cursor: pointer;
+  }
 }

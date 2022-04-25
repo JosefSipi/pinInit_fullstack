@@ -1,179 +1,174 @@
-
-
-
 // ---- profile photo ----
-.profile-div-edi-form{
-    overflow-y: hidden;
-    overflow-x: hidden;
-    border-radius: 100px;
-    height: 80px;
-    width: 80px;
+.profile-div-edi-form {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  border-radius: 100px;
+  height: 80px;
+  width: 80px;
 }
 
 .profile-photo-edit-form {
-   height: 80px;
-   width: auto;
+  height: 80px;
+  width: auto;
 }
 
-.profile-pic-edit{
-    display: flex;
-    align-items: center;
+.profile-pic-edit {
+  display: flex;
+  align-items: center;
 }
 
-.edit-board-btn{
-    margin-left: 15px;
+.edit-board-btn {
+  margin-left: 15px;
 }
 
-.edit-profile-main-div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    // border: 2px solid orange;
-    
+.edit-profile-main-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  // border: 2px solid orange;
 }
 
-.main-edit-form{
-    width: 490px;
-    // border: solid 2px red;
-    margin-top: 28px;
-    margin-bottom: 60px;
-    input{
-        padding-right: 21px;
-        font-size: 15px;
-        font-weight: 100;
-    }
-}
-
-h1.large-txt-edit-profile{
-    font-size: 28px;
-    font-weight: 550;
-    padding-bottom: 14px;
-}
-
-.sub-text-edit-profile{
-    font-weight: 100;
-    padding-bottom: 35px;
+.main-edit-form {
+  width: 490px;
+  // border: solid 2px red;
+  margin-top: 28px;
+  margin-bottom: 60px;
+  input {
+    padding-right: 21px;
     font-size: 15px;
-}
-
-.photo-hfour-lab{
-    font-size: 13px;
     font-weight: 100;
-    padding-bottom: 5px;
+  }
 }
 
-.input-txt-edit-profile{
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    outline: none;
-    
-    border: solid 2px gainsboro;
-    text-indent: 10px;
-    border-radius: 16px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    height: 44px;
-
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+h1.large-txt-edit-profile {
+  font-size: 28px;
+  font-weight: 550;
+  padding-bottom: 14px;
 }
 
-.f-name-l-name-edit{
+.sub-text-edit-profile {
+  font-weight: 100;
+  padding-bottom: 35px;
+  font-size: 15px;
+}
+
+.photo-hfour-lab {
+  font-size: 13px;
+  font-weight: 100;
+  padding-bottom: 5px;
+}
+
+.input-txt-edit-profile {
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  outline: none;
+
+  border: solid 2px gainsboro;
+  text-indent: 10px;
+  border-radius: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  height: 44px;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.f-name-l-name-edit {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 22px;
+  font-size: 12px;
+  font-weight: 100;
+  div {
     display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 22px;
-    font-size: 12px;
-    font-weight: 100;
-    div{
-        display: flex;
-        // border: 1px solid green;
-        flex-direction: column;
-        width: 49%;
-    }
-}
-
-.description-txt-edit-profile{
-    font-size: 12px;
-    font-weight: 100;
-}
-
-.edit-input-edit-user{
-    display: flex;
-    flex-direction: column;
-    margin-top: 13px;
-}
-
-.box-div-edit-user{
-    flex-direction: column;
-    // border: 2px solid greenyellow;
-    position: absolute;
-    top: 80px;
-    bottom: 81px;
-    left: 0;
-    right: 0;
-    overflow: scroll;
-}
-
-.footer-bar{
     // border: 1px solid green;
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    box-shadow: -1px 1px 6px 5px rgba(191, 191, 191, 0.11);
-    
+    flex-direction: column;
+    width: 49%;
+  }
 }
 
-.normal-btn-edit-prof{
-    background-color: #efefef;
-    font-size: 15px;
-    border-radius: 30px;
-    border: none;
-    padding-right: 18px;
-    padding-left: 18px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    color: #767676;
-    font-weight: 550;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-left: 5px;
-    margin-right: 5px;
+.description-txt-edit-profile {
+  font-size: 12px;
+  font-weight: 100;
 }
 
-.buttons-edit-active-reset{
-    color: black;
-    &:hover{
-        background-color: #dddddd;
-        cursor: pointer;
-    }
+.edit-input-edit-user {
+  display: flex;
+  flex-direction: column;
+  margin-top: 13px;
 }
 
-.buttons-edit-active-save{
-    color: white;
-    background-color: #e60022;
-    &:hover{
-        background-color: #ad081b;
-        cursor: pointer;
-    }
+.box-div-edit-user {
+  flex-direction: column;
+  // border: 2px solid greenyellow;
+  position: absolute;
+  top: 80px;
+  bottom: 81px;
+  left: 0;
+  right: 0;
+  overflow: scroll;
 }
 
-.outside-div-loading-on-profile-edit{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    // width: 100%;
-    // height: 100%;
-    position: relative;
-    bottom: 20px;
+.footer-bar {
+  // border: 1px solid green;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  box-shadow: -1px 1px 6px 5px rgba(191, 191, 191, 0.11);
+}
+
+.normal-btn-edit-prof {
+  background-color: #efefef;
+  font-size: 15px;
+  border-radius: 30px;
+  border: none;
+  padding-right: 18px;
+  padding-left: 18px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  color: #767676;
+  font-weight: 550;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.buttons-edit-active-reset {
+  color: black;
+  &:hover {
+    background-color: #dddddd;
+    cursor: pointer;
+  }
+}
+
+.buttons-edit-active-save {
+  color: white;
+  background-color: #e60022;
+  &:hover {
+    background-color: #ad081b;
+    cursor: pointer;
+  }
+}
+
+.outside-div-loading-on-profile-edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // width: 100%;
+  // height: 100%;
+  position: relative;
+  bottom: 20px;
 }

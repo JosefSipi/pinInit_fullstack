@@ -1,86 +1,84 @@
 .modal-background {
-    position: absolute;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  z-index: 2000;
+  background-color: rgba(0, 0, 0, 0.454);
+  margin: 0;
+
+  .modal-child {
+    background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    overflow-y: scroll;
-    z-index: 2000;
-    background-color: rgba(0, 0, 0, 0.454);
-    margin: 0;
-
-    .modal-child {
-        background-color: rgb(255, 255, 255);
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        position: absolute;
-        width: 435px;
-        border-radius: 30px;
-    }
+    align-items: flex-end;
+    position: absolute;
+    width: 435px;
+    border-radius: 30px;
+  }
 }
 
 .sign-up-small-btn {
-    padding-bottom: 31px;
-    color: black;
-    font-size: 13px;
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
-    &:hover{
-        text-decoration: underline;
-        cursor: pointer;
-    }
+  padding-bottom: 31px;
+  color: black;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
 
-    
 .page-form {
-    display: flex;
-    justify-content: space-evenly;
-    height: 5px;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: space-evenly;
+  height: 5px;
+  align-items: center;
+  flex-direction: column;
 }
 
 // -- below is the background over gray effect on modal x --
 
 .input-error {
-    background-color: white;
-    border-color: red;
+  background-color: white;
+  border-color: red;
 }
 
-.pwError-div{
-    color: red;
-    font-size: 12px;
-    letter-spacing: .5px;
+.pwError-div {
+  color: red;
+  font-size: 12px;
+  letter-spacing: 0.5px;
 }
 
-h2.forgot-pw{
-    align-items: flex-start;
-    padding-top: 5px;
-    padding-bottom: 10px;
-    font-size: 13px;
-    font-weight: bold;
-    font-family: 'Questrial', sans-serif;
+h2.forgot-pw {
+  align-items: flex-start;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  font-family: "Questrial", sans-serif;
 }
 
+.login-button {
+  all: unset;
+  border-radius: 18px;
 
-.login-button{
-    all: unset;
-    border-radius: 18px;
-    
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    text-align: center;
-    background-color: #eb0000;
-    font-weight: 750;
-    font-size: 12px;
-    color: rgb(255, 255, 255);
-    height: 36px;
-        &:hover {
-        cursor: pointer;
-        }
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  text-align: center;
+  background-color: #eb0000;
+  font-weight: 750;
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+  height: 36px;
+  &:hover {
+    cursor: pointer;
+  }
 }

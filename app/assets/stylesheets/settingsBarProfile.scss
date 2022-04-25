@@ -1,14 +1,10 @@
-
-
-
 // .edit-bar-profile-page{
 
 // }
 
-
 /* Dropdown Button */
 .dropbtn {
-  background-color: #3498DB;
+  background-color: #3498db;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -17,8 +13,9 @@
 }
 
 /* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #2980b9;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -33,7 +30,7 @@
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -46,24 +43,18 @@
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+.show {
+  display: block;
+}
 
-
-
-
-
-
-
-
-
-
-
-.hidden{
-    display: none;
-    &:hover{
-        display: block;
-    }
+.hidden {
+  display: none;
+  &:hover {
+    display: block;
+  }
 }

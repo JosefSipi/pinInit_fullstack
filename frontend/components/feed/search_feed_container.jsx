@@ -1,20 +1,20 @@
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import SearchFeed from './search_feed';
-import { searchFeedCall } from '../../actions/pin_action';
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import SearchFeed from "./search_feed";
+import { searchFeedCall } from "../../actions/pin_action";
 
-const mSTP = state => {
-    return {
-        feed: state.feed.searchPins
-    }
-}
+const mSTP = (state) => {
+  return {
+    feed: state.feed.searchPins,
+  };
+};
 
-const mDTP = dispatch => {
-    return {
-        searchFeedCall: (word) => {
-            return dispatch(searchFeedCall(word));
-        }
-    }
-}
+const mDTP = (dispatch) => {
+  return {
+    searchFeedCall: (word) => {
+      return dispatch(searchFeedCall(word));
+    },
+  };
+};
 
 export default withRouter(connect(mSTP, mDTP)(SearchFeed));

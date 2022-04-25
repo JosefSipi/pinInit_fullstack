@@ -1,128 +1,123 @@
-  .modal-background-create-b {
-   position: absolute;
+.modal-background-create-b {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  z-index: 2000;
+  background-color: rgba(0, 0, 0, 0.454);
+  margin: 0;
+  .modal-child-create-b {
+    background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    overflow-y: scroll;
-    z-index: 2000;
-    background-color: rgba(0, 0, 0, 0.454);
-    margin: 0;
-    .modal-child-create-b {
-        background-color: rgb(255, 255, 255);
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        position: absolute;
-        width: 540px;
-        border-radius: 35px;
-    }
+    align-items: flex-end;
+    position: absolute;
+    width: 540px;
+    border-radius: 35px;
+  }
 }
-
 
 // -------- create button --------------
 
-.create-board-btn{
-    border: none;
-    border-radius: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #eb0000;
-    font-weight: 500;
-    font-size: 16px;
-    color: rgb(255, 255, 255);
-    height: 48px;
-    width: 84px;
-        &:hover {
-        cursor: pointer;
-        }
+.create-board-btn {
+  border: none;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #eb0000;
+  font-weight: 500;
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+  height: 48px;
+  width: 84px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .create-board-btn-gray {
-    border: none;
-    border-radius: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #efefef;
-    font-weight: 500;
-    font-size: 16px;
-    color: #767676;
-    height: 48px;
-    width: 84px;
+  border: none;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #efefef;
+  font-weight: 500;
+  font-size: 16px;
+  color: #767676;
+  height: 48px;
+  width: 84px;
 }
 
-.create-board-div{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 50px;
-    width: stretch;
+.create-board-div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 50px;
+  width: stretch;
 }
 
-.create-board-main-div{
-    width: inherit;
-    padding: 32px;
-
+.create-board-main-div {
+  width: inherit;
+  padding: 32px;
 }
 
 .input-box-create-b {
-    width: 470px;
-    display: flex;
-    border-radius: 12px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: rgb(221, 221, 221);
-    height: 40px;
-    text-indent: 15px;
-    margin-right: 3px;
-    margin-bottom: 26px;
-    
+  width: 470px;
+  display: flex;
+  border-radius: 12px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(221, 221, 221);
+  height: 40px;
+  text-indent: 15px;
+  margin-right: 3px;
+  margin-bottom: 26px;
 }
 
-.name-div-create-b{
-    padding-top: 7px;
-    padding-bottom: 7px;
+.name-div-create-b {
+  padding-top: 7px;
+  padding-bottom: 7px;
 
-    font-weight: 200;
-    color: #181818;
-    font-size: 13PX;
+  font-weight: 200;
+  color: #181818;
+  font-size: 13px;
 }
 
-.create-board-title{
-    display: flex;
-    text-align: center;
-    justify-content: center;
+.create-board-title {
+  display: flex;
+  text-align: center;
+  justify-content: center;
 
-    padding-bottom: 27px;
-    font-size: 28px;
+  padding-bottom: 27px;
+  font-size: 28px;
+  font-weight: 600;
+  padding-top: 11px;
+}
+
+.create-board-checkbox {
+  height: 22px;
+  width: 22px;
+  margin-right: 12px;
+}
+
+.bottom-create-b {
+  display: flex;
+}
+
+.create-board-checkbox-div-sub {
+  padding-top: 3px;
+  div.first {
     font-weight: 600;
-    padding-top: 11px;
-}
-
-.create-board-checkbox{
-    height: 22px;
-    width: 22px;
-    margin-right: 12px;
-
-}
-
-.bottom-create-b{
-    display: flex;
-
-}
-
-.create-board-checkbox-div-sub{
-    padding-top: 3px;
-    div.first {
-        font-weight: 600;
-    }
-    div.second {
-        color: #767676;
-    }
+  }
+  div.second {
+    color: #767676;
+  }
 }

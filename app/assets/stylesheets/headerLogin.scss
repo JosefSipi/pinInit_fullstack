@@ -1,6 +1,4 @@
-
-
-header.primary-header-app{
+header.primary-header-app {
   position: fixed;
   width: 100vw;
   background-color: white;
@@ -8,18 +6,15 @@ header.primary-header-app{
   box-shadow: -1px 1px 6px 5px rgba(191, 191, 191, 0.11);
 }
 
-.space-provider{
+.space-provider {
   height: 82px;
   width: 100%;
   // border: red 2px solid;
   // background-color: rgba(21, 255, 0, 0.253);
 }
 
-
-
 // ------------------------------------------------
 // pinterest logo in header while logged in
-
 
 .header-logged-in-1 {
   height: inherit;
@@ -32,7 +27,7 @@ header.primary-header-app{
 }
 
 // ------------------ plus dropdown ----------------------
-.logo-on-logged-in-header{
+.logo-on-logged-in-header {
   // position: absolute;
   overflow-y: hidden;
   overflow-x: hidden;
@@ -44,23 +39,23 @@ header.primary-header-app{
   align-items: center;
   justify-content: center;
   // z-index: 7;
-  &:hover{
+  &:hover {
     cursor: pointer;
     background-color: #f1f1f1;
   }
 }
 
-.show-dropdown{
+.show-dropdown {
   height: 50px;
   width: 50px;
 }
 
-#logo-cross{
+#logo-cross {
   height: 24px;
   width: auto;
 }
 
-.hidden-plus-opt{
+.hidden-plus-opt {
   display: flex;
   position: relative;
   font-weight: 700;
@@ -75,44 +70,42 @@ header.primary-header-app{
   flex-direction: column;
   z-index: 7;
 }
- 
-.hidden-plus-opt-h{
+
+.hidden-plus-opt-h {
   display: none;
 }
 
 .list-plus-men {
-     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding: 7px;
 }
 
-.pin-link-bton-mid-bar{
+.pin-link-bton-mid-bar {
   border-radius: 8px;
   padding-top: 9px;
   padding-bottom: 9px;
   text-indent: 9px;
-  &:hover{
+  &:hover {
     background-color: #e4e4e4;
     cursor: pointer;
   }
 }
 
-p.create-p-tag{
-    color: #3c3b3b;
-    font-weight: 100;
-    font-size: 11px;
-    align-content: center;
-    padding-top: 15px;
-    padding-left: 19px;
-
+p.create-p-tag {
+  color: #3c3b3b;
+  font-weight: 100;
+  font-size: 11px;
+  align-content: center;
+  padding-top: 15px;
+  padding-left: 19px;
 }
 
-
 // ------------ this will be background to close dropdown --------
-.ul-logged-dropdown-active-background-plus{
+.ul-logged-dropdown-active-background-plus {
   position: fixed;
   top: 0;
   left: 0;
@@ -120,74 +113,68 @@ p.create-p-tag{
   height: 100%;
   background-color: rgba(255, 255, 255, 0);
   z-index: 5;
-
 }
 
-.ul-logged-dropdown-background-plus{
+.ul-logged-dropdown-background-plus {
   all: unset;
   display: none;
 }
 
-
-
 // ------------------ plus dropdown ----------------------
 
-
-#logo-logged-in{
+#logo-logged-in {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   // &:hover{
   //   background-color: #c9c9c9;
-  // }  
+  // }
 }
 
-#logo{
+#logo {
   height: 18px;
   width: auto;
-  
 }
 
-#logo-arrow{
+#logo-arrow {
   height: 18px;
   width: auto;
   align-self: center;
   justify-content: center;
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
-
 }
 
-#logo-header-loggedin{
+#logo-header-loggedin {
   height: 32px;
   width: auto;
 }
 
-#logo-header-loggedout{
+#logo-header-loggedout {
   height: 34px;
   width: auto;
 }
 
 .profile-photo-icon {
-   height: inherit;
-   width: auto;
+  height: inherit;
+  width: auto;
 }
 
-.profile-letter-default-search{
+.profile-letter-default-search {
   display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 22px;
-    font-weight: 550;
-    &:hover{
-      cursor: inherit;
-    }
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 550;
+  &:hover {
+    cursor: inherit;
+  }
 }
 
-.logo-on-logged-in-header-dropdown{
+.logo-on-logged-in-header-dropdown {
   position: relative;
   top: 15px;
   left: 10px;
@@ -202,13 +189,12 @@ p.create-p-tag{
   justify-content: center;
   padding: 3px;
   z-index: 8;
-  &:hover{
-
+  &:hover {
     background-color: #f1f1f1;
   }
 }
 // ------------ this will be background to close dropdown --------
-.ul-logged-dropdown-active-background{
+.ul-logged-dropdown-active-background {
   position: absolute;
   top: 0;
   left: 0;
@@ -216,18 +202,16 @@ p.create-p-tag{
   height: 100vh;
   background-color: transparent;
   z-index: 5;
-
 }
 
-.ul-logged-dropdown-background{
+.ul-logged-dropdown-background {
   display: none;
 }
-
 
 // ------------------------------------------------
 // home link button in logged in header
 
-.header-left-home-btn-loggedin{
+.header-left-home-btn-loggedin {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -239,7 +223,7 @@ p.create-p-tag{
   margin-right: 7px;
 }
 
-.home-btn-loggedin{
+.home-btn-loggedin {
   height: 50px;
   padding: 17px;
   width: fit-content;
@@ -254,7 +238,7 @@ p.create-p-tag{
   justify-content: center;
   text-align: center;
   font-size: 16px;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   font-weight: bold;
   &:hover {
     cursor: pointer;
@@ -262,7 +246,7 @@ p.create-p-tag{
   }
 }
 
-.onFeed-style{
+.onFeed-style {
   color: white;
   background-color: black;
   font-weight: normal;
@@ -271,7 +255,6 @@ p.create-p-tag{
     background-color: black;
   }
 }
-
 
 // ------------------------------------------------
 // --- the search bar on logged in
@@ -291,7 +274,6 @@ p.create-p-tag{
   border-style: none;
   text-align: left;
   text-indent: 38px;
-
 }
 // ------------------------------------------------
 
@@ -302,7 +284,6 @@ p.create-p-tag{
   display: flex;
   flex-direction: row;
   align-items: center;
-
 }
 
 .header-left {
@@ -315,7 +296,7 @@ p.create-p-tag{
   padding-left: 35px;
 }
 
-.login-form{
+.login-form {
   display: block;
   text-align: center;
   height: 268px;
@@ -385,7 +366,6 @@ p.create-p-tag{
   display: flex;
   justify-content: space-evenly;
   width: 370px;
-  
 }
 
 .header {
@@ -398,16 +378,15 @@ p.create-p-tag{
 }
 
 header.nav-bar {
-  font-family: 'Questrial', sans-serif;
-  width: 100%;
-
-}
-
-.nav-bar-sub-div-1{
+  font-family: "Questrial", sans-serif;
   width: 100%;
 }
 
-.link-logo-div{
+.nav-bar-sub-div-1 {
+  width: 100%;
+}
+
+.link-logo-div {
   overflow-y: hidden;
   overflow-x: hidden;
   border-radius: 100px;
@@ -415,14 +394,14 @@ header.nav-bar {
   width: 10px;
 }
 
-.nav-bar-prof-icon{
+.nav-bar-prof-icon {
   text-decoration: none;
   color: black;
 
   border-radius: 100px;
   overflow: hidden;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
     background: #e8e8e8;
   }
@@ -438,7 +417,7 @@ div.profile-div-small {
   font-size: 1.9ch;
 }
 
-.placeHolder{
+.placeHolder {
   color: #f1f1f1;
   background-color: red;
   font-size: 20px;
@@ -447,7 +426,7 @@ div.profile-div-small {
   border-color: black;
 }
 
-#logo-message-icon{
+#logo-message-icon {
   height: 35px;
   width: auto;
 }
@@ -460,12 +439,12 @@ div.profile-div-small {
   border-color: black;
 }
 
-#logo-bell-icon{
+#logo-bell-icon {
   height: 28px;
   width: auto;
 }
 
-.the-outer-dropdown{
+.the-outer-dropdown {
   width: 50px;
   height: 50px;
   text-decoration: none;
@@ -474,7 +453,7 @@ div.profile-div-small {
   align-items: center;
 }
 
-.ul-logged-dropdown{
+.ul-logged-dropdown {
   box-shadow: -1px 1px 7px 8px rgba(191, 191, 191, 0.221);
   position: relative;
   width: 215px;
@@ -485,10 +464,9 @@ div.profile-div-small {
   display: none;
   justify-content: center;
   flex-direction: column;
-
 }
 
-.ul-logged-dropdown-active{
+.ul-logged-dropdown-active {
   box-shadow: -1px 1px 7px 8px rgba(191, 191, 191, 0.221);
   position: fixed;
   width: 215px;
@@ -503,7 +481,7 @@ div.profile-div-small {
   background-color: white;
 }
 
-.the-li-dropdown{
+.the-li-dropdown {
   font-weight: bold;
   display: flex;
   width: 190px;
@@ -514,20 +492,19 @@ div.profile-div-small {
   border-radius: 11px;
   text-align: center;
   text-indent: 10px;
-  &:hover{
+  &:hover {
     cursor: pointer;
     background-color: rgb(233, 233, 233);
   }
 }
 
-.link-settings{
+.link-settings {
   color: rgb(33, 25, 34);
   text-decoration: none;
   align-items: center;
   text-align: center;
-
 }
 
-.logout-dropdown-btn{
+.logout-dropdown-btn {
   justify-content: flex-start;
 }

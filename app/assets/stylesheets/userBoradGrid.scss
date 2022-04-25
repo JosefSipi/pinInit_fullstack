@@ -1,259 +1,241 @@
-
-
-#logo-share-icon{
+#logo-share-icon {
   height: 36px;
   width: auto;
 }
 
 .boards-grid-area {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    flex-direction: row;
-    margin-left: 80px;
-    margin-right: 80px;
-    overflow-y: scroll;
-
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  flex-direction: row;
+  margin-left: 80px;
+  margin-right: 80px;
+  overflow-y: scroll;
 }
 
-.board-display-card{
-    height: 232px;
-    width: 252px;
-    margin: 8px;
-    display: flex;
-    flex-direction: column;
-    // &:hover{
-    //     background-color: red;
-    // }
-
+.board-display-card {
+  height: 232px;
+  width: 252px;
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
+  // &:hover{
+  //     background-color: red;
+  // }
 }
 
-.image-section-board{
-    display: flex;
-    flex-direction: row;
-    width: inherit;
-    height: 73%;
-    border-radius: 20px;
+.image-section-board {
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+  height: 73%;
+  border-radius: 20px;
 
-    overflow-x: hidden;
-    overflow-y: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
-.title-pin-section{
-    width: 240px;
-    // height: 42;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    flex-grow: 1;
-
+.title-pin-section {
+  width: 240px;
+  // height: 42;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
-.board-title{
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 600;
-    color: black;
-    padding-left: 7px;
-    padding-bottom: 3px;
-    width: 240px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+.board-title {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  padding-left: 7px;
+  padding-bottom: 3px;
+  width: 240px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.pin-num-board{
-    display: inline;
-    padding-right: 7px;
-    padding-left: 7px;
+.pin-num-board {
+  display: inline;
+  padding-right: 7px;
+  padding-left: 7px;
 }
 
-.pins-days{
-
-    font-weight: 350;
-    color: black;
-    font-size: 14px;    
+.pins-days {
+  font-weight: 350;
+  color: black;
+  font-size: 14px;
 }
 
-.days-number{
-    display: inline;
-    font-weight: 200;
-    color: gray;
-    font-size: 13px;
+.days-number {
+  display: inline;
+  font-weight: 200;
+  color: gray;
+  font-size: 13px;
 }
 
-
-.large-image-onboard{
-    height: 100%;
-    width: 165px;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    background-color: #d8d8d8;
+.large-image-onboard {
+  height: 100%;
+  width: 165px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-color: #d8d8d8;
 }
 
-
-.image-board-1{
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
+.image-board-1 {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
 }
 
-.other-two-images{
-    height: 100%;
-    width: 80px;
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-left-color: white;
-    background-color:  rgb(216, 216, 216);
-    flex-grow: 1;
+.other-two-images {
+  height: 100%;
+  width: 80px;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: white;
+  background-color: rgb(216, 216, 216);
+  flex-grow: 1;
 }
 
+.top-box-123 {
+  border: none;
+  width: auto;
+  height: 50%;
 
-.top-box-123{
-    border: none;
-    width: auto;
-    height: 50%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-
-
-.image-board-2{
-    height: 100%;
-    width: auto;
-    border: none;
-
+.image-board-2 {
+  height: 100%;
+  width: auto;
+  border: none;
 }
 
-.image-board-3{
-    height: 100%;
-    width: auto;
+.image-board-3 {
+  height: 100%;
+  width: auto;
 }
 
-
-.bottom-box{
-    height: 50%;
-    width: auto;
-    border-top-style: solid;
-    border-top-width: 1px;
-    border-top-color: white;
+.bottom-box {
+  height: 50%;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: white;
 }
 
 // ------------------ edit icon on board tiles -----------
 
-.logo-on-logged-in-header-board-tile{
-    visibility: hidden;
-    position: relative;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    border-radius: 100px;
-    height: 34px;
-    width: 34px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    left: 217px;
-    top: 169px;
-    z-index: 7;
-  &:hover{
+.logo-on-logged-in-header-board-tile {
+  visibility: hidden;
+  position: relative;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  border-radius: 100px;
+  height: 34px;
+  width: 34px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  left: 217px;
+  top: 169px;
+  z-index: 7;
+  &:hover {
     cursor: pointer;
     background-color: rgb(241, 241, 241);
   }
 }
 
-img#logo-edit-board{
-
+img#logo-edit-board {
   height: 14px;
   width: auto;
-
 }
 
-img#logo-lock-icon{
-    height: 18px;
-    width: 20px;
+img#logo-lock-icon {
+  height: 18px;
+  width: 20px;
 }
 
-
-div.outer-div-tile-edit{
-    position: absolute;
-    width: inherit;
-    height: inherit;
-  
+div.outer-div-tile-edit {
+  position: absolute;
+  width: inherit;
+  height: inherit;
 }
 
 // .dont-show-me:hover > .logo-on-logged-in-header-board-tile{
 //     visibility: visible;
 // }
-.dont-show-me{
-    &:hover{
-        // --- hidden edit pen logo on board ---
-        > .logo-on-logged-in-header-board-tile{
-            visibility: visible;
-        }
-        // --- hover shade effect on board ---
-        > #board-show-link{
-            > .board-display-card{
-                > .image-section-board{
-                    filter: brightness(0.9);
-                }
-            }
-        }
+.dont-show-me {
+  &:hover {
+    // --- hidden edit pen logo on board ---
+    > .logo-on-logged-in-header-board-tile {
+      visibility: visible;
     }
+    // --- hover shade effect on board ---
+    > #board-show-link {
+      > .board-display-card {
+        > .image-section-board {
+          filter: brightness(0.9);
+        }
+      }
+    }
+  }
 }
 // ------------------ edit icon on board tiles -----------
 
 // ------------------- lock icon ---------------------
 
-.logo-on-logged-in-header-board-lock{
-    position: absolute;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    border-radius: 100px;
-    height: 34px;
-    width: 34px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    left: 8px;
-    top: 7px;
+.logo-on-logged-in-header-board-lock {
+  position: absolute;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  border-radius: 100px;
+  height: 34px;
+  width: 34px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  left: 8px;
+  top: 7px;
 }
 // ------------------- lock icon ---------------------
 
-.inner-large-image1{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.inner-large-image1 {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.smaller-image-show-board-tiles1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
+.smaller-image-show-board-tiles1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
 }
 
-.number-pins-bar-board-show{
-    width: 100%;
-    height: fit-content;
-    padding-top: 10px;
-    display: flex;
+.number-pins-bar-board-show {
+  width: 100%;
+  height: fit-content;
+  padding-top: 10px;
+  display: flex;
 }
 
-.num-pins-show-board{
-    font-size: 20px;
-    font-weight: 550;
-    margin-left: 24px;
-
+.num-pins-show-board {
+  font-size: 20px;
+  font-weight: 550;
+  margin-left: 24px;
 }

@@ -8,501 +8,490 @@
 
 // }
 :root {
-    --card_width: 250px;
-    --row_increment: 10px;
-    --card_border_radius: 16px;
-    --card_small: 26;
-    --card_medium: 33;
-    --card_large: 45;
+  --card_width: 250px;
+  --row_increment: 10px;
+  --card_border_radius: 16px;
+  --card_small: 26;
+  --card_medium: 33;
+  --card_large: 45;
 }
 
-
-.pin-area-on-board-show{
-    margin: 0;
-    padding: 0;
-    height: fit-content;
-    width: 100vw;
-    // height: 100vh;
-    overflow-y: scroll;
+.pin-area-on-board-show {
+  margin: 0;
+  padding: 0;
+  height: fit-content;
+  width: 100vw;
+  // height: 100vh;
+  overflow-y: scroll;
 }
 // ------------------------------------
 
 img.pin-photo {
-    width: 100%;
-    height: 100%;
-    // margin: 0px 5px 0px 5px;
-    border-radius: 16px;
-    filter: brightness(0.95);
+  width: 100%;
+  height: 100%;
+  // margin: 0px 5px 0px 5px;
+  border-radius: 16px;
+  filter: brightness(0.95);
 }
-div.card-title-pin{
-    // text-indent: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    align-self: flex-start;
-    font-size: 14px;
-    font-weight: 600;
-    padding-top: 8px;
+div.card-title-pin {
+  // text-indent: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-self: flex-start;
+  font-size: 14px;
+  font-weight: 600;
+  padding-top: 8px;
 
-// comment this in when pin span count for titles more than two lines (increase span by 2)
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    line-height: 19px;
-}
-// ---------- initial log in -------------
-
-.it-looks-like{
-    display: flex;
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-
-    background: #00000094;
-    z-index: 300;
-    top: 0px;
-}
-
-.it_looks_main_div{
-    display: flex;
-    flex-direction: column;
-    border-radius: 30px;
-    background: white;
-    height: 70vh;
-    max-width: 86vw;
-    min-width: 330px;
-    overflow: hidden;
-    position: absolute;
-    top: 15%;
-
-}
-
-.ul-feed-for-follow{
-    flex-grow: 1;
-    overflow: scroll;
-    background-image: linear-gradient(rgb(255, 255, 255), rgba(85, 85, 85, 0.07));
-}
-
-.feed-div-top{
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    height: 150px;
-    min-height: 7ch;
-    font-size: 26px;
-    font-weight: 550;
-    overflow: hidden;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-top: 20px;
-    padding-bottom: 13px;
-}
-
-.feed-div-btm{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    padding: 19px;
-}
-
-.btn-feed{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #757575;
-    background-color: #efefef;
-    width: 100%;
-    height: 45px;
-    border-radius: 32px;
-    margin-left: 27px;
-    margin-right: 27px;
-}
-
-.done-btn{
-    background-color: #e60023;
-    color: white;
-    font-weight: 500;
-    &:hover{
-        cursor: pointer;
-        background-color: #ad081b;
-    }
-}
-
-.list-div-feed{
-    display: flex;
-    border-radius: 15px;
-    padding: 16px;
-    margin: 4px;
-    background-color: white;
-    border: #6d6d6d 1px solid;
-    align-items: center;
-    &:hover{
-        background-color: rgb(249, 249, 249);
-        border: black 1px solid;
-        cursor: pointer;
-    }
-}
-
-.selected-follow-feed{
-    border: 1px black solid;
-    &:hover{
-        background-color: rgb(249, 249, 249);
-        border: rgb(203, 203, 203) 1px solid;
-        cursor: pointer;
-    }
-}
-
-.back-drop-initial-login{
-    position: absolute;
-    background-color: rgba(255, 0, 0, 0.208);
-}
-
-.div-pin-boards{
-    display: flex;
-    max-height: 116px;
-    min-height: 8ch;
-    overflow: hidden;
-    width: 100%;
-    align-items: center;
-    overflow-x: scroll;
-    border-radius: 6px;
-    // background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(85, 85, 85, 0.1));
-}
-
-.user-feed{
-    width: 80px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 2px;
-}
-
-.mod-feed-card{
-    height: 95px;
-    width: 153px;
-    justify-content: space-between;
-}
-
-.mod-feed-title-section{
-    flex-grow: 0;
-    width: inherit;
-    text-align: center;
-}
-
-.mod-feed-board-title{
-    width: 155px;
-    padding-left: 0;
-    min-height: 2.1ch;
-}
-
-.outside-border-layer{
-    border: transparent 2px solid;
-    border-radius: 20px;
-    margin: 10px;
-}
-
-.toggle-border{
-    border: black 2px solid;
-}
-
-.profile-icon-feed{
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-}
-
-.mod-feed-img{
-    margin-right: 0;
-}
-.no-board-yet-feed{
-    font-size: 20px;
-    font-weight: 600;
-    width: 100%;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+  // comment this in when pin span count for titles more than two lines (increase span by 2)
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  line-height: 19px;
 }
 // ---------- initial log in -------------
 
-div.over-lay{
-    width: 100%;
-    height: 100%;
-    border: 3px red solid;
-    padding: 0;
-    margin: 15px 10px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 16px;
-    &:hover{
-        filter: brightness(0.45);
-    }
+.it-looks-like {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+
+  background: #00000094;
+  z-index: 300;
+  top: 0px;
 }
 
+.it_looks_main_div {
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  background: white;
+  height: 70vh;
+  max-width: 86vw;
+  min-width: 330px;
+  overflow: hidden;
+  position: absolute;
+  top: 15%;
+}
 
+.ul-feed-for-follow {
+  flex-grow: 1;
+  overflow: scroll;
+  background-image: linear-gradient(rgb(255, 255, 255), rgba(85, 85, 85, 0.07));
+}
 
+.feed-div-top {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 150px;
+  min-height: 7ch;
+  font-size: 26px;
+  font-weight: 550;
+  overflow: hidden;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 20px;
+  padding-bottom: 13px;
+}
+
+.feed-div-btm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  padding: 19px;
+}
+
+.btn-feed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #757575;
+  background-color: #efefef;
+  width: 100%;
+  height: 45px;
+  border-radius: 32px;
+  margin-left: 27px;
+  margin-right: 27px;
+}
+
+.done-btn {
+  background-color: #e60023;
+  color: white;
+  font-weight: 500;
+  &:hover {
+    cursor: pointer;
+    background-color: #ad081b;
+  }
+}
+
+.list-div-feed {
+  display: flex;
+  border-radius: 15px;
+  padding: 16px;
+  margin: 4px;
+  background-color: white;
+  border: #6d6d6d 1px solid;
+  align-items: center;
+  &:hover {
+    background-color: rgb(249, 249, 249);
+    border: black 1px solid;
+    cursor: pointer;
+  }
+}
+
+.selected-follow-feed {
+  border: 1px black solid;
+  &:hover {
+    background-color: rgb(249, 249, 249);
+    border: rgb(203, 203, 203) 1px solid;
+    cursor: pointer;
+  }
+}
+
+.back-drop-initial-login {
+  position: absolute;
+  background-color: rgba(255, 0, 0, 0.208);
+}
+
+.div-pin-boards {
+  display: flex;
+  max-height: 116px;
+  min-height: 8ch;
+  overflow: hidden;
+  width: 100%;
+  align-items: center;
+  overflow-x: scroll;
+  border-radius: 6px;
+  // background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(85, 85, 85, 0.1));
+}
+
+.user-feed {
+  width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 2px;
+}
+
+.mod-feed-card {
+  height: 95px;
+  width: 153px;
+  justify-content: space-between;
+}
+
+.mod-feed-title-section {
+  flex-grow: 0;
+  width: inherit;
+  text-align: center;
+}
+
+.mod-feed-board-title {
+  width: 155px;
+  padding-left: 0;
+  min-height: 2.1ch;
+}
+
+.outside-border-layer {
+  border: transparent 2px solid;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+.toggle-border {
+  border: black 2px solid;
+}
+
+.profile-icon-feed {
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.mod-feed-img {
+  margin-right: 0;
+}
+.no-board-yet-feed {
+  font-size: 20px;
+  font-weight: 600;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+// ---------- initial log in -------------
+
+div.over-lay {
+  width: 100%;
+  height: 100%;
+  border: 3px red solid;
+  padding: 0;
+  margin: 15px 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 16px;
+  &:hover {
+    filter: brightness(0.45);
+  }
+}
 
 .pin_container {
-    margin: 0;
-    padding: 0;
-    width: 97vw;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: grid;
-    // the blow css will fill each row with cards of the with of --card_width 
-    // and when it no longer fits on that row it pushes to the next row
-    grid-template-columns: repeat(auto-fill, var(--card_width));
-    grid-auto-rows: var(--row_increment);
-    justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 97vw;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  // the blow css will fill each row with cards of the with of --card_width
+  // and when it no longer fits on that row it pushes to the next row
+  grid-template-columns: repeat(auto-fill, var(--card_width));
+  grid-auto-rows: var(--row_increment);
+  justify-content: center;
 }
 
 // the height of the card is determined by the image after it's loaded
 .card {
-    padding: 0;
-    margin: 15px 10px;
-    border-radius: var(--card_border_radius);
-    background-color: red;
-    align-items: center;
-    justify-content: flex-start;
-    display: flex;
-    flex-direction: column;
+  padding: 0;
+  margin: 15px 10px;
+  border-radius: var(--card_border_radius);
+  background-color: red;
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
 }
 
-
-.edit-pen-div-show-board{
-    height: 32px;
-    width: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: white;
-    position: absolute;
-    bottom: .7em;
-    left: 11.5em;
-    z-index: 1;
-    &:hover{
-        cursor: pointer;
-    }
-    img{
-        height: 14px;
-        width: auto;
-    }
-}
-
-.website-url-div-hoverthing{
-   border-radius: 16px;
-    width: 134px;
-    height: 32px;
-    left: 1em;
-    bottom: .7em;
-    background-color: white;
-    position: absolute;
-    display: flex;
-    justify-content: flex-start;
-    text-align: center;
-    align-items: center;
-    z-index: 1;
-    padding-left: 9px;
-    font-weight: 550;
-    font-size: 15px;
-    background-color: rgb(224, 224, 224);
-    &:hover{
-        background-color: rgb(241, 241, 241);
-        cursor: pointer;
-    }
-}
-
-.arr-in-website{
-    height: 17px;
+.edit-pen-div-show-board {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: white;
+  position: absolute;
+  bottom: 0.7em;
+  left: 11.5em;
+  z-index: 1;
+  &:hover {
+    cursor: pointer;
+  }
+  img {
+    height: 14px;
     width: auto;
-    padding-right: 3px;
+  }
 }
 
-.outside-surrounding-pin-image-div{
-    position: relative;
-    border-radius: 16px;
-    min-width: 230px;
+.website-url-div-hoverthing {
+  border-radius: 16px;
+  width: 134px;
+  height: 32px;
+  left: 1em;
+  bottom: 0.7em;
+  background-color: white;
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+  align-items: center;
+  z-index: 1;
+  padding-left: 9px;
+  font-weight: 550;
+  font-size: 15px;
+  background-color: rgb(224, 224, 224);
+  &:hover {
+    background-color: rgb(241, 241, 241);
+    cursor: pointer;
+  }
 }
 
-.the-shade-over-pin{
-    display: none;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    background: rgba(0,0,0,0.5);
-    border-radius: 16px;
-    top: 0;
-    left: 0;
+.arr-in-website {
+  height: 17px;
+  width: auto;
+  padding-right: 3px;
 }
 
-.absolute-position-1{
-    border: red solid 1px;
-    height: 100%;
-    width: 100%;
+.outside-surrounding-pin-image-div {
+  position: relative;
+  border-radius: 16px;
+  min-width: 230px;
+}
+
+.the-shade-over-pin {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  top: 0;
+  left: 0;
+}
+
+.absolute-position-1 {
+  border: red solid 1px;
+  height: 100%;
+  width: 100%;
 }
 
 .card-update {
-    text-decoration: none;
-    color: black;
-    padding: 0;
-    margin: 15px 10px;
-    border-radius: var(--card_border_radius);
-    align-items: center;
-    justify-content: flex-start;
-    display: flex;
-    flex-direction: column;
-    &:hover{
-        cursor: zoom-in;
-    }
+  text-decoration: none;
+  color: black;
+  padding: 0;
+  margin: 15px 10px;
+  border-radius: var(--card_border_radius);
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  &:hover {
+    cursor: zoom-in;
+  }
 }
 
-.top-section{
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    h1{
+.top-section {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
     font-size: 35px;
     font-weight: 600;
-    }
+  }
 }
 
-.is-private-board-show{
-    text-align: center;
-    color: gray;
-    img{
-        height: 17px;
-        width: 19px;
-        position: relative;
-        top: 5px;
-        left: -4px;
-    }
+.is-private-board-show {
+  text-align: center;
+  color: gray;
+  img {
+    height: 17px;
+    width: 19px;
+    position: relative;
+    top: 5px;
+    left: -4px;
+  }
 }
 
-.profile-div-small-photo-div-123{
-    height: 50px;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 6px;
+.profile-div-small-photo-div-123 {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 6px;
 
-    background-color: #efefef;
-    color: black;
-    img{
-        height: 51px;
-        width: auto;
-    }
+  background-color: #efefef;
+  color: black;
+  img {
+    height: 51px;
+    width: auto;
+  }
 }
 
-.the-link-on-profilepic-on-board{
-    text-decoration: none;
-    color: black;
+.the-link-on-profilepic-on-board {
+  text-decoration: none;
+  color: black;
 }
 
-
-
-div.div-22-1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+div.div-22-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-.link-surrounding-profile-image{
-    height: 50px;
-    width: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 11px;
-
+.link-surrounding-profile-image {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 11px;
 }
 .profile-photo-icon-22-22 {
-   height: 51px;
-   width: auto;
+  height: 51px;
+  width: auto;
 }
 
-.div-22-22{
-    display: flex;
+.div-22-22 {
+  display: flex;
 }
-.board-username-link-to-profile{
-    text-decoration: none;
-    color: black;
-    font-weight: 600;
-    font-size: 17px;
-}
-
-.h2-non-user-board-show{
-    text-align: center;
-    font-size: 17px;
-    font-weight: 100;
-    padding-bottom: 4px;
+.board-username-link-to-profile {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  font-size: 17px;
 }
 
-.header-title-boards-show-123{
-    text-align: center;
-    display: flex;
-    span{
-        display: inline-block;
-    }
+.h2-non-user-board-show {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 100;
+  padding-bottom: 4px;
 }
 
-.boards-123-1{
-    height: 17px;
-    width: auto;
+.header-title-boards-show-123 {
+  text-align: center;
+  display: flex;
+  span {
+    display: inline-block;
+  }
 }
 
-div.board-duplicate-button-dd{
-    height: 32px;
-    width: 32px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f1f1f1;
-    margin-left: 14px;
-    &:hover{
-        background-color: rgb(219, 219, 219);
-        cursor: pointer;
-    }
+.boards-123-1 {
+  height: 17px;
+  width: auto;
 }
 
-.edit-dropdown-menue-123{
-    position: relative;
-    top: 5px;
-    right: 67px;
-    z-index: 210;
-    border-radius: 16px;
-    width: 200px;
-    // display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.20);
-    div{
+div.board-duplicate-button-dd {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f1f1;
+  margin-left: 14px;
+  &:hover {
+    background-color: rgb(219, 219, 219);
+    cursor: pointer;
+  }
+}
 
+.edit-dropdown-menue-123 {
+  position: relative;
+  top: 5px;
+  right: 67px;
+  z-index: 210;
+  border-radius: 16px;
+  width: 200px;
+  // display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.2);
+  div {
     width: 89%;
     height: 35px;
     color: black;
@@ -520,28 +509,26 @@ div.board-duplicate-button-dd{
     margin-bottom: 13px;
     font-size: 18px;
     border-radius: 8px;
-        &:hover{
-            background-color: rgb(231, 231, 231);
-            cursor: pointer;
-
-        }
+    &:hover {
+      background-color: rgb(231, 231, 231);
+      cursor: pointer;
     }
+  }
 }
-.edit-dropdown-menue-1235{
-    position: relative;
-    top: 5px;
-    right: 67px;
-    z-index: 210;
-    border-radius: 16px;
-    width: 200px;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.20);
-    div{
-
+.edit-dropdown-menue-1235 {
+  position: relative;
+  top: 5px;
+  right: 67px;
+  z-index: 210;
+  border-radius: 16px;
+  width: 200px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.2);
+  div {
     width: 89%;
     height: 35px;
     color: black;
@@ -559,43 +546,39 @@ div.board-duplicate-button-dd{
     margin-bottom: 13px;
     font-size: 18px;
     border-radius: 8px;
-        &:hover{
-            background-color: rgb(231, 231, 231);
-            cursor: pointer;
-
-        }
+    &:hover {
+      background-color: rgb(231, 231, 231);
+      cursor: pointer;
     }
+  }
 }
 
- h1.title-dd{
-    font-size: 13px;
-    color: #2c2c2c;
-    font-weight: 100;
-    width: 85%;
-    padding-top: 15px;
+h1.title-dd {
+  font-size: 13px;
+  color: #2c2c2c;
+  font-weight: 100;
+  width: 85%;
+  padding-top: 15px;
 }
 
-.div-holder-helper-123{
-    position: absolute;
-    width: 0;
-    height: 0;
+.div-holder-helper-123 {
+  position: absolute;
+  width: 0;
+  height: 0;
 }
 
-
-.X-icon-div{
-    position: relative;
-    left: 129px;
+.X-icon-div {
+  position: relative;
+  left: 129px;
 }
 
-.link-pin-on-board-pins{
-    text-decoration: none;
-    color: black;
-
+.link-pin-on-board-pins {
+  text-decoration: none;
+  color: black;
 }
 
-.no-pins-txt{
-
-    text-align: center;
-    padding-top: 47px;
-    font-weight: 100;
+.no-pins-txt {
+  text-align: center;
+  padding-top: 47px;
+  font-weight: 100;
 }

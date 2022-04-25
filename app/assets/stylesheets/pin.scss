@@ -1,9 +1,7 @@
-
-
-.logo-on-logged-in-header-plus-allpage{
+.logo-on-logged-in-header-plus-allpage {
   position: fixed;
-    right: 3vh;
-    bottom: 3vh;
+  right: 3vh;
+  bottom: 3vh;
   overflow-y: hidden;
   overflow-x: hidden;
   border-radius: 100px;
@@ -16,57 +14,57 @@
   z-index: 6;
   color: black;
   font-size: 46px;
-    font-weight: 100;
-    text-decoration: none;
-    box-shadow: 0px 0px 10px 3px rgba(175, 175, 175, 0.22);
-    background-color: white;
-  &:hover{
+  font-weight: 100;
+  text-decoration: none;
+  box-shadow: 0px 0px 10px 3px rgba(175, 175, 175, 0.22);
+  background-color: white;
+  &:hover {
     cursor: pointer;
     background-color: #f1f1f1;
   }
 }
 
-.the-big-plus-in-corner{
-    height: 26px;
-    width: 26px;
+.the-big-plus-in-corner {
+  height: 26px;
+  width: 26px;
 }
 
-.link-thing-plus{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.link-thing-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-div#alt-text-area-button{
-    background-color: rgb(220, 220, 220);
-    &:hover{
-        background-color: rgb(191, 191, 191);
-        cursor: pointer;
-    }
+div#alt-text-area-button {
+  background-color: rgb(220, 220, 220);
+  &:hover {
+    background-color: rgb(191, 191, 191);
+    cursor: pointer;
+  }
 }
 
 // ul.board-dropdown-ol{
 //     display: block;
 // }
 
-div.board-dropdown-create-pin{
-    display: none;
-    // display: block;
-    height: 450px;
-    // display: flex;
-    max-height: 450px;
-    width: 323px;
-    overflow-y: hidden;
-    box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.16);
-    position: absolute;
-    right: 0px;
-    top: 81px;
-    background: white;
-    border-radius: 16px;
-    z-index: 250;
-    &:hover{
-        cursor: auto;
-    }
+div.board-dropdown-create-pin {
+  display: none;
+  // display: block;
+  height: 450px;
+  // display: flex;
+  max-height: 450px;
+  width: 323px;
+  overflow-y: hidden;
+  box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.16);
+  position: absolute;
+  right: 0px;
+  top: 81px;
+  background: white;
+  border-radius: 16px;
+  z-index: 250;
+  &:hover {
+    cursor: auto;
+  }
 }
 
 // div.board-dd-create-pin{
@@ -75,372 +73,360 @@ div.board-dropdown-create-pin{
 //     }
 // }
 
-
- div.this-list-children-pin{
-
-    height: 53px;
-    color: black;
-    border-radius: 12px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 14px;
-    margin-right: 14px;
-    text-align: start;
-    display: flex;
-    align-items: center;
-    text-indent: 10px;
-    justify-content: flex-start;
-    &:hover{
-        cursor: pointer;
-        background-color: rgb(225, 225, 225);
-    }
+div.this-list-children-pin {
+  height: 53px;
+  color: black;
+  border-radius: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 14px;
+  margin-right: 14px;
+  text-align: start;
+  display: flex;
+  align-items: center;
+  text-indent: 10px;
+  justify-content: flex-start;
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(225, 225, 225);
+  }
 }
 
-.logo-on-logged-in-header-board-lock-pin{
-    position: inline;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    border-radius: 100px;
-    height: 34px;
-    width: 34px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    background-color: transparent;
-    left: 8px;
-    top: 7px;
-    margin-right: 12px;
-    justify-self: flex-end;
-    flex-grow: 1;
+.logo-on-logged-in-header-board-lock-pin {
+  position: inline;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  border-radius: 100px;
+  height: 34px;
+  width: 34px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: transparent;
+  left: 8px;
+  top: 7px;
+  margin-right: 12px;
+  justify-self: flex-end;
+  flex-grow: 1;
 }
 
-img#logo-lock-icon-pin-page{
+img#logo-lock-icon-pin-page {
   height: 16px;
-    width: 17px;
+  width: 17px;
 }
 
-div.save-button-create-pin{
-    color: white;
-    background-color: red;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    display: flex;
-    border-radius: 0px 8px 8px 0px;
-    width: 69px;
-    &:hover{
-        cursor: pointer;
-    }
+div.save-button-create-pin {
+  color: white;
+  background-color: red;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  border-radius: 0px 8px 8px 0px;
+  width: 69px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-div.delete-duplicate-button-dd{
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    // overflow: hidden;
+div.delete-duplicate-button-dd {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  // overflow: hidden;
 }
 
-img#more-logo-icon{
-    height: 15px;
-    width: 15;
+img#more-logo-icon {
+  height: 15px;
+  width: 15;
 }
 
-div.create-pin-main-div{
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    background-color: #efefef;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-
+div.create-pin-main-div {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  background-color: #efefef;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
-div.primary-createpin-card{
-    background-color: white;
-    border-radius: 16px;
-    overflow: hidden;
-    width: 880px;
-    height: 595px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
+div.primary-createpin-card {
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 880px;
+  height: 595px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
 }
 
-.top-bar-create-pin{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // flex-direction: column;
-    width: 800px;
-    height: 40px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 33px;
+.top-bar-create-pin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // flex-direction: column;
+  width: 800px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 33px;
 }
 
-div.delete-duplicate-button-dd{
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    &:hover{
-        background-color: #f3f3f3;
-        cursor: pointer;
-    }
+div.delete-duplicate-button-dd {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  &:hover {
+    background-color: #f3f3f3;
+    cursor: pointer;
+  }
 }
 
-img#more-logo-icon{
-    height: 30px;
-    width: auto;
+img#more-logo-icon {
+  height: 30px;
+  width: auto;
 }
 
-.left-top-bar-createpindiv{
-    // border: solid 1px;
-    display: flex;
-    flex-direction: row;
-    background-color: #EFEFEF;
-    border-radius: 8px;
-    overflow: visible;
-    justify-content: space-between;
-    width: 245px;
-    img{
-        background: transparent;
-        height: 18px;
-
-    }
-    &:hover{
-        cursor: pointer;
-    }
-}
-
-div.board-dd-create-pin{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-indent: 13px;
-    width: 136px;
+.left-top-bar-createpindiv {
+  // border: solid 1px;
+  display: flex;
+  flex-direction: row;
+  background-color: #efefef;
+  border-radius: 8px;
+  overflow: visible;
+  justify-content: space-between;
+  width: 245px;
+  img {
     background: transparent;
-    text-align: center;
-    div{
-        display: block;
-        width: 140px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        text-align: start;
-        padding-bottom: 2px;
-    }
-    &:hover{
-        cursor: pointer;
-    }
-}
-
-
-
-.bottom-create-pin{
-    width: 800px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.left-side-create-pin{
-    margin: 0;
-    padding: 0;
-    border-radius: 8px;
-    font-size: 100%;
-    font: inherit;
-    font-family: 'Questrial', sans-serif;
-    vertical-align: baseline;
-    box-sizing: border-box;
-    overflow: hidden;
-    height: 454px;
-    width: 340px;
-}
-
-.right-side-create-pin{
-    width: 380px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-
-}
-
-div.down-arrow-div{
-    height: 40px;
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-div.middle-box-thing{
-    display: block; 
-    height: 0px;
-    width: 0px;
-    overflow: visible;
-    z-index: 5;
-}
-
-.second-blerb-pin{
-    position: relative;
-    top: 150px;
-    font-size: 13px;
-    padding-right: 28px;
-    padding-left: 28px;
-    color: gray;
-    font-weight: 100;
-
-}
-
-
-#input-image-label-pin{
-    height: 100%;
-    width: 100%;
+    height: 18px;
+  }
+  &:hover {
     cursor: pointer;
-    display: flex;
+  }
 }
 
-#input-image-pin{
-    border: solid green 1px;
-}
-
-div.doted-border{
-    height: 100%;
-    width: 100%;
-    border-radius: 8px;
-    border: dashed 2px #DADADA;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    // margin: 11px;
-}
-
-.upload-img-container{
-    background-color: rgba(239, 239, 239, 1);
-    color: #151515;
-    border-radius: 8px;
-    padding: 10px;
-}
-
-div.upload-img-container-err{
-    border: 1px red solid;
-    background-color: #fff6f6;
-    color: red;
-    border-radius: 8px;
-    padding: 10px;
-}
-
-#input-image-pin{
-    display: none;
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-    border-radius: 8px;
+div.board-dd-create-pin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-indent: 13px;
+  width: 136px;
+  background: transparent;
+  text-align: center;
+  div {
+    display: block;
+    width: 140px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     overflow: hidden;
+    text-align: start;
+    padding-bottom: 2px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.bottom-create-pin {
+  width: 800px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left-side-create-pin {
+  margin: 0;
+  padding: 0;
+  border-radius: 8px;
+  font-size: 100%;
+  font: inherit;
+  font-family: "Questrial", sans-serif;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 454px;
+  width: 340px;
+}
+
+.right-side-create-pin {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+div.down-arrow-div {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.middle-box-thing {
+  display: block;
+  height: 0px;
+  width: 0px;
+  overflow: visible;
+  z-index: 5;
+}
+
+.second-blerb-pin {
+  position: relative;
+  top: 150px;
+  font-size: 13px;
+  padding-right: 28px;
+  padding-left: 28px;
+  color: gray;
+  font-weight: 100;
+}
+
+#input-image-label-pin {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+}
+
+#input-image-pin {
+  border: solid green 1px;
+}
+
+div.doted-border {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  border: dashed 2px #dadada;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  // margin: 11px;
+}
+
+.upload-img-container {
+  background-color: rgba(239, 239, 239, 1);
+  color: #151515;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+div.upload-img-container-err {
+  border: 1px red solid;
+  background-color: #fff6f6;
+  color: red;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+#input-image-pin {
+  display: none;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 // ---------------- upload image div -------------------
-.modals_pin{
-    max-width: 343px;
-    max-height: 488px;
-    border-radius: 16px;
-    
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
+.modals_pin {
+  max-width: 343px;
+  max-height: 488px;
+  border-radius: 16px;
+
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 // ----- inner div
-.pin_image{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.pin_image {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.preview-image{
-    max-width: 100%;
-    max-height: 100%;
+.preview-image {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 // ---------------- upload image div -------------------
 
-#up-arrow-icon{
-    height: 48px;
-    width: auto;
-    padding: 8px;
+#up-arrow-icon {
+  height: 48px;
+  width: auto;
+  padding: 8px;
 }
 
-.drag-class-name{
-    position: relative;
-    top: 23px;
-    padding-right: 50px;
-    padding-left: 50px;
-    color: #151515;
-    
+.drag-class-name {
+  position: relative;
+  top: 23px;
+  padding-right: 50px;
+  padding-left: 50px;
+  color: #151515;
 }
 
-.red-txt{
-    color: red;
+.red-txt {
+  color: red;
 }
 
-
-.delete-icon-logo{
-    height: 18px;
-    width: auto;
+.delete-icon-logo {
+  height: 18px;
+  width: auto;
 }
 
-.delete-icon-logo-div{
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 1px;
-    border: solid 4px white;
-    background: white;
-    &:hover{
-        background-color: rgb(233, 230, 230);
-        cursor: pointer;
-    }
+.delete-icon-logo-div {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 1px;
+  border: solid 4px white;
+  background: white;
+  &:hover {
+    background-color: rgb(233, 230, 230);
+    cursor: pointer;
+  }
 }
 
-.delete-dropdown-menue{
-    position: relative;
-    top: -169px;
-    right: 382px;
-    z-index: 6;
-    border-radius: 16px;
-    // height: 100px;
-    width: 200px;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.08);
-    div{
+.delete-dropdown-menue {
+  position: relative;
+  top: -169px;
+  right: 382px;
+  z-index: 6;
+  border-radius: 16px;
+  // height: 100px;
+  width: 200px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.08);
+  div {
     width: 100%;
     height: 35px;
     color: black;
@@ -456,291 +442,288 @@ div.upload-img-container-err{
     border-right: solid 1px white;
     margin-top: 13px;
     margin-bottom: 13px;
-        &:hover{
-            background-color: rgb(218, 218, 218);
-            cursor: pointer;
-
-        }
+    &:hover {
+      background-color: rgb(218, 218, 218);
+      cursor: pointer;
     }
+  }
 }
 
-.backdrop-div-create-pin{
-    display: none;
-    position: absolute;
-    height: 100em;
-    width: 100em;
-    left: 0;
-    top: 0;
-    z-index: 1;
+.backdrop-div-create-pin {
+  display: none;
+  position: absolute;
+  height: 100em;
+  width: 100em;
+  left: 0;
+  top: 0;
+  z-index: 1;
 }
-
-
 
 input.input-for-title-pin {
+  margin-bottom: 20px;
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-bottom: 2px solid #c6c6c6;
+  outline: none;
 
-    margin-bottom: 20px;
-    width: 100%;
-    height: 50px;
-    border: none;
-    border-bottom: 2px solid #C6C6C6;
-    outline: none;
-    
-    font-size: 34px;
-    font-weight: 600;
-    
-    background-color: transparent;
-    
-    &:focus{
-        
-        border-bottom: 2px solid #0074e8;
-    }
+  font-size: 34px;
+  font-weight: 600;
+
+  background-color: transparent;
+
+  &:focus {
+    border-bottom: 2px solid #0074e8;
+  }
 }
 
-div.input-div-top{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+div.input-div-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.second-div-title-pininput-outer{
-    font-size: 12px;
-    position: relative;
-    top: -15px;
-    font-weight: 100;
-    justify-content: space-between;
-    display: flex;
-    width: 100%;
-    height: 13px;
+.second-div-title-pininput-outer {
+  font-size: 12px;
+  position: relative;
+  top: -15px;
+  font-weight: 100;
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  height: 13px;
 }
 
-.second-div-title-pininput-1{
-    display: none;
-
+.second-div-title-pininput-1 {
+  display: none;
 }
-.second-div-title-pininput-2{
-    display: none;
-
+.second-div-title-pininput-2 {
+  display: none;
 }
 
-.outer-div-for-profile-photo-pin{
-    display: flex;
-    align-self: start;
-    width: 156px;
-    justify-content: space-around;
-    align-items: center;
-    height: 50px;
-    margin-bottom: 21px;
-    margin-left: -6px;
+.outer-div-for-profile-photo-pin {
+  display: flex;
+  align-self: start;
+  width: 156px;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 21px;
+  margin-left: -6px;
 }
 
 div.profile-div-small-pin {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    overflow-y: hidden;
-    overflow-x: hidden;
-    border-radius: 100px;
-    height: 50px;
-    width: 50px;
-    background: #efefef;
-    &:hover{
-        cursor: auto;
-        background: #e8e8e8;
-    }
+  overflow-y: hidden;
+  overflow-x: hidden;
+  border-radius: 100px;
+  height: 50px;
+  width: 50px;
+  background: #efefef;
+  &:hover {
+    cursor: auto;
+    background: #e8e8e8;
+  }
 }
 
-.surrounding-avatar-on-create_pin{
-    height: 50px;
-    width: 50px;
+.surrounding-avatar-on-create_pin {
+  height: 50px;
+  width: 50px;
 }
 
-.text-area-pin-create{
-    margin-bottom: 20px;
-    width: 100%;
-    height: auto;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    font-weight: 100;
-    background-color: transparent;
-    font-family: 'Questrial', sans-serif;
-    border-bottom: 1px #d4d4d4 solid;
-    &:focus{
-        
-        border-bottom: 2px solid #0074e8;
-    }
+.text-area-pin-create {
+  margin-bottom: 20px;
+  width: 100%;
+  height: auto;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 100;
+  background-color: transparent;
+  font-family: "Questrial", sans-serif;
+  border-bottom: 1px #d4d4d4 solid;
+  &:focus {
+    border-bottom: 2px solid #0074e8;
+  }
 }
 
-.char-fifty-txt-create-p{
-   font-size: 12px;
-    color: #908f8f;
-    font-weight: 100;
+.char-fifty-txt-create-p {
+  font-size: 12px;
+  color: #908f8f;
+  font-weight: 100;
 }
 
-.txt-create-p-fifty{
-    display: none;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 35px;
-    margin-top: -16px;
+.txt-create-p-fifty {
+  display: none;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 35px;
+  margin-top: -16px;
 }
 
-.description-char-count{
-    color: black;
-    width: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 13px;
-    margin-top: -20px;
+.description-char-count {
+  color: black;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 13px;
+  margin-top: -20px;
 }
 
-.footer-create-pin-gray-button{
-    background-color: #e4e4e4;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-right: 14px;
-    padding-left: 14px;
-    border-radius: 27px;
-    font-weight: 600;
-    font-size: 15px;
-    align-self: start;
-    &:hover{
-        background-color:  #d8d8d8;
-        cursor: pointer;
-    }
+.footer-create-pin-gray-button {
+  background-color: #e4e4e4;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 14px;
+  padding-left: 14px;
+  border-radius: 27px;
+  font-weight: 600;
+  font-size: 15px;
+  align-self: start;
+  &:hover {
+    background-color: #d8d8d8;
+    cursor: pointer;
+  }
 }
-.txt-area-create-p-moveup{
-    margin-top: 10px;
-}
-
-.last-in-556{
-    justify-self: flex-end;
-    position: absolute;
-    top: 528px;
-    width: inherit;
+.txt-area-create-p-moveup {
+  margin-top: 10px;
 }
 
-img.red-plus-icon{
-    height: 27px;
-    padding-right: 24px;
+.last-in-556 {
+  justify-self: flex-end;
+  position: absolute;
+  top: 528px;
+  width: inherit;
 }
 
-.red-plus-icon-div{
-
-}
-.bottom-section-in-dd-pin{
-
-   width: 100%;
-    padding-top: 11px;
-    padding-bottom: 5px;
-    padding-left: 26px;
-    padding-right: 46px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    height: 30px;
-    border-top: 1px #dddddd solid;
-    height: 64px;
-    &:hover{
-        background-color: #efefef;
-        cursor: pointer;
-    }
+img.red-plus-icon {
+  height: 27px;
+  padding-right: 24px;
 }
 
-.d334{
-    font-weight: 550;
-    font-size: 16px;
-
+.red-plus-icon-div {
 }
-
-.arround-ul-dd{
-    height: 86%;
-    overflow: scroll;
-}
-
-.around-dd-board-pin-display{
-    height: 38px;
-    width: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 9px;
-}
-
-.rounded-border-for-img{
-    border-radius: 8px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+.bottom-section-in-dd-pin {
+  width: 100%;
+  padding-top: 11px;
+  padding-bottom: 5px;
+  padding-left: 26px;
+  padding-right: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30px;
+  border-top: 1px #dddddd solid;
+  height: 64px;
+  &:hover {
     background-color: #efefef;
-    img{
-        height: 41px;
-        width: auto;
-    }
+    cursor: pointer;
+  }
 }
 
-.C{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #efefef;
+.d334 {
+  font-weight: 550;
+  font-size: 16px;
+}
+
+.arround-ul-dd {
+  height: 86%;
+  overflow: scroll;
+}
+
+.around-dd-board-pin-display {
+  height: 38px;
+  width: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 9px;
+}
+
+.rounded-border-for-img {
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #efefef;
+  img {
+    height: 41px;
+    width: auto;
+  }
+}
+
+.C {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #efefef;
 }
 
 @keyframes fadein {
-  0% { opacity: 0; }
-  5% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
-.blue-info{
-    animation: fadein 10s linear 1 forwards;
+.blue-info {
+  animation: fadein 10s linear 1 forwards;
 
-    position: absolute;
-    bottom: 94px;
-    width: 314px;
-    background: #0a79e9;
-    color: white;
+  position: absolute;
+  bottom: 94px;
+  width: 314px;
+  background: #0a79e9;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 13px;
+  border-radius: 16px;
+
+  div {
+    height: 20px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 13px;
-    border-radius: 16px;
-
-    div{
-        height: 20px;
-        display: flex;
-        align-items: center;
-        width: 100%;
-        justify-content: flex-end;
-        padding-top: 1px;
-        img{
-            height: 20px;
-            &:hover{
-                cursor: pointer;
-                height: 23px;
-            }
-        }
+    width: 100%;
+    justify-content: flex-end;
+    padding-top: 1px;
+    img {
+      height: 20px;
+      &:hover {
+        cursor: pointer;
+        height: 23px;
+      }
     }
+  }
 
-    p{
-        margin-top: 5px;
-        margin-bottom: 18px;
-        text-align: center;
-        font-size: 12px;
-        font-weight: 100;
-        letter-spacing: 1.1px;
-        word-spacing: 1.2px;
-        line-height: 1.5;
-        padding-left: 16px;
-        padding-right: 16px;
-    }
+  p {
+    margin-top: 5px;
+    margin-bottom: 18px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 100;
+    letter-spacing: 1.1px;
+    word-spacing: 1.2px;
+    line-height: 1.5;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }

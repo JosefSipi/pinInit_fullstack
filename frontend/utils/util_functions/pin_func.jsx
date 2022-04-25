@@ -1,15 +1,16 @@
 export const photoIsLoaded = (e) => {
-    
-    e.preventDefault();
+  e.preventDefault();
 
-    let titleCondition = !!e.currentTarget.getAttribute('data-link_title')
-    
-    let imageHeight = e.currentTarget.children[1].clientHeight;
-    let spanVal;
+  let titleCondition = !!e.currentTarget.getAttribute("data-link_title");
 
-    titleCondition ? spanVal = Math.trunc((imageHeight/10) + 7) : spanVal = Math.trunc((imageHeight/10) + 2)
+  let imageHeight = e.currentTarget.children[1].clientHeight;
+  let spanVal;
 
-    e.currentTarget.style.gridRowEnd =  `span ${spanVal}`;
-    e.currentTarget.style.visibility = "";
-    e.currentTarget.style.marginBottom = '5px';
-}
+  titleCondition
+    ? (spanVal = Math.trunc(imageHeight / 10 + 7))
+    : (spanVal = Math.trunc(imageHeight / 10 + 2));
+
+  e.currentTarget.style.gridRowEnd = `span ${spanVal}`;
+  e.currentTarget.style.visibility = "";
+  e.currentTarget.style.marginBottom = "5px";
+};

@@ -1,123 +1,117 @@
 .modal-background {
-   position: absolute;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //     color: chartreuse;
+  //     border-width: 2px;
+  // border-color: chocolate;
+  //     border-style: solid;
+  //     z-index: 10;
+  position: fixed;
+  //     right: 50%;
+  // background: rgba(26, 26, 26, 0.146);
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  z-index: 2000;
+  background-color: rgba(0, 0, 0, 0.454);
+  margin: 0;
+  // border-style: solid;
+  // border-color: red;
+  .modal-child-upload {
+    background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
-    align-items: center;
-//     color: chartreuse;
-//     border-width: 2px;
-    // border-color: chocolate;
-//     border-style: solid;
-//     z-index: 10;
-    position: fixed;
-//     right: 50%;
-    // background: rgba(26, 26, 26, 0.146);
-    height: 100%;
-    width: 100%;
-    overflow-y: scroll;
-    z-index: 2000;
-    background-color: rgba(0, 0, 0, 0.454);
-    margin: 0;
-    // border-style: solid;
-    // border-color: red;
-    .modal-child-upload {
-
-        
-
-
-        background-color: rgb(255, 255, 255);
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        position: absolute;
-        // top: 34%;
-        width: 540px;
-        height: 167px;
-        border-radius: 33px;
-        // margin: center auto;
-
-    }
+    align-items: flex-end;
+    position: absolute;
+    // top: 34%;
+    width: 540px;
+    height: 167px;
+    border-radius: 33px;
+    // margin: center auto;
+  }
 }
 
-.the-outer-box-modal-editModal{
-    display: flex;
-    align-content: space-between;
-    justify-content: space-around;
-    align-items: center;
-    height: inherit;
-    width: inherit;
-    flex-direction: column;
+.the-outer-box-modal-editModal {
+  display: flex;
+  align-content: space-between;
+  justify-content: space-around;
+  align-items: center;
+  height: inherit;
+  width: inherit;
+  flex-direction: column;
 }
 
-#input-image-profile-pic-uploader{
-    display: none;
+#input-image-profile-pic-uploader {
+  display: none;
 }
 
-.button-profile-script{
-    background-color: #e60022;
-    border-radius: 30px;
-    width: 132px;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    padding: 12px;
-    color: white;
-    font-weight: 550;
-    font-size: 16px;
-    &:hover{
-        background-color: #ad081b;
-    }
+.button-profile-script {
+  background-color: #e60022;
+  border-radius: 30px;
+  width: 132px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  padding: 12px;
+  color: white;
+  font-weight: 550;
+  font-size: 16px;
+  &:hover {
+    background-color: #ad081b;
+  }
 }
 
-#label-profile-pic-upload{
-    cursor: pointer;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    border-radius: 30px;
+#label-profile-pic-upload {
+  cursor: pointer;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
 }
 
-.change-pic-edit-modal{
-    font-size: 25px;
-    font-weight: bold;
-    padding-top: 5px;
+.change-pic-edit-modal {
+  font-size: 25px;
+  font-weight: bold;
+  padding-top: 5px;
 }
 
 .login-btn-upload-modal {
-    all: unset;
-    height: 40px;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 5px;
-    width: fit-content;
-    border-radius: 20px;
-    // font-size: 13px;
-    // font-weight: 600;
-    color: rgb(255, 255, 255);
-    background-color: #cb2127;
-    border: 0px;
-    font-weight: bold;
-    font-size: 16px;
-    padding-top: 5px;
-    &:hover {
-      background-color: #bd001c;
-    }
+  all: unset;
+  height: 40px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 5px;
+  width: fit-content;
+  border-radius: 20px;
+  // font-size: 13px;
+  // font-weight: 600;
+  color: rgb(255, 255, 255);
+  background-color: #cb2127;
+  border: 0px;
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 5px;
+  &:hover {
+    background-color: #bd001c;
   }
-
-#the-click-file-event{
-    position: absolute;
-    display: none;
 }
 
-
-.input-box-modal-file-div{
-    width: 10px;
-    height: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#the-click-file-event {
+  position: absolute;
+  display: none;
 }
 
-.form-uploader-pic{
-    margin-bottom: 4px;
+.input-box-modal-file-div {
+  width: 10px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-uploader-pic {
+  margin-bottom: 4px;
 }

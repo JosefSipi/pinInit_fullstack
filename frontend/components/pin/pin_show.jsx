@@ -1,560 +1,719 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ProfileAvatar } from '../../utils/util_components/image_components';
-import { saveAs } from 'file-saver';
+import React from "react";
+import { Link } from "react-router-dom";
+import { ProfileAvatar } from "../../utils/util_components/image_components";
+import { saveAs } from "file-saver";
 
 class PinShow extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            pin: null,
-            comment: {
-                commenter_id: this.props.currentUser.id,
-                pin_id: Number(this.props.match.params.id),
-                body: null
-            },
-            comments: null,
-            commentDDActive: false,
-            ddStat: null,
-            editComment: '',
-            editingCommentId: null,
-            dd_s: {},
-            backDropState: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      pin: null,
+      comment: {
+        commenter_id: this.props.currentUser.id,
+        pin_id: Number(this.props.match.params.id),
+        body: null,
+      },
+      comments: null,
+      commentDDActive: false,
+      ddStat: null,
+      editComment: "",
+      editingCommentId: null,
+      dd_s: {},
+      backDropState: false,
+    };
 
-        }
+    this.editPin = this.editPin.bind(this);
+    this.editComment = this.editComment.bind(this);
+    this.classAddInput = this.classAddInput.bind(this);
+    this.isFieldEmpty = this.isFieldEmpty.bind(this);
+    this.handelSubmitComment = this.handelSubmitComment.bind(this);
+    this.moreClickedDDComment = this.moreClickedDDComment.bind(this);
+    this.moreClickedDD = this.moreClickedDD.bind(this);
+    this.deleteComment = this.deleteComment.bind(this);
+    this.backdropClick = this.backdropClick.bind(this);
+    this.handelEditChange = this.handelEditChange.bind(this);
+    this.handelSubmitCommentEdit = this.handelSubmitCommentEdit.bind(this);
+    this.createLike = this.createLike.bind(this);
+    this.removeLike = this.removeLike.bind(this);
+    this.elapsedTime = this.elapsedTime.bind(this);
+    this.cancelEditComment = this.cancelEditComment.bind(this);
+    this.goBackBtn = this.goBackBtn.bind(this);
+    this.hideDD = this.hideDD.bind(this);
+    this.displayDD = this.displayDD.bind(this);
+    this.dd_display_tog = this.dd_display_tog.bind(this);
+  }
 
-        this.editPin = this.editPin.bind(this);
-        this.editComment = this.editComment.bind(this);
-        this.classAddInput = this.classAddInput.bind(this);
-        this.isFieldEmpty = this.isFieldEmpty.bind(this);
-        this.handelSubmitComment = this.handelSubmitComment.bind(this);
-        this.moreClickedDDComment = this.moreClickedDDComment.bind(this);
-        this.moreClickedDD = this.moreClickedDD.bind(this);
-        this.deleteComment = this.deleteComment.bind(this);
-        this.backdropClick = this.backdropClick.bind(this);
-        this.handelEditChange = this.handelEditChange.bind(this);
-        this.handelSubmitCommentEdit = this.handelSubmitCommentEdit.bind(this);
-        this.createLike = this.createLike.bind(this);
-        this.removeLike = this.removeLike.bind(this);
-        this.elapsedTime = this.elapsedTime.bind(this);
-        this.cancelEditComment = this.cancelEditComment.bind(this);
-        this.goBackBtn = this.goBackBtn.bind(this);
-        this.hideDD = this.hideDD.bind(this);
-        this.displayDD = this.displayDD.bind(this);
-        this.dd_display_tog = this.dd_display_tog.bind(this);
+  hideDD(dd_id) {
+    let oldState = { ...this.state.dd_s };
+    oldState.dd_id = false;
+    this.setState({ dd_s: oldState });
+  }
+
+  displayDD(dd_id) {
+    let oldState = { ...this.state.dd_s };
+    oldState.dd_id = true;
+    this.setState({ dd_s: oldState });
+  }
+
+  // saveImage(e){
+  //     e.preventDefault();
+
+  //     let url = e.currentTarget.getAttribute('data-img_url')
+
+  //     // saveAs(url, 'image.jpg')
+
+  //     this.backdropClick(e)
+
+  // }
+
+  cancelEditComment(e) {
+    e.preventDefault();
+
+    document.getElementById(
+      "edit-form-div" + e.currentTarget.getAttribute("data-comment_id")
+    ).style.display = "none";
+    document.getElementById(
+      "right-txt-pin-show" + e.currentTarget.getAttribute("data-comment_id")
+    ).style.display = "flex";
+    document.getElementById(
+      "bottom-section-comment-pin-show" +
+        e.currentTarget.getAttribute("data-comment_id")
+    ).style.display = "flex";
+
+    let objNew = {};
+
+    this.setState({ editComment: "" });
+    this.setState({ dd_s: objNew });
+  }
+
+  elapsedTime(time) {
+    let retTime = null;
+
+    while (retTime === null) {
+      if (time.year > 0) {
+        retTime = `${time.year}y`;
+      } else if (time.month > 0) {
+        retTime = `${time.month}M`; // need to look at
+      } else if (time.day > 0) {
+        retTime = `${time.day}d`;
+      } else if (time.hours > 0) {
+        retTime = `${time.hours}h`;
+      } else if (time.min > 0) {
+        retTime = `${time.min}m`;
+      } else {
+        retTime = "now";
+      }
     }
 
-    hideDD(dd_id){
-        let oldState = {...this.state.dd_s}
-        oldState.dd_id = false
-        this.setState({dd_s: oldState})
+    return retTime;
+  }
+
+  removeLike(e) {
+    let id = e.currentTarget.getAttribute("data-like_id");
+    this.props.deleteLike(id).then(() => {
+      this.props.fetchPin(Number(this.props.match.params.id));
+    });
+  }
+
+  createLike(e) {
+    let liker_id = e.currentTarget.getAttribute("data-img_liker_id");
+    let comment = e.currentTarget.getAttribute("data-img_comment");
+
+    let info = { liker_id, comment_liked_id: comment };
+    this.props.createLike(info).then(() => {
+      this.props.fetchPin(Number(this.props.match.params.id));
+    });
+  }
+
+  handelSubmitCommentEdit(e) {
+    e.preventDefault();
+    let commentIds = {
+      commentId: this.state.editingCommentId,
+      pinId: Number(this.props.match.params.id),
+      commentForm: { body: this.state.editComment },
+    };
+
+    this.props.editComment(commentIds).then(() => {
+      this.props.fetchPin(Number(this.props.match.params.id));
+    });
+
+    document.getElementById(
+      "edit-form-div" + commentIds.commentId
+    ).style.display = "none";
+    document.getElementById(
+      "right-txt-pin-show" + commentIds.commentId
+    ).style.display = "flex";
+    document.getElementById(
+      "bottom-section-comment-pin-show" + commentIds.commentId
+    ).style.display = "flex";
+
+    this.setState({ editingCommentId: null });
+
+    let objNew = {};
+    this.setState({ dd_s: objNew });
+    // this.props.fetchPin(Number(this.props.match.params.id))
+  }
+
+  handelEditChange(e) {
+    e.preventDefault();
+    this.setState({ editComment: e.currentTarget.value });
+  }
+
+  editComment(e) {
+    let editForm = document.getElementById(
+      `edit-form-div` + e.currentTarget.id
+    );
+    let commentShow = document.getElementById(
+      "right-txt-pin-show" + e.currentTarget.id
+    );
+    let optionsDiv = document.getElementById(
+      "bottom-section-comment-pin-show" + e.currentTarget.id
+    );
+    let backdrop = document.getElementById("backdrop-div-create-pin");
+    let editDropDownMenue = document.getElementById(
+      "edit-dropdown-menue-124-id" + e.currentTarget.id
+    );
+
+    editForm.style.display = "flex";
+    commentShow.style.display = "none";
+    optionsDiv.style.display = "none";
+    backdrop.style.display = "none";
+    editDropDownMenue.style.display = "none";
+
+    this.setState({
+      editComment: e.currentTarget.getAttribute("data-div_val"),
+    });
+
+    this.setState({ editingCommentId: e.currentTarget.id }); //this is a potential problem
+  }
+
+  deleteComment(e) {
+    // e.preventDefault()
+
+    let commentIds = {
+      pinId: Number(this.props.match.params.id),
+      commentId: e.currentTarget.id,
+    };
+    this.props.deleteComment(commentIds).then((data) => {
+      this.backdropClick(),
+        this.props.fetchPin(Number(this.props.match.params.id)),
+        this.setState({ comments: this.props.pin.pin.comments });
+      let newObj = {};
+      this.setState({ dd_s: newObj });
+    });
+  }
+
+  handelSubmitComment(e) {
+    e.preventDefault();
+
+    let input = document.getElementById("comment-input-pin-show");
+
+    if (e.currentTarget.classList.length === 3) {
+      this.props.newComment(this.state.comment);
+      this.props.fetchPin(Number(this.props.match.params.id)).then(
+        (input.value = ""),
+        e.currentTarget.classList.remove("done-red-btn"),
+
+        this.props.fetchPin(Number(this.props.match.params.id)),
+        this.setState({ comments: this.props.pin.pin.comments })
+      );
     }
+  }
 
-    displayDD(dd_id){
-        let oldState = {...this.state.dd_s}
-        oldState.dd_id = true
-        this.setState({dd_s: oldState})
+  classAddInput(e) {
+    e.preventDefault();
+    e.currentTarget.classList.add("change-input");
+    let buttons = document.getElementById("pin-show-btn");
+    buttons.style.display = "flex";
+  }
+
+  isFieldEmpty(e) {
+    e.preventDefault();
+
+    let prevState = this.state.comment;
+    prevState.body = e.currentTarget.value;
+    this.setState({ comment: prevState });
+
+    let doneBtn = document.getElementById("done-btn-show-pin");
+
+    if (e.currentTarget.value.trim().length === 0) {
+      doneBtn.classList.remove("done-red-btn");
+    } else {
+      doneBtn.classList.add("done-red-btn");
     }
+  }
 
+  editPin(e) {
+    e.preventDefault();
+    window.editPin = Number(this.props.match.params.id);
+    // this.backdropClick(e)
+    this.props.openModal("editPin");
+    let objNew = {};
+    this.setState({ dd_s: objNew });
+  }
 
+  dd_display_tog(e) {
+    let id = e.currentTarget.id;
+    let oldState = { ...this.state.dd_s };
+    let newState = {};
 
-    // saveImage(e){
-    //     e.preventDefault();
-        
-    //     let url = e.currentTarget.getAttribute('data-img_url')
-        
-    //     // saveAs(url, 'image.jpg')
+    newState[id] = !oldState[id];
+    this.setState({ dd_s: newState });
+  }
 
-    //     this.backdropClick(e)
-        
+  moreClickedDD(e) {
+    e.preventDefault();
+
+    let dropDown = document.getElementById("edit-dropdown-menue-123-id");
+    let backdrop = document.getElementById("backdrop-div-create-pin");
+    if (dropDown.style.display === "none" || dropDown.style.display === "") {
+      this.setState({ ddStat: true });
+      dropDown.style.display = "flex";
+      backdrop.style.display = "block";
+    } else {
+      this.setState({ ddStat: false });
+      dropDown.style.display = "none";
+      backdrop.style.display = "none";
+    }
+  }
+
+  moreClickedDDComment(e) {
+    e.preventDefault();
+
+    let dropDown = document.getElementById(
+      `edit-dropdown-menue-124-id` + e.currentTarget.id
+    );
+    let backdrop = document.getElementById("backdrop-div-create-pin");
+
+    if (dropDown.style.display === "none" || dropDown.style.display === "") {
+      this.setState({
+        ddStat: `edit-dropdown-menue-124-id` + e.currentTarget.id,
+      });
+      this.setState({ commentDDActive: true });
+      dropDown.style.display = "flex";
+      backdrop.style.display = "block";
+    } else {
+      this.setState({ ddStat: false });
+      dropDown.style.display = "none";
+      backdrop.style.display = "none";
+    }
+  }
+
+  backdropClick(e) {
+    this.setState({ dd_s: {} });
+
+    // let dropDownClass = document.getElementById(this.state.ddStat);
+
+    // let dropDown = document.getElementById("edit-dropdown-menue-123-id");
+    // let backdrop = document.getElementById('backdrop-div-create-pin')
+    // if(dropDown.style.display === "none"){
+    //     dropDown.style.display = "none"
+    //     backdrop.style.display = "none"
+    //     if(this.state.commentDDActive){
+    //         dropDownClass.style.display = 'none'
+    //         this.setState({ddStat: false})
+    //     }
+    // } else {
+    //     dropDown.style.display = "none"
+    //     backdrop.style.display = "none"
+    //     if(this.state.commentDDActive){
+    //         dropDownClass.style.display = 'none'
+    //         this.setState({ddStat: false})
+    //     }
     // }
+  }
 
-    cancelEditComment(e){
-        
-        e.preventDefault();
+  componentDidMount() {
+    this.props.fetchPin(Number(this.props.match.params.id));
+    // .then(
+    //     this.setState({comments: this.props.comments})
+    // )
+  }
 
-        document.getElementById('edit-form-div' + e.currentTarget.getAttribute('data-comment_id')).style.display = 'none'
-        document.getElementById('right-txt-pin-show' + e.currentTarget.getAttribute('data-comment_id')).style.display = 'flex'
-        document.getElementById('bottom-section-comment-pin-show' + e.currentTarget.getAttribute('data-comment_id')).style.display = 'flex'
+  componentDidUpdate(prevProps) {
+    if (this.props.pin !== prevProps.pin) {
+      this.setState({ pin: this.props.pin.pin });
+      this.setState({ comments: this.props.pin.pin.comments });
+    }
+  }
 
-        let objNew = {}
-        
-        this.setState({editComment: ''})
-        this.setState({dd_s: objNew})
-        
+  goBackBtn() {
+    this.props.history.goBack();
+  }
+
+  render() {
+    let ddState = { ...this.state.dd_s };
+    let back_drop_s = !Object.keys(ddState).every((k) => !ddState[k]);
+
+    if (!this.state.pin) {
+      return null;
     }
 
-    elapsedTime(time){
-        
+    let comments;
 
-        let retTime = null
-
-        
-        while(retTime === null){
-            
-            if(time.year > 0){
-                retTime = `${time.year}y`
-            } else if (time.month > 0 ){
-                retTime = `${time.month}M` // need to look at
-            } else if (time.day > 0){
-                retTime = `${time.day}d`
-            } else if(time.hours > 0){
-                retTime = `${time.hours}h`
-            } else if (time.min > 0) {
-                retTime = `${time.min}m`
-            } else {
-                retTime = 'now'
-            }
-            
-        }
-
-        return retTime
-
+    if (!!this.state.comments) {
+      comments = Object.values(this.state.comments);
+    } else {
+      comments = null;
     }
 
-    removeLike(e){
+    // if( this.state.comments.length === 0 ){
+    //     comments = null
+    // } else {
+    //     comments = this.state.comments
+    // }
+    let pinShow;
 
-        let id = e.currentTarget.getAttribute('data-like_id')
-        this.props.deleteLike(id).then(
-            () => {this.props.fetchPin(Number(this.props.match.params.id))}
-        )
-        
+    if (this.props.currentUser.id === this.props.pin.pin.creator_id) {
+      pinShow = (
+        <div className="background-div-pin-show">
+          {back_drop_s ? (
+            <div
+              className="backdrop-div-create-pin pin-show-bd"
+              onClick={this.backdropClick}
+              id="backdrop-div-create-pin"
+            ></div>
+          ) : null}
+          <div className="main-div-pin-show">
+            {/* <div className='sub-div-boarder-play'> */}
 
-    }
+            <div className="image-show-pin-1">
+              <img
+                className="image-show-pin"
+                src={this.state.pin.photoUrl}
+                alt="photo?"
+              />
+            </div>
 
-    createLike(e){
-        let liker_id = e.currentTarget.getAttribute('data-img_liker_id')
-        let comment = e.currentTarget.getAttribute('data-img_comment')
-
-        let info = {liker_id, comment_liked_id: comment}
-        this.props.createLike(info).then(
-            () => {this.props.fetchPin(Number(this.props.match.params.id))}
-        )
-    }
-
-    handelSubmitCommentEdit(e){
-        e.preventDefault();
-        let commentIds = {
-            commentId: this.state.editingCommentId,
-            pinId: Number(this.props.match.params.id),
-            commentForm: {body: this.state.editComment}
-        }
-
-        this.props.editComment(commentIds).then(
-            () => {this.props.fetchPin(Number(this.props.match.params.id))}
-        )
-        
-        document.getElementById('edit-form-div' + commentIds.commentId).style.display = 'none'
-        document.getElementById('right-txt-pin-show' + commentIds.commentId).style.display = 'flex'
-        document.getElementById('bottom-section-comment-pin-show' + commentIds.commentId).style.display = 'flex'
-            
-        this.setState({editingCommentId: null})
-
-        let objNew = {}
-        this.setState({dd_s: objNew})
-        // this.props.fetchPin(Number(this.props.match.params.id))
-            
-    }
-
-    handelEditChange(e){
-        e.preventDefault();
-        this.setState({editComment: e.currentTarget.value})
-    }
-
-    editComment(e){
-
-        let editForm = document.getElementById(`edit-form-div` + e.currentTarget.id)
-        let commentShow = document.getElementById('right-txt-pin-show' + e.currentTarget.id)
-        let optionsDiv = document.getElementById('bottom-section-comment-pin-show' + e.currentTarget.id)
-        let backdrop = document.getElementById('backdrop-div-create-pin')
-        let editDropDownMenue = document.getElementById('edit-dropdown-menue-124-id' + e.currentTarget.id)
-  
-        editForm.style.display = 'flex'
-        commentShow.style.display = 'none'
-        optionsDiv.style.display = 'none'
-        backdrop.style.display = 'none'
-        editDropDownMenue.style.display = 'none'
-
-        this.setState({editComment: e.currentTarget.getAttribute('data-div_val')})
-
-        this.setState({editingCommentId: e.currentTarget.id}) //this is a potential problem
-
-
-
-    }
-
-    deleteComment(e){
-        // e.preventDefault()
-
-        let commentIds = {
-            pinId: Number(this.props.match.params.id),
-            commentId: e.currentTarget.id
-        }
-        this.props.deleteComment(commentIds).then(
-            (data) => {
-                this.backdropClick(),
-                this.props.fetchPin(Number(this.props.match.params.id)),
-                this.setState({comments: this.props.pin.pin.comments})
-                let newObj = {}
-                this.setState({dd_s: newObj})
-            }
-        )
-    }
-
-    handelSubmitComment(e){
-        e.preventDefault();
-        
-        let input = document.getElementById('comment-input-pin-show');
-
-        
-        if(e.currentTarget.classList.length === 3){
-            
-            
-            this.props.newComment(this.state.comment)
-            this.props.fetchPin(Number(this.props.match.params.id)).then(
-                input.value = '',
-                e.currentTarget.classList.remove('done-red-btn'),
-
-                this.props.fetchPin(Number(this.props.match.params.id)),
-                this.setState({comments: this.props.pin.pin.comments})
-            )
-        }
-        
-    }
-
-    classAddInput(e){
-        e.preventDefault();
-        e.currentTarget.classList.add('change-input')
-        let buttons = document.getElementById('pin-show-btn');
-        buttons.style.display = 'flex'
-    }
-
-    isFieldEmpty(e){
-
-        
-        e.preventDefault();
-        
-
-        let prevState = this.state.comment
-        prevState.body = e.currentTarget.value
-        this.setState({comment: prevState})
-
-        
-        let doneBtn = document.getElementById('done-btn-show-pin')
-
-        if(e.currentTarget.value.trim().length === 0){
-            doneBtn.classList.remove('done-red-btn')
-        } else {
-            doneBtn.classList.add('done-red-btn')
-        }
-    }
-
-    editPin(e){
-        e.preventDefault();
-        window.editPin = Number(this.props.match.params.id)
-        // this.backdropClick(e)
-        this.props.openModal('editPin')
-        let objNew = {}
-        this.setState({dd_s: objNew})
-
-    }
-
-    dd_display_tog(e){
-        
-        let id = e.currentTarget.id
-        let oldState = {...this.state.dd_s}
-        let newState = {}
-
-        
-        newState[id] = !(oldState[id])
-        this.setState({dd_s: newState})
-    }
-
-    moreClickedDD(e){
-        e.preventDefault()
-
-
-        let dropDown = document.getElementById("edit-dropdown-menue-123-id");
-        let backdrop = document.getElementById('backdrop-div-create-pin')
-        if(dropDown.style.display === "none" || dropDown.style.display === "" ){
-            this.setState({ddStat: true})
-            dropDown.style.display = "flex"
-            backdrop.style.display = "block"
-        } else {
-            this.setState({ddStat: false})
-            dropDown.style.display = "none"
-            backdrop.style.display = "none"
-        }
-    }
-
-    moreClickedDDComment(e){
-        e.preventDefault();
-        
-        let dropDown = document.getElementById(`edit-dropdown-menue-124-id` + e.currentTarget.id);
-        let backdrop = document.getElementById('backdrop-div-create-pin')
-        
-        if(dropDown.style.display === "none" || dropDown.style.display === "" ){
-            this.setState({ddStat: `edit-dropdown-menue-124-id` + e.currentTarget.id})
-            this.setState({commentDDActive: true})
-            dropDown.style.display = "flex"
-            backdrop.style.display = "block"
-        } else {
-            this.setState({ddStat: false})
-            dropDown.style.display = "none"
-            backdrop.style.display = "none"
-        }
-    }
-
-     backdropClick(e){
-
-        this.setState({dd_s: {}})
-
-
-        // let dropDownClass = document.getElementById(this.state.ddStat);
-        
-        // let dropDown = document.getElementById("edit-dropdown-menue-123-id");
-        // let backdrop = document.getElementById('backdrop-div-create-pin')
-        // if(dropDown.style.display === "none"){
-        //     dropDown.style.display = "none"
-        //     backdrop.style.display = "none"
-        //     if(this.state.commentDDActive){
-        //         dropDownClass.style.display = 'none'
-        //         this.setState({ddStat: false})
-        //     }
-        // } else {
-        //     dropDown.style.display = "none"
-        //     backdrop.style.display = "none"
-        //     if(this.state.commentDDActive){
-        //         dropDownClass.style.display = 'none'
-        //         this.setState({ddStat: false})
-        //     }
-        // }
-     }
-
-    componentDidMount(){
-        
-        this.props.fetchPin(Number(this.props.match.params.id))
-        // .then(
-        //     this.setState({comments: this.props.comments})
-        // )
-    }
-
-
-    componentDidUpdate(prevProps){
-        
-        
-        if(this.props.pin !== prevProps.pin){
-            
-            this.setState({pin: this.props.pin.pin})
-            this.setState({comments: this.props.pin.pin.comments})
-
-        }
-    }
-
-    goBackBtn(){
-        
-        this.props.history.goBack()
-    }
-
-    render(){
-
-        let ddState = {...this.state.dd_s} 
-        let back_drop_s = !(Object.keys(ddState).every((k) => !ddState[k]))
-
-
-        if(!this.state.pin){
-            return null
-        }
-        
-
-        let comments
-
-        if(!!this.state.comments){
-            comments = Object.values(this.state.comments)
-        } else {
-            comments = null
-        }
-
-
-        // if( this.state.comments.length === 0 ){
-        //     comments = null
-        // } else {
-        //     comments = this.state.comments
-        // }
-        let pinShow
-        
-
-        if(this.props.currentUser.id === this.props.pin.pin.creator_id){
-            pinShow = (
-                <div className='background-div-pin-show'>
-
-                {back_drop_s ? <div className="backdrop-div-create-pin pin-show-bd" onClick={this.backdropClick} id="backdrop-div-create-pin"></div> : null}
-                <div className='main-div-pin-show'>
-{/* <div className='sub-div-boarder-play'> */}
-
-                    <div className="image-show-pin-1">
-                        <img className='image-show-pin' src={this.state.pin.photoUrl} alt="photo?" />
+            <div className="right-half-pin-show">
+              <div className="top-bar-right-show-pin">
+                <div>
+                  <h1 className="header-title-boards-show-123">
+                    <div
+                      className="pin-duplicate-button-dd"
+                      onClick={this.dd_display_tog}
+                      id={`dd_id_pin${this.state.pin.id}`}
+                      onBlur={this.dd_display_tog}
+                    >
+                      <img
+                        className="pin-123-1"
+                        src={window.dotsBlackURL}
+                        alt="more icon"
+                      />
                     </div>
-
-                    <div className='right-half-pin-show'>
-                        <div className='top-bar-right-show-pin'>
-
-                            <div>
-                                <h1 className="header-title-boards-show-123" >
-                                
-                                <div className="pin-duplicate-button-dd" onClick={this.dd_display_tog} id={`dd_id_pin${this.state.pin.id}`} onBlur={this.dd_display_tog}>
-                                    <img className="pin-123-1" src={window.dotsBlackURL} alt="more icon"/>
-                                </div>
-                                    {this.state.dd_s[`dd_id_pin${this.state.pin.id}`] ? <div className="div-holder-helper-123 outside-pin-show" id={`dd_id_pin${this.state.pin.id}`} >
-                                        <div className="edit-dropdown-menue-123 pin-show" id="edit-dropdown-menue-123-id">
-                                            <div className='edition-pin-show-div' onMouseDown={this.editPin} >Edit Pin</div>
-                                        </div>
-                                    </div> : null}
-                                </h1>
-                            </div>
-
-
+                    {this.state.dd_s[`dd_id_pin${this.state.pin.id}`] ? (
+                      <div
+                        className="div-holder-helper-123 outside-pin-show"
+                        id={`dd_id_pin${this.state.pin.id}`}
+                      >
+                        <div
+                          className="edit-dropdown-menue-123 pin-show"
+                          id="edit-dropdown-menue-123-id"
+                        >
+                          <div
+                            className="edition-pin-show-div"
+                            onMouseDown={this.editPin}
+                          >
+                            Edit Pin
+                          </div>
                         </div>
+                      </div>
+                    ) : null}
+                  </h1>
+                </div>
+              </div>
 
-                       { !!this.state.pin.websiteURL ? <a className='url-link-tag' href={this.state.pin.websiteURL} target='_blank' >{this.state.pin.websiteURL.slice(0, 27) + '...'}</a> : null}
-                            <div className='title-pin-show'>{this.state.pin.title}</div>
-                        <p className='description-pin-show' >{this.state.pin.description}</p>
+              {!!this.state.pin.websiteURL ? (
+                <a
+                  className="url-link-tag"
+                  href={this.state.pin.websiteURL}
+                  target="_blank"
+                >
+                  {this.state.pin.websiteURL.slice(0, 27) + "..."}
+                </a>
+              ) : null}
+              <div className="title-pin-show">{this.state.pin.title}</div>
+              <p className="description-pin-show">
+                {this.state.pin.description}
+              </p>
 
-                        {/* <div>
+              {/* <div>
                             <img src={} alt="" />
                         </div> */}
 
-                        <div className='comments-section'>
-                            <div className="comments-lable-pin-show">Comments</div>
+              <div className="comments-section">
+                <div className="comments-lable-pin-show">Comments</div>
 
-                            <div className="describing-comments">Share feedback, ask a question or give a high five</div>
-                        <div className="outer-comment-pin-show-1">
+                <div className="describing-comments">
+                  Share feedback, ask a question or give a high five
+                </div>
+                <div className="outer-comment-pin-show-1">
+                  {!!comments ? (
+                    <div className="comment-array-holding-div">
+                      <div className="comment-array-pin-show">
+                        {comments.map((comment) => (
+                          <div
+                            className="outside-comment-main"
+                            key={comment.id + "outside"}
+                          >
+                            <div
+                              className="one-comment-pin-show"
+                              key={comment.id}
+                            >
+                              <div className="outside-of-image-div">
+                                <div
+                                  id="123 D"
+                                  className="image-div-show-pin-page comment-list-2 C"
+                                >
+                                  <ProfileAvatar
+                                    photoUrl={comment.photoUrl}
+                                    usersName={comment.name}
+                                  />
+                                </div>
+                              </div>
 
-                        { !!comments ?
-                        <div className='comment-array-holding-div'>
-                             <div className='comment-array-pin-show'>
-                                { comments.map( comment => 
-                                    <div className='outside-comment-main' key={comment.id + "outside"}>
-                                        <div className='one-comment-pin-show' key={comment.id}>
-
-                                            <div className='outside-of-image-div'>
-                                                <div id='123 D' className="image-div-show-pin-page comment-list-2 C">
-                                                    <ProfileAvatar
-                                                        photoUrl={comment.photoUrl}
-                                                        usersName={comment.name}
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div className='right-txt-pin-show' id={`right-txt-pin-show`+ comment.id} >
-                                                <div className='outer-div-time-elapsed-comment'>
-                                                    <Link to={`/profile/${comment.commenter_id}`}><div className='name-list-pin-show' >{comment.name}</div></Link>
-                                                    <div className='time-elapsed-comment' >{this.elapsedTime(comment.timeElapsed)}</div>
-                                                </div>
-                                                <div className='body-list-pin-show'>{comment.body}</div>
-                                            </div>
-                                                
-                                            <div className='edit-form-div-outter' id={'edit-form-div' + comment.id} >
-                                                <textarea placeholder='Add a comment' className='blank-input-style' type="text" value={this.state.editComment} onChange={this.handelEditChange} />
-                                                <div className='edit-comment-btns'>
-                                                    <div data-comment_id={comment.id} onClick={this.cancelEditComment} id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin cancel-124" >Cancel</div>
-                                                    <div id='save-btn-show-pin' className="button-show-pin-comment save-123" onClick={this.handelSubmitCommentEdit}>Save</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className='bottom-section-comment-pin-show' id={'bottom-section-comment-pin-show' + comment.id}>
-                                            
-                                            <h1 className="header-title-boards-show-123">
-
-                                            <div className='like-icon-div'>
-                                                {comment.like.liked ? 
-                                                <img data-img_liker_id={this.props.currentUser.id} data-img_comment={comment.id} data-like_id={comment.like.like.id} onClick={this.removeLike} src={window.redHeartURL} alt="red heart" /> : 
-                                                <img data-img_liker_id={this.props.currentUser.id} data-img_comment={comment.id} onClick={this.createLike} src={window.grayHeartURL} alt="gray heart" /> }
-
-                                               {comment.like.like_count > 0 ? <div className='like-count'>{comment.like.like_count}</div> : null} 
-                                            </div>
-                                            
-                                            { comment.commenter_id === this.props.currentUser.id ? <div className="pin-duplicate-button-dd comment-edition-div" id={comment.id} onClick={this.dd_display_tog}>
-                                                <img className="pin-123-1 comment-edition-dot" src={window.dotsBlackURL} alt="more icon"/>
-                                            </div> : null}
-                                                {!!(this.state.dd_s[comment.id]) ? <div className="div-holder-helper-123-pin-show pin-modif new-mod-display">
-                                                    <div className="edit-dropdown-menue-123-pin-show move-edit-delete-div" id={`edit-dropdown-menue-124-id` + comment.id}>
-                                                        <div data-div_val={comment.body} id={comment.id} onClick={this.editComment}>Edit</div>
-                                                        <div id={comment.id} onClick={this.deleteComment}>Delete</div>
-                                                    </div>
-                                                </div> : null}
-                                            </h1>
-
-                                        </div>
-
+                              <div
+                                className="right-txt-pin-show"
+                                id={`right-txt-pin-show` + comment.id}
+                              >
+                                <div className="outer-div-time-elapsed-comment">
+                                  <Link to={`/profile/${comment.commenter_id}`}>
+                                    <div className="name-list-pin-show">
+                                      {comment.name}
                                     </div>
-                                    )
-                                }
-                            </div> 
+                                  </Link>
+                                  <div className="time-elapsed-comment">
+                                    {this.elapsedTime(comment.timeElapsed)}
+                                  </div>
+                                </div>
+                                <div className="body-list-pin-show">
+                                  {comment.body}
+                                </div>
+                              </div>
 
-                            <div className="comment-count">{comments.length} comments </div>
+                              <div
+                                className="edit-form-div-outter"
+                                id={"edit-form-div" + comment.id}
+                              >
+                                <textarea
+                                  placeholder="Add a comment"
+                                  className="blank-input-style"
+                                  type="text"
+                                  value={this.state.editComment}
+                                  onChange={this.handelEditChange}
+                                />
+                                <div className="edit-comment-btns">
+                                  <div
+                                    data-comment_id={comment.id}
+                                    onClick={this.cancelEditComment}
+                                    id="cancel-btn-show-pin"
+                                    className="button-show-pin-comment cancel-btn-show-pin cancel-124"
+                                  >
+                                    Cancel
+                                  </div>
+                                  <div
+                                    id="save-btn-show-pin"
+                                    className="button-show-pin-comment save-123"
+                                    onClick={this.handelSubmitCommentEdit}
+                                  >
+                                    Save
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            : null }
-                            <div className="comments-in-section" >
-                                <div id='847428 A' className="image-div-show-pin-page C" >
-                                    <ProfileAvatar
-                                        photoUrl={this.props.currentUser.photoUrl}
-                                        usersName={this.props.currentUser.f_name}
-                                    
+
+                            <div
+                              className="bottom-section-comment-pin-show"
+                              id={
+                                "bottom-section-comment-pin-show" + comment.id
+                              }
+                            >
+                              <h1 className="header-title-boards-show-123">
+                                <div className="like-icon-div">
+                                  {comment.like.liked ? (
+                                    <img
+                                      data-img_liker_id={
+                                        this.props.currentUser.id
+                                      }
+                                      data-img_comment={comment.id}
+                                      data-like_id={comment.like.like.id}
+                                      onClick={this.removeLike}
+                                      src={window.redHeartURL}
+                                      alt="red heart"
                                     />
-                                </div>
-                                <input type="text" autoComplete="off" id='comment-input-pin-show' className="input-pin-show" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
-                            </div>
-
-                            <div id="pin-show-btn" className='outer-comment-pin-show-2'>
-                                <div id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin" >Cancel</div>
-                                <div id='done-btn-show-pin' className="button-show-pin-comment done-123" onClick={this.handelSubmitComment}>Done</div>
-                            </div>
-
-                            <div className='bottom-info-outter-div' >
-                                <div id='847428 B' className="image-div-show-pin-page bottom-info-links C" >
-                                    <ProfileAvatar
-                                        photoUrl={this.props.pin.pin.pinUser.photoUrl}
-                                        usersName={this.props.pin.pin.pinUser.f_name}
+                                  ) : (
+                                    <img
+                                      data-img_liker_id={
+                                        this.props.currentUser.id
+                                      }
+                                      data-img_comment={comment.id}
+                                      onClick={this.createLike}
+                                      src={window.grayHeartURL}
+                                      alt="gray heart"
                                     />
+                                  )}
+
+                                  {comment.like.like_count > 0 ? (
+                                    <div className="like-count">
+                                      {comment.like.like_count}
+                                    </div>
+                                  ) : null}
                                 </div>
 
-                                <div className='bottom-section-pin-show-links' >
-                                    {this.state.pin.creator_id === this.props.currentUser.id ? 
-                                        <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>You</Link> : 
-                                        <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>{this.state.pin.pinUser.f_name} {this.state.pin.pinUser.l_name} </Link>
-                                    } saved to {' '}
-                                        <Link className='pin-show-link' to={`/board/${this.state.pin.board_id}`} >{this.state.pin.board.title}</Link>
-                                </div>
+                                {comment.commenter_id ===
+                                this.props.currentUser.id ? (
+                                  <div
+                                    className="pin-duplicate-button-dd comment-edition-div"
+                                    id={comment.id}
+                                    onClick={this.dd_display_tog}
+                                  >
+                                    <img
+                                      className="pin-123-1 comment-edition-dot"
+                                      src={window.dotsBlackURL}
+                                      alt="more icon"
+                                    />
+                                  </div>
+                                ) : null}
+                                {!!this.state.dd_s[comment.id] ? (
+                                  <div className="div-holder-helper-123-pin-show pin-modif new-mod-display">
+                                    <div
+                                      className="edit-dropdown-menue-123-pin-show move-edit-delete-div"
+                                      id={
+                                        `edit-dropdown-menue-124-id` +
+                                        comment.id
+                                      }
+                                    >
+                                      <div
+                                        data-div_val={comment.body}
+                                        id={comment.id}
+                                        onClick={this.editComment}
+                                      >
+                                        Edit
+                                      </div>
+                                      <div
+                                        id={comment.id}
+                                        onClick={this.deleteComment}
+                                      >
+                                        Delete
+                                      </div>
+                                    </div>
+                                  </div>
+                                ) : null}
+                              </h1>
                             </div>
-                        </div> 
+                          </div>
+                        ))}
+                      </div>
 
-                        </div>
+                      <div className="comment-count">
+                        {comments.length} comments{" "}
+                      </div>
+                    </div>
+                  ) : null}
+                  <div className="comments-in-section">
+                    <div id="847428 A" className="image-div-show-pin-page C">
+                      <ProfileAvatar
+                        photoUrl={this.props.currentUser.photoUrl}
+                        usersName={this.props.currentUser.f_name}
+                      />
+                    </div>
+                    <input
+                      type="text"
+                      autoComplete="off"
+                      id="comment-input-pin-show"
+                      className="input-pin-show"
+                      placeholder="Add a comment"
+                      onClick={this.classAddInput}
+                      onChange={this.isFieldEmpty}
+                    />
+                  </div>
+
+                  <div id="pin-show-btn" className="outer-comment-pin-show-2">
+                    <div
+                      id="cancel-btn-show-pin"
+                      className="button-show-pin-comment cancel-btn-show-pin"
+                    >
+                      Cancel
+                    </div>
+                    <div
+                      id="done-btn-show-pin"
+                      className="button-show-pin-comment done-123"
+                      onClick={this.handelSubmitComment}
+                    >
+                      Done
+                    </div>
+                  </div>
+
+                  <div className="bottom-info-outter-div">
+                    <div
+                      id="847428 B"
+                      className="image-div-show-pin-page bottom-info-links C"
+                    >
+                      <ProfileAvatar
+                        photoUrl={this.props.pin.pin.pinUser.photoUrl}
+                        usersName={this.props.pin.pin.pinUser.f_name}
+                      />
                     </div>
 
-{/* </div> */}
+                    <div className="bottom-section-pin-show-links">
+                      {this.state.pin.creator_id ===
+                      this.props.currentUser.id ? (
+                        <Link
+                          className="pin-show-link"
+                          to={`/profile/${this.state.pin.creator_id}`}
+                        >
+                          You
+                        </Link>
+                      ) : (
+                        <Link
+                          className="pin-show-link"
+                          to={`/profile/${this.state.pin.creator_id}`}
+                        >
+                          {this.state.pin.pinUser.f_name}{" "}
+                          {this.state.pin.pinUser.l_name}{" "}
+                        </Link>
+                      )}{" "}
+                      saved to{" "}
+                      <Link
+                        className="pin-show-link"
+                        to={`/board/${this.state.pin.board_id}`}
+                      >
+                        {this.state.pin.board.title}
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-            
-            </div> 
-            )
-        } else {
-            pinShow = (
-                <div className='background-div-pin-show'>
+              </div>
+            </div>
 
-                {back_drop_s ? <div className="backdrop-div-create-pin pin-show-bd" onClick={this.backdropClick} id="backdrop-div-create-pin"></div> : null}
-                <div className='main-div-pin-show'>
+            {/* </div> */}
+          </div>
+        </div>
+      );
+    } else {
+      pinShow = (
+        <div className="background-div-pin-show">
+          {back_drop_s ? (
+            <div
+              className="backdrop-div-create-pin pin-show-bd"
+              onClick={this.backdropClick}
+              id="backdrop-div-create-pin"
+            ></div>
+          ) : null}
+          <div className="main-div-pin-show">
+            {/* <div className='sub-div-boarder-play'> */}
 
-{/* <div className='sub-div-boarder-play'> */}
+            <div className="image-show-pin-1">
+              <img
+                className="image-show-pin"
+                src={this.state.pin.photoUrl}
+                alt="photo?"
+              />
+            </div>
 
-                        <div className="image-show-pin-1">
-                            <img className='image-show-pin' src={this.state.pin.photoUrl} alt="photo?" />
-                        </div>
-
-                        <div className='right-half-pin-show'>
-                            <div className='top-bar-right-show-pin'>
-
-                                {/* <div>
+            <div className="right-half-pin-show">
+              <div className="top-bar-right-show-pin">
+                {/* <div>
                                     <h1 className="header-title-boards-show-123" >
                                     
                                     <div className="pin-duplicate-button-dd" onClick={this.dd_display_tog} id={`dd_id_pin${this.state.pin.id}`} onBlur={this.dd_display_tog}>
@@ -567,140 +726,286 @@ class PinShow extends React.Component {
                                         </div> : null}
                                     </h1>
                                 </div> */}
+              </div>
 
-                            </div>
+              {!!this.state.pin.websiteURL ? (
+                <a
+                  className="url-link-tag"
+                  href={this.state.pin.websiteURL}
+                  target="_blank"
+                >
+                  {this.state.pin.websiteURL.slice(0, 27) + "..."}
+                </a>
+              ) : null}
+              <div className="title-pin-show">{this.state.pin.title}</div>
+              <p className="description-pin-show">
+                {this.state.pin.description}
+              </p>
 
-                            { !!this.state.pin.websiteURL ? <a className='url-link-tag' href={this.state.pin.websiteURL} target='_blank' >{this.state.pin.websiteURL.slice(0, 27) + '...'}</a> : null}
-                                <div className='title-pin-show'>{this.state.pin.title}</div>
-                            <p className='description-pin-show' >{this.state.pin.description}</p>
-
-                            {/* <div>
+              {/* <div>
                                 <img src={} alt="" />
                             </div> */}
 
-                            <div className='comments-section'>
-                                <div className="comments-lable-pin-show">Comments</div>
+              <div className="comments-section">
+                <div className="comments-lable-pin-show">Comments</div>
 
-                                <div className="describing-comments">Share feedback, ask a question or give a high five</div>
-                            <div className="outer-comment-pin-show-1">
-
-                            { !!comments ?
-                            <div className='comment-array-holding-div'>
-                                <div className='comment-array-pin-show'>
-                                    { comments.map( comment => 
-                                        <div className='outside-comment-main' key={comment.id + "outside"}>
-                                            <div className='one-comment-pin-show' key={comment.id}>
-                                                <div>
-                                                    <div id='123 G' className="image-div-show-pin-page comment-list-2 C">
-                                                        <ProfileAvatar
-                                                            photoUrl={comment.photoUrl}
-                                                            usersName={comment.name}
-                                                        />
-                                                    </div>
-                                                </div>
-
-                                                <div className='right-txt-pin-show' id={`right-txt-pin-show`+ comment.id}>
-                                                    <div className='outer-div-time-elapsed-comment'>
-                                                        <Link to={`/profile/${comment.commenter_id}`}><div className='name-list-pin-show' >{comment.name}</div></Link>
-                                                        <div className='time-elapsed-comment' >{this.elapsedTime(comment.timeElapsed)}</div>
-                                                    </div>
-                                                    <div className='body-list-pin-show'>{comment.body}</div>
-                                                </div>
-
-                                                <div className='edit-form-div-outter' id={'edit-form-div' + comment.id} >
-                                                    <textarea placeholder='Add a comment' className='blank-input-style' type="text" value={this.state.editComment} onChange={this.handelEditChange} />
-                                                    <div className='edit-comment-btns'>
-                                                        <div data-comment_id={comment.id} onClick={this.cancelEditComment} id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin cancel-124" >Cancel</div>
-                                                        <div id='save-btn-show-pin' className="button-show-pin-comment save-123" onClick={this.handelSubmitCommentEdit}>Save</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className='bottom-section-comment-pin-show' id={'bottom-section-comment-pin-show' + comment.id}>
-                                                
-                                                <h1 className="header-title-boards-show-123">
-
-                                                <div className='like-icon-div'>
-                                                    {comment.like.liked ? 
-                                                    <img data-img_liker_id={this.props.currentUser.id} data-img_comment={comment.id} data-like_id={comment.like.like.id} onClick={this.removeLike} src={window.redHeartURL} alt="red heart" /> : 
-                                                    <img data-img_liker_id={this.props.currentUser.id} data-img_comment={comment.id} onClick={this.createLike} src={window.grayHeartURL} alt="gray heart" /> }
-
-                                                    {comment.like.like_count > 0 ? <div className='like-count'>{comment.like.like_count}</div> : null} 
-                                                </div>
-                                                
-                                                { comment.commenter_id === this.props.currentUser.id ? <div className="pin-duplicate-button-dd comment-edition-div" id={comment.id} onClick={this.dd_display_tog}>
-                                                    <img className="pin-123-1 comment-edition-dot" src={window.dotsBlackURL} alt="more icon"/>
-                                                </div> : null}
-                                                    {!!(this.state.dd_s[comment.id]) ? <div className="div-holder-helper-123-pin-show pin-modif new-mod-display">
-                                                        <div className="edit-dropdown-menue-123-pin-show move-edit-delete-div" id={`edit-dropdown-menue-124-id` + comment.id}>
-                                                            <div data-div_val={comment.body} id={comment.id} onClick={this.editComment}>Edit</div>
-                                                            <div id={comment.id} onClick={this.deleteComment}>Delete</div>
-                                                        </div>
-                                                    </div> : null}
-                                                </h1>
-
-                                            </div>
-
-                                        </div>
-                                        )
-                                    }
-                                </div> 
-
-                                <div className="comment-count">{comments.length} comments </div>
+                <div className="describing-comments">
+                  Share feedback, ask a question or give a high five
+                </div>
+                <div className="outer-comment-pin-show-1">
+                  {!!comments ? (
+                    <div className="comment-array-holding-div">
+                      <div className="comment-array-pin-show">
+                        {comments.map((comment) => (
+                          <div
+                            className="outside-comment-main"
+                            key={comment.id + "outside"}
+                          >
+                            <div
+                              className="one-comment-pin-show"
+                              key={comment.id}
+                            >
+                              <div>
+                                <div
+                                  id="123 G"
+                                  className="image-div-show-pin-page comment-list-2 C"
+                                >
+                                  <ProfileAvatar
+                                    photoUrl={comment.photoUrl}
+                                    usersName={comment.name}
+                                  />
                                 </div>
-                                : null }
-                                <div className="comments-in-section" >
-                                    <div id='847428 C' className="image-div-show-pin-page C" >
-                                        <ProfileAvatar
-                                            photoUrl={this.props.currentUser.photoUrl}
-                                            usersName={this.props.currentUser.f_name}
-                                        />
+                              </div>
+
+                              <div
+                                className="right-txt-pin-show"
+                                id={`right-txt-pin-show` + comment.id}
+                              >
+                                <div className="outer-div-time-elapsed-comment">
+                                  <Link to={`/profile/${comment.commenter_id}`}>
+                                    <div className="name-list-pin-show">
+                                      {comment.name}
                                     </div>
-                                    <input type="text" autoComplete="off" id='comment-input-pin-show' className="input-pin-show" placeholder="Add a comment" onClick={this.classAddInput} onChange={this.isFieldEmpty}/>
+                                  </Link>
+                                  <div className="time-elapsed-comment">
+                                    {this.elapsedTime(comment.timeElapsed)}
+                                  </div>
                                 </div>
-
-                                <div id="pin-show-btn" className='outer-comment-pin-show-2'>
-                                    <div id='cancel-btn-show-pin' className="button-show-pin-comment cancel-btn-show-pin" >Cancel</div>
-                                    <div id='done-btn-show-pin' className="button-show-pin-comment done-123" onClick={this.handelSubmitComment}>Done</div>
+                                <div className="body-list-pin-show">
+                                  {comment.body}
                                 </div>
+                              </div>
 
-                                <div className='bottom-info-outter-div' >
-                                    <div className="image-div-show-pin-page bottom-info-links" >
-                                        <ProfileAvatar
-                                            photoUrl={this.props.pin.pin.pinUser.photoUrl}
-                                            usersName={this.props.pin.pin.pinUser.f_name}
-                                        />
-                                    </div>
-
-                                    <div className='bottom-section-pin-show-links' >
-                                        {this.state.pin.creator_id === this.props.currentUser.id ? 
-                                            <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>You</Link> : 
-                                            <Link className='pin-show-link' to={`/profile/${this.state.pin.creator_id}`}>{this.state.pin.pinUser.f_name} {this.state.pin.pinUser.l_name} </Link>
-                                        } saved to {' '}
-                                            <Link className='pin-show-link' to={`/board/${this.state.pin.board_id}`} >{this.state.pin.board.title}</Link>
-                                    </div>
+                              <div
+                                className="edit-form-div-outter"
+                                id={"edit-form-div" + comment.id}
+                              >
+                                <textarea
+                                  placeholder="Add a comment"
+                                  className="blank-input-style"
+                                  type="text"
+                                  value={this.state.editComment}
+                                  onChange={this.handelEditChange}
+                                />
+                                <div className="edit-comment-btns">
+                                  <div
+                                    data-comment_id={comment.id}
+                                    onClick={this.cancelEditComment}
+                                    id="cancel-btn-show-pin"
+                                    className="button-show-pin-comment cancel-btn-show-pin cancel-124"
+                                  >
+                                    Cancel
+                                  </div>
+                                  <div
+                                    id="save-btn-show-pin"
+                                    className="button-show-pin-comment save-123"
+                                    onClick={this.handelSubmitCommentEdit}
+                                  >
+                                    Save
+                                  </div>
                                 </div>
-
-                            </div> 
-
+                              </div>
                             </div>
-                        </div>
 
-{/* </div> */}
+                            <div
+                              className="bottom-section-comment-pin-show"
+                              id={
+                                "bottom-section-comment-pin-show" + comment.id
+                              }
+                            >
+                              <h1 className="header-title-boards-show-123">
+                                <div className="like-icon-div">
+                                  {comment.like.liked ? (
+                                    <img
+                                      data-img_liker_id={
+                                        this.props.currentUser.id
+                                      }
+                                      data-img_comment={comment.id}
+                                      data-like_id={comment.like.like.id}
+                                      onClick={this.removeLike}
+                                      src={window.redHeartURL}
+                                      alt="red heart"
+                                    />
+                                  ) : (
+                                    <img
+                                      data-img_liker_id={
+                                        this.props.currentUser.id
+                                      }
+                                      data-img_comment={comment.id}
+                                      onClick={this.createLike}
+                                      src={window.grayHeartURL}
+                                      alt="gray heart"
+                                    />
+                                  )}
+
+                                  {comment.like.like_count > 0 ? (
+                                    <div className="like-count">
+                                      {comment.like.like_count}
+                                    </div>
+                                  ) : null}
+                                </div>
+
+                                {comment.commenter_id ===
+                                this.props.currentUser.id ? (
+                                  <div
+                                    className="pin-duplicate-button-dd comment-edition-div"
+                                    id={comment.id}
+                                    onClick={this.dd_display_tog}
+                                  >
+                                    <img
+                                      className="pin-123-1 comment-edition-dot"
+                                      src={window.dotsBlackURL}
+                                      alt="more icon"
+                                    />
+                                  </div>
+                                ) : null}
+                                {!!this.state.dd_s[comment.id] ? (
+                                  <div className="div-holder-helper-123-pin-show pin-modif new-mod-display">
+                                    <div
+                                      className="edit-dropdown-menue-123-pin-show move-edit-delete-div"
+                                      id={
+                                        `edit-dropdown-menue-124-id` +
+                                        comment.id
+                                      }
+                                    >
+                                      <div
+                                        data-div_val={comment.body}
+                                        id={comment.id}
+                                        onClick={this.editComment}
+                                      >
+                                        Edit
+                                      </div>
+                                      <div
+                                        id={comment.id}
+                                        onClick={this.deleteComment}
+                                      >
+                                        Delete
+                                      </div>
+                                    </div>
+                                  </div>
+                                ) : null}
+                              </h1>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="comment-count">
+                        {comments.length} comments{" "}
+                      </div>
+                    </div>
+                  ) : null}
+                  <div className="comments-in-section">
+                    <div id="847428 C" className="image-div-show-pin-page C">
+                      <ProfileAvatar
+                        photoUrl={this.props.currentUser.photoUrl}
+                        usersName={this.props.currentUser.f_name}
+                      />
+                    </div>
+                    <input
+                      type="text"
+                      autoComplete="off"
+                      id="comment-input-pin-show"
+                      className="input-pin-show"
+                      placeholder="Add a comment"
+                      onClick={this.classAddInput}
+                      onChange={this.isFieldEmpty}
+                    />
+                  </div>
+
+                  <div id="pin-show-btn" className="outer-comment-pin-show-2">
+                    <div
+                      id="cancel-btn-show-pin"
+                      className="button-show-pin-comment cancel-btn-show-pin"
+                    >
+                      Cancel
+                    </div>
+                    <div
+                      id="done-btn-show-pin"
+                      className="button-show-pin-comment done-123"
+                      onClick={this.handelSubmitComment}
+                    >
+                      Done
+                    </div>
+                  </div>
+
+                  <div className="bottom-info-outter-div">
+                    <div className="image-div-show-pin-page bottom-info-links">
+                      <ProfileAvatar
+                        photoUrl={this.props.pin.pin.pinUser.photoUrl}
+                        usersName={this.props.pin.pin.pinUser.f_name}
+                      />
+                    </div>
+
+                    <div className="bottom-section-pin-show-links">
+                      {this.state.pin.creator_id ===
+                      this.props.currentUser.id ? (
+                        <Link
+                          className="pin-show-link"
+                          to={`/profile/${this.state.pin.creator_id}`}
+                        >
+                          You
+                        </Link>
+                      ) : (
+                        <Link
+                          className="pin-show-link"
+                          to={`/profile/${this.state.pin.creator_id}`}
+                        >
+                          {this.state.pin.pinUser.f_name}{" "}
+                          {this.state.pin.pinUser.l_name}{" "}
+                        </Link>
+                      )}{" "}
+                      saved to{" "}
+                      <Link
+                        className="pin-show-link"
+                        to={`/board/${this.state.pin.board_id}`}
+                      >
+                        {this.state.pin.board.title}
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-            
-            </div> 
-            )
-        }
-        return(
-            <div>
-                <div className='back-arrow-pin-show' onClick={this.goBackBtn} >
-                    <img className='img-back-arrow' src={window.backArrowFile} alt="back" />
-                </div>
-                {pinShow}
+              </div>
             </div>
-        )
+
+            {/* </div> */}
+          </div>
+        </div>
+      );
     }
+    return (
+      <div>
+        <div className="back-arrow-pin-show" onClick={this.goBackBtn}>
+          <img
+            className="img-back-arrow"
+            src={window.backArrowFile}
+            alt="back"
+          />
+        </div>
+        {pinShow}
+      </div>
+    );
+  }
 }
 
 export default PinShow;

@@ -1,43 +1,41 @@
-
-.default-img-avatar{
-    min-width: 101%;
-    min-height: 101%;
-    object-fit: cover;
+.default-img-avatar {
+  min-width: 101%;
+  min-height: 101%;
+  object-fit: cover;
 }
 
-.default-div-avatar{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    border-radius: 100%;
-    
+.default-div-avatar {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  border-radius: 100%;
 }
 
-.default-text-div-avatar{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #efefef;
-    border-radius: 100px;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
+.default-text-div-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #efefef;
+  border-radius: 100px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 // this is the default text properties for p
-.default-p-class{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+.default-p-class {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
-#default-p-id{
-    // font-size: 100%;
+#default-p-id {
+  // font-size: 100%;
 }

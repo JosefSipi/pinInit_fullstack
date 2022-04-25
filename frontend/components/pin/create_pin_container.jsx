@@ -1,32 +1,32 @@
-import { connect } from 'react-redux';
-import CreatePin from './create_pin';
-import { createNewPin } from '../../actions/pin_action';
-import { fetchUser } from '../../actions/user_actions';
-import { withRouter } from 'react-router-dom';
-import { fetchBoards } from '../../actions/board_actions';
-import { openModal, closeModal } from '../../actions/modal';
+import { connect } from "react-redux";
+import CreatePin from "./create_pin";
+import { createNewPin } from "../../actions/pin_action";
+import { fetchUser } from "../../actions/user_actions";
+import { withRouter } from "react-router-dom";
+import { fetchBoards } from "../../actions/board_actions";
+import { openModal, closeModal } from "../../actions/modal";
 
-const mSTP = state => {
-    return {
-        user: state.user,
-        // boards: Object.values(state.boards)
-        boards: state.boards,
-        currentUser: state.session.currentUser
-    }
-}
+const mSTP = (state) => {
+  return {
+    user: state.user,
+    // boards: Object.values(state.boards)
+    boards: state.boards,
+    currentUser: state.session.currentUser,
+  };
+};
 
-const mDTP = dispatch => {
-    return {
-        createNewPin: (pinForm) => dispatch(createNewPin(pinForm)),
-    
-        fetchUser: (userId) => dispatch(fetchUser(userId)),
+const mDTP = (dispatch) => {
+  return {
+    createNewPin: (pinForm) => dispatch(createNewPin(pinForm)),
 
-        fetchBoards: (userId) => dispatch(fetchBoards(userId)),
+    fetchUser: (userId) => dispatch(fetchUser(userId)),
 
-        openModal: (modal) => dispatch(openModal(modal)),
+    fetchBoards: (userId) => dispatch(fetchBoards(userId)),
 
-        closeModal: () => dispatch(closeModal()),
-    }
-}
+    openModal: (modal) => dispatch(openModal(modal)),
 
-export default withRouter(connect(mSTP, mDTP)(CreatePin))
+    closeModal: () => dispatch(closeModal()),
+  };
+};
+
+export default withRouter(connect(mSTP, mDTP)(CreatePin));
