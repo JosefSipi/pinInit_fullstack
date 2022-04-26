@@ -249,7 +249,7 @@ class EditForm extends React.Component {
                 ? "normal-btn-edit-prof"
                 : "normal-btn-edit-prof buttons-edit-active-reset"
             }
-            onClick={!btnStat ? this.resetData : null}
+            onClick={!btnStat && this.resetData}
           >
             Reset
           </button>
@@ -259,7 +259,7 @@ class EditForm extends React.Component {
                 ? "normal-btn-edit-prof"
                 : "normal-btn-edit-prof buttons-edit-active-save"
             }
-            onClick={!btnStat ? this.saveChanges : null}
+            onClick={!btnStat && this.saveChanges}
           >
             Save
           </button>

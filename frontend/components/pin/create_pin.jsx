@@ -117,13 +117,13 @@ class CreatePin extends React.Component {
                 >
                   <div className="around-dd-board-pin-display">
                     <div className="rounded-border-for-img">
-                      {board.pinPhotos.one ? (
+                      {board.pinPhotos.one && (
                         <img
                           className="photo-pin-in-board-opt"
                           src={board.pinPhotos.one}
                           alt=""
                         />
-                      ) : null}
+                      )}
                     </div>
                   </div>
 
@@ -480,7 +480,7 @@ class CreatePin extends React.Component {
         </div>
 
         <div className="primary-createpin-card">
-          {this.state.loading ? <LoadingIcon /> : null}
+          {this.state.loading && <LoadingIcon />}
 
           <div className={this.state.loading ? "deactivate" : ""}>
             <div className="top-bar-create-pin">
@@ -491,7 +491,7 @@ class CreatePin extends React.Component {
                 <img src={window.moreURL} alt="more icon" id="more-logo-icon" />
               </div>
 
-              {!!this.state.boards ? this.boardDropDownSelectCreate() : null}
+              {!!this.state.boards && this.boardDropDownSelectCreate()}
 
               {/* ------------------ drop down part --------------- */}
             </div>
@@ -663,7 +663,7 @@ class CreatePin extends React.Component {
                   Add alt text
                 </div>
 
-                {this.state.showHelpDes ? (
+                {this.state.showHelpDes && (
                   <div className="blue-info">
                     <div>
                       <img
@@ -683,7 +683,7 @@ class CreatePin extends React.Component {
                       pin, if applicable{" "}
                     </p>
                   </div>
-                ) : null}
+                )}
 
                 <input
                   type="text"

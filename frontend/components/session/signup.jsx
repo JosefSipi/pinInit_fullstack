@@ -125,9 +125,7 @@ class SignUp extends React.Component {
               value={this.state.email}
               onChange={this.onChange("email")}
             />
-            {emailError ? (
-              <div className="pwError-div">{emailError}</div>
-            ) : null}
+            {emailError && <div className="pwError-div">{emailError}</div>}
             <input
               type="password"
               autoComplete="off"
@@ -138,7 +136,7 @@ class SignUp extends React.Component {
               value={this.state.password}
               onChange={this.onChange("password")}
             />
-            {pwError ? <div className="pwError-div">{pwError}</div> : null}
+            {pwError && <div className="pwError-div">{pwError}</div>}
             <input
               type="number"
               autoComplete="off"
@@ -149,7 +147,7 @@ class SignUp extends React.Component {
               value={this.state.age}
               onChange={this.onChange("age")}
             />
-            {ageError ? <div className="pwError-div">{ageError}</div> : null}
+            {ageError && <div className="pwError-div">{ageError}</div>}
             <input
               className="login-button-signUp-Modal"
               type="submit"

@@ -367,13 +367,13 @@ class PinShow extends React.Component {
     if (this.props.currentUser.id === this.props.pin.pin.creator_id) {
       pinShow = (
         <div className="background-div-pin-show">
-          {back_drop_s ? (
+          {back_drop_s && (
             <div
               className="backdrop-div-create-pin pin-show-bd"
               onClick={this.backdropClick}
               id="backdrop-div-create-pin"
             ></div>
-          ) : null}
+          )}
           <div className="main-div-pin-show">
             {/* <div className='sub-div-boarder-play'> */}
 
@@ -401,7 +401,7 @@ class PinShow extends React.Component {
                         alt="more icon"
                       />
                     </div>
-                    {this.state.dd_s[`dd_id_pin${this.state.pin.id}`] ? (
+                    {this.state.dd_s[`dd_id_pin${this.state.pin.id}`] && (
                       <div
                         className="div-holder-helper-123 outside-pin-show"
                         id={`dd_id_pin${this.state.pin.id}`}
@@ -418,12 +418,12 @@ class PinShow extends React.Component {
                           </div>
                         </div>
                       </div>
-                    ) : null}
+                    )}
                   </h1>
                 </div>
               </div>
 
-              {!!this.state.pin.websiteURL ? (
+              {!!this.state.pin.websiteURL && (
                 <a
                   className="url-link-tag"
                   href={this.state.pin.websiteURL}
@@ -431,7 +431,7 @@ class PinShow extends React.Component {
                 >
                   {this.state.pin.websiteURL.slice(0, 27) + "..."}
                 </a>
-              ) : null}
+              )}
               <div className="title-pin-show">{this.state.pin.title}</div>
               <p className="description-pin-show">
                 {this.state.pin.description}
@@ -448,7 +448,7 @@ class PinShow extends React.Component {
                   Share feedback, ask a question or give a high five
                 </div>
                 <div className="outer-comment-pin-show-1">
-                  {!!comments ? (
+                  {!!comments && (
                     <div className="comment-array-holding-div">
                       <div className="comment-array-pin-show">
                         {comments.map((comment) => (
@@ -553,15 +553,15 @@ class PinShow extends React.Component {
                                     />
                                   )}
 
-                                  {comment.like.like_count > 0 ? (
+                                  {comment.like.like_count > 0 && (
                                     <div className="like-count">
                                       {comment.like.like_count}
                                     </div>
-                                  ) : null}
+                                  )}
                                 </div>
 
                                 {comment.commenter_id ===
-                                this.props.currentUser.id ? (
+                                  this.props.currentUser.id && (
                                   <div
                                     className="pin-duplicate-button-dd comment-edition-div"
                                     id={comment.id}
@@ -573,8 +573,8 @@ class PinShow extends React.Component {
                                       alt="more icon"
                                     />
                                   </div>
-                                ) : null}
-                                {!!this.state.dd_s[comment.id] ? (
+                                )}
+                                {!!this.state.dd_s[comment.id] && (
                                   <div className="div-holder-helper-123-pin-show pin-modif new-mod-display">
                                     <div
                                       className="edit-dropdown-menue-123-pin-show move-edit-delete-div"
@@ -598,7 +598,7 @@ class PinShow extends React.Component {
                                       </div>
                                     </div>
                                   </div>
-                                ) : null}
+                                )}
                               </h1>
                             </div>
                           </div>
@@ -609,7 +609,7 @@ class PinShow extends React.Component {
                         {comments.length} comments{" "}
                       </div>
                     </div>
-                  ) : null}
+                  )}
                   <div className="comments-in-section">
                     <div id="847428 A" className="image-div-show-pin-page C">
                       <ProfileAvatar
@@ -693,13 +693,13 @@ class PinShow extends React.Component {
     } else {
       pinShow = (
         <div className="background-div-pin-show">
-          {back_drop_s ? (
+          {back_drop_s && (
             <div
               className="backdrop-div-create-pin pin-show-bd"
               onClick={this.backdropClick}
               id="backdrop-div-create-pin"
             ></div>
-          ) : null}
+          )}
           <div className="main-div-pin-show">
             {/* <div className='sub-div-boarder-play'> */}
 
@@ -714,21 +714,21 @@ class PinShow extends React.Component {
             <div className="right-half-pin-show">
               <div className="top-bar-right-show-pin">
                 {/* <div>
-                                    <h1 className="header-title-boards-show-123" >
-                                    
-                                    <div className="pin-duplicate-button-dd" onClick={this.dd_display_tog} id={`dd_id_pin${this.state.pin.id}`} onBlur={this.dd_display_tog}>
-                                        <img className="pin-123-1" src={window.dotsBlackURL} alt="more icon"/>
-                                    </div>
-                                        {this.state.dd_s[`dd_id_pin${this.state.pin.id}`] ? <div className="div-holder-helper-123 outside-pin-show" id={`dd_id_pin${this.state.pin.id}`} >
-                                            <div className="edit-dropdown-menue-123 pin-show" id="edit-dropdown-menue-123-id">
-                                                <div className='edition-pin-show-div' onMouseDown={this.editPin} >Edit Pin</div>
-                                            </div>
-                                        </div> : null}
-                                    </h1>
-                                </div> */}
+                    <h1 className="header-title-boards-show-123" >
+                    
+                    <div className="pin-duplicate-button-dd" onClick={this.dd_display_tog} id={`dd_id_pin${this.state.pin.id}`} onBlur={this.dd_display_tog}>
+                        <img className="pin-123-1" src={window.dotsBlackURL} alt="more icon"/>
+                    </div>
+                        {this.state.dd_s[`dd_id_pin${this.state.pin.id}`] && <div className="div-holder-helper-123 outside-pin-show" id={`dd_id_pin${this.state.pin.id}`} >
+                            <div className="edit-dropdown-menue-123 pin-show" id="edit-dropdown-menue-123-id">
+                                <div className='edition-pin-show-div' onMouseDown={this.editPin} >Edit Pin</div>
+                            </div>
+                        </div> }
+                    </h1>
+                </div> */}
               </div>
 
-              {!!this.state.pin.websiteURL ? (
+              {!!this.state.pin.websiteURL && (
                 <a
                   className="url-link-tag"
                   href={this.state.pin.websiteURL}
@@ -736,7 +736,7 @@ class PinShow extends React.Component {
                 >
                   {this.state.pin.websiteURL.slice(0, 27) + "..."}
                 </a>
-              ) : null}
+              )}
               <div className="title-pin-show">{this.state.pin.title}</div>
               <p className="description-pin-show">
                 {this.state.pin.description}
@@ -753,7 +753,7 @@ class PinShow extends React.Component {
                   Share feedback, ask a question or give a high five
                 </div>
                 <div className="outer-comment-pin-show-1">
-                  {!!comments ? (
+                  {!!comments && (
                     <div className="comment-array-holding-div">
                       <div className="comment-array-pin-show">
                         {comments.map((comment) => (
@@ -858,15 +858,15 @@ class PinShow extends React.Component {
                                     />
                                   )}
 
-                                  {comment.like.like_count > 0 ? (
+                                  {comment.like.like_count > 0 && (
                                     <div className="like-count">
                                       {comment.like.like_count}
                                     </div>
-                                  ) : null}
+                                  )}
                                 </div>
 
                                 {comment.commenter_id ===
-                                this.props.currentUser.id ? (
+                                  this.props.currentUser.id && (
                                   <div
                                     className="pin-duplicate-button-dd comment-edition-div"
                                     id={comment.id}
@@ -878,8 +878,8 @@ class PinShow extends React.Component {
                                       alt="more icon"
                                     />
                                   </div>
-                                ) : null}
-                                {!!this.state.dd_s[comment.id] ? (
+                                )}
+                                {!!this.state.dd_s[comment.id] && (
                                   <div className="div-holder-helper-123-pin-show pin-modif new-mod-display">
                                     <div
                                       className="edit-dropdown-menue-123-pin-show move-edit-delete-div"
@@ -903,7 +903,7 @@ class PinShow extends React.Component {
                                       </div>
                                     </div>
                                   </div>
-                                ) : null}
+                                )}
                               </h1>
                             </div>
                           </div>
@@ -914,7 +914,7 @@ class PinShow extends React.Component {
                         {comments.length} comments{" "}
                       </div>
                     </div>
-                  ) : null}
+                  )}
                   <div className="comments-in-section">
                     <div id="847428 C" className="image-div-show-pin-page C">
                       <ProfileAvatar

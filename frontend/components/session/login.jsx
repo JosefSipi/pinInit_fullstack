@@ -50,7 +50,7 @@ class LogIn extends React.Component {
       <ul>
         {this.props.errors.map((error, i) => (
           <div key={i}>
-            {error === "The password you entered is incorrect." ? error : null}{" "}
+            {error === "The password you entered is incorrect." && error}{" "}
           </div>
         ))}
       </ul>
@@ -110,9 +110,7 @@ class LogIn extends React.Component {
               value={this.state.email}
               onChange={this.onChange("email")}
             />
-            {emailError ? (
-              <div className="pwError-div">{emailError}</div>
-            ) : null}
+            {emailError && <div className="pwError-div">{emailError}</div>}
             <input
               type="password"
               autoComplete="off"
@@ -122,7 +120,7 @@ class LogIn extends React.Component {
               value={this.state.password}
               onChange={this.onChange("password")}
             />
-            {pwError ? <div className="pwError-div">{pwError}</div> : null}
+            {pwError && <div className="pwError-div">{pwError}</div>}
             {/* <h2 className="forgot-pw">Forgot your password?</h2> */}
 
             <input

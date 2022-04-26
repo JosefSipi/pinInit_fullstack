@@ -236,9 +236,7 @@ class NavBar extends React.Component {
               id="the-dropdown-on-nav-bar-search"
             >
               <div id="this-will-hold-search-list">
-                {pinsReady
-                  ? thePins.map((pin) => this.pinSearchDisplay(pin))
-                  : null}
+                {pinsReady && thePins.map((pin) => this.pinSearchDisplay(pin))}
               </div>
 
               <div>
