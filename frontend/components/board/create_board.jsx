@@ -8,6 +8,7 @@ class CreateBoard extends React.Component {
       title: "",
       is_private: false,
       owner_id: window.currentUser.id,
+      createButtonClass: "create-board-btn-gray"
     };
 
     this.checkboxChange = this.checkboxChange.bind(this);
@@ -42,16 +43,8 @@ class CreateBoard extends React.Component {
 
   updateTitle(e) {
     e.preventDefault();
-
-    if (e.target.value.trim() === "") {
-      document.getElementById("create-board-btn").className =
-        "create-board-btn-gray";
-    } else {
-      document.getElementById("create-board-btn").className =
-        "create-board-btn";
-    }
-
-    this.setState({ title: e.target.value });
+    let classBtn = e.target.value.trim() === "" ? 'create-board-btn-gray' : 'create-board-btn'
+    this.setState({ title: e.target.value, createButtonClass: classBtn });
   }
 
   checkboxChange(e) {
@@ -93,7 +86,7 @@ class CreateBoard extends React.Component {
             </div>
           </div>
           <div className="create-board-div">
-            <button className="create-board-btn-gray" id="create-board-btn">
+            <button className={this.state.createButtonClass} id="create-board-btn">
               Create
             </button>
           </div>
