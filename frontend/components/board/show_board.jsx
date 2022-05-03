@@ -69,7 +69,6 @@ class BoardShow extends React.Component {
       backdrop.style.display = "none";
     }
     
-    // should remove any edits to the DOM
     // let ul = document.getElementById('board-dropdown-create-pin')
     // if (ul.style.display === "block") {
     //     ul.style.display = "none"
