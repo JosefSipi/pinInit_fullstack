@@ -335,7 +335,7 @@ div.over-lay {
   height: 100%;
   width: 100%;
   position: absolute;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.308);
   border-radius: 16px;
   top: 0;
   left: 0;
@@ -359,6 +359,9 @@ div.over-lay {
   flex-direction: column;
   &:hover {
     cursor: zoom-in;
+    div.the-shade-over-pin{
+      display: block;
+    }
   }
 }
 
