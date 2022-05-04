@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { photoIsLoaded } from '../../utils/util_functions/pin_func';
+import { photoIsLoaded } from "../../utils/util_functions/pin_func";
 
 class SearchFeed extends React.Component {
   constructor(props) {
@@ -18,7 +18,6 @@ class SearchFeed extends React.Component {
   }
 
   componentDidMount() {
-
     if (!!this.props.history.location.params) {
       this.props
         .searchFeedCall(this.props.history.location.params)

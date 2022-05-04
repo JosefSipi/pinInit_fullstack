@@ -187,7 +187,6 @@ class EditPinShow extends React.Component {
                 cols="30"
                 rows="3"
               ></textarea>
-              {/* <input type="text" autoComplete="off" className="edit-pin-input" value={this.state.pin.description} onChange={this.handelChange('description')}/> */}
             </div>
 
             <div className="url-link-edit-p all-left-section-edit-p">

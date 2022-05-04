@@ -10,7 +10,7 @@ class BoardShow extends React.Component {
     this.state = {
       userProfile: null,
       backdropCreatePinActive: false,
-      boardOptionsActive: false
+      boardOptionsActive: false,
     };
 
     this.modalFunction = this.modalFunction.bind(this);
@@ -33,8 +33,8 @@ class BoardShow extends React.Component {
 
     this.setState({
       backdropCreatePinActive: false,
-      boardOptionsActive: false
-    })
+      boardOptionsActive: false,
+    });
   }
 
   moreClickedDD(e) {
@@ -42,8 +42,8 @@ class BoardShow extends React.Component {
 
     this.setState({
       backdropCreatePinActive: !this.state.backdropCreatePinActive,
-      boardOptionsActive: !this.state.boardOptionsActive
-    })
+      boardOptionsActive: !this.state.boardOptionsActive,
+    });
   }
 
   backdropClick(e) {
@@ -51,8 +51,8 @@ class BoardShow extends React.Component {
 
     this.setState({
       backdropCreatePinActive: false,
-      boardOptionsActive: false
-    })
+      boardOptionsActive: false,
+    });
   }
 
   modalFunction(e) {
@@ -80,11 +80,13 @@ class BoardShow extends React.Component {
         <div>
           <div className="boards-grid-area-for-pins">
             <div className="top-section">
-             {this.state.backdropCreatePinActive && <div
-                className="backdrop-div-create-pin-show_board"
-                onClick={this.backdropClick}
-                id="backdrop-div-create-pin"
-              ></div>}
+              {this.state.backdropCreatePinActive && (
+                <div
+                  className="backdrop-div-create-pin-show_board"
+                  onClick={this.backdropClick}
+                  id="backdrop-div-create-pin"
+                ></div>
+              )}
 
               <div>
                 <h1 className="header-title-boards-show-123">
@@ -103,18 +105,20 @@ class BoardShow extends React.Component {
                     </div>
 
                     <div className="div-holder-helper-123">
-                      {this.state.boardOptionsActive && <div
-                        className="edit-dropdown-menue-1235"
-                        id="edit-dropdown-menue-123-id"
-                      >
-                        <h1 className="title-dd">Board options</h1>
+                      {this.state.boardOptionsActive && (
                         <div
-                          onClick={this.editPen}
-                          id={this.props.boardProfile.id}
+                          className="edit-dropdown-menue-1235"
+                          id="edit-dropdown-menue-123-id"
                         >
-                          Edit board
+                          <h1 className="title-dd">Board options</h1>
+                          <div
+                            onClick={this.editPen}
+                            id={this.props.boardProfile.id}
+                          >
+                            Edit board
+                          </div>
                         </div>
-                      </div>}
+                      )}
                     </div>
                   </span>
                 </h1>
@@ -166,66 +170,64 @@ class BoardShow extends React.Component {
               </div>
             ) : (
               <div className="pin_container" id="pin_container">
-                {pins.map(
-                  (pin) => (
-                    <Link
-                      data-link_title={pin.title}
-                      to={`/pin/${pin.id}`}
-                      onLoad={photoIsLoaded}
-                      id={`card-card-card${pin.id}`}
-                      className="card-update"
-                      style={
-                        ({ gridRowEnd: `span 45` }, { visibility: "hidden" })
-                      }
-                      key={pin.id}
-                    >
-                      <div className="outside-edit-pin-board-show"></div>
+                {pins.map((pin) => (
+                  <Link
+                    data-link_title={pin.title}
+                    to={`/pin/${pin.id}`}
+                    onLoad={photoIsLoaded}
+                    id={`card-card-card${pin.id}`}
+                    className="card-update"
+                    style={
+                      ({ gridRowEnd: `span 45` }, { visibility: "hidden" })
+                    }
+                    key={pin.id}
+                  >
+                    <div className="outside-edit-pin-board-show"></div>
 
-                      <div className="outside-surrounding-pin-image-div">
-                        <img
-                          className="pin-photo"
-                          src={pin.photoUrl}
-                          alt="pin photo"
-                        />
+                    <div className="outside-surrounding-pin-image-div">
+                      <img
+                        className="pin-photo"
+                        src={pin.photoUrl}
+                        alt="pin photo"
+                      />
+
+                      <div
+                        data-div_id={pin.id}
+                        className="the-shade-over-pin"
+                        id={`the-shade-over-pin${pin.id}`}
+                      >
+                        <div
+                          style={
+                            pin.websiteURL.length < 3
+                              ? { display: "none" }
+                              : { display: "flex" }
+                          }
+                          className="website-url-div-hoverthing"
+                          id={pin.websiteURL}
+                          onClick={this.openTheLink}
+                        >
+                          {" "}
+                          <img
+                            className="arr-in-website"
+                            src={window.upRightArrowURL}
+                            alt="up arrow"
+                          />{" "}
+                          {`${pin.websiteURL}`.slice(8, 16) + "...."}
+                        </div>
 
                         <div
-                          data-div_id={pin.id}
-                          className="the-shade-over-pin"
-                          id={`the-shade-over-pin${pin.id}`}
+                          id={pin.id}
+                          className="edit-pen-div-show-board"
+                          onClick={this.modalFunction}
                         >
-                          <div
-                            style={
-                              pin.websiteURL.length < 3
-                                ? { display: "none" }
-                                : { display: "flex" }
-                            }
-                            className="website-url-div-hoverthing"
-                            id={pin.websiteURL}
-                            onClick={this.openTheLink}
-                          >
-                            {" "}
-                            <img
-                              className="arr-in-website"
-                              src={window.upRightArrowURL}
-                              alt="up arrow"
-                            />{" "}
-                            {`${pin.websiteURL}`.slice(8, 16) + "...."}
-                          </div>
-
-                          <div
-                            id={pin.id}
-                            className="edit-pen-div-show-board"
-                            onClick={this.modalFunction}
-                          >
-                            <img src={window.editPenURL} alt="edit pen" />
-                          </div>
+                          <img src={window.editPenURL} alt="edit pen" />
                         </div>
                       </div>
+                    </div>
 
-                      <div className="card-title-pin">{pin.title}</div>
-                    </Link>
-                  )
-                )}
+                    <div className="card-title-pin">{pin.title}</div>
+                  </Link>
+                ))}
               </div>
             )}
           </div>
@@ -236,11 +238,13 @@ class BoardShow extends React.Component {
         <div>
           <div className="boards-grid-area-for-pins">
             <div className="top-section">
-              {this.state.backdropCreatePinActive && <div
-                className="backdrop-div-create-pin-show_board"
-                onClick={this.backdropClick}
-                id="backdrop-div-create-pin"
-              ></div>}
+              {this.state.backdropCreatePinActive && (
+                <div
+                  className="backdrop-div-create-pin-show_board"
+                  onClick={this.backdropClick}
+                  id="backdrop-div-create-pin"
+                ></div>
+              )}
 
               <div className="div-22-1">
                 <h1 className="header-title-boards-show-123">

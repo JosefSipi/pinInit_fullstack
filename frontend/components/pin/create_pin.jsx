@@ -29,6 +29,8 @@ class CreatePin extends React.Component {
       err_msg: "",
       showHelpDes: false,
       showHelpMount: false,
+      addTxtButtonDisp: true,
+      altTextAreaActive: false,
     };
 
     this.handelAddText = this.handelAddText.bind(this);
@@ -40,7 +42,6 @@ class CreatePin extends React.Component {
     this.moreClicked = this.moreClicked.bind(this);
     this.backdropClick = this.backdropClick.bind(this);
     this.supTextShow = this.supTextShow.bind(this);
-    this.toggleDesTxt = this.toggleDesTxt.bind(this);
     this.populateBoardField = this.populateBoardField.bind(this);
     this.createABoard = this.createABoard.bind(this);
     this.boardDropDownSelectCreate = this.boardDropDownSelectCreate.bind(this);
@@ -170,16 +171,6 @@ class CreatePin extends React.Component {
     this.props.openModal("createBoard");
   }
 
-  toggleDesTxt(e) {
-    e.preventDefault();
-    let toggleTxt = document.getElementById("txt-create-p-fifty");
-    if (toggleTxt.style.display === "flex") {
-      toggleTxt.style.display = "none";
-    } else {
-      toggleTxt.style.display = "flex";
-    }
-  }
-
   handelSubmit(e) {
     e.preventDefault();
 
@@ -268,10 +259,10 @@ class CreatePin extends React.Component {
 
   handelAddText(e) {
     e.preventDefault();
-    let textarea = document.getElementById("alt-text-area");
-    let button = document.getElementById("alt-text-area-button");
-    textarea.style.display = "block";
-    button.style.display = "none";
+    this.setState({
+      addTxtButtonDisp: false,
+      altTextAreaActive: true,
+    });
   }
 
   handelUlClick(e) {
@@ -621,8 +612,6 @@ class CreatePin extends React.Component {
                   cols="40"
                   rows="1"
                   placeholder="Tell everyone what your Pin is about"
-                  onFocus={this.toggleDesTxt}
-                  onBlur={this.toggleDesTxt}
                 ></textarea>
                 <div className="txt-create-p-fifty" id="txt-create-p-fifty">
                   <div className="char-fifty-txt-create-p">
@@ -632,24 +621,27 @@ class CreatePin extends React.Component {
                   <div className="description-char-count">{description1}</div>
                 </div>
 
-                <textarea
-                  className="text-area-pin-create txt-area-create-p-moveup"
-                  onChange={this.inputChange("description2")}
-                  name=""
-                  id="alt-text-area"
-                  cols="40"
-                  rows="1"
-                  placeholder="Explain what people can see in the Pin"
-                  style={{ display: "none" }}
-                ></textarea>
+                {this.state.altTextAreaActive && (
+                  <textarea
+                    className="text-area-pin-create txt-area-create-p-moveup"
+                    onChange={this.inputChange("description2")}
+                    name=""
+                    id="alt-text-area"
+                    cols="40"
+                    rows="1"
+                    placeholder="Explain what people can see in the Pin"
+                  ></textarea>
+                )}
 
-                <div
-                  className="footer-create-pin-gray-button"
-                  onClick={this.handelAddText}
-                  id="alt-text-area-button"
-                >
-                  Add alt text
-                </div>
+                {this.state.addTxtButtonDisp && (
+                  <div
+                    className="footer-create-pin-gray-button"
+                    onClick={this.handelAddText}
+                    id="alt-text-area-button"
+                  >
+                    Add alt text
+                  </div>
+                )}
 
                 {this.state.showHelpDes && (
                   <div className="blue-info">

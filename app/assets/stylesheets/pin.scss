@@ -459,7 +459,6 @@ div.upload-img-container-err {
   z-index: 1;
 }
 
-
 .backdrop-div-create-pin-show_board {
   display: block;
   position: absolute;
@@ -469,7 +468,6 @@ div.upload-img-container-err {
   top: 0;
   z-index: 1;
 }
-
 
 input.input-for-title-pin {
   margin-bottom: 20px;
@@ -560,6 +558,9 @@ div.profile-div-small-pin {
   border-bottom: 1px #d4d4d4 solid;
   &:focus {
     border-bottom: 2px solid #0074e8;
+  }
+  &:focus + .txt-create-p-fifty {
+    display: flex;
   }
 }
 

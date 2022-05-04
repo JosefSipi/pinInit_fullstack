@@ -17,9 +17,9 @@ class NavBar extends React.Component {
       searchPins: null,
       seachActive: false,
       navBarSearchActive: false,
-      backDropActive: false
+      backDropActive: false,
     };
-    
+
     this.toggleContent = this.toggleContent.bind(this);
 
     this.prepSearch = this.prepSearch.bind(this);
@@ -43,26 +43,25 @@ class NavBar extends React.Component {
       this.setState({
         backDropActive: false,
         navBarSearchActive: false,
-        searchInput: ""
-      })
+        searchInput: "",
+      });
 
       this.props.history.push(input);
       this.props.searchFeedCall(input.params).then((data) => {
-        debugger
+        debugger;
         if (
           document.getElementById("this-will-hold-search-list")
             .childElementCount !== 0
         ) {
-          debugger
+          debugger;
           this.searchOver();
         }
       });
-
-    } else if (e.key === "Enter" && displayWord === ""){
+    } else if (e.key === "Enter" && displayWord === "") {
       this.setState({
         backDropActive: false,
-        navBarSearchActive: false
-      })
+        navBarSearchActive: false,
+      });
     }
   }
 
@@ -146,25 +145,25 @@ class NavBar extends React.Component {
   searchingTime(e) {
     this.setState({
       navBarSearchActive: !this.state.navBarSearchActive,
-      backDropActive: !this.state.backDropActive
-    })
+      backDropActive: !this.state.backDropActive,
+    });
   }
 
   searchOver(e) {
     this.setState({
       navBarSearchActive: false,
       backDropActive: false,
-      searchInput: ""
-    })
+      searchInput: "",
+    });
   }
 
   updateState(e) {
     e.preventDefault();
-    if(e.currentTarget.value !== ""){
+    if (e.currentTarget.value !== "") {
       this.setState({
         navBarSearchActive: true,
-        backDropActive: true
-      })
+        backDropActive: true,
+      });
     }
     this.setState({ searchInput: e.currentTarget.value });
     this.prepSearch(this.state.searchInput);
@@ -186,11 +185,13 @@ class NavBar extends React.Component {
   loggedInNavBar(showDropdown, theUsers, thePins, usersReady, pinsReady) {
     return (
       <div className="header">
-        {this.state.backDropActive && <div
-          className="backdrop-div-create-search"
-          id="backdrop-div-create-search"
-          onClick={this.searchOver}
-        ></div>}
+        {this.state.backDropActive && (
+          <div
+            className="backdrop-div-create-search"
+            id="backdrop-div-create-search"
+            onClick={this.searchOver}
+          ></div>
+        )}
         <div className="header-logged-in-1">
           <div className="logo-on-logged-in-header">
             <Link id="logo-logged-in" to="/feed">
@@ -231,18 +232,19 @@ class NavBar extends React.Component {
               src={window.magnaURL}
               alt="search icon"
             />
-            {this.state.navBarSearchActive && <div
-              className="the-dropdown-on-nav-bar-search"
-              id="the-dropdown-on-nav-bar-search"
-            >
-              <div id="this-will-hold-search-list">
-                {pinsReady && thePins.map((pin) => this.pinSearchDisplay(pin))}
-              </div>
+            {this.state.navBarSearchActive && (
+              <div
+                className="the-dropdown-on-nav-bar-search"
+                id="the-dropdown-on-nav-bar-search"
+              >
+                <div id="this-will-hold-search-list">
+                  {pinsReady &&
+                    thePins.map((pin) => this.pinSearchDisplay(pin))}
+                </div>
 
-              <div>
-                {usersReady ? (
-                  theUsers.map(
-                    (user) => (
+                <div>
+                  {usersReady ? (
+                    theUsers.map((user) => (
                       <div
                         key={user.id}
                         className="list-search-user"
@@ -264,13 +266,13 @@ class NavBar extends React.Component {
                         </div>
                         <div className="last-div-1">{user.username}</div>
                       </div>
-                    )
-                  )
-                ) : (
-                  <div></div>
-                )}
+                    ))
+                  ) : (
+                    <div></div>
+                  )}
+                </div>
               </div>
-            </div>}
+            )}
           </div>
         </div>
 
