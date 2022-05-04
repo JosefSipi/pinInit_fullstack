@@ -60,12 +60,7 @@ class EditBoardShow extends React.Component {
     if (!this.state.board) {
       return null;
     }
-
-    // if (this.state.board.description === null || this.state.board.description.trim().length > 0){
-    //      this.description = ""
-    // } else {
-    //     this.description = "What's your board about?"
-    // }
+    
     return (
       <div className="div-prim-edit-board">
         <div className="top-div-edit-board-modal">

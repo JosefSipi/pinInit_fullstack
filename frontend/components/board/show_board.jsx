@@ -279,12 +279,12 @@ class BoardShow extends React.Component {
                   {/* <div className="board-duplicate-button-dd" onClick={this.moreClickedDD}>
                         <img className="boards-123-1" src={window.dotsBlackURL} alt="more icon"/>
                     </div>
-                        <div className="div-holder-helper-123">
-                            <div className="edit-dropdown-menue-1235" id="edit-dropdown-menue-123-id">
-                                <h1 className="title-dd">Board options</h1>
-                                <div id={this.props.boardProfile.id}>Follow</div>
-                            </div>
-                        </div> */}
+                    <div className="div-holder-helper-123">
+                        <div className="edit-dropdown-menue-1235" id="edit-dropdown-menue-123-id">
+                            <h1 className="title-dd">Board options</h1>
+                            <div id={this.props.boardProfile.id}>Follow</div>
+                        </div>
+                    </div> */}
                 </h1>
               </div>
 
@@ -390,13 +390,7 @@ class BoardShow extends React.Component {
     if (!this.props.pins.pins || !this.props.userProfile) {
       return null;
     }
-    // if (!this.props.boardProfile || !this.props.pins.pins || !this.props.userProfile){
-    //     return null
-    // }
-
     const pins = Object.values(this.props.pins.pins);
-
-    // const theHeight = 45;
 
     return <div>{this.isProfileUser(pins)}</div>;
   }

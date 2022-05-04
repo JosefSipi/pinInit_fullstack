@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ProfileAvatar } from "../../utils/util_components/image_components";
-import { saveAs } from "file-saver";
+// import { saveAs } from "file-saver";
 
 class PinShow extends React.Component {
   constructor(props) {
