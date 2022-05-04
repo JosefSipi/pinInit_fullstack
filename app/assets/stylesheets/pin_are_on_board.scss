@@ -525,12 +525,12 @@ div.board-duplicate-button-dd {
   z-index: 210;
   border-radius: 16px;
   width: 200px;
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: white;
-  box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.2);
+  box-shadow: -1px 1px 10px 8px rgba(191, 191, 191, 0.3);
   div {
     width: 89%;
     height: 35px;

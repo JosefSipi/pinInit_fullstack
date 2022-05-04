@@ -9,6 +9,8 @@ class BoardShow extends React.Component {
 
     this.state = {
       userProfile: null,
+      backdropCreatePinActive: false,
+      boardOptionsActive: false
     };
 
     this.modalFunction = this.modalFunction.bind(this);
@@ -23,58 +25,35 @@ class BoardShow extends React.Component {
     e.preventDefault();
     window.open(e.currentTarget.id);
   }
+
   editPen(e) {
     e.preventDefault();
+    debugger
     window.editingBoard = e.currentTarget.id;
     this.props.openModal("editBoard");
 
-    let dropDown = document.getElementById("edit-dropdown-menue-123-id");
-    let backdrop = document.getElementById("backdrop-div-create-pin");
-    if (dropDown.style.display === "none") {
-      dropDown.style.display = "none";
-      // backdrop.style.display = "block"
-
-      backdrop.style.display = "none";
-    } else {
-      dropDown.style.display = "none";
-      backdrop.style.display = "none";
-    }
+    this.setState({
+      backdropCreatePinActive: false,
+      boardOptionsActive: false
+    })
   }
 
   moreClickedDD(e) {
     e.preventDefault();
-    let dropDown = document.getElementById("edit-dropdown-menue-123-id");
-    let backdrop = document.getElementById("backdrop-div-create-pin");
-    if (dropDown.style.display === "none" || dropDown.style.display === "") {
-      dropDown.style.display = "flex";
-      backdrop.style.display = "block";
-    } else {
-      dropDown.style.display = "none";
-      backdrop.style.display = "none";
-    }
+
+    this.setState({
+      backdropCreatePinActive: !this.state.backdropCreatePinActive,
+      boardOptionsActive: !this.state.boardOptionsActive
+    })
   }
 
   backdropClick(e) {
     e.preventDefault();
 
-    let dropDown = document.getElementById("edit-dropdown-menue-123-id");
-    let backdrop = document.getElementById("backdrop-div-create-pin");
-    if (dropDown.style.display === "none") {
-      dropDown.style.display = "none";
-      // backdrop.style.display = "block"
-
-      backdrop.style.display = "none";
-    } else {
-      dropDown.style.display = "none";
-      backdrop.style.display = "none";
-    }
-
-    // let ul = document.getElementById('board-dropdown-create-pin')
-    // if (ul.style.display === "block") {
-    //     ul.style.display = "none"
-    // } else {
-    //     // ul.style.display = "block"
-    // }
+    this.setState({
+      backdropCreatePinActive: false,
+      boardOptionsActive: false
+    })
   }
 
   modalFunction(e) {
@@ -94,9 +73,6 @@ class BoardShow extends React.Component {
     if (prevProps.userProfile !== this.props.userProfile) {
       this.setState({ userProfile: this.props.userProfile });
     }
-    // if(prevProps.boardProfile !== this.props.boardProfile){
-    //     this.props.fetchUser(this.props.boardProfile.owner_id)
-    // }
   }
 
   isProfileUser(pins) {
@@ -105,11 +81,11 @@ class BoardShow extends React.Component {
         <div>
           <div className="boards-grid-area-for-pins">
             <div className="top-section">
-              <div
-                className="backdrop-div-create-pin"
+             {this.state.backdropCreatePinActive && <div
+                className="backdrop-div-create-pin-show_board"
                 onClick={this.backdropClick}
                 id="backdrop-div-create-pin"
-              ></div>
+              ></div>}
 
               <div>
                 <h1 className="header-title-boards-show-123">
@@ -128,7 +104,7 @@ class BoardShow extends React.Component {
                     </div>
 
                     <div className="div-holder-helper-123">
-                      <div
+                      {this.state.boardOptionsActive && <div
                         className="edit-dropdown-menue-1235"
                         id="edit-dropdown-menue-123-id"
                       >
@@ -139,7 +115,7 @@ class BoardShow extends React.Component {
                         >
                           Edit board
                         </div>
-                      </div>
+                      </div>}
                     </div>
                   </span>
                 </h1>
@@ -173,10 +149,6 @@ class BoardShow extends React.Component {
                   secret board
                 </div>
               </div>
-
-              {/* <p>45 followers</p> */}
-
-              {/* <button>Share</button> */}
             </div>
           </div>
 
@@ -197,7 +169,6 @@ class BoardShow extends React.Component {
               <div className="pin_container" id="pin_container">
                 {pins.map(
                   (pin) => (
-                    //    <Link className="link-pin-on-board-pins" to={`/pin/${pin.id}`} key={pin.id + 'pin-key'}>
                     <Link
                       data-link_title={pin.title}
                       to={`/pin/${pin.id}`}
@@ -255,7 +226,6 @@ class BoardShow extends React.Component {
                       <div className="card-title-pin">{pin.title}</div>
                     </Link>
                   )
-                  // </Link>
                 )}
               </div>
             )}
@@ -267,24 +237,15 @@ class BoardShow extends React.Component {
         <div>
           <div className="boards-grid-area-for-pins">
             <div className="top-section">
-              <div
-                className="backdrop-div-create-pin"
+              {this.state.backdropCreatePinActive && <div
+                className="backdrop-div-create-pin-show_board"
                 onClick={this.backdropClick}
                 id="backdrop-div-create-pin"
-              ></div>
+              ></div>}
 
               <div className="div-22-1">
                 <h1 className="header-title-boards-show-123">
                   {this.props.boardProfile.title}
-                  {/* <div className="board-duplicate-button-dd" onClick={this.moreClickedDD}>
-                        <img className="boards-123-1" src={window.dotsBlackURL} alt="more icon"/>
-                    </div>
-                    <div className="div-holder-helper-123">
-                        <div className="edit-dropdown-menue-1235" id="edit-dropdown-menue-123-id">
-                            <h1 className="title-dd">Board options</h1>
-                            <div id={this.props.boardProfile.id}>Follow</div>
-                        </div>
-                    </div> */}
                 </h1>
               </div>
 
@@ -314,10 +275,6 @@ class BoardShow extends React.Component {
                   · {this.props.boardProfile.description}{" "}
                 </h2>
               </div>
-
-              {/* <p>45 followers</p> */}
-
-              {/* <button>Share</button> */}
             </div>
           </div>
 

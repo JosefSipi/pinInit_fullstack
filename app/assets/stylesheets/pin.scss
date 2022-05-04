@@ -451,6 +451,7 @@ div.upload-img-container-err {
 
 .backdrop-div-create-pin {
   display: none;
+  background-color: rgba(143, 0, 0, 0.429);
   position: absolute;
   height: 100em;
   width: 100em;
@@ -458,6 +459,19 @@ div.upload-img-container-err {
   top: 0;
   z-index: 1;
 }
+
+
+.backdrop-div-create-pin-show_board {
+  display: block;
+  background-color: rgba(74, 143, 0, 0.429);
+  position: absolute;
+  height: 100em;
+  width: 100em;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
 
 input.input-for-title-pin {
   margin-bottom: 20px;
