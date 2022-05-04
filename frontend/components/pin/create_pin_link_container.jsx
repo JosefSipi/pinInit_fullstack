@@ -9,17 +9,20 @@ const mSTP = (state) => {
 };
 
 const CreatePinLink = (state) => {
-  return state.loggedIn &&
-  <div className="logo-on-logged-in-header-plus-allpage">
-    <Link className="link-thing-plus" to="/pin-create">
-      {" "}
-      <img
-        className="the-big-plus-in-corner"
-        src={window.plusSignURL}
-        alt="+"
-      />{" "}
-    </Link>
-  </div>
+  return (
+    state.loggedIn && (
+      <div className="logo-on-logged-in-header-plus-allpage">
+        <Link className="link-thing-plus" to="/pin-create">
+          {" "}
+          <img
+            className="the-big-plus-in-corner"
+            src={window.plusSignURL}
+            alt="+"
+          />{" "}
+        </Link>
+      </div>
+    )
+  );
 };
 
 export default connect(mSTP)(CreatePinLink);

@@ -68,7 +68,7 @@ class BoardShow extends React.Component {
       dropDown.style.display = "none";
       backdrop.style.display = "none";
     }
-    
+
     // let ul = document.getElementById('board-dropdown-create-pin')
     // if (ul.style.display === "block") {
     //     ul.style.display = "none"
