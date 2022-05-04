@@ -49,8 +49,7 @@ div.last-div-1 {
 }
 
 .the-dropdown-on-nav-bar-search {
-  display: none;
-
+  display: flex;
   border-radius: 8px;
   border-top: -13px;
   padding-top: 35px;
@@ -59,7 +58,6 @@ div.last-div-1 {
   left: 10px;
   width: 98%;
   z-index: 230;
-
   flex-direction: column;
   position: relative;
   background-color: white;
@@ -74,7 +72,6 @@ div.last-div-1 {
   align-items: center;
   padding-left: 16px;
   padding-right: 16px;
-
   &:hover {
     cursor: pointer;
     background-color: #f3f3f3;
@@ -82,7 +79,7 @@ div.last-div-1 {
 }
 
 .backdrop-div-create-search {
-  display: none;
+  display: block;
   background-color: rgba(0, 0, 0, 0.274);
   position: absolute;
   height: 100vh;

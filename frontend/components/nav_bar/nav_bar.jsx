@@ -1,30 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { debounce } from "lodash";
-import SearchFeed from "../feed/search_feed_container";
 import { ProfileAvatar } from "../../utils/util_components/image_components";
 
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toggleContent = this.toggleContent.bind(this);
     this.state = {
       showDropdown: false,
       searchInput: "",
       update: null,
-    };
-
-    this.state = {
       logedInUser: this.props.currentUser,
       readyToCheck: false,
-    };
-
-    this.state = {
       searchUsers: null,
       searchPins: null,
       seachActive: false,
+      navBarSearchActive: false,
+      backDropActive: false
     };
+    
+    this.toggleContent = this.toggleContent.bind(this);
 
     this.prepSearch = this.prepSearch.bind(this);
     this.updateState = this.updateState.bind(this);
@@ -42,16 +38,31 @@ class NavBar extends React.Component {
   keyPressed(e) {
     let displayWord = e.currentTarget.value;
     let input = { pathname: "/feed-search", params: { displayWord } };
+
     if (e.key === "Enter" && displayWord !== "") {
+      this.setState({
+        backDropActive: false,
+        navBarSearchActive: false,
+        searchInput: ""
+      })
+
       this.props.history.push(input);
       this.props.searchFeedCall(input.params).then((data) => {
+        debugger
         if (
           document.getElementById("this-will-hold-search-list")
             .childElementCount !== 0
         ) {
+          debugger
           this.searchOver();
         }
       });
+
+    } else if (e.key === "Enter" && displayWord === ""){
+      this.setState({
+        backDropActive: false,
+        navBarSearchActive: false
+      })
     }
   }
 
@@ -133,33 +144,28 @@ class NavBar extends React.Component {
   }
 
   searchingTime(e) {
-    // this.setState({seachActive: !this.state.seachActive})
-
-    let ddSearch = document.getElementById("the-dropdown-on-nav-bar-search");
-    let backdrop = document.getElementById("backdrop-div-create-search");
-
-    if (ddSearch.style.display === "none" || ddSearch.style.display === "") {
-      ddSearch.style.display = "flex";
-      backdrop.style.display = "block";
-    } else {
-      ddSearch.style.display = "none";
-      backdrop.style.display = "none";
-    }
+    this.setState({
+      navBarSearchActive: !this.state.navBarSearchActive,
+      backDropActive: !this.state.backDropActive
+    })
   }
 
   searchOver(e) {
-    // e.preventDefault();
-    let ddSearch = document.getElementById("the-dropdown-on-nav-bar-search");
-    let backdrop = document.getElementById("backdrop-div-create-search");
-
-    ddSearch.style.display = "none";
-    backdrop.style.display = "none";
-
-    document.getElementById("search-bar-input").value = "";
+    this.setState({
+      navBarSearchActive: false,
+      backDropActive: false,
+      searchInput: ""
+    })
   }
 
   updateState(e) {
     e.preventDefault();
+    if(e.currentTarget.value !== ""){
+      this.setState({
+        navBarSearchActive: true,
+        backDropActive: true
+      })
+    }
     this.setState({ searchInput: e.currentTarget.value });
     this.prepSearch(this.state.searchInput);
   }
@@ -180,19 +186,14 @@ class NavBar extends React.Component {
   loggedInNavBar(showDropdown, theUsers, thePins, usersReady, pinsReady) {
     return (
       <div className="header">
-        <div
+        {this.state.backDropActive && <div
           className="backdrop-div-create-search"
           id="backdrop-div-create-search"
           onClick={this.searchOver}
-        ></div>
-        {/* <div className="backdrop-div-create-search" onClick={this.searchOver} id="backdrop-div-create-search"></div> */}
-        {/* <h1 className="very-hidden">
-                    {this.grabUser}
-                </h1>  */}
+        ></div>}
         <div className="header-logged-in-1">
           <div className="logo-on-logged-in-header">
             <Link id="logo-logged-in" to="/feed">
-              {/* src={require('../images/logo.png')} */}
               <img id="logo-header-loggedin" src={window.logoURL} alt="logo" />
             </Link>
           </div>
@@ -222,16 +223,15 @@ class NavBar extends React.Component {
             onKeyDown={this.keyPressed}
             onChange={this.updateState}
             onBlur={this.searchOver}
+            value={this.state.searchInput}
           ></input>
-
-          {/* <input className="searchBar" type="text" placeholder="Search" onChange={this.updateState} onFocus={this.searchingTime} onBlur={this.searchOver}></input> */}
           <div className="drop-down-holder-nav-bar">
             <img
               className="search-bar-icon"
               src={window.magnaURL}
               alt="search icon"
             />
-            <div
+            {this.state.navBarSearchActive && <div
               className="the-dropdown-on-nav-bar-search"
               id="the-dropdown-on-nav-bar-search"
             >
@@ -243,7 +243,6 @@ class NavBar extends React.Component {
                 {usersReady ? (
                   theUsers.map(
                     (user) => (
-                      // <Link to={`/profile/${user.id}`} >
                       <div
                         key={user.id}
                         className="list-search-user"
@@ -251,12 +250,6 @@ class NavBar extends React.Component {
                         data-user_id={user.id}
                       >
                         <div id="123 E" className="div-for-search-user-img">
-                          {/* <ProfileAvatar
-                                                    
-                                                    userName={user.username}
-                                                    photoUrl={user.photoUrl}
-                                                
-                                                /> */}
                           {!(user.photoUrl === "false") ? (
                             <img
                               className="profile-photo-icon"
@@ -272,26 +265,17 @@ class NavBar extends React.Component {
                         <div className="last-div-1">{user.username}</div>
                       </div>
                     )
-                    // </Link>
                   )
                 ) : (
                   <div></div>
                 )}
               </div>
-            </div>
+            </div>}
           </div>
         </div>
 
         <div className="header-right-logged-in">
-          {/* <div className="logo-on-logged-in-header" >
-                        <img id="logo-bell-icon" src={window.bellURL} alt="bell" />
-                    </div>
-                    <div className="logo-on-logged-in-header" >
-                        <img id="logo-message-icon" src={window.messageIconURL} alt="message Icon" />
-                    </div> */}
-
           <div className="link-logo-div">
-            {/* src={require('../images/logo.png')} */}
             <img id="logo-dropdown" src={window.logoURL} alt="logo" />
           </div>
 
@@ -303,14 +287,12 @@ class NavBar extends React.Component {
               <div id="123 F" className="profile-div-small">
                 <ProfileAvatar
                   usersName={this.props.currentUser.f_name}
-                  // photoUrl={'false'}
                   photoUrl={this.props.currentUser.photoUrl}
                 />
               </div>
             </div>
           </Link>
 
-          {/* <Link className="P-avatar" to="/feed"> */}
           <div className="the-outer-dropdown">
             <div
               className="logo-on-logged-in-header-dropdown"
@@ -349,7 +331,6 @@ class NavBar extends React.Component {
               </li>
             </ul>
           </div>
-          {/* </Link> */}
         </div>
       </div>
     );
@@ -359,7 +340,6 @@ class NavBar extends React.Component {
     return (
       <div className="header">
         <div className="header-left">
-          {/* require('../images/logo.png') */}
           <img id="logo-header-loggedout" src={window.logoURL} alt="logo" />
           <h4 className="pinlabel">Pininit</h4>
         </div>
@@ -424,7 +404,6 @@ class NavBar extends React.Component {
     return (
       <header className="nav-bar">
         <div className="nav-bar-sub-div-1">
-          {/* {this.bar} */}
           {!!this.props.currentUser
             ? this.loggedInNavBar(
                 showDropdown,
