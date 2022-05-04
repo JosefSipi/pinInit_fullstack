@@ -28,7 +28,6 @@ class BoardShow extends React.Component {
 
   editPen(e) {
     e.preventDefault();
-    debugger
     window.editingBoard = e.currentTarget.id;
     this.props.openModal("editBoard");
 

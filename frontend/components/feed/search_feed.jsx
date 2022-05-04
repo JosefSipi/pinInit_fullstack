@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { photoIsLoaded } from '../../utils/util_functions/pin_func';
 
 class SearchFeed extends React.Component {
   constructor(props) {
@@ -14,33 +15,9 @@ class SearchFeed extends React.Component {
     };
 
     this.openTheLink = this.openTheLink.bind(this);
-    this.photoLoaded = this.photoLoaded.bind(this);
-    this.onMouseLeaveCall = this.onMouseLeaveCall.bind(this);
-    this.onMouseEnterCall = this.onMouseEnterCall.bind(this);
-  }
-
-  onMouseEnterCall(e) {
-    e.preventDefault();
-
-    let theId = Number(
-      e.currentTarget.children[1].children[1].getAttribute("data-div_id")
-    );
-    let shadowCover = document.getElementById(`the-shade-over-pin${theId}`);
-    shadowCover.style.display = "block";
-  }
-
-  onMouseLeaveCall(e) {
-    e.preventDefault();
-
-    let theId = Number(
-      e.currentTarget.children[1].children[1].getAttribute("data-div_id")
-    );
-    let shadowCover = document.getElementById(`the-shade-over-pin${theId}`);
-    shadowCover.style.display = "none";
   }
 
   componentDidMount() {
-    // make backend call to get data for setting feed in state
 
     if (!!this.props.history.location.params) {
       this.props
@@ -55,22 +32,6 @@ class SearchFeed extends React.Component {
     if (this.props.feed !== prevProps.feed) {
       this.setState({ feed: this.props.feed });
     }
-  }
-
-  photoLoaded(e) {
-    e.preventDefault();
-
-    let titleCondition = !!e.currentTarget.getAttribute("data-link_title");
-    let imageHeight = e.currentTarget.children[1].clientHeight;
-    let spanVal;
-    {
-      titleCondition
-        ? (spanVal = Math.trunc(imageHeight / 10 + 5))
-        : (spanVal = Math.trunc(imageHeight / 10 + 2));
-    }
-    let card = document.getElementById(`${e.currentTarget.id}`);
-    card.style.gridRowEnd = `span ${spanVal}`;
-    e.currentTarget.style.visibility = "";
   }
 
   openTheLink(e) {
@@ -100,13 +61,11 @@ class SearchFeed extends React.Component {
             <Link
               data-link_title={pin.title}
               to={`/pin/${pin.id}`}
-              onLoad={this.photoLoaded}
+              onLoad={photoIsLoaded}
               id={`card-card-card${pin.id}`}
               className="card-update"
               style={({ gridRowEnd: `span 45` }, { visibility: "hidden" })}
               key={pin.id}
-              onMouseEnter={this.onMouseEnterCall}
-              onMouseLeave={this.onMouseLeaveCall}
             >
               <div className="outside-edit-pin-board-show"></div>
 

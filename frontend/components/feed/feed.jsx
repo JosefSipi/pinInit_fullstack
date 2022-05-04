@@ -14,8 +14,6 @@ class Feed extends React.Component {
       showFollowOpt: null,
     };
 
-    this.onMouseLeaveCall = this.onMouseLeaveCall.bind(this);
-    this.onMouseEnterCall = this.onMouseEnterCall.bind(this);
     this.openTheLink = this.openTheLink.bind(this);
     this.selectFollow = this.selectFollow.bind(this);
     this.updateNumFollowers = this.updateNumFollowers.bind(this);
@@ -97,26 +95,6 @@ class Feed extends React.Component {
   openTheLink(e) {
     e.preventDefault();
     window.open(e.currentTarget.id);
-  }
-
-  onMouseLeaveCall(e) {
-    e.preventDefault();
-
-    let theId = Number(
-      e.currentTarget.children[1].children[1].getAttribute("data-div_id")
-    );
-    let shadowCover = document.getElementById(`the-shade-over-pin${theId}`);
-    shadowCover.style.display = "none";
-  }
-
-  onMouseEnterCall(e) {
-    e.preventDefault();
-
-    let theId = Number(
-      e.currentTarget.children[1].children[1].getAttribute("data-div_id")
-    );
-    let shadowCover = document.getElementById(`the-shade-over-pin${theId}`);
-    shadowCover.style.display = "block";
   }
 
   componentDidMount() {
@@ -211,8 +189,6 @@ class Feed extends React.Component {
                   className="card-update"
                   style={({ gridRowEnd: `span 45` }, { visibility: "hidden" })}
                   key={pin.id}
-                  onMouseEnter={this.onMouseEnterCall}
-                  onMouseLeave={this.onMouseLeaveCall}
                 >
                   <div className="outside-edit-pin-board-show"></div>
 
