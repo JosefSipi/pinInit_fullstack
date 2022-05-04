@@ -183,7 +183,6 @@ class CreatePin extends React.Component {
   handelSubmit(e) {
     e.preventDefault();
 
-    // check if user has selected a board which includes if user has created a board yet
     if (!this.state.pin.board_id) {
       this.handelUlClick(e);
       return;
@@ -338,7 +337,6 @@ class CreatePin extends React.Component {
   imgConvertToWebp(e) {
     let file = e.currentTarget.files[0];
 
-    // check for proper image upload format and display error if wrong and exit upload function
     if (file.type !== "image/jpeg" && file.type !== "image/webp") {
       this.setState({
         img_err: true,
@@ -348,7 +346,6 @@ class CreatePin extends React.Component {
       return;
     }
 
-    // create image file to be used in creating canvas element
     let name = file.name.split(".").shift().concat(".webp");
     let src = URL.createObjectURL(file);
     let canvas = document.createElement("canvas");
@@ -362,23 +359,15 @@ class CreatePin extends React.Component {
     const prevState = this.state.pin;
 
     usersImg.onload = () => {
-      // on userImg load set properties of canvas element
       canvas.width = usersImg.width;
       canvas.height = usersImg.height;
       ctx.drawImage(usersImg, 0, 0);
 
-      // convert the canvas element with the image to a blob
       canvas.toBlob(
         (blob) => {
-          // add finalFile creation with blob to async que
           let finalFile = new File([blob], name);
-
-          // add fileReader for DataURL to async que
           const fileReader = new FileReader();
           fileReader.readAsDataURL(finalFile);
-
-          // after fileReader is ready finalFile will also be ready so
-          // state can be set using DataURL from filReader.result and finalFile
           fileReader.onloadend = () => {
             prevState["photo"] = finalFile;
             this.setState({
@@ -387,7 +376,6 @@ class CreatePin extends React.Component {
               isTrue: true,
             });
 
-            // lastly uploaded photo is displayed to user before sumbission
             document.getElementById("input-image-label-pin").style.display =
               "none";
             document.getElementById("modals_pin-display").style.display =

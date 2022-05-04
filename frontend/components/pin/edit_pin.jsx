@@ -15,19 +15,11 @@ class EditPinShow extends React.Component {
     this.backdropClick = this.backdropClick.bind(this);
     this.testingClick = this.testingClick.bind(this);
     this.handeSave = this.handeSave.bind(this);
-    // this.closingModal = this.closingModal.bind(this);
   }
-
-  // closingModal(){
-  //     this.props.closeModal()
-  // }
 
   handeSave(e) {
     let theboardId = this.state.pin.board_id;
     let pinId = this.state.pin.id;
-
-    //
-
     this.props
       .updatePin(this.state.pin)
       .then(this.props.closeModal(), this.props.fetchPin(window.editPin));
@@ -169,11 +161,6 @@ class EditPinShow extends React.Component {
               </div>
             </div>
 
-            {/* <div className="section-section-edit-p">
-                            <div className="section-word-edit-p"></div>
-                            <div className="section-dd-edit-p"></div>
-                        </div> */}
-
             <div className="title-edit-pin all-left-section-edit-p">
               <div className="title-word the-edit-labels">Title</div>
               <input
@@ -236,17 +223,17 @@ class EditPinShow extends React.Component {
             </div>
 
             {/* <div className="note-to-self-edit-p">
-                            <div className="note-self-edit-p-word">Note to self</div>
-                            <input type="text" autoComplete="off" className="edit-pin-input-notetoself" placeholder="Add a private note to remember your ideas about this Pin" value={}/>
-                        </div> */}
+                    <div className="note-self-edit-p-word">Note to self</div>
+                    <input type="text" autoComplete="off" className="edit-pin-input-notetoself" placeholder="Add a private note to remember your ideas about this Pin" value={}/>
+                </div> */}
 
             {/* <div className="comments-and-photo-permis">
-                            <div className="com-perm-txt">Comment and Photo Permissions</div>
-                            <label htmlFor="comment-photo-per">Allow people to comment
+                    <div className="com-perm-txt">Comment and Photo Permissions</div>
+                    <label htmlFor="comment-photo-per">Allow people to comment
 
-                               <input type="checkbox" name="comment-photo-per" id="comment-photo-per" />
-                            </label>
-                        </div> */}
+                        <input type="checkbox" name="comment-photo-per" id="comment-photo-per" />
+                    </label>
+                </div> */}
           </div>
 
           <div className="right-section-edit-p">
