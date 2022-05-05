@@ -1,5 +1,4 @@
 import React from "react";
-// import { Redirect } from 'react-router-dom';
 import LoadingIcon from "./loading";
 import Compressor from "compressorjs";
 import imageCompression from "browser-image-compression";
@@ -30,6 +29,11 @@ class CreatePin extends React.Component {
       showHelpMount: false,
       addTxtButtonDisp: true,
       altTextAreaActive: false,
+      backdropActive: false,
+      dropDownActive: false,
+      inputImgLabelPinActive: true,
+      modalsPinDisplayActive: true,
+      deleteDropDownMenueActive: false,
     };
 
     this.handelAddText = this.handelAddText.bind(this);
@@ -40,7 +44,6 @@ class CreatePin extends React.Component {
     this.deleteDropDownClick = this.deleteDropDownClick.bind(this);
     this.moreClicked = this.moreClicked.bind(this);
     this.backdropClick = this.backdropClick.bind(this);
-    this.supTextShow = this.supTextShow.bind(this);
     this.populateBoardField = this.populateBoardField.bind(this);
     this.createABoard = this.createABoard.bind(this);
     this.boardDropDownSelectCreate = this.boardDropDownSelectCreate.bind(this);
@@ -100,68 +103,73 @@ class CreatePin extends React.Component {
           Save
         </div>
 
-        <div
-          className="board-dropdown-create-pin"
-          id="board-dropdown-create-pin"
-        >
-          <div className="arround-ul-dd">
-            <ul className="board-dropdown-ol" id="board-dropdown-ol">
-              {boards.map((board) => (
-                <div
-                  className="this-list-children-pin"
-                  key={board.id}
-                  onClick={this.boardClickSelect}
-                  id={board.id}
-                  onMouseEnter={this.mouseHoverBoard}
-                  onMouseLeave={this.mouseHoverBoard}
-                >
-                  <div className="around-dd-board-pin-display">
-                    <div className="rounded-border-for-img">
-                      {board.pinPhotos.one && (
-                        <img
-                          className="photo-pin-in-board-opt"
-                          src={board.pinPhotos.one}
-                          alt=""
-                        />
-                      )}
+        {this.state.dropDownActive && (
+          <div
+            className="board-dropdown-create-pin"
+            id="board-dropdown-create-pin"
+          >
+            <div className="arround-ul-dd">
+              <ul className="board-dropdown-ol" id="board-dropdown-ol">
+                {boards.map((board) => (
+                  <div
+                    className="this-list-children-pin"
+                    key={board.id}
+                    onClick={this.boardClickSelect}
+                    id={board.id}
+                    onMouseEnter={this.mouseHoverBoard}
+                    onMouseLeave={this.mouseHoverBoard}
+                  >
+                    <div className="around-dd-board-pin-display">
+                      <div className="rounded-border-for-img">
+                        {board.pinPhotos.one && (
+                          <img
+                            className="photo-pin-in-board-opt"
+                            src={board.pinPhotos.one}
+                            alt=""
+                          />
+                        )}
+                      </div>
+                    </div>
+
+                    <div>
+                      {board.title.length > 20
+                        ? board.title.slice(0, 20).trim() + "..."
+                        : board.title}
+                    </div>
+
+                    <div
+                      className="logo-on-logged-in-header-board-lock-pin"
+                      style={
+                        board.is_private
+                          ? { display: "flex" }
+                          : { display: "none" }
+                      }
+                    >
+                      <img
+                        id="logo-lock-icon-pin-page"
+                        src={window.lockURL}
+                        alt="lock-icon"
+                      />
                     </div>
                   </div>
-
-                  <div>
-                    {board.title.length > 20
-                      ? board.title.slice(0, 20).trim() + "..."
-                      : board.title}
-                  </div>
-
-                  <div
-                    className="logo-on-logged-in-header-board-lock-pin"
-                    style={
-                      board.is_private
-                        ? { display: "flex" }
-                        : { display: "none" }
-                    }
-                  >
-                    <img
-                      id="logo-lock-icon-pin-page"
-                      src={window.lockURL}
-                      alt="lock-icon"
-                    />
-                  </div>
-                </div>
-              ))}
-            </ul>
-          </div>
-          <div className="bottom-section-in-dd-pin" onClick={this.createABoard}>
-            <div className="red-plus-icon-div">
-              <img
-                className="red-plus-icon"
-                src={window.redPlusIcon}
-                alt="red +"
-              />
+                ))}
+              </ul>
             </div>
-            <div className="d334">Create Board</div>
+            <div
+              className="bottom-section-in-dd-pin"
+              onClick={this.createABoard}
+            >
+              <div className="red-plus-icon-div">
+                <img
+                  className="red-plus-icon"
+                  src={window.redPlusIcon}
+                  alt="red +"
+                />
+              </div>
+              <div className="d334">Create Board</div>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
@@ -209,8 +217,7 @@ class CreatePin extends React.Component {
 
     this.setState({ loading: true });
     this.props.createNewPin(formData).then((data) => {
-      data;
-      this.props.history.goBack();
+      this.props.history.push(`/board/${data.pin.board_id}`);
     });
   }
 
@@ -256,24 +263,11 @@ class CreatePin extends React.Component {
   handelUlClick(e) {
     e.preventDefault();
 
-    let backdrop = document.getElementById("backdrop-div-create-pin");
-
-    this.setState({ boards: this.props.boards.boards });
-
-    if (backdrop.style.display === "none") {
-      backdrop.style.display = "block";
-    } else {
-      backdrop.style.display = "none";
-    }
-
-    let ul = document.getElementById("board-dropdown-create-pin");
-    if (ul.style.display === "block") {
-      ul.style.display = "none";
-      backdrop.style.display = "none";
-    } else {
-      ul.style.display = "block";
-      backdrop.style.display = "block";
-    }
+    this.setState({
+      boards: this.props.boards.boards,
+      backdropActive: !this.state.backdropActive,
+      dropDownActive: !this.state.dropDownActive,
+    });
   }
 
   inputChange(field) {
@@ -288,29 +282,21 @@ class CreatePin extends React.Component {
     e.preventDefault();
     let prevState = this.state.pin;
     prevState["board_id"] = e.currentTarget.id;
-    this.setState({ pin: prevState });
 
-    let ul = document.getElementById("board-dropdown-create-pin");
-    ul.style.display = "none";
-
-    let backdrop = document.getElementById("backdrop-div-create-pin");
-    if (backdrop.style.display === "none") {
-      backdrop.style.display = "none";
-    } else {
-      backdrop.style.display = "none";
-    }
+    this.setState({
+      pin: prevState,
+      backdropActive: false,
+      dropDownActive: false,
+    });
   }
 
   deletePreview(e) {
     e.preventDefault();
 
-    this.setState({ img_err: false });
-
-    let labelElement = document.getElementById("input-image-label-pin");
-    labelElement.style.display = "flex";
-
-    let uploadImageStateEl = document.getElementById("modals_pin-display");
-    uploadImageStateEl.style.display = "none";
+    this.setState({
+      img_err: false,
+      inputImgLabelPinActive: true,
+    });
   }
 
   imgConvertToWebp(e) {
@@ -353,12 +339,9 @@ class CreatePin extends React.Component {
               pin: prevState,
               thePhotoURL: fileReader.result,
               isTrue: true,
+              inputImgLabelPinActive: false,
+              modalsPinDisplayActive: true,
             });
-
-            document.getElementById("input-image-label-pin").style.display =
-              "none";
-            document.getElementById("modals_pin-display").style.display =
-              "flex";
           };
         },
         "image/webp",
@@ -368,56 +351,26 @@ class CreatePin extends React.Component {
   }
 
   deleteDropDownClick(e) {
-    let dropDown = document.getElementById("delete-dropdown-menue-id");
-
-    dropDown.style.display = "none";
-
-    window.location.reload();
+    this.setState({ deleteDropDownMenueActive: false });
+    this.props.history.push(`/profile/${this.props.currentUser.id}`);
   }
 
   moreClicked(e) {
     e.preventDefault();
-
-    let dropDown = document.getElementById("delete-dropdown-menue-id");
-    let backdrop = document.getElementById("backdrop-div-create-pin");
-    if (dropDown.style.display === "none") {
-      dropDown.style.display = "flex";
-      backdrop.style.display = "block";
-    } else {
-      dropDown.style.display = "none";
-      backdrop.style.display = "none";
-    }
+    this.setState({
+      backdropActive: !this.state.backdropActive,
+      deleteDropDownMenueActive: true,
+    });
   }
+
   backdropClick(e) {
     e.preventDefault();
 
-    let dropDown = document.getElementById("delete-dropdown-menue-id");
-    let backdrop = document.getElementById("backdrop-div-create-pin");
-
-    if (dropDown.style.display === "none") {
-      backdrop.style.display = "none";
-    } else {
-      dropDown.style.display = "none";
-      backdrop.style.display = "none";
-    }
-
-    let ul = document.getElementById("board-dropdown-create-pin");
-    if (ul.style.display === "block") {
-      ul.style.display = "none";
-    }
-  }
-
-  supTextShow(e) {
-    e.preventDefault();
-    let divFocus = document.getElementById("second-div-title-pininput-1");
-    let divFocus2 = document.getElementById("second-div-title-pininput-2");
-    if (divFocus.style.display === "flex") {
-      divFocus.style.display = "none";
-      divFocus2.style.display = "none";
-    } else {
-      divFocus.style.display = "flex";
-      divFocus2.style.display = "flex";
-    }
+    this.setState({
+      backdropActive: false,
+      dropDownActive: false,
+      deleteDropDownMenueActive: false,
+    });
   }
 
   render() {
@@ -436,15 +389,18 @@ class CreatePin extends React.Component {
 
     return (
       <div className="create-pin-main-div">
-        <div
-          className="backdrop-div-create-pin"
-          onClick={this.backdropClick}
-          id="backdrop-div-create-pin"
-        ></div>
+        {this.state.backdropActive && (
+          <div
+            className="backdrop-div-create-pin-updated"
+            onClick={this.backdropClick}
+          ></div>
+        )}
 
-        <div className="delete-dropdown-menue" id="delete-dropdown-menue-id">
-          <div onClick={this.deleteDropDownClick}>Delete</div>
-        </div>
+        {this.state.deleteDropDownMenueActive && (
+          <div className="delete-dropdown-menue" id="delete-dropdown-menue-id">
+            <div onClick={this.deleteDropDownClick}>Delete</div>
+          </div>
+        )}
 
         <div className="primary-createpin-card">
           {this.state.loading && <LoadingIcon />}
@@ -465,64 +421,66 @@ class CreatePin extends React.Component {
 
             <div className="bottom-create-pin">
               <div className="left-side-create-pin">
-                <label htmlFor="input-image-pin" id="input-image-label-pin">
-                  <div
-                    className={
-                      this.state.img_err
-                        ? "upload-img-container-err"
-                        : "upload-img-container"
-                    }
-                  >
-                    <div className="doted-border">
-                      {this.state.img_err ? (
-                        <img
-                          src={window.redWarning}
-                          alt="Alert icon"
-                          id="up-arrow-icon"
-                        />
-                      ) : (
-                        <img
-                          src={window.upArrowURL}
-                          alt="up Arrow"
-                          id="up-arrow-icon"
-                        />
-                      )}
+                {this.state.inputImgLabelPinActive && (
+                  <label htmlFor="input-image-pin" id="input-image-label-pin">
+                    <div
+                      className={
+                        this.state.img_err
+                          ? "upload-img-container-err"
+                          : "upload-img-container"
+                      }
+                    >
+                      <div className="doted-border">
+                        {this.state.img_err ? (
+                          <img
+                            src={window.redWarning}
+                            alt="Alert icon"
+                            id="up-arrow-icon"
+                          />
+                        ) : (
+                          <img
+                            src={window.upArrowURL}
+                            alt="up Arrow"
+                            id="up-arrow-icon"
+                          />
+                        )}
 
-                      <div
-                        className={
-                          this.state.img_err
-                            ? "drag-class-name red-txt"
-                            : "drag-class-name"
-                        }
-                      >
-                        {this.state.img_err
-                          ? this.state.err_msg
-                          : "Click to upload"}
-                      </div>
+                        <div
+                          className={
+                            this.state.img_err
+                              ? "drag-class-name red-txt"
+                              : "drag-class-name"
+                          }
+                        >
+                          {this.state.img_err
+                            ? this.state.err_msg
+                            : "Click to upload"}
+                        </div>
 
-                      <div
-                        className={
-                          this.state.img_err
-                            ? "second-blerb-pin red-txt"
-                            : "second-blerb-pin"
-                        }
-                      >
-                        Recomendation: Use high-quality .jpg files less than
-                        20MB
+                        <div
+                          className={
+                            this.state.img_err
+                              ? "second-blerb-pin red-txt"
+                              : "second-blerb-pin"
+                          }
+                        >
+                          Recomendation: Use high-quality .jpg files less than
+                          20MB
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <input
-                    type="file"
-                    accept=".jpg"
-                    autoComplete="off"
-                    name="input-image-pin"
-                    id="input-image-pin"
-                    //  accept=".jpg, .jpeg, .png"
-                    onChange={this.imgConvertToWebp}
-                  />
-                </label>
+                    <input
+                      type="file"
+                      accept=".jpg"
+                      autoComplete="off"
+                      name="input-image-pin"
+                      id="input-image-pin"
+                      //  accept=".jpg, .jpeg, .png"
+                      onChange={this.imgConvertToWebp}
+                    />
+                  </label>
+                )}
 
                 <div className="modals_pin" id="modals_pin-display">
                   <div className="pin_image" id="pin_image-create-pin-height">
@@ -554,8 +512,6 @@ class CreatePin extends React.Component {
                     className="input-for-title-pin"
                     placeholder="Add your title"
                     onChange={this.inputChange("title")}
-                    onFocus={this.supTextShow}
-                    onBlur={this.supTextShow}
                   />
                   <div
                     className="second-div-title-pininput-outer"
