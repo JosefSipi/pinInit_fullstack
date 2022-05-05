@@ -82,8 +82,7 @@ class PinShow extends React.Component {
 
     let objNew = {};
 
-    this.setState({ editComment: "" });
-    this.setState({ dd_s: objNew });
+    this.setState({ editComment: "", dd_s: objNew });
   }
 
   elapsedTime(time) {
