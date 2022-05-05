@@ -18,7 +18,6 @@ class CreatePin extends React.Component {
         websiteURL: "",
         board_id: null,
         photo: null,
-        heightof: null,
       },
       isTrue: false,
       thePhotoURL: "",
@@ -199,16 +198,6 @@ class CreatePin extends React.Component {
       the_board_id = this.state.pin.board_id;
     }
 
-    let thePinHeightFinder = document.getElementById(
-      "pin_image-create-pin-height"
-    );
-    let imageHeightFor43 = document.getElementById("preview-image-456");
-    if (imageHeightFor43.offsetHeight >= thePinHeightFinder.offsetHeight) {
-      var heightOfValue = 100;
-    } else {
-      var heightOfValue = (imageHeightFor43 / thePinHeightFinder) * 100;
-    }
-
     const formData = new FormData();
     formData.append("pin[photo]", this.state.pin.photo);
     formData.append("pin[creator_id]", this.state.pin.creator_id);
@@ -217,7 +206,6 @@ class CreatePin extends React.Component {
     formData.append("pin[description2]", this.state.pin.description2);
     formData.append("pin[websiteURL]", this.state.pin.websiteURL);
     formData.append("pin[board_id]", the_board_id);
-    formData.append("pin[heightof]", heightOfValue);
 
     this.setState({ loading: true });
     this.props.createNewPin(formData).then((data) => {
