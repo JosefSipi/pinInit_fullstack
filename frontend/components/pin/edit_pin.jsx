@@ -8,6 +8,7 @@ class EditPinShow extends React.Component {
       pin: this.props.pin.pin,
       boards: this.props.boards.boards,
       titleofBoard: "",
+      backDropActive: false,
     };
 
     this.handelBoardSelect = this.handelBoardSelect.bind(this);
@@ -28,22 +29,20 @@ class EditPinShow extends React.Component {
   testingClick(e) {
     e.preventDefault();
 
-    let backdrop = document.getElementById("backdrop-div-edit-pin");
     let pinDD = document.getElementById("outer-of-edit-dropdown");
     if (pinDD.style.display === "" || pinDD.style.display === "none") {
-      backdrop.style.display = "block";
+      this.setState({ backDropActive: true });
       pinDD.style.display = "flex";
     } else {
       pinDD.style.display = "none";
-      backdrop.style.display = "none";
+      this.setState({ backDropActive: false });
     }
   }
   backdropClick(e) {
     e.preventDefault();
-    let backdrop = document.getElementById("backdrop-div-edit-pin");
+    this.setState({ backDropActive: false });
     let pinDD = document.getElementById("outer-of-edit-dropdown");
     pinDD.style.display = "none";
-    backdrop.style.display = "none";
   }
 
   handelBoardSelect(e) {
@@ -107,11 +106,13 @@ class EditPinShow extends React.Component {
           <div className="left-section-edit-p">
             <div className="board-section-edit-p all-left-section-edit-p">
               <div className="board-word-edit-p the-edit-labels">Board</div>
-              <div
-                className="backdrop-div-edit-pin"
-                onClick={this.backdropClick}
-                id="backdrop-div-edit-pin"
-              ></div>
+              {this.state.backDropActive && (
+                <div
+                  className="backdrop-div-edit-pin"
+                  onClick={this.backdropClick}
+                  id="backdrop-div-edit-pin"
+                ></div>
+              )}
               <div
                 className="drop-down-display-edit-pin"
                 onClick={this.testingClick}
