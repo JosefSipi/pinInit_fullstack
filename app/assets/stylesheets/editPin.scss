@@ -33,9 +33,8 @@
 
 .outer-of-edit-dropdown {
   width: 363px;
-  // height: 240px;
   max-height: 343px;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   overflow: scroll;

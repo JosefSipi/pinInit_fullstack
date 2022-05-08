@@ -9,6 +9,7 @@ class EditPinShow extends React.Component {
       boards: this.props.boards.boards,
       titleofBoard: "",
       backDropActive: false,
+      dropDownEditActive: false,
     };
 
     this.handelBoardSelect = this.handelBoardSelect.bind(this);
@@ -29,20 +30,18 @@ class EditPinShow extends React.Component {
   testingClick(e) {
     e.preventDefault();
 
-    let pinDD = document.getElementById("outer-of-edit-dropdown");
-    if (pinDD.style.display === "" || pinDD.style.display === "none") {
-      this.setState({ backDropActive: true });
-      pinDD.style.display = "flex";
-    } else {
-      pinDD.style.display = "none";
-      this.setState({ backDropActive: false });
-    }
+    this.setState({
+      backDropActive: !this.state.backDropActive,
+      dropDownEditActive: !this.state.dropDownEditActive,
+    });
   }
+
   backdropClick(e) {
     e.preventDefault();
-    this.setState({ backDropActive: false });
-    let pinDD = document.getElementById("outer-of-edit-dropdown");
-    pinDD.style.display = "none";
+    this.setState({
+      backDropActive: false,
+      dropDownEditActive: false,
+    });
   }
 
   handelBoardSelect(e) {
@@ -117,38 +116,40 @@ class EditPinShow extends React.Component {
                 className="drop-down-display-edit-pin"
                 onClick={this.testingClick}
               >
-                <div
-                  className="outer-of-edit-dropdown"
-                  id="outer-of-edit-dropdown"
-                >
-                  <div id="dd-list-edit-p" className="dd-list-edit-p">
-                    {boards.map((boardList) => (
-                      <div
-                        key={boardList.id}
-                        className="list-item-edit-p"
-                        value={boardList.title}
-                        id={boardList.id}
-                        onClick={this.handelBoardSelect}
-                      >
-                        <div>{boardList.title}</div>
+                {this.state.dropDownEditActive && (
+                  <div
+                    className="outer-of-edit-dropdown"
+                    id="outer-of-edit-dropdown"
+                  >
+                    <div id="dd-list-edit-p" className="dd-list-edit-p">
+                      {boards.map((boardList) => (
                         <div
-                          className="logo-on-logged-in-header-board-lock-pin logo-mod-edit-pin"
-                          style={
-                            boardList.is_private
-                              ? { display: "flex" }
-                              : { display: "none" }
-                          }
+                          key={boardList.id}
+                          className="list-item-edit-p"
+                          value={boardList.title}
+                          id={boardList.id}
+                          onClick={this.handelBoardSelect}
                         >
-                          <img
-                            id="logo-lock-icon-pin-page"
-                            src={window.lockURL}
-                            alt="lock-icon"
-                          />
+                          <div>{boardList.title}</div>
+                          <div
+                            className="logo-on-logged-in-header-board-lock-pin logo-mod-edit-pin"
+                            style={
+                              boardList.is_private
+                                ? { display: "flex" }
+                                : { display: "none" }
+                            }
+                          >
+                            <img
+                              id="logo-lock-icon-pin-page"
+                              src={window.lockURL}
+                              alt="lock-icon"
+                            />
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <div className="board-label-edit-pin-dd">
                   {stateBoard[0].title}
