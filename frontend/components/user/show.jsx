@@ -39,13 +39,7 @@ class UserShow extends React.Component {
     this.unfollowUser = this.unfollowUser.bind(this);
     this.followUser = this.followUser.bind(this);
     this.newBoardClick = this.newBoardClick.bind(this);
-    // this.callTheFunction = this.callTheFunction.bind(this);
   }
-
-  // callTheFunction(){
-  //
-
-  // }
 
   newBoardClick() {
     this.props.openModal("createBoard");
@@ -218,12 +212,10 @@ class UserShow extends React.Component {
 
     let dropDiv = document.getElementById("hidden-plus-opt");
     let backgroundDiv = document.getElementById("background-plus-modal");
-    // let logoHeader = document.body.getElementsById('logo-on-logged-in-header-plus-id')
 
     if (dropDiv.className === "hidden-plus-opt-h") {
       dropDiv.className = "hidden-plus-opt";
       backgroundDiv.className = "ul-logged-dropdown-active-background-plus";
-      // logoHeader.style.backgroundColor = "red";
     } else if (
       backgroundDiv.className === "ul-logged-dropdown-active-background-plus"
     ) {
@@ -231,23 +223,6 @@ class UserShow extends React.Component {
       dropDiv.className = "hidden-plus-opt-h";
     }
   }
-  // ---------- create darkening effect when hovering tile -----------
-  // hoverEvent(){
-  //     // e.preventDefault();
-  //
-  //     if(condition){
-  //
-  //     } else {
-  //
-  //     }
-  //
-  //     // let imageSection = document.getElementById('image-section-board');
-  //     // imageSection.style.filter = 'brightness(0.9)';
-
-  //     // let editIcon = document.getElementById('');
-  //     // editIcon.style.display = "relative"
-
-  // };
 
   render() {
     if (!this.state.boards || !this.state.userProfile) {
@@ -321,16 +296,9 @@ class UserShow extends React.Component {
                 </div>
               </Link>
 
-              {/* <div className="logo-on-logged-in-header">
-                            <img id="logo-share-icon" src={window.shareLogoURL} alt="share-icon" />
-                        </div> */}
             </div>
 
             <div className="righ-box-edit-bar">
-              {/* <div className="logo-on-logged-in-header">
-                            <img id="logo" src={window.settingsIconURL} alt="settings-icon" />
-                        </div> */}
-
               <div className="show-dropdown">
                 <div
                   className="logo-on-logged-in-header"
@@ -388,11 +356,8 @@ class UserShow extends React.Component {
                   key={board.id}
                   id="board-show-link"
                   to={`/board/${board.id}`}
-                  // onMouseEnter={() => this.hoverEvent(board.id)}
-                  // onMouseLeave={() => this.hoverEvent(board.id)}
                 >
                   <div className="board-display-card">
-                    {/* Place a lock icon if the board is private */}
                     <div
                       className="outer-div-tile-edit"
                       id="outer-div-tile-edit"
@@ -467,7 +432,6 @@ class UserShow extends React.Component {
                         {board.title.charAt(0).toUpperCase() +
                           board.title.slice(1)}
                       </h2>
-                      {/* <h2 className="board-title">{ board.title.charAt(1).toUpperCase() + board.title.slice(2, -1)}</h2> */}
                       <div className="pins-days">
                         <h2 className="pin-num-board">
                           {board.pinsCount === 1
@@ -495,7 +459,6 @@ class UserShow extends React.Component {
                 <ProfileAvatar
                   usersName={this.props.userProfile.f_name}
                   photoUrl={this.props.userProfile.photoUrl}
-                  // photoUrl={'false'}
                   textId={"text-show-avatar"}
                 />
               </div>
@@ -555,9 +518,6 @@ class UserShow extends React.Component {
 
           <div className="edit-bar-profile-page">
             <div className="left-box-edit-bar">
-              {/* <div className="logo-on-logged-in-header">
-                            <img id="logo-share-icon" src={window.shareLogoURL} alt="share-icon" />
-                        </div> */}
             </div>
           </div>
 
@@ -570,24 +530,16 @@ class UserShow extends React.Component {
               if (!board.is_private) {
                 return (
                   <div className="dont-show-me" key={board.id}>
-                    {/* <div className="logo-on-logged-in-header-board-tile" onClick={this.editPen} id={board.id}>
-                                <img id="logo-edit-board" src={window.penURL} alt="edit-pen-icon" />
-                        </div> */}
                     <Link
                       key={board.id}
                       id="board-show-link"
                       to={`/board/${board.id}`}
-                      // onMouseEnter={() => this.hoverEvent(board.id)}
-                      // onMouseLeave={() => this.hoverEvent(board.id)}
                     >
                       <div className="board-display-card">
                         <div
                           className="outer-div-tile-edit"
                           id="outer-div-tile-edit"
                         >
-                          {/* <div className="logo-on-logged-in-header-board-lock" style={board.is_private ? {display: "flex" } : { display: "none" }}>
-                                    <img id="logo-lock-icon" src={window.lockURL} alt="lock-icon" />
-                            </div>  */}
                         </div>
                         <div
                           className="image-section-board"
@@ -643,7 +595,6 @@ class UserShow extends React.Component {
                             {board.title.charAt(0).toUpperCase() +
                               board.title.slice(1)}
                           </h2>
-                          {/* <h2 className="board-title">{ board.title.charAt(1).toUpperCase() + board.title.slice(2, -1)}</h2> */}
                           <div className="pins-days">
                             <h2 className="pin-num-board">
                               {board.pinsCount === 1
