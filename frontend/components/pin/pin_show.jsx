@@ -19,7 +19,7 @@ class PinShow extends React.Component {
       editComment: "",
       editingCommentId: null,
       dd_s: {},
-      backDropState: false,
+      backDropActive: false,
     };
 
     this.editPin = this.editPin.bind(this);
@@ -374,8 +374,6 @@ class PinShow extends React.Component {
             ></div>
           )}
           <div className="main-div-pin-show">
-            {/* <div className='sub-div-boarder-play'> */}
-
             <div className="image-show-pin-1">
               <img
                 className="image-show-pin"
