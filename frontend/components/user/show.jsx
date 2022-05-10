@@ -13,6 +13,8 @@ class UserShow extends React.Component {
       isActive: false,
       boards: [],
       userProfile: [],
+      backdropPlussActive: false,
+      plusDropDownActive: false,
     };
 
     this.state = {
@@ -32,6 +34,7 @@ class UserShow extends React.Component {
     };
 
     this.state.display_name = props.f_name;
+
     this.toggleClass = this.toggleClass.bind(this);
     this.toggleBox = this.toggleBox.bind(this);
     this.editPen = this.editPen.bind(this);
@@ -43,19 +46,10 @@ class UserShow extends React.Component {
 
   newBoardClick() {
     this.props.openModal("createBoard");
-
-    let dropDiv = document.getElementById("hidden-plus-opt");
-    let backgroundDiv = document.getElementById("background-plus-modal");
-
-    if (dropDiv.className === "hidden-plus-opt-h") {
-      dropDiv.className = "hidden-plus-opt";
-      backgroundDiv.className = "ul-logged-dropdown-active-background-plus";
-    } else if (
-      backgroundDiv.className === "ul-logged-dropdown-active-background-plus"
-    ) {
-      backgroundDiv.className = "ul-logged-dropdown-background-plus";
-      dropDiv.className = "hidden-plus-opt-h";
-    }
+    this.setState({
+      plusDropDownActive: false,
+      backdropPlussActive: false,
+    });
   }
 
   unfollowUser(e) {
@@ -192,8 +186,6 @@ class UserShow extends React.Component {
     // }
   }
 
-  componentWillUnmount() {}
-
   toggleClass(e) {
     // e.preventDefault();
     this.setState({ isActive: !this.state.isActive });
@@ -210,18 +202,10 @@ class UserShow extends React.Component {
   toggleBox(e) {
     e.preventDefault();
 
-    let dropDiv = document.getElementById("hidden-plus-opt");
-    let backgroundDiv = document.getElementById("background-plus-modal");
+    debugger;
 
-    if (dropDiv.className === "hidden-plus-opt-h") {
-      dropDiv.className = "hidden-plus-opt";
-      backgroundDiv.className = "ul-logged-dropdown-active-background-plus";
-    } else if (
-      backgroundDiv.className === "ul-logged-dropdown-active-background-plus"
-    ) {
-      backgroundDiv.className = "ul-logged-dropdown-background-plus";
-      dropDiv.className = "hidden-plus-opt-h";
-    }
+    this.setState({ plusDropDownActive: !this.state.plusDropDownActive });
+    this.setState({ backdropPlussActive: !this.state.backdropPlussActive });
   }
 
   render() {
@@ -295,7 +279,6 @@ class UserShow extends React.Component {
                   <img id="logo" src={window.penURL} alt="edit-pen-icon" />
                 </div>
               </Link>
-
             </div>
 
             <div className="righ-box-edit-bar">
@@ -306,28 +289,32 @@ class UserShow extends React.Component {
                 >
                   <img id="logo-cross" src={window.plusURL} alt="+ icon" />
                 </div>
-                <div
-                  className="ul-logged-dropdown-background-plus"
-                  id="background-plus-modal"
-                  onClick={this.toggleBox}
-                ></div>
-                <div className="hidden-plus-opt-h" id="hidden-plus-opt">
-                  <p className="create-p-tag">Create</p>
-                  <ul className="list-plus-men">
-                    <li
-                      className="pin-link-bton-mid-bar"
-                      onClick={this.directToCreatePin}
-                    >
-                      Pin
-                    </li>
-                    <li
-                      className="pin-link-bton-mid-bar"
-                      onClick={this.newBoardClick}
-                    >
-                      Board
-                    </li>
-                  </ul>
-                </div>
+                {this.state.backdropPlussActive && (
+                  <div
+                    className="ul-logged-dropdown-background-plus"
+                    id="background-plus-modal"
+                    onClick={this.toggleBox}
+                  ></div>
+                )}
+                {this.state.plusDropDownActive && (
+                  <div className="hidden-plus-opt" id="hidden-plus-opt">
+                    <p className="create-p-tag">Create</p>
+                    <ul className="list-plus-men">
+                      <li
+                        className="pin-link-bton-mid-bar"
+                        onClick={this.directToCreatePin}
+                      >
+                        Pin
+                      </li>
+                      <li
+                        className="pin-link-bton-mid-bar"
+                        onClick={this.newBoardClick}
+                      >
+                        Board
+                      </li>
+                    </ul>
+                  </div>
+                )}
               </div>
 
               <div className="dropdown"></div>
@@ -517,8 +504,7 @@ class UserShow extends React.Component {
           {/* ----------------------- this is the profile page edit bar while loged in as user ------------- */}
 
           <div className="edit-bar-profile-page">
-            <div className="left-box-edit-bar">
-            </div>
+            <div className="left-box-edit-bar"></div>
           </div>
 
           {/* --------------- will need to display one or the other depending if profile's user is logged in ---------------------------------- */}
@@ -539,8 +525,7 @@ class UserShow extends React.Component {
                         <div
                           className="outer-div-tile-edit"
                           id="outer-div-tile-edit"
-                        >
-                        </div>
+                        ></div>
                         <div
                           className="image-section-board"
                           id="image-section-board"
