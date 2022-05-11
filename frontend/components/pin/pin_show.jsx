@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ProfileAvatar } from "../../utils/util_components/image_components";
+import { cloneDeep } from "lodash";
 // import { saveAs } from "file-saver";
 
 class PinShow extends React.Component {
@@ -20,6 +21,8 @@ class PinShow extends React.Component {
       editingCommentId: null,
       dd_s: {},
       backDropActive: false,
+      pinEditDropdownActive: false,
+      commentsEdit: {},
     };
 
     this.editPin = this.editPin.bind(this);
@@ -38,51 +41,170 @@ class PinShow extends React.Component {
     this.elapsedTime = this.elapsedTime.bind(this);
     this.cancelEditComment = this.cancelEditComment.bind(this);
     this.goBackBtn = this.goBackBtn.bind(this);
-    this.hideDD = this.hideDD.bind(this);
-    this.displayDD = this.displayDD.bind(this);
     this.dd_display_tog = this.dd_display_tog.bind(this);
+    this.commentsForPin = this.commentsForPin.bind(this);
+    this.openCommentsDropDown = this.openCommentsDropDown.bind(this);
   }
 
-  hideDD(dd_id) {
-    let oldState = { ...this.state.dd_s };
-    oldState.dd_id = false;
-    this.setState({ dd_s: oldState });
+  commentsForPin(comments) {
+    return comments.map((comment) => (
+      <div className="outside-comment-main" key={comment.id + "outside"}>
+        <div className="one-comment-pin-show" key={comment.id}>
+          <div className="outside-of-image-div">
+            <div
+              id="123 D"
+              className="image-div-show-pin-page comment-list-2 C"
+            >
+              <ProfileAvatar
+                photoUrl={comment.photoUrl}
+                usersName={comment.name}
+              />
+            </div>
+          </div>
+
+          {!(
+            this.state.commentsEdit[comment.id] !== undefined &&
+            this.state.commentsEdit[comment.id].isActive
+          ) && (
+            <div
+              className="right-txt-pin-show"
+              id={`right-txt-pin-show` + comment.id}
+            >
+              <div className="outer-div-time-elapsed-comment">
+                <Link to={`/profile/${comment.commenter_id}`}>
+                  <div className="name-list-pin-show">{comment.name}</div>
+                </Link>
+                <div className="time-elapsed-comment">
+                  {this.elapsedTime(comment.timeElapsed)}
+                </div>
+              </div>
+              <div className="body-list-pin-show">{comment.body}</div>
+            </div>
+          )}
+
+          {/* { <div */}
+          {!!this.state.commentsEdit[comment.id] &&
+            !!this.state.commentsEdit[comment.id].isActive && (
+              <div
+                // {(!!this.state.commentsEdit[comment.id] && !!this.state.commentsEdit[comment.id].isActive) && <div
+                className="edit-form-div-outter"
+                id={"edit-form-div" + comment.id}
+              >
+                <textarea
+                  placeholder="Add a comment"
+                  className="blank-input-style"
+                  type="text"
+                  value={this.state.commentsEdit[comment.id].body}
+                  onChange={(e) => this.handelEditChange(e, comment.id)}
+                />
+                <div className="edit-comment-btns">
+                  <div
+                    data-comment_id={comment.id}
+                    onClick={(e) => this.cancelEditComment(e, comment.id)}
+                    id="cancel-btn-show-pin"
+                    className="button-show-pin-comment cancel-btn-show-pin cancel-124"
+                  >
+                    Cancel
+                  </div>
+                  <div
+                    id="save-btn-show-pin"
+                    className="button-show-pin-comment save-123"
+                    onClick={(e) => this.handelSubmitCommentEdit(e, comment.id)}
+                  >
+                    Save
+                  </div>
+                </div>
+              </div>
+            )}
+        </div>
+
+        <div
+          className="bottom-section-comment-pin-show"
+          id={"bottom-section-comment-pin-show" + comment.id}
+        >
+          <h1 className="header-title-boards-show-123">
+            <div className="like-icon-div">
+              {comment.like.liked ? (
+                <img
+                  data-img_liker_id={this.props.currentUser.id}
+                  data-img_comment={comment.id}
+                  onClick={() => this.removeLike(comment.like.like.id)}
+                  src={window.redHeartURL}
+                  alt="red heart"
+                />
+              ) : (
+                <img
+                  onClick={() =>
+                    this.createLike(this.props.currentUser.id, comment.id)
+                  }
+                  src={window.grayHeartURL}
+                  alt="gray heart"
+                />
+              )}
+
+              {comment.like.like_count > 0 && (
+                <div className="like-count">{comment.like.like_count}</div>
+              )}
+            </div>
+
+            {comment.commenter_id === this.props.currentUser.id && (
+              <div
+                className="pin-duplicate-button-dd comment-edition-div"
+                id={comment.id}
+                onClick={() => this.openCommentsDropDown(comment.id)}
+              >
+                <img
+                  className="pin-123-1 comment-edition-dot"
+                  src={window.dotsBlackURL}
+                  alt="more icon"
+                />
+              </div>
+            )}
+            {!!this.state.dd_s[comment.id] && (
+              <div className="div-holder-helper-123-pin-show">
+                <div
+                  className="edit-dropdown-menue-123-pin-show move-edit-delete-div"
+                  id={`edit-dropdown-menue-124-id` + comment.id}
+                >
+                  <div
+                    data-div_val={comment.body}
+                    id={comment.id}
+                    onClick={() => this.editComment(comment)}
+                  >
+                    Edit
+                  </div>
+                  <div id={comment.id} onClick={this.deleteComment}>
+                    Delete
+                  </div>
+                </div>
+              </div>
+            )}
+          </h1>
+        </div>
+      </div>
+    ));
   }
 
-  displayDD(dd_id) {
-    let oldState = { ...this.state.dd_s };
-    oldState.dd_id = true;
-    this.setState({ dd_s: oldState });
+  openCommentsDropDown(id) {
+    let commentsDropDownActive = { ...this.state.dd_s };
+    commentsDropDownActive[id] = true;
+
+    this.setState({
+      backDropActive: true,
+      dd_s: commentsDropDownActive,
+    });
   }
 
-  // saveImage(e){
-  //     e.preventDefault();
-
-  //     let url = e.currentTarget.getAttribute('data-img_url')
-
-  //     // saveAs(url, 'image.jpg')
-
-  //     this.backdropClick(e)
-
-  // }
-
-  cancelEditComment(e) {
+  cancelEditComment(e, id) {
     e.preventDefault();
 
-    document.getElementById(
-      "edit-form-div" + e.currentTarget.getAttribute("data-comment_id")
-    ).style.display = "none";
-    document.getElementById(
-      "right-txt-pin-show" + e.currentTarget.getAttribute("data-comment_id")
-    ).style.display = "flex";
-    document.getElementById(
-      "bottom-section-comment-pin-show" +
-        e.currentTarget.getAttribute("data-comment_id")
-    ).style.display = "flex";
+    let comments = cloneDeep(this.state.commentsEdit);
+    let comment = comments[id];
+    delete comment.isActive;
 
-    let objNew = {};
+    comment["body"] = this.state.comments[id].body;
 
-    this.setState({ editComment: "", dd_s: objNew });
+    this.setState({ commentsEdit: comments });
   }
 
   elapsedTime(time) {
@@ -107,88 +229,64 @@ class PinShow extends React.Component {
     return retTime;
   }
 
-  removeLike(e) {
-    let id = e.currentTarget.getAttribute("data-like_id");
+  removeLike(id) {
     this.props.deleteLike(id).then(() => {
       this.props.fetchPin(Number(this.props.match.params.id));
     });
   }
 
-  createLike(e) {
-    let liker_id = e.currentTarget.getAttribute("data-img_liker_id");
-    let comment = e.currentTarget.getAttribute("data-img_comment");
+  createLike(liker_id, commentId) {
+    let info = { liker_id, comment_liked_id: commentId };
 
-    let info = { liker_id, comment_liked_id: comment };
     this.props.createLike(info).then(() => {
+      debugger;
       this.props.fetchPin(Number(this.props.match.params.id));
     });
   }
 
-  handelSubmitCommentEdit(e) {
+  handelSubmitCommentEdit(e, id) {
     e.preventDefault();
+
+    let editedComments = cloneDeep(this.state.commentsEdit);
+    let editedComment = editedComments[id];
+    delete editedComment.isActive;
+
     let commentIds = {
-      commentId: this.state.editingCommentId,
+      commentId: id,
       pinId: Number(this.props.match.params.id),
-      commentForm: { body: this.state.editComment },
+      commentForm: { body: editedComment.body },
     };
+
+    this.setState({ commentsEdit: editedComments });
 
     this.props.editComment(commentIds).then(() => {
       this.props.fetchPin(Number(this.props.match.params.id));
     });
-
-    document.getElementById(
-      "edit-form-div" + commentIds.commentId
-    ).style.display = "none";
-    document.getElementById(
-      "right-txt-pin-show" + commentIds.commentId
-    ).style.display = "flex";
-    document.getElementById(
-      "bottom-section-comment-pin-show" + commentIds.commentId
-    ).style.display = "flex";
-
-    this.setState({ editingCommentId: null });
-
-    let objNew = {};
-    this.setState({ dd_s: objNew });
-    // this.props.fetchPin(Number(this.props.match.params.id))
   }
 
-  handelEditChange(e) {
+  handelEditChange(e, id) {
     e.preventDefault();
-    this.setState({ editComment: e.currentTarget.value });
-  }
 
-  editComment(e) {
-    let editForm = document.getElementById(
-      `edit-form-div` + e.currentTarget.id
-    );
-    let commentShow = document.getElementById(
-      "right-txt-pin-show" + e.currentTarget.id
-    );
-    let optionsDiv = document.getElementById(
-      "bottom-section-comment-pin-show" + e.currentTarget.id
-    );
-    let backdrop = document.getElementById("backdrop-div-create-pin");
-    let editDropDownMenue = document.getElementById(
-      "edit-dropdown-menue-124-id" + e.currentTarget.id
-    );
-
-    editForm.style.display = "flex";
-    commentShow.style.display = "none";
-    optionsDiv.style.display = "none";
-    backdrop.style.display = "none";
-    editDropDownMenue.style.display = "none";
+    let comments = cloneDeep(this.state.commentsEdit);
+    let theComment = comments[id];
+    theComment.body = e.currentTarget.value;
 
     this.setState({
-      editComment: e.currentTarget.getAttribute("data-div_val"),
+      commentsEdit: comments,
     });
+  }
 
-    this.setState({ editingCommentId: e.currentTarget.id }); //this is a potential problem
+  editComment(comment) {
+    let newCommentsEdit = { ...this.state.commentsEdit };
+    newCommentsEdit[comment.id] = comment;
+    let theComment = newCommentsEdit[comment.id];
+    theComment["isActive"] = true;
+
+    this.backdropClick();
+    this.setState({ commentsEdit: newCommentsEdit });
   }
 
   deleteComment(e) {
-    // e.preventDefault()
-
     let commentIds = {
       pinId: Number(this.props.match.params.id),
       commentId: e.currentTarget.id,
@@ -197,8 +295,6 @@ class PinShow extends React.Component {
       this.backdropClick(),
         this.props.fetchPin(Number(this.props.match.params.id)),
         this.setState({ comments: this.props.pin.pin.comments });
-      let newObj = {};
-      this.setState({ dd_s: newObj });
     });
   }
 
@@ -245,44 +341,49 @@ class PinShow extends React.Component {
   editPin(e) {
     e.preventDefault();
     window.editPin = Number(this.props.match.params.id);
-    // this.backdropClick(e)
     this.props.openModal("editPin");
-    let objNew = {};
-    this.setState({ dd_s: objNew });
+    this.backdropClick();
   }
 
-  dd_display_tog(e) {
-    let id = e.currentTarget.id;
-    let oldState = { ...this.state.dd_s };
-    let newState = {};
-
-    newState[id] = !oldState[id];
-    this.setState({ dd_s: newState });
+  dd_display_tog() {
+    this.setState({
+      pinEditDropdownActive: true,
+      backDropActive: true,
+    });
   }
 
   moreClickedDD(e) {
     e.preventDefault();
 
+    this.setState({
+      moreDropDownActive: true,
+      backDropActive: true,
+    });
+
     let dropDown = document.getElementById("edit-dropdown-menue-123-id");
-    let backdrop = document.getElementById("backdrop-div-create-pin");
+    // let backdrop = document.getElementById("backdrop-div-create-pin");
+
     if (dropDown.style.display === "none" || dropDown.style.display === "") {
       this.setState({ ddStat: true });
       dropDown.style.display = "flex";
-      backdrop.style.display = "block";
+      // backdrop.style.display = "block";
     } else {
       this.setState({ ddStat: false });
       dropDown.style.display = "none";
-      backdrop.style.display = "none";
+      // backdrop.style.display = "none";
     }
   }
 
   moreClickedDDComment(e) {
     e.preventDefault();
 
+    this.setState({ backDropActive: true });
+
     let dropDown = document.getElementById(
       `edit-dropdown-menue-124-id` + e.currentTarget.id
     );
-    let backdrop = document.getElementById("backdrop-div-create-pin");
+
+    // let backdrop = document.getElementById("backdrop-div-create-pin");
 
     if (dropDown.style.display === "none" || dropDown.style.display === "") {
       this.setState({
@@ -290,40 +391,34 @@ class PinShow extends React.Component {
       });
       this.setState({ commentDDActive: true });
       dropDown.style.display = "flex";
-      backdrop.style.display = "block";
+      // backdrop.style.display = "block";
     } else {
       this.setState({ ddStat: false });
       dropDown.style.display = "none";
-      backdrop.style.display = "none";
+      // backdrop.style.display = "none";
     }
   }
 
-  backdropClick(e) {
-    this.setState({ dd_s: {} });
+  backdropClick() {
+    debugger;
 
-    // let dropDownClass = document.getElementById(this.state.ddStat);
+    let commentsDropDownActive = { ...this.state.dd_s };
 
-    // let dropDown = document.getElementById("edit-dropdown-menue-123-id");
-    // let backdrop = document.getElementById('backdrop-div-create-pin')
-    // if(dropDown.style.display === "none"){
-    //     dropDown.style.display = "none"
-    //     backdrop.style.display = "none"
-    //     if(this.state.commentDDActive){
-    //         dropDownClass.style.display = 'none'
-    //         this.setState({ddStat: false})
-    //     }
-    // } else {
-    //     dropDown.style.display = "none"
-    //     backdrop.style.display = "none"
-    //     if(this.state.commentDDActive){
-    //         dropDownClass.style.display = 'none'
-    //         this.setState({ddStat: false})
-    //     }
-    // }
+    for (const id in commentsDropDownActive) {
+      commentsDropDownActive[id] = false;
+    }
+
+    this.setState({
+      backDropActive: false,
+      dd_s: commentsDropDownActive,
+      pinEditDropdownActive: false,
+    });
   }
 
   componentDidMount() {
+    debugger;
     this.props.fetchPin(Number(this.props.match.params.id));
+    debugger;
     // .then(
     //     this.setState({comments: this.props.comments})
     // )
@@ -341,8 +436,7 @@ class PinShow extends React.Component {
   }
 
   render() {
-    let ddState = { ...this.state.dd_s };
-    let back_drop_s = !Object.keys(ddState).every((k) => !ddState[k]);
+    debugger;
 
     if (!this.state.pin) {
       return null;
@@ -350,12 +444,15 @@ class PinShow extends React.Component {
 
     let comments;
 
+    debugger;
+
     if (!!this.state.comments) {
       comments = Object.values(this.state.comments);
     } else {
       comments = null;
     }
 
+    debugger;
     // if( this.state.comments.length === 0 ){
     //     comments = null
     // } else {
@@ -366,9 +463,11 @@ class PinShow extends React.Component {
     if (this.props.currentUser.id === this.props.pin.pin.creator_id) {
       pinShow = (
         <div className="background-div-pin-show">
-          {back_drop_s && (
+          {this.state.backDropActive && (
+            // {back_drop_s && this.state.backDropActive &&
             <div
-              className="backdrop-div-create-pin pin-show-bd"
+              className="backdrop-div-create-pin-updated"
+              // className="backdrop-div-create-pin pin-show-bd"
               onClick={this.backdropClick}
               id="backdrop-div-create-pin"
             ></div>
@@ -390,7 +489,6 @@ class PinShow extends React.Component {
                       className="pin-duplicate-button-dd"
                       onClick={this.dd_display_tog}
                       id={`dd_id_pin${this.state.pin.id}`}
-                      onBlur={this.dd_display_tog}
                     >
                       <img
                         className="pin-123-1"
@@ -398,9 +496,9 @@ class PinShow extends React.Component {
                         alt="more icon"
                       />
                     </div>
-                    {this.state.dd_s[`dd_id_pin${this.state.pin.id}`] && (
+                    {this.state.pinEditDropdownActive && (
                       <div
-                        className="div-holder-helper-123 outside-pin-show"
+                        className="div-holder-helper-123"
                         id={`dd_id_pin${this.state.pin.id}`}
                       >
                         <div
@@ -448,162 +546,13 @@ class PinShow extends React.Component {
                   {!!comments && (
                     <div className="comment-array-holding-div">
                       <div className="comment-array-pin-show">
-                        {comments.map((comment) => (
-                          <div
-                            className="outside-comment-main"
-                            key={comment.id + "outside"}
-                          >
-                            <div
-                              className="one-comment-pin-show"
-                              key={comment.id}
-                            >
-                              <div className="outside-of-image-div">
-                                <div
-                                  id="123 D"
-                                  className="image-div-show-pin-page comment-list-2 C"
-                                >
-                                  <ProfileAvatar
-                                    photoUrl={comment.photoUrl}
-                                    usersName={comment.name}
-                                  />
-                                </div>
-                              </div>
-
-                              <div
-                                className="right-txt-pin-show"
-                                id={`right-txt-pin-show` + comment.id}
-                              >
-                                <div className="outer-div-time-elapsed-comment">
-                                  <Link to={`/profile/${comment.commenter_id}`}>
-                                    <div className="name-list-pin-show">
-                                      {comment.name}
-                                    </div>
-                                  </Link>
-                                  <div className="time-elapsed-comment">
-                                    {this.elapsedTime(comment.timeElapsed)}
-                                  </div>
-                                </div>
-                                <div className="body-list-pin-show">
-                                  {comment.body}
-                                </div>
-                              </div>
-
-                              <div
-                                className="edit-form-div-outter"
-                                id={"edit-form-div" + comment.id}
-                              >
-                                <textarea
-                                  placeholder="Add a comment"
-                                  className="blank-input-style"
-                                  type="text"
-                                  value={this.state.editComment}
-                                  onChange={this.handelEditChange}
-                                />
-                                <div className="edit-comment-btns">
-                                  <div
-                                    data-comment_id={comment.id}
-                                    onClick={this.cancelEditComment}
-                                    id="cancel-btn-show-pin"
-                                    className="button-show-pin-comment cancel-btn-show-pin cancel-124"
-                                  >
-                                    Cancel
-                                  </div>
-                                  <div
-                                    id="save-btn-show-pin"
-                                    className="button-show-pin-comment save-123"
-                                    onClick={this.handelSubmitCommentEdit}
-                                  >
-                                    Save
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div
-                              className="bottom-section-comment-pin-show"
-                              id={
-                                "bottom-section-comment-pin-show" + comment.id
-                              }
-                            >
-                              <h1 className="header-title-boards-show-123">
-                                <div className="like-icon-div">
-                                  {comment.like.liked ? (
-                                    <img
-                                      data-img_liker_id={
-                                        this.props.currentUser.id
-                                      }
-                                      data-img_comment={comment.id}
-                                      data-like_id={comment.like.like.id}
-                                      onClick={this.removeLike}
-                                      src={window.redHeartURL}
-                                      alt="red heart"
-                                    />
-                                  ) : (
-                                    <img
-                                      data-img_liker_id={
-                                        this.props.currentUser.id
-                                      }
-                                      data-img_comment={comment.id}
-                                      onClick={this.createLike}
-                                      src={window.grayHeartURL}
-                                      alt="gray heart"
-                                    />
-                                  )}
-
-                                  {comment.like.like_count > 0 && (
-                                    <div className="like-count">
-                                      {comment.like.like_count}
-                                    </div>
-                                  )}
-                                </div>
-
-                                {comment.commenter_id ===
-                                  this.props.currentUser.id && (
-                                  <div
-                                    className="pin-duplicate-button-dd comment-edition-div"
-                                    id={comment.id}
-                                    onClick={this.dd_display_tog}
-                                  >
-                                    <img
-                                      className="pin-123-1 comment-edition-dot"
-                                      src={window.dotsBlackURL}
-                                      alt="more icon"
-                                    />
-                                  </div>
-                                )}
-                                {!!this.state.dd_s[comment.id] && (
-                                  <div className="div-holder-helper-123-pin-show pin-modif new-mod-display">
-                                    <div
-                                      className="edit-dropdown-menue-123-pin-show move-edit-delete-div"
-                                      id={
-                                        `edit-dropdown-menue-124-id` +
-                                        comment.id
-                                      }
-                                    >
-                                      <div
-                                        data-div_val={comment.body}
-                                        id={comment.id}
-                                        onClick={this.editComment}
-                                      >
-                                        Edit
-                                      </div>
-                                      <div
-                                        id={comment.id}
-                                        onClick={this.deleteComment}
-                                      >
-                                        Delete
-                                      </div>
-                                    </div>
-                                  </div>
-                                )}
-                              </h1>
-                            </div>
-                          </div>
-                        ))}
+                        {this.commentsForPin(comments)}
                       </div>
 
                       <div className="comment-count">
-                        {comments.length} comments{" "}
+                        {comments.length === 1
+                          ? `${comments.length} comment `
+                          : `${comments.length} comments `}
                       </div>
                     </div>
                   )}
@@ -690,9 +639,10 @@ class PinShow extends React.Component {
     } else {
       pinShow = (
         <div className="background-div-pin-show">
-          {back_drop_s && (
+          {this.state.backDropActive && (
             <div
-              className="backdrop-div-create-pin pin-show-bd"
+              className="backdrop-div-create-pin-updated"
+              // className="backdrop-div-create-pin pin-show-bd"
               onClick={this.backdropClick}
               id="backdrop-div-create-pin"
             ></div>
@@ -801,13 +751,17 @@ class PinShow extends React.Component {
                                   placeholder="Add a comment"
                                   className="blank-input-style"
                                   type="text"
-                                  value={this.state.editComment}
-                                  onChange={this.handelEditChange}
+                                  value={this.state.commentsEdit[comment.id]}
+                                  onChange={(e) =>
+                                    this.handelEditChange(e, comment.id)
+                                  }
                                 />
                                 <div className="edit-comment-btns">
                                   <div
                                     data-comment_id={comment.id}
-                                    onClick={this.cancelEditComment}
+                                    onClick={(e) =>
+                                      this.cancelEditComment(e, comment.id)
+                                    }
                                     id="cancel-btn-show-pin"
                                     className="button-show-pin-comment cancel-btn-show-pin cancel-124"
                                   >
@@ -816,7 +770,12 @@ class PinShow extends React.Component {
                                   <div
                                     id="save-btn-show-pin"
                                     className="button-show-pin-comment save-123"
-                                    onClick={this.handelSubmitCommentEdit}
+                                    onClick={(e) =>
+                                      this.handelSubmitCommentEdit(
+                                        e,
+                                        comment.id
+                                      )
+                                    }
                                   >
                                     Save
                                   </div>
@@ -845,11 +804,12 @@ class PinShow extends React.Component {
                                     />
                                   ) : (
                                     <img
-                                      data-img_liker_id={
-                                        this.props.currentUser.id
+                                      onClick={() =>
+                                        this.createLike(
+                                          this.props.currentUser.id,
+                                          comment.id
+                                        )
                                       }
-                                      data-img_comment={comment.id}
-                                      onClick={this.createLike}
                                       src={window.grayHeartURL}
                                       alt="gray heart"
                                     />
@@ -877,7 +837,7 @@ class PinShow extends React.Component {
                                   </div>
                                 )}
                                 {!!this.state.dd_s[comment.id] && (
-                                  <div className="div-holder-helper-123-pin-show pin-modif new-mod-display">
+                                  <div className="div-holder-helper-123-pin-show">
                                     <div
                                       className="edit-dropdown-menue-123-pin-show move-edit-delete-div"
                                       id={
@@ -908,7 +868,9 @@ class PinShow extends React.Component {
                       </div>
 
                       <div className="comment-count">
-                        {comments.length} comments{" "}
+                        {comments.length === 1
+                          ? `${comments.length} comment `
+                          : `${comments.length} comments `}
                       </div>
                     </div>
                   )}
