@@ -13,8 +13,6 @@ import { deleteLike, createLike } from "../../actions/like_action";
 import session from "../../reducers/session";
 
 const mSTP = (state) => {
-  debugger;
-
   return {
     pin: state.pin,
     comments: state.comment,

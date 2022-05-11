@@ -48,12 +48,10 @@ class NavBar extends React.Component {
 
       this.props.history.push(input);
       this.props.searchFeedCall(input.params).then((data) => {
-        debugger;
         if (
           document.getElementById("this-will-hold-search-list")
             .childElementCount !== 0
         ) {
-          debugger;
           this.searchOver();
         }
       });

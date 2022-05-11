@@ -202,8 +202,6 @@ class UserShow extends React.Component {
   toggleBox(e) {
     e.preventDefault();
 
-    debugger;
-
     this.setState({ plusDropDownActive: !this.state.plusDropDownActive });
     this.setState({ backdropPlussActive: !this.state.backdropPlussActive });
   }
