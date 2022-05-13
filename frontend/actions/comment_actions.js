@@ -1,4 +1,5 @@
 import * as APIUtil from "../utils/comment_utils";
+import { receivePin } from "./pin_action";
 
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
 export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
@@ -27,9 +28,9 @@ export const receiveMessage = (message) => {
 
 export const newComment = (comment) => {
   return (dispatch) => {
-    return APIUtil.newComment(comment).then((message) =>
-      dispatch(receiveMessage(message))
-    );
+    return APIUtil.newComment(comment).then((pin) => {
+      dispatch(receivePin(pin));
+    });
   };
 };
 

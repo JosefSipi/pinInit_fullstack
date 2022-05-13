@@ -1,4 +1,3 @@
-
 json.extract! @pin, :id, :creator_id, :title, :description, :description2, :websiteURL, :photo, :board_id
 
 if (@pin.photo.attached?)

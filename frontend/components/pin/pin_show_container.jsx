@@ -10,7 +10,6 @@ import {
   editComment,
 } from "../../actions/comment_actions";
 import { deleteLike, createLike } from "../../actions/like_action";
-import session from "../../reducers/session";
 
 const mSTP = (state) => {
   return {

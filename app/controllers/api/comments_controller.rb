@@ -9,9 +9,22 @@ class Api::CommentsController < ApplicationController
 
     def create
         @comment = Comment.new(comment_params)
+        
+        pinId = comment_params[:pin_id]
+
+        # @comments = Comment.where(pin_id: pinId)
+        # @pin = Pin.find(pinId)
+        # @userPin = User.find(@pin.creator_id)
+        # @board = Board.find(@pin.board_id)
+
         if @comment.save
 
-            render json: ['comment was saved correctly']
+            @comments = Comment.where(pin_id: pinId)
+            @pin = Pin.find(pinId)
+            @userPin = User.find(@pin.creator_id)
+            @board = Board.find(@pin.board_id)
+
+            render 'api/pins/show'
         else
 
             render json: ['comment could not be saved']

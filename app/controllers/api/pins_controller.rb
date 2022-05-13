@@ -61,8 +61,6 @@ class Api::PinsController < ApplicationController
     end
 
     def show
-        
-
         @comments = Comment.where(pin_id: params[:id])
         
         @pin = Pin.find(params[:id])

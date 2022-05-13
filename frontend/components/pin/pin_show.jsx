@@ -2,20 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ProfileAvatar } from "../../utils/util_components/image_components";
 import { cloneDeep } from "lodash";
-// import { saveAs } from "file-saver";
 
 class PinShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       commentButtonsActive: false,
-      inputBorderRadiusClass: 'input-pin-show',
+      inputBorderRadiusClass: "input-pin-show",
       pin: null,
-      comment: {
-        commenter_id: this.props.currentUser.id,
-        pin_id: Number(this.props.match.params.id),
-        body: null,
-      },
+      commentBody: "",
       comments: null,
       commentDDActive: false,
       ddStat: null,
@@ -30,10 +25,7 @@ class PinShow extends React.Component {
     this.editPin = this.editPin.bind(this);
     this.editComment = this.editComment.bind(this);
     this.inputTouched = this.inputTouched.bind(this);
-    this.isFieldEmpty = this.isFieldEmpty.bind(this);
     this.handelSubmitComment = this.handelSubmitComment.bind(this);
-    this.moreClickedDDComment = this.moreClickedDDComment.bind(this);
-    this.moreClickedDD = this.moreClickedDD.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
     this.backdropClick = this.backdropClick.bind(this);
     this.handelEditChange = this.handelEditChange.bind(this);
@@ -84,11 +76,9 @@ class PinShow extends React.Component {
             </div>
           )}
 
-          {/* { <div */}
           {!!this.state.commentsEdit[comment.id] &&
             !!this.state.commentsEdit[comment.id].isActive && (
               <div
-                // {(!!this.state.commentsEdit[comment.id] && !!this.state.commentsEdit[comment.id].isActive) && <div
                 className="edit-form-div-outter"
                 id={"edit-form-div" + comment.id}
               >
@@ -209,6 +199,28 @@ class PinShow extends React.Component {
     this.setState({ commentsEdit: comments });
   }
 
+  handelEditChange(e, id) {
+    e.preventDefault();
+
+    let comments = cloneDeep(this.state.commentsEdit);
+    let theComment = comments[id];
+    theComment.body = e.currentTarget.value;
+
+    this.setState({
+      commentsEdit: comments,
+    });
+  }
+
+  editComment(comment) {
+    let newCommentsEdit = { ...this.state.commentsEdit };
+    newCommentsEdit[comment.id] = comment;
+    let theComment = newCommentsEdit[comment.id];
+    theComment["isActive"] = true;
+
+    this.backdropClick();
+    this.setState({ commentsEdit: newCommentsEdit });
+  }
+
   elapsedTime(time) {
     let retTime = null;
 
@@ -265,28 +277,6 @@ class PinShow extends React.Component {
     });
   }
 
-  handelEditChange(e, id) {
-    e.preventDefault();
-
-    let comments = cloneDeep(this.state.commentsEdit);
-    let theComment = comments[id];
-    theComment.body = e.currentTarget.value;
-
-    this.setState({
-      commentsEdit: comments,
-    });
-  }
-
-  editComment(comment) {
-    let newCommentsEdit = { ...this.state.commentsEdit };
-    newCommentsEdit[comment.id] = comment;
-    let theComment = newCommentsEdit[comment.id];
-    theComment["isActive"] = true;
-
-    this.backdropClick();
-    this.setState({ commentsEdit: newCommentsEdit });
-  }
-
   deleteComment(e) {
     let commentIds = {
       pinId: Number(this.props.match.params.id),
@@ -301,47 +291,26 @@ class PinShow extends React.Component {
 
   handelSubmitComment(e) {
     e.preventDefault();
+    let pinId = Number(this.props.match.params.id);
 
-    let input = document.getElementById("comment-input-pin-show");
+    let comment = {
+      commenter_id: this.props.currentUser.id,
+      pin_id: pinId,
+      body: this.state.commentBody,
+    };
 
-    if (e.currentTarget.classList.length === 3) {
-      this.props.newComment(this.state.comment);
-      this.props.fetchPin(Number(this.props.match.params.id)).then(
-        (input.value = ""),
-        e.currentTarget.classList.remove("done-red-btn"),
-
-        this.props.fetchPin(Number(this.props.match.params.id)),
-        this.setState({ comments: this.props.pin.pin.comments })
-      );
+    if (comment.body.trim().length > 0) {
+      this.props.newComment(comment).then(this.setState({ commentBody: "" }));
     }
   }
 
   inputTouched(e) {
     e.preventDefault();
 
-    // alter display on buttons
     this.setState({
       commentButtonsActive: true,
-      inputBorderRadiusClass: "input-pin-show change-input"
-    })
-
-  }
-
-  isFieldEmpty(e) {
-    e.preventDefault();
-
-    let prevState = cloneDeep(this.state.comment);
-
-    prevState.body = e.currentTarget.value;
-    this.setState({ comment: prevState });
-
-    let doneBtn = document.getElementById("done-btn-show-pin");
-
-    if (e.currentTarget.value.trim().length === 0) {
-      doneBtn.classList.remove("done-red-btn");
-    } else {
-      doneBtn.classList.add("done-red-btn");
-    }
+      inputBorderRadiusClass: "input-pin-show change-input",
+    });
   }
 
   editPin(e) {
@@ -356,46 +325,6 @@ class PinShow extends React.Component {
       pinEditDropdownActive: true,
       backDropActive: true,
     });
-  }
-
-  moreClickedDD(e) {
-    e.preventDefault();
-
-    this.setState({
-      moreDropDownActive: true,
-      backDropActive: true,
-    });
-
-    let dropDown = document.getElementById("edit-dropdown-menue-123-id");
-
-    if (dropDown.style.display === "none" || dropDown.style.display === "") {
-      this.setState({ ddStat: true });
-      dropDown.style.display = "flex";
-    } else {
-      this.setState({ ddStat: false });
-      dropDown.style.display = "none";
-    }
-  }
-
-  moreClickedDDComment(e) {
-    e.preventDefault();
-
-    this.setState({ backDropActive: true });
-
-    let dropDown = document.getElementById(
-      `edit-dropdown-menue-124-id` + e.currentTarget.id
-    );
-
-    if (dropDown.style.display === "none" || dropDown.style.display === "") {
-      this.setState({
-        ddStat: `edit-dropdown-menue-124-id` + e.currentTarget.id,
-      });
-      this.setState({ commentDDActive: true });
-      dropDown.style.display = "flex";
-    } else {
-      this.setState({ ddStat: false });
-      dropDown.style.display = "none";
-    }
   }
 
   backdropClick() {
@@ -546,26 +475,36 @@ class PinShow extends React.Component {
                       className={this.state.inputBorderRadiusClass}
                       placeholder="Add a comment"
                       onClick={this.inputTouched}
-                      onChange={this.isFieldEmpty}
+                      onChange={(e) => {
+                        e.preventDefault(),
+                          this.setState({ commentBody: e.currentTarget.value });
+                      }}
+                      value={this.state.commentBody}
                     />
                   </div>
 
-                  {this.state.commentButtonsActive && 
+                  {this.state.commentButtonsActive && (
                     <div id="pin-show-btn" className="outer-comment-pin-show-2">
-                    <div
-                      id="cancel-btn-show-pin"
-                      className="button-show-pin-comment cancel-btn-show-pin"
-                    >
-                      Cancel
+                      <div
+                        id="cancel-btn-show-pin"
+                        className="button-show-pin-comment cancel-btn-show-pin"
+                        onClick={() => this.setState({ commentBody: "" })}
+                      >
+                        Cancel
+                      </div>
+                      <div
+                        id="done-btn-show-pin"
+                        className={
+                          this.state.commentBody.trim().length > 0
+                            ? "button-show-pin-comment done-123 done-red-btn"
+                            : "button-show-pin-comment done-123"
+                        }
+                        onClick={this.handelSubmitComment}
+                      >
+                        Done
+                      </div>
                     </div>
-                    <div
-                      id="done-btn-show-pin"
-                      className="button-show-pin-comment done-123"
-                      onClick={this.handelSubmitComment}
-                    >
-                      Done
-                    </div>
-                  </div>}
+                  )}
 
                   <div className="bottom-info-outter-div">
                     <div
@@ -617,14 +556,11 @@ class PinShow extends React.Component {
           {this.state.backDropActive && (
             <div
               className="backdrop-div-create-pin-updated"
-              // className="backdrop-div-create-pin pin-show-bd"
               onClick={this.backdropClick}
               id="backdrop-div-create-pin"
             ></div>
           )}
           <div className="main-div-pin-show">
-            {/* <div className='sub-div-boarder-play'> */}
-
             <div className="image-show-pin-1">
               <img
                 className="image-show-pin"
@@ -683,26 +619,36 @@ class PinShow extends React.Component {
                       className={this.state.inputBorderRadiusClass}
                       placeholder="Add a comment"
                       onClick={this.inputTouched}
-                      onChange={this.isFieldEmpty}
+                      onChange={(e) => {
+                        e.preventDefault(),
+                          this.setState({ commentBody: e.currentTarget.value });
+                      }}
+                      value={this.state.commentBody}
                     />
                   </div>
 
-                  {this.state.commentButtonsActive && 
+                  {this.state.commentButtonsActive && (
                     <div id="pin-show-btn" className="outer-comment-pin-show-2">
-                    <div
-                      id="cancel-btn-show-pin"
-                      className="button-show-pin-comment cancel-btn-show-pin"
-                    >
-                      Cancel
+                      <div
+                        id="cancel-btn-show-pin"
+                        className="button-show-pin-comment cancel-btn-show-pin"
+                        onClick={() => this.setState({ commentBody: "" })}
+                      >
+                        Cancel
+                      </div>
+                      <div
+                        id="done-btn-show-pin"
+                        className={
+                          this.state.commentBody.trim().length > 0
+                            ? "button-show-pin-comment done-123 done-red-btn"
+                            : "button-show-pin-comment done-123"
+                        }
+                        onClick={this.handelSubmitComment}
+                      >
+                        Done
+                      </div>
                     </div>
-                    <div
-                      id="done-btn-show-pin"
-                      className="button-show-pin-comment done-123"
-                      onClick={this.handelSubmitComment}
-                    >
-                      Done
-                    </div>
-                  </div>}
+                  )}
 
                   <div className="bottom-info-outter-div">
                     <div className="image-div-show-pin-page bottom-info-links">
