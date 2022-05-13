@@ -141,6 +141,10 @@
   text-indent: 10px;
 }
 
+.change-input {
+  border-radius: 16px;
+}
+
 .image-div-show-pin-page {
   height: 50px;
   width: 50px;
@@ -151,10 +155,6 @@
 .profile-icon-photo-pinshow {
   height: 50px;
   width: auto;
-}
-
-.change-input {
-  border-radius: 16px;
 }
 
 .image-show-pin-1 {
@@ -168,7 +168,7 @@
 }
 
 .outer-comment-pin-show-2 {
-  display: none;
+  display: flex;
   padding-top: 14px;
 }
 

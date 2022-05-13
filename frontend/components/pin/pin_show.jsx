@@ -8,6 +8,8 @@ class PinShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      commentButtonsActive: false,
+      inputBorderRadiusClass: 'input-pin-show',
       pin: null,
       comment: {
         commenter_id: this.props.currentUser.id,
@@ -27,7 +29,7 @@ class PinShow extends React.Component {
 
     this.editPin = this.editPin.bind(this);
     this.editComment = this.editComment.bind(this);
-    this.classAddInput = this.classAddInput.bind(this);
+    this.inputTouched = this.inputTouched.bind(this);
     this.isFieldEmpty = this.isFieldEmpty.bind(this);
     this.handelSubmitComment = this.handelSubmitComment.bind(this);
     this.moreClickedDDComment = this.moreClickedDDComment.bind(this);
@@ -314,17 +316,22 @@ class PinShow extends React.Component {
     }
   }
 
-  classAddInput(e) {
+  inputTouched(e) {
     e.preventDefault();
-    e.currentTarget.classList.add("change-input");
-    let buttons = document.getElementById("pin-show-btn");
-    buttons.style.display = "flex";
+
+    // alter display on buttons
+    this.setState({
+      commentButtonsActive: true,
+      inputBorderRadiusClass: "input-pin-show change-input"
+    })
+
   }
 
   isFieldEmpty(e) {
     e.preventDefault();
 
-    let prevState = this.state.comment;
+    let prevState = cloneDeep(this.state.comment);
+
     prevState.body = e.currentTarget.value;
     this.setState({ comment: prevState });
 
@@ -536,14 +543,15 @@ class PinShow extends React.Component {
                       type="text"
                       autoComplete="off"
                       id="comment-input-pin-show"
-                      className="input-pin-show"
+                      className={this.state.inputBorderRadiusClass}
                       placeholder="Add a comment"
-                      onClick={this.classAddInput}
+                      onClick={this.inputTouched}
                       onChange={this.isFieldEmpty}
                     />
                   </div>
 
-                  <div id="pin-show-btn" className="outer-comment-pin-show-2">
+                  {this.state.commentButtonsActive && 
+                    <div id="pin-show-btn" className="outer-comment-pin-show-2">
                     <div
                       id="cancel-btn-show-pin"
                       className="button-show-pin-comment cancel-btn-show-pin"
@@ -557,7 +565,7 @@ class PinShow extends React.Component {
                     >
                       Done
                     </div>
-                  </div>
+                  </div>}
 
                   <div className="bottom-info-outter-div">
                     <div
@@ -672,14 +680,15 @@ class PinShow extends React.Component {
                       type="text"
                       autoComplete="off"
                       id="comment-input-pin-show"
-                      className="input-pin-show"
+                      className={this.state.inputBorderRadiusClass}
                       placeholder="Add a comment"
-                      onClick={this.classAddInput}
+                      onClick={this.inputTouched}
                       onChange={this.isFieldEmpty}
                     />
                   </div>
 
-                  <div id="pin-show-btn" className="outer-comment-pin-show-2">
+                  {this.state.commentButtonsActive && 
+                    <div id="pin-show-btn" className="outer-comment-pin-show-2">
                     <div
                       id="cancel-btn-show-pin"
                       className="button-show-pin-comment cancel-btn-show-pin"
@@ -693,7 +702,7 @@ class PinShow extends React.Component {
                     >
                       Done
                     </div>
-                  </div>
+                  </div>}
 
                   <div className="bottom-info-outter-div">
                     <div className="image-div-show-pin-page bottom-info-links">
