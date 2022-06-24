@@ -5,6 +5,7 @@ class Api::PinsController < ApplicationController
     end
 
     def create
+
         @pin = Pin.new(pin_params)
 
         

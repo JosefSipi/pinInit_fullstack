@@ -6,12 +6,12 @@ class SignUp extends React.Component {
 
     this.state = {
       email: "",
-      password: null,
-      age: null,
+      password: "",
+      age: "",
     };
     this.state = {
-      errors: null,
-      emailErrorCheck: null,
+      errors: "",
+      emailErrorCheck: "",
     };
 
     this.handelSubmit = this.handelSubmit.bind(this);

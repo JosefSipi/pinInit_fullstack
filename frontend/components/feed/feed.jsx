@@ -27,6 +27,8 @@ class Feed extends React.Component {
   }
 
   displayTheseBoards(boards) {
+
+
     return boards.map((board) => {
       if (!board.is_private) {
         return (
@@ -93,16 +95,19 @@ class Feed extends React.Component {
   }
 
   openTheLink(e) {
+    
     e.preventDefault();
     window.open(e.currentTarget.id);
   }
 
   componentDidMount() {
+    
     window.currentUser = this.props.currentUser;
 
     this.setState({ currentUser: this.props.currentUser });
 
     this.props.fetchUsers("fetch for index").then((data) => {
+      
       this.setState({
         usersFollowed: Object.values(this.props.usersFollowed.usersList),
       });
@@ -123,6 +128,7 @@ class Feed extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+
     if (this.props.feed !== prevProps.feed) {
       this.setState({ feed: this.props.feed });
     } else if (this.props.usersFollowed !== prevProps.usersFollowed) {
@@ -171,14 +177,24 @@ class Feed extends React.Component {
     } else if (!this.state.usersFollowed) {
       return null;
     }
+    
 
     let users = this.state.usersFollowed;
     let pins = Object.values(this.state.feed).reverse();
 
+    let followCountCheck
+
+    if (users.length < 5){
+      followCountCheck = users.length
+    } else {
+      followCountCheck = 5
+    }
+   
+    
     return (
       <div>
         <div className="pin-area-on-board-show">
-          {this.state.showFollowOpt >= 5 ? (
+          {this.state.showFollowOpt >= followCountCheck ? (
             <div className="pin_container" id="pin_container">
               {pins.map((pin) => (
                 <Link
@@ -225,8 +241,8 @@ class Feed extends React.Component {
                       </div>
 
                       {/* <div id={pin.id} className="edit-pen-div-show-board" onClick={this.modalFunction}>
-                                                <img src={window.editPenURL} alt="edit pen" />
-                                            </div> */}
+                              <img src={window.editPenURL} alt="edit pen" />
+                          </div> */}
                     </div>
                   </div>
 
@@ -297,11 +313,10 @@ class Feed extends React.Component {
                     </li>
                   ))}
                 </ul>
-
                 <div className="feed-div-btm">
-                  {this.state.numFollowers < 5 ? (
+                    {this.state.numFollowers < followCountCheck ? (
                     <div className="btn-feed">
-                      Pick {5 - this.state.numFollowers} more
+                        Pick {followCountCheck - this.state.numFollowers} more
                     </div>
                   ) : (
                     <div

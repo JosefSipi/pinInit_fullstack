@@ -216,6 +216,7 @@ class CreatePin extends React.Component {
     formData.append("pin[board_id]", the_board_id);
 
     this.setState({ loading: true });
+    
     this.props.createNewPin(formData).then((data) => {
       this.props.history.push(`/board/${data.pin.board_id}`);
     });
