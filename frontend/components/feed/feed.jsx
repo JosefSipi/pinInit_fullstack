@@ -182,15 +182,12 @@ class Feed extends React.Component {
 
     let followCountCheck
 
-    console.log("user length" + users.length)
-
     if (users.length < 5){
       followCountCheck = users.length
     } else {
       followCountCheck = 5
     }
    
-    
     return (
       <div>
         <div className="pin-area-on-board-show">
@@ -315,7 +312,6 @@ class Feed extends React.Component {
                 </ul>
                 <div className="feed-div-btm">
                     {this.state.numFollowers < followCountCheck ? (
-                      // changed < to <=  
                     <div className="btn-feed">
                         Pick {followCountCheck - this.state.numFollowers} more
                     </div>
