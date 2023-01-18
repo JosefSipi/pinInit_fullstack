@@ -27,8 +27,6 @@ class Feed extends React.Component {
   }
 
   displayTheseBoards(boards) {
-
-
     return boards.map((board) => {
       if (!board.is_private) {
         return (
@@ -184,6 +182,8 @@ class Feed extends React.Component {
 
     let followCountCheck
 
+    console.log("user length" + users.length)
+
     if (users.length < 5){
       followCountCheck = users.length
     } else {
@@ -315,6 +315,7 @@ class Feed extends React.Component {
                 </ul>
                 <div className="feed-div-btm">
                     {this.state.numFollowers < followCountCheck ? (
+                      // changed < to <=  
                     <div className="btn-feed">
                         Pick {followCountCheck - this.state.numFollowers} more
                     </div>

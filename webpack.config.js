@@ -5,7 +5,7 @@ module.exports = {
   output: {
     //path requires absolute path
     path: path.resolve(__dirname, "app", "assets", "javascripts"),
-    filename: "bundle.js", //not sure if i need to specify this file yet
+    filename: "bundle.js",
   },
   devtool: "source-map",
   resolve: {
